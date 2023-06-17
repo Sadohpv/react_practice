@@ -3,7 +3,7 @@ import images from "../../asset/images/parallaxImage";
 
 import "./Home.scss";
 import { useEffect } from "react";
-import LoginComponent from "../../components/Temp";
+
 
 function Home() {
 	useEffect(() => {
@@ -132,7 +132,7 @@ function Home() {
 				</p>
 				<img src={images.spaceship} id="ship" alt="ship" />
 			</section>
-			<LoginComponent />
+		
 			{/* <ToastifyUser /> */}
 		</div>
 	);

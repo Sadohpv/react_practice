@@ -5,22 +5,24 @@ import {
 } from "../actions/userAction";
 
 const INITIAL_STATE = {
-	data_init: {
+	data_user: {
 		email: "",
-		auth: null,
-		token: "",
+		auth: false,
+		
 	},
-    isLoading: false,
-    isError: false,
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
 	switch (action.type) {
 		case USER_LOGIN:
+			console.log('User logged in with ' + action.data.email);
+			console.log(!action.data.isAdmin);
 			return {
                 ...state,
-                isLoading: true,
-                isError: false,
+				data_init:{
+					email: action.data.email,
+					auth: !action.data.isAdmin,
+				}
             };
 	
 		default:

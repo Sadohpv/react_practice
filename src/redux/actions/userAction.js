@@ -7,14 +7,17 @@ const USER_LOGIN = "USER_LOGIN";
 // const USER_REFRESH = "USER_REFRESH";
 // const USER_LOGOUT = "USER_LOGOUT";
 
-export {USER_LOGIN}
+export { USER_LOGIN };
 
-export const handleLoginRedux = (email, password) => {
-    alert("Login with " + email + " and " + password);
-
+export const handleLoginRedux = (email, isAdmin) => {
 	return async (dispatch, getState) => {
-		dispatch({ type: USER_LOGIN });
-        
+		dispatch({
+			type: USER_LOGIN,
+			data: {
+				email: email.trim(),
+				isAdmin: !isAdmin,
+			},
+		});
 	};
 };
 
@@ -25,7 +28,6 @@ export const handleLoginRedux = (email, password) => {
 // 		});
 // 	};
 // };
-
 
 // export const handleRefresh = ()=>{
 // 	return (dispatch, getState) => {

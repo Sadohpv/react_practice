@@ -29,35 +29,34 @@ function LoginBlock({ color }) {
 	const handleOnMouseOut = (e) => {
 		block.current.style.transform = ``;
 	};
+
+	const handleSetMessage = (message, orMessage) => {
+		if(message){
+
+			setMessage(message);
+		}else{
+			setMessage(orMessage);
+		}
+		return;
+	};
 	const handleLogin = async () => {
 		try {
-			const res = await userService.handleLoginService(email, password);
-
-			if (res && res.errCode === 4) {
-				if (res.message) {
-					setMessage(res.message);
-				} else {
-					setMessage("No response from server");
-				}
-			} else if (res && res.userData && res.userData.errCode === 0) {
-				dispatch(handleLoginRedux(res.userData.user.email, res.userData.user.isAdmin));
-			} else if (res && res.userData && res.userData.errCode === 1) {
-				if (res.userData.errMessage) {
-					setMessage(res.userData.errMessage);
-				} else {
-					setMessage("Make sure you fill correct your email !");
-				}
+			const res = await userService.handleLoginService(email.trim(), password);
+			console.log(res);
+			if (res && res.userData && res.userData.errCode === 4) {
+				handleSetMessage(res.userData.errMessage,"Missing data !");
+			}  else if (res && res.userData && res.userData.errCode === 1) {
+				handleSetMessage(res.userData.errMessage,"Incorrect Email !");
 			} else if (res.userData && res.userData.errCode === 3) {
-				if (res.userData.errMessage) {
-					setMessage(res.userData.errMessage);
-				} else {
-					setMessage("Make sure you full correct password !");
-				}
+				handleSetMessage(res.userData.errMessage,"Incorrect Password !");
+			}else if (res && res.userData && res.userData.errCode === 0) {
+				dispatch(handleLoginRedux(res.userData.user.email, res.userData.user.isAdmin,res.accessToken));
 			} else {
-				setMessage("Something went wrong and i dont know what is that !");
+				setMessage("No response from server !");
 			}
 		} catch (error) {
-			console.log(error);
+			setMessage("Something went wrong and i dont know what is that !");
+
 		}
 	};
 	const handleInputEmail = (e) => {
@@ -66,6 +65,10 @@ function LoginBlock({ color }) {
 	const handleInputPassword = (e) => {
 		setPassword(e.target.value);
 	};
+
+	
+
+
 	return (
 		<div
 			className={cx("block")}

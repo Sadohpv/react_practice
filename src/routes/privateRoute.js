@@ -3,8 +3,7 @@ import { Alert } from "react-bootstrap";
 import { useSelector } from "react-redux";
 
 function PrivateRoute({ children }) {
-	const user = useSelector((state) => state.user.data_init);
-
+	const user = useSelector((state) => state.user.data_user);
 	return (
 		<>
 			{user && user.auth ? (

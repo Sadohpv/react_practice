@@ -2,19 +2,31 @@ import styles from "./Login.module.scss";
 import classNames from "classnames/bind";
 import images from "../../asset/images/test/";
 import LoginBlock from "./loginBlock";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { handleRefreshWebRedux } from "../../redux/actions/userAction";
 const cx = classNames.bind(styles);
 
 function LoginComponent() {
-	const [background, setBackground] = useState(images.loginBack);
-	const [activeBackground, setActiveBackground] = useState(1);
+	const [background, setBackground] = useState(localStorage.getItem('background') || images.loginBack);
+	const [activeBackground, setActiveBackground] = useState(localStorage.getItem('activeBack') || 1);
 	const [styleMessage, setStyleMessage] = useState("#182d54");
-
+	const navigate = useNavigate();
+	
+	const data_user = useSelector(state => state.user.data_user);
 	const handleChangeBack = (image,num,color)=>{
 		setBackground(image);
 		setActiveBackground(num);
 		setStyleMessage(color);
+		localStorage.setItem('background',image);
+		localStorage.setItem('activeBack',num);
 	}
+	useEffect(()=>{
+		if(localStorage.getItem('token')){
+			navigate("/");
+		}
+	},[data_user])
 	return (
 		
 		<div className={cx("container")}>

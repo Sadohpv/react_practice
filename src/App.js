@@ -1,11 +1,18 @@
-
 import { Navigate, Route, Routes } from "react-router-dom";
 import { privateRoutes, publicRoutes } from "./routes";
 import PrivateRoute from "./routes/privateRoute";
 
 import "./App.css";
-
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { handleRefreshWebRedux } from "./redux/actions/userAction";
 function App() {
+	
+	
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(handleRefreshWebRedux());	
+	}, []);
 	return (
 		<div className="App">
 			{/* <Navbar /> */}

@@ -2,7 +2,7 @@
 const routesConfig = {
     home: '/',
     login: '/login',
-    // settingUser: '/setting',
+    register: '/register',
     user: '/:idUser',
 }
 

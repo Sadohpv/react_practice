@@ -90,9 +90,56 @@ const PlusIcon = ({ width = "28px", height = "28px" }) => {
 const LocationIcon = ({ width = "28px", height = "28px" }) => {
 	return (
 		<svg xmlns="http://www.w3.org/2000/svg" width={width} height={height} viewBox="0 0 384 512">
-		<path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>
+			<path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z" />
+		</svg>
 	);
 };
 
-
-export { OTPicon, HomeIcon, ListUserIcon, LoginIcon, LogoutIcon, EditInfor,PlusIcon,LocationIcon };
+const EmailIcon = ({ width = "28px", height = "28px" }) => {
+	return (
+		<svg xmlns="http://www.w3.org/2000/svg" width={width} height={height} viewBox="0 0 512 512">
+			<path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z" />
+		</svg>
+	);
+};
+const KeyIcon = ({ width = "28px", height = "28px" }) => {
+	return (
+		<svg xmlns="http://www.w3.org/2000/svg" width={width} height={height} viewBox="0 0 512 512">
+			<path d="M336 352c97.2 0 176-78.8 176-176S433.2 0 336 0S160 78.8 160 176c0 18.7 2.9 36.8 8.3 53.7L7 391c-4.5 4.5-7 10.6-7 17v80c0 13.3 10.7 24 24 24h80c13.3 0 24-10.7 24-24V448h40c13.3 0 24-10.7 24-24V384h40c6.4 0 12.5-2.5 17-7l33.3-33.3c16.9 5.4 35 8.3 53.7 8.3zM376 96a40 40 0 1 1 0 80 40 40 0 1 1 0-80z" />
+		</svg>
+	);
+};
+const PenIcon = ({ width = "28px", height = "28px" }) => {
+	return (
+		<svg xmlns="http://www.w3.org/2000/svg" width={width} height={height} viewBox="0 0 512 512">
+			<path d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z" />
+		</svg>
+	);
+};
+const PenclipIcon = ({ width = "28px", height = "28px" }) => {
+	return (
+		<svg xmlns="http://www.w3.org/2000/svg" width={width} height={height} viewBox="0 0 512 512">
+			<path d="M453.3 19.3l39.4 39.4c25 25 25 65.5 0 90.5l-52.1 52.1 0 0-1-1 0 0-16-16-96-96-17-17 52.1-52.1c25-25 65.5-25 90.5 0zM241 114.9c-9.4-9.4-24.6-9.4-33.9 0L105 217c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9L173.1 81c28.1-28.1 73.7-28.1 101.8 0L288 94.1l17 17 96 96 16 16 1 1-17 17L229.5 412.5c-48 48-109.2 80.8-175.8 94.1l-25 5c-7.9 1.6-16-.9-21.7-6.6s-8.1-13.8-6.6-21.7l5-25c13.3-66.6 46.1-127.8 94.1-175.8L254.1 128 241 114.9z" />
+		</svg>
+	);
+};
+const LeafIcon = ({ width = "28px", height = "28px" }) => {
+	return (
+		<svg xmlns="http://www.w3.org/2000/svg"  width={width} height={height} viewBox="0 0 20 20" id="leaf"><path d="M19.025 3.587c-4.356 2.556-4.044 7.806-7.096 10.175-2.297 1.783-5.538.88-7.412.113 0 0-1.27 1.603-2.181 3.74-.305.717-1.644-.073-1.409-.68C3.905 9.25 14.037 5.416 14.037 5.416s-7.149-.303-11.927 5.94c-.128-1.426-.34-5.284 3.36-7.65 5.016-3.211 14.572-.715 13.555-.119z"></path></svg>
+	);
+};
+export {
+	OTPicon,
+	HomeIcon,
+	ListUserIcon,
+	LoginIcon,
+	LogoutIcon,
+	EditInfor,
+	PlusIcon,
+	LocationIcon,
+	EmailIcon,
+	KeyIcon,
+	PenIcon,
+	PenclipIcon,
+	LeafIcon
+};

@@ -7,6 +7,7 @@ import config from '../config';
 // import OTP from '../pages/OTP/OTP';
 import Home from '../pages/Home';
 import LoginComponent from '../pages/Login';
+import RegisterPage from '../pages/Register';
 import SettingPage from '../pages/User/SettingPage';
 // import ListUser from '../pages/ListUser';
 // import Login from '../pages/Login';
@@ -21,6 +22,10 @@ const publicRoutes = [
     {
         path: config.routes.login,
         component: LoginComponent,
+    },
+    {
+        path: config.routes.register,
+        component: RegisterPage,
     }
 
 ];

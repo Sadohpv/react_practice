@@ -5,8 +5,28 @@ function handleLoginService(userEmail, userPassword) {
 	return axios.post("/api/login", { email: userEmail, password: userPassword });
 }
 
-function handleGetDataUserService(idUser){
+function handleGetDataUserService(idUser) {
 	return axios.get(`/api/${idUser}`);
 }
 
-export default { handleLoginService,handleGetDataUserService};
+function handleRegisterService(
+	userEmail,
+	userPassword,
+	userName,
+	firstName,
+	lastName,
+	address,
+	gender
+) {
+	return axios.post("/api/getCreateUser", {
+		email: userEmail,
+		password: userPassword,
+		userName: userName,
+		firstName: firstName,
+		lastName: lastName,
+		address: address,
+		gender: gender,
+	});
+}
+
+export default { handleLoginService, handleGetDataUserService, handleRegisterService };

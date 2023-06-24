@@ -5,12 +5,12 @@ import { useParams } from "react-router-dom";
 import styles from "./Profile.module.scss";
 import classNames from "classnames/bind";
 import { EditInfor, HomeIcon, LocationIcon, PlusIcon } from "../../../asset/icons";
-import { useSelector } from "react-redux";
+
 const cx = classNames.bind(styles);
 
 function SettingPage({ children }) {
-	const userData = useSelector((state) => state.user.data_user);
-	console.log(userData);
+	// const userData = useSelector((state) => state.user.data_user);
+	
 	const params = useParams();
 	const [res, setRes] = useState({});
 	useEffect(() => {
@@ -19,7 +19,7 @@ function SettingPage({ children }) {
 			setRes(response);
 		}
 		fetchData();
-	}, []);
+	},[]);
 	console.log(res);
 
 	return (

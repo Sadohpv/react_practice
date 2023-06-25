@@ -12,20 +12,23 @@ function handleGetDataUserService(idUser) {
 function handleRegisterService(
 	userEmail,
 	userPassword,
-	userName,
 	firstName,
 	lastName,
+	userName,
+	gender,
 	address,
-	gender
+	phoneNumber
 ) {
 	return axios.post("/api/getCreateUser", {
 		email: userEmail,
 		password: userPassword,
-		userName: userName,
 		firstName: firstName,
 		lastName: lastName,
-		address: address,
+		userName: userName,
 		gender: gender,
+		address: address,
+		phoneNumber: phoneNumber
+
 	});
 }
 

@@ -122,7 +122,17 @@
 					border-radius: 6px;
 				}
 
-				// left: -400px;
+				.note{
+					width: 100%;
+					height: 20px;
+					color: #b547b8;
+					font-style: italic;
+					font-size: 12px;
+					p {
+						text-shadow: 0.3px 0.3px 0.3px black;
+						margin: 0;
+					}
+				}
 			}
 			.right_body:nth-child(2) {
 				transform: translate(-410px, 0);

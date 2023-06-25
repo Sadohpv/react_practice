@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { EmailIcon, KeyIcon, PenIcon, PenclipIcon } from "../../asset/icons";
 import styles from "./Register.module.scss";
 import classNames from "classnames/bind";
 import FormRegister from "./FormRegister";
 import images from "../../asset/images/test/";
+import { userService } from "../../services/index";
 
 const cx = classNames.bind(styles);
 
@@ -16,20 +16,60 @@ function RegisterPage() {
 	const [gender, setGender] = useState(0);
 	const [address, setAddress] = useState("");
 	const [phone, setPhone] = useState("");
+	const [note,setNote] = useState("");
 
 	const [toggle, setToggle] = useState(null);
 	const handleNext = () => {
 		setToggle(!toggle);
 	};
-	const disableRightClick = (e)=>{
+	const disableRightClick = (e) => {
 		e.preventDefault();
 		return false;
-	}
-	const handleRegister = () => {};
+	};
+	const handleRegister = async () => {
+		try {
+			const res = await userService.handleRegisterService(
+				email.trim(),
+				password,
+				firstName,
+				lastName,
+				userName,
+				gender,
+				address,
+				phone
+			);
+			if(res && res.errCode && res.errCode == 0){
+				setNote("Register Success!");
+				
+				setTimeout(() => {
+					alert("Login Success!");
+				}, 3000);
+
+			} else if(res && res.errCode && res.errCode === 1){
+				if(res.errCodeMessage){
+					setNote(res.errCodeMessage);
+				}else{
+					setNote("Something went wrong with your email address");
+				}
+			}else if(res && res.errCode && res.errCode === 2){
+				if(res.errCodeMessage){
+					setNote(res.errCodeMessage);
+				}else{
+					setNote("Make sure you fill all the required");
+				}
+			}else {
+				setNote("Register Failure !");
+			}
+
+			console.log(res);
+		} catch (error) {
+			console.log(error);
+		}
+	};
 	return (
 		<div className={cx("register")}>
 			<div className={cx("main")}>
-				<div className={cx("left")} onContextMenu={(e)=>disableRightClick(e)}>
+				<div className={cx("left")} onContextMenu={(e) => disableRightClick(e)}>
 					<video autoPlay muted loop play="true">
 						<source src={images.registerBack} />
 					</video>
@@ -52,8 +92,7 @@ function RegisterPage() {
 						toggle={null}
 						setToggle={setToggle}
 						title={"Next"}
-					
-
+						note={note}
 					/>
 
 					<FormRegister
@@ -73,6 +112,8 @@ function RegisterPage() {
 						title={"Register"}
 						handleOnClick={handleRegister}
 						leaf={true}
+						note={note}
+
 					/>
 					<div className={cx("tab")}>
 						<div className={cx("another_tab")} onClick={() => setToggle(false)}>

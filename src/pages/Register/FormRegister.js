@@ -15,6 +15,7 @@ function FormRegister({
 	handleOnClick,
 	toggle,
 	leaf = false,
+	note,
 	...props
 }) {
 	const handleSetEmail = (e) => {
@@ -29,7 +30,7 @@ function FormRegister({
 	const handleSetLastName = (e) => {
 		setValue4(e.target.value);
 	};
-	console.log(leaf);
+
 	return (
 		<div
 			className={cx(
@@ -37,6 +38,9 @@ function FormRegister({
 				toggle === null ? "" : toggle === true ? "move_in" : "move_out"
 			)}
 		>
+			<div className={cx("note")}>
+				<p>{note}</p>
+			</div>
 			<div className={cx("right_cover")}>
 				{leaf ? <LeafIcon /> : <EmailIcon />}
 

@@ -38,30 +38,29 @@ function RegisterPage() {
 				address,
 				phone
 			);
-			if(res && res.errCode && res.errCode == 0){
-				setNote("Register Success!");
-				
-				setTimeout(() => {
-					alert("Login Success!");
-				}, 3000);
+			
+			if(res && res.errCode === 0 ){
+				setNote("Register Success!");	
 
-			} else if(res && res.errCode && res.errCode === 1){
+			} 
+			else if(res && res.errCode && res.errCode === 1){
 				if(res.errCodeMessage){
 					setNote(res.errCodeMessage);
 				}else{
 					setNote("Something went wrong with your email address");
 				}
-			}else if(res && res.errCode && res.errCode === 2){
+			}
+			else if(res && res.errCode && res.errCode === 2){
 				if(res.errCodeMessage){
 					setNote(res.errCodeMessage);
 				}else{
 					setNote("Make sure you fill all the required");
 				}
-			}else {
+			}else{
 				setNote("Register Failure !");
-			}
-
+			}	
 			console.log(res);
+
 		} catch (error) {
 			console.log(error);
 		}

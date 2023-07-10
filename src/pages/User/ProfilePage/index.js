@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { userService } from "../../../services";
-
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import styles from "./Profile.module.scss";
 import classNames from "classnames/bind";
@@ -8,9 +8,9 @@ import { EditInfor, HomeIcon, LocationIcon, PlusIcon } from "../../../asset/icon
 
 const cx = classNames.bind(styles);
 
-function SettingPage({ children }) {
+function ProfilePage({ children }) {
 	// const userData = useSelector((state) => state.user.data_user);
-	
+
 	const params = useParams();
 	const [res, setRes] = useState({});
 	useEffect(() => {
@@ -19,8 +19,10 @@ function SettingPage({ children }) {
 			setRes(response);
 		}
 		fetchData();
-	},[]);
-	console.log(res);
+	}, []);
+	console.log(params.idUser);
+
+	const handleNavigate = () => {};
 
 	return (
 		<div className={cx("all")}>
@@ -44,7 +46,7 @@ function SettingPage({ children }) {
 								)) || <p>Trần Minh Nhật Hoàng</p>}
 							</div>
 							<div className={cx("profile_friend")}>
-								<p className={cx("profile_friend-num")}>168 Bạn bè</p>
+								<p className={cx("profile_friend-num")}>168 friends</p>
 								<div className={cx("profile_friend-cover")}>
 									<div className={cx("friend_avatar")}>
 										<img src="https://i.pinimg.com/736x/7b/11/1e/7b111e5c9d21f67f2a9671608166109f.jpg" />
@@ -64,48 +66,55 @@ function SettingPage({ children }) {
 								<div className={cx("action_icon")}>
 									<PlusIcon />
 								</div>
-								<div className={cx("action_title")}>Thêm vào tin</div>
+								<div className={cx("action_title")}>Add to story</div>
 							</div>
 							<div className={cx("action")}>
 								<div className={cx("action_icon")}>
 									<EditInfor />
 								</div>
-								<div className={cx("action_title")}>
-									Chỉnh sửa thông tin cá nhân
-								</div>
+								<div className={cx("action_title")}>Edit profile photos</div>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div className={cx("content_bar")}>
 					<div className={cx("bar_cover")}>
-						<div className={cx("bar_item", "bar_item-active")}>Giới Thiệu</div>
-						<div className={cx("bar_item")}>Bài Viết</div>
-						<div className={cx("bar_item")}>Bạn Bè</div>
-						<div className={cx("bar_item")}>Ảnh</div>
+						<div className={cx("bar_item", "bar_item-active")}>About</div>
+						<div className={cx("bar_item")}>Post</div>
+						<div className={cx("bar_item")}>Friends</div>
+						<div className={cx("bar_item")}>Photos</div>
 					</div>
 				</div>
 			</div>
 			<div className={cx("body")}>
 				<div className={cx("container")}>
 					<div className={cx("right_block")}>
-						<div className={cx("right_title")}>Giới thiệu</div>
+						<div className={cx("right_title")}>Introduction</div>
 						<div className={cx("right_content")}>
 							<div className={cx("content_from")}>
 								<HomeIcon />
-								Sống tại{" "}
+								Lives in{" "}
 								{res !== {} && res.reg && res.reg.avatar && res.reg.address}
 							</div>
 							<div className={cx("content_from")}>
 								<LocationIcon />
-								Đến từ {res !== {} && res.reg && res.reg.avatar && res.reg.address}
+								From {res !== {} && res.reg && res.reg.avatar && res.reg.address}
 							</div>
-							<div className={cx("content_action")}>Chỉnh sửa thông tin</div>
+
+							<Link className={cx("content_action")} to={`/${params.idUser}/edit`}>
+								Edit details
+							</Link>
+						</div>
+
+						<div className={cx("right_action")}>
+								
+							<div className={cx("content_action")}>Add hobbies</div>
 						</div>
 						<div className={cx("right_action")}>
-							<div className={cx("content_action")}>Chỉnh sửa thông tin</div>
-							<div className={cx("content_action")}>Chỉnh sửa thông tin</div>
-							<div className={cx("content_action")}>Chỉnh sửa thông tin</div>
+							<div className={cx("featured")}>
+									
+							</div>
+							<div className={cx("content_action")}>Add featured</div>
 						</div>
 					</div>
 
@@ -125,4 +134,4 @@ function SettingPage({ children }) {
 	);
 }
 
-export default SettingPage;
+export default ProfilePage;

@@ -8,11 +8,12 @@ import config from '../config';
 import Home from '../pages/Home';
 import LoginComponent from '../pages/Login';
 import RegisterPage from '../pages/Register';
-import SettingPage from '../pages/User/SettingPage';
+import ProfilePage from '../pages/User/ProfilePage';
 // import ListUser from '../pages/ListUser';
 // import Login from '../pages/Login';
 // import NotFound from '../pages/NotFound';
-
+import EditPage from '../pages/User/EditPage';
+import ProtectedPage from '../pages/User/ProtectedPage'; 
 //Public Route
 const publicRoutes = [
     {
@@ -34,13 +35,17 @@ const publicRoutes = [
 // Private Route
 const privateRoutes = [
     {
-        path: config.routes.settingUser,
-        component: SettingPage,
+        path: config.routes.user,
+        component: ProfilePage,
     },
     {
-        path: config.routes.user,
-        component: SettingPage,
-    }
+        path: config.routes.edit,
+        component: EditPage,
+    },
+    {
+        path: config.routes.protected,
+        component: ProtectedPage,
+    },
 
 ];
 

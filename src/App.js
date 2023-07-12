@@ -1,17 +1,17 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { privateRoutes, publicRoutes } from "./routes";
 import PrivateRoute from "./routes/privateRoute";
-
+import DefaultLayout from "./components/DefaultLayout";
 import "./App.css";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { handleRefreshWebRedux } from "./redux/actions/userAction";
+import { Fragment } from 'react'; // Thẻ chứa không sinh ra thẻ thật trong dom
+
 function App() {
-	
-	
 	const dispatch = useDispatch();
 	useEffect(() => {
-		dispatch(handleRefreshWebRedux());	
+		dispatch(handleRefreshWebRedux());
 	}, []);
 	return (
 		<div className="App">
@@ -21,12 +21,12 @@ function App() {
 				{publicRoutes.map((route, index) => {
 					const Page = route.component;
 
-					// let Layout = DefaultLayout;
-					// if (route.layout) {
-					// 	Layout = route.layout;
-					// } else if (route.layout === null) {
-					// 	Layout = Fragment;
-					// }
+					let Layout = DefaultLayout;
+					if (route.layout) {
+						Layout = route.layout;
+					} else if (route.layout === null) {
+						Layout = Fragment;
+					}
 
 					return (
 						<Route
@@ -34,7 +34,9 @@ function App() {
 							path={route.path}
 							element={
 								// <ErrorBoundary>
-								<Page />
+								<Layout>
+									<Page />
+								</Layout>
 								/* </ErrorBoundary> */
 							}
 						/>

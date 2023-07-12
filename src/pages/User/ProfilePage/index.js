@@ -20,9 +20,9 @@ function ProfilePage({ children }) {
 		}
 		fetchData();
 	}, []);
-	console.log(params.idUser);
 
-	const handleNavigate = () => {};
+
+	
 
 	return (
 		<div className={cx("all")}>
@@ -41,7 +41,7 @@ function ProfilePage({ children }) {
 						</div>
 						<div className={cx("profile_details")}>
 							<div className={cx("profile_name")}>
-								{(res !== {} && res.reg && res.reg.avatar && (
+								{(res !== {} && res.reg && res.reg.userName && (
 									<p>{res.reg.userName}</p>
 								)) || <p>Trần Minh Nhật Hoàng</p>}
 							</div>

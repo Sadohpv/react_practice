@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import { userService } from "../../../services";
 import styles from "./Edit.module.scss";
 import classNames from "classnames/bind";
 import { Link, useParams } from "react-router-dom";
@@ -5,6 +7,14 @@ import { Link, useParams } from "react-router-dom";
 const cx = classNames.bind(styles);
 
 function EditPage() {
+	const [res, setRes] = useState({});
+	useEffect(() => {
+		async function fetchData() {
+			const response = await userService.handleGetDataUserService(params.idUser);
+			setRes(response.reg);
+		}
+		fetchData();
+	}, []);
 
 	const params = useParams();
 	return (
@@ -27,7 +37,6 @@ function EditPage() {
 								<Link className={cx("content")} to={`/${params.idUser}/security`}>
 									<span>Security</span>
 								</Link>
-
 								<div className={cx("line")}></div>
 							</div>
 						</div>
@@ -43,7 +52,10 @@ function EditPage() {
 							<div className={cx("content")}>
 								<div className={cx("conten_infor")}>
 									<span>Email</span>
-									<p> Boizbucky@gmail.com</p>
+									{(res && res.email && (
+										<p>{res.email}</p>
+								)) || <p>Boizbucky@gmail.com</p>}
+								
 								</div>
 
 								<div className={cx("line")}></div>
@@ -58,7 +70,7 @@ function EditPage() {
 							<div className={cx("content")}>
 								<div className={cx("conten_infor")}>
 									<span>First Name</span>
-									<p> Kusakari </p>
+									<p>{res.firstName}</p>
 								</div>
 								
 								<div className={cx("line")}></div>
@@ -66,21 +78,21 @@ function EditPage() {
 							<div className={cx("content")}>
 								<div className={cx("conten_infor")}>
 									<span>Last Name</span>
-									<p> Katahashi </p>
+									<p>{res.lastName}</p>
 								</div>
 								<div className={cx("line")}></div>
 							</div>
 							<div className={cx("content")}>
 								<div className={cx("conten_infor")}>
 									<span>Address</span>
-									<p>Ha Noi City </p>
+									<p>{res.address}</p>
 								</div>
 								<div className={cx("line")}></div>
 							</div>
 							<div className={cx("content")}>
 								<div className={cx("conten_infor")}>
 									<span>Phone Number</span>
-									<p>21102000-03032001 </p>
+									<p>{res.phoneNumber}</p>
 								</div>
 								<div className={cx("line")}></div>
 							</div>

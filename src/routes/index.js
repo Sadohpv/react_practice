@@ -14,19 +14,23 @@ import ProfilePage from '../pages/User/ProfilePage';
 // import NotFound from '../pages/NotFound';
 import EditPage from '../pages/User/EditPage';
 import ProtectedPage from '../pages/User/ProtectedPage'; 
+import DefaultLayout from '../components/DefaultLayout';
 //Public Route
 const publicRoutes = [
     {
         path: config.routes.home,
         component: Home,
+        layout: DefaultLayout,
     },
     {
         path: config.routes.login,
         component: LoginComponent,
+        layout: null,
     },
     {
         path: config.routes.register,
         component: RegisterPage,
+        layout: null,
     }
 
 ];
@@ -37,14 +41,22 @@ const privateRoutes = [
     {
         path: config.routes.user,
         component: ProfilePage,
+        layout: null,
     },
     {
         path: config.routes.edit,
         component: EditPage,
+        layout: null,
     },
     {
         path: config.routes.protected,
         component: ProtectedPage,
+        layout: null,
+    },
+    {
+        path: config.routes.security,
+        component: ProtectedPage,
+        layout: null,
     },
 
 ];

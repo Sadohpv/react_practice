@@ -15,6 +15,7 @@ import ProfilePage from '../pages/User/ProfilePage';
 import EditPage from '../pages/User/EditPage';
 import ProtectedPage from '../pages/User/ProtectedPage'; 
 import DefaultLayout from '../components/DefaultLayout';
+import UserSettingPageLayout from '../components/UserSettingPageLayout';
 //Public Route
 const publicRoutes = [
     {
@@ -41,12 +42,12 @@ const privateRoutes = [
     {
         path: config.routes.user,
         component: ProfilePage,
-        layout: null,
+        layout: DefaultLayout,
     },
     {
         path: config.routes.edit,
         component: EditPage,
-        layout: null,
+        layout: UserSettingPageLayout,
     },
     {
         path: config.routes.protected,

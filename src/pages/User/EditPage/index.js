@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { userService } from "../../../services";
 import styles from "./Edit.module.scss";
 import classNames from "classnames/bind";
-import { Link, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 
@@ -20,28 +20,7 @@ function EditPage() {
 	return (
 		<div className={cx("container")}>
 			<div className={cx("edit")}>
-				<div className={cx("left")}>
-					<div className={cx("left_main")}>
-						<div className={cx("left_main-head")}>
-							Settings
-							<div className={cx("line")}></div>
-						</div>
-						<div className={cx("left_main-body")}>
-							<div className={cx("left_content")}>
-								<Link className={cx("content")} to={`/${params.idUser}/edit`}>
-									<span>Profile</span>
-								</Link>
-								<Link className={cx("content")} to={`/${params.idUser}/protected`}>
-									<span>Private & Public</span>
-								</Link>
-								<Link className={cx("content")} to={`/${params.idUser}/security`}>
-									<span>Security</span>
-								</Link>
-								<div className={cx("line")}></div>
-							</div>
-						</div>
-					</div>
-				</div>
+				
 				<div className={cx("right")}>
 					<div className={cx("right_main-head")}>
 						Profile settings
@@ -52,10 +31,9 @@ function EditPage() {
 							<div className={cx("content")}>
 								<div className={cx("conten_infor")}>
 									<span>Email</span>
-									{(res && res.email && (
-										<p>{res.email}</p>
-								)) || <p>Boizbucky@gmail.com</p>}
-								
+									{(res && res.email && <p>{res.email}</p>) || (
+										<p>Boizbucky@gmail.com</p>
+									)}
 								</div>
 
 								<div className={cx("line")}></div>
@@ -70,29 +48,29 @@ function EditPage() {
 							<div className={cx("content")}>
 								<div className={cx("conten_infor")}>
 									<span>First Name</span>
-									<p>{res.firstName}</p>
+									{(res && res.firstName && <p>{res.firstName}</p>) || <p> </p>}
 								</div>
-								
+
 								<div className={cx("line")}></div>
 							</div>
 							<div className={cx("content")}>
 								<div className={cx("conten_infor")}>
 									<span>Last Name</span>
-									<p>{res.lastName}</p>
+									{(res && res.lastName && <p>{res.lastName}</p>) || <p> </p>}
 								</div>
 								<div className={cx("line")}></div>
 							</div>
 							<div className={cx("content")}>
 								<div className={cx("conten_infor")}>
 									<span>Address</span>
-									<p>{res.address}</p>
+									{(res && res.address && <p>{res.address}</p>) || <p> </p>}
 								</div>
 								<div className={cx("line")}></div>
 							</div>
 							<div className={cx("content")}>
 								<div className={cx("conten_infor")}>
 									<span>Phone Number</span>
-									<p>{res.phoneNumber}</p>
+									{(res && res.phoneNumber && <p>{res.phoneNumber}</p>) || <p> </p>}
 								</div>
 								<div className={cx("line")}></div>
 							</div>

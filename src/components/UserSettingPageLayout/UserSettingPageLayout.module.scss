@@ -76,7 +76,12 @@
 
 .container {
 	display: flex;
+	width: 100vw;
+	overflow: hidden;
 }
 .children {
 	flex: 1;
+	
+
+
 }

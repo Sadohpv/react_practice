@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { userService } from "../../../services";
 import styles from "./Edit.module.scss";
 import classNames from "classnames/bind";
-import {  useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import EditBlock from "./EditBlock";
 
 const cx = classNames.bind(styles);
 
@@ -20,7 +21,6 @@ function EditPage() {
 	return (
 		<div className={cx("container")}>
 			<div className={cx("edit")}>
-				
 				<div className={cx("right")}>
 					<div className={cx("right_main-head")}>
 						Profile settings
@@ -29,49 +29,29 @@ function EditPage() {
 					<div className={cx("right_main-body")}>
 						<div className={cx("right_content")}>
 							<div className={cx("content")}>
-								<div className={cx("conten_infor")}>
-									<span>Email</span>
-									{(res && res.email && <p>{res.email}</p>) || (
-										<p>Boizbucky@gmail.com</p>
-									)}
-								</div>
+								<EditBlock data={"BoizBucky@gmail.com"} title="Email"/>
+								<div className={cx("line")}></div>
+							</div>
+							<div className={cx("content")}>
+								<EditBlock data={"***********"} title="Password" />
+								<div className={cx("line")}></div>
+							</div>
+							<div className={cx("content")}>
+								<EditBlock data={"Katahashi"} title="First Name" />
 
 								<div className={cx("line")}></div>
 							</div>
 							<div className={cx("content")}>
-								<div className={cx("conten_infor")}>
-									<span>Password</span>
-									<p> ************** </p>
-								</div>
-								<div className={cx("line")}></div>
-							</div>
-							<div className={cx("content")}>
-								<div className={cx("conten_infor")}>
-									<span>First Name</span>
-									{(res && res.firstName && <p>{res.firstName}</p>) || <p> </p>}
-								</div>
+								<EditBlock data={"Kusakari"} title="Last Name" />
 
 								<div className={cx("line")}></div>
 							</div>
 							<div className={cx("content")}>
-								<div className={cx("conten_infor")}>
-									<span>Last Name</span>
-									{(res && res.lastName && <p>{res.lastName}</p>) || <p> </p>}
-								</div>
+								<EditBlock data={"Ha Noi 1"} title="Address" />
 								<div className={cx("line")}></div>
 							</div>
 							<div className={cx("content")}>
-								<div className={cx("conten_infor")}>
-									<span>Address</span>
-									{(res && res.address && <p>{res.address}</p>) || <p> </p>}
-								</div>
-								<div className={cx("line")}></div>
-							</div>
-							<div className={cx("content")}>
-								<div className={cx("conten_infor")}>
-									<span>Phone Number</span>
-									{(res && res.phoneNumber && <p>{res.phoneNumber}</p>) || <p> </p>}
-								</div>
+								<EditBlock data={"0912345678"} title="Phone Number" />
 								<div className={cx("line")}></div>
 							</div>
 						</div>

@@ -29,7 +29,7 @@ function EditPage() {
 					<div className={cx("right_main-body")}>
 						<div className={cx("right_content")}>
 							<div className={cx("content")}>
-								<EditBlock data={"BoizBucky@gmail.com"} title="Email"/>
+								<EditBlock data={"BoizBucky@gmail.com"} title="Email" api={"email"} />
 								<div className={cx("line")}></div>
 							</div>
 							<div className={cx("content")}>
@@ -37,12 +37,12 @@ function EditPage() {
 								<div className={cx("line")}></div>
 							</div>
 							<div className={cx("content")}>
-								<EditBlock data={"Katahashi"} title="First Name" />
+								<EditBlock data={"Katahashi"} title="First Name" api={"firstName"} />
 
 								<div className={cx("line")}></div>
 							</div>
 							<div className={cx("content")}>
-								<EditBlock data={"Kusakari"} title="Last Name" />
+								<EditBlock data={"Kusakari"} title="Last Name" api={"lastName"} />
 
 								<div className={cx("line")}></div>
 							</div>

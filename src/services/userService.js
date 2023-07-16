@@ -32,4 +32,12 @@ function handleRegisterService(
 	});
 }
 
-export default { handleLoginService, handleGetDataUserService, handleRegisterService };
+function handleEditUserService(attribute,tokenData,data){
+
+	return axios.post(`/api/edit/${attribute}`, {
+		tokenData : tokenData,
+		data:data,
+	});
+}
+
+export default { handleLoginService, handleGetDataUserService, handleRegisterService,handleEditUserService };

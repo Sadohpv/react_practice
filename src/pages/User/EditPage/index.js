@@ -13,9 +13,22 @@ function EditPage() {
 		async function fetchData() {
 			const response = await userService.handleGetDataUserService(params.idUser);
 			setRes(response.reg);
+			setEmail(response.reg.email);
+			setFirstName(response.reg.firstName);
+			setLastName(response.reg.lastName);
+			setAddress(response.reg.address);
+			setPhoneNumber(response.reg.phoneNumber);
 		}
 		fetchData();
 	}, []);
+	
+	const [email, setEmail] = useState("");
+	const [firstName, setFirstName] = useState("");
+	const [lastName, setLastName] = useState("");
+	const [address, setAddress] = useState("");
+	const [phoneNumber, setPhoneNumber] = useState("");
+
+
 
 	const params = useParams();
 	return (
@@ -29,7 +42,7 @@ function EditPage() {
 					<div className={cx("right_main-body")}>
 						<div className={cx("right_content")}>
 							<div className={cx("content")}>
-								<EditBlock data={"BoizBucky@gmail.com"} title="Email" api={"email"} />
+								<EditBlock data={email} title="Email" api={"email"} changeData={setEmail}/>
 								<div className={cx("line")}></div>
 							</div>
 							<div className={cx("content")}>
@@ -37,21 +50,21 @@ function EditPage() {
 								<div className={cx("line")}></div>
 							</div>
 							<div className={cx("content")}>
-								<EditBlock data={"Katahashi"} title="First Name" api={"firstName"} />
+								<EditBlock data={firstName} title="First Name" api={"firstName"} changeData={setFirstName} />
 
 								<div className={cx("line")}></div>
 							</div>
 							<div className={cx("content")}>
-								<EditBlock data={"Kusakari"} title="Last Name" api={"lastName"} />
+								<EditBlock data={lastName} title="Last Name" api={"lastName"}  changeData={setLastName} />
 
 								<div className={cx("line")}></div>
 							</div>
 							<div className={cx("content")}>
-								<EditBlock data={"Ha Noi 1"} title="Address" />
+								<EditBlock data={address} title="Address"  api={"address"}  changeData={setAddress}/>
 								<div className={cx("line")}></div>
 							</div>
 							<div className={cx("content")}>
-								<EditBlock data={"0912345678"} title="Phone Number" />
+								<EditBlock data={phoneNumber} title="Phone Number" api={"phoneNumber"}  changeData={setPhoneNumber}/>
 								<div className={cx("line")}></div>
 							</div>
 						</div>

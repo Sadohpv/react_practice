@@ -1,23 +1,29 @@
 import styles from "./Edit.module.scss";
 import classNames from "classnames/bind";
 import { useState } from "react";
+import { userService } from "../../../services";
+
 const cx = classNames.bind(styles);
 
-function EditBlock({ data, title, api }) {
+function EditBlock({ data, title, api,changeData }) {
 	const [res, setRes] = useState({});
 	const [edit, setEdit] = useState(false);
 
 	const [nextValue, setNextValue] = useState();
 
+
+
 	const handleChange = (e) => {
 		setNextValue(e.target.value);
 	};
-	const handleClick = () => {
+	const handleClick = async () => {
 		if (nextValue === undefined) {
 			setEdit(false);
 		} else {
-
-			console.log("Call API with"+nextValue);
+			const tokenData = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRGF0YSI6eyJlcnJDb2RlIjowLCJlcnJNZXNzYWdlIjoiT0shIE5vdCBmb3VuZCBlcnJvciIsInVzZXIiOnsiaWRVc2VyIjo0LCJlbWFpbCI6IkVtYWlsNEBnbWFpbC5jb20iLCJpc0FkbWluIjowfX0sImlhdCI6MTY4OTQ5NzIwMX0.LC42Slp5CngGBSZqrGQsCQ5xzlDZEwQQocqxHOQJjgA";
+			const response = await userService.handleEditUserService(api,tokenData,nextValue);
+			console.log(response);
+			changeData(nextValue);
 			setEdit(false);
 		}
 	};
@@ -25,7 +31,7 @@ function EditBlock({ data, title, api }) {
 			setEdit(false);
 			setNextValue();
 
-	}
+	};
 	return (
 		<div className={cx("conten_infor", { hover: !edit })}>
 			<div className={cx("current")}>

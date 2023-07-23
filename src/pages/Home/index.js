@@ -26,6 +26,9 @@ function Home() {
 
 		});
 	}, []);
+
+
+	
 	return (
 		<div className="container_block">
 			<div className="parallax">

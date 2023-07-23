@@ -1,0 +1,50 @@
+{
+    "Configure_Page":{
+        "title":"Setting configure",
+        "language" : "Languge",
+        "test" :"Check change Languge"
+    },
+    "Edit_Page":{
+        "setting-title" : "Profile settings",
+        "password" : "Password",
+        "first-name": "First Name",
+        "last-name": "Last Name",
+        "address" : "Address",
+        "phone-number": "Phone Number",
+        "edit-button" : "Edit",
+        "save-button" : "Save",
+        "cancel-button" : "Cancel"
+    },
+    "Setting_Menu":{
+        "title": "Settings",
+        "profile": "Profile",
+        "protected": "Configure",
+        "security" : "Security"
+    },
+    "Login_Page":{
+        "welcome" : "Welcome",
+        "email" : "Email",
+        "password" : "Password",
+        "login" : "Login",
+        "register": "Register"
+    },
+    "Profile_Page":{
+        "add-story":"Add to story",
+        "edit-profile-pic": "Edit profile photos",
+        "about": "About",
+        "post":"Post",
+        "friends": "Friends",
+        "photos" : "Photos",
+        "introduction": "Introduction",
+        "lives-in": "Lives in",
+        "from": "From",
+        "edit-details": "Edit details",
+        "add-hobbies": "Add hobbies",
+        "add-featured": "Add featured"
+    },
+    "Navbar":{
+        "home": "Home",
+        "settings": "Settings"
+    }
+    
+}

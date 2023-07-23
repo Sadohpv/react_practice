@@ -13,7 +13,7 @@
 
 		.right {
 			flex: 1;
-			padding: 40px 0 0 40px;
+			padding: 40px;
 			height: 100%;
 			min-width: 400px;
 			box-sizing: border-box;
@@ -28,6 +28,21 @@
 				.line {
 					height: 0.5px;
 					width: 100%;
+				}
+				.notify{
+					display: flex;
+					justify-content: space-between;	
+					.message{
+						display: flex;
+						flex-direction: column;
+						justify-content: flex-end;
+						margin-right: 20px;
+						font-size: 16px;
+						color: green;
+						text-align: right;
+						font-weight: 400;
+						
+					}
 				}
 			}
 			.right_main-body {
@@ -173,3 +188,4 @@
 	border-radius: 10px;
 	
 }
+

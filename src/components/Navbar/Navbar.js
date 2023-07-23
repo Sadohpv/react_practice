@@ -1,12 +1,14 @@
 import styles from "./Navbar.module.scss";
 import classNames from "classnames/bind";
-// import { OTPicon, HomeIcon, ListUserIcon, LoginIcon, LogoutIcon } from "../../asset/icons";
+import { HomeIcon,SettingIcon} from "../../asset/icons";
 import { NavLink, useNavigate } from "react-router-dom";
 // import { useEffect } from "react";
 // import { toast } from "react-toastify";
 // import ToastifyUser from "../../pages/ListUser/toastUser";
 import TippyCustom from "../Tippy/index";
 import { useDispatch, useSelector } from "react-redux";
+import { FormattedMessage } from "react-intl";
+
 // import { handleLogoutRedux, handleRefresh } from "../../redux/actions/userAction";
 const cx = classNames.bind(styles);
 function NavbarCustom() {
@@ -34,17 +36,17 @@ function NavbarCustom() {
 	return (
 		<div className={cx("container_block")}>
 			<div className={cx("navbar")}>
-				<TippyCustom content="Home">
+				<TippyCustom content={<FormattedMessage id="Navbar.home"/>}>
 					<div className={classes}>
 						<NavLink to="/" className={(nav) => cx("menu_item", { active: nav.isActive })}>
-							{/* <HomeIcon /> */}
+							<HomeIcon />
 						</NavLink>
 					</div>
 				</TippyCustom>
-				<TippyCustom content="OTP">
+				<TippyCustom content={<FormattedMessage id="Navbar.settings"/>}>
 					<div className={classes}>
-						<NavLink to="/otp" className={(nav) => cx("menu_item", { active: nav.isActive })}>
-							{/* <OTPicon /> */}
+						<NavLink to="/edit" className={(nav) => cx("menu_item", { active: nav.isActive })}>
+							<SettingIcon />
 						</NavLink>
 					</div>
 				</TippyCustom>

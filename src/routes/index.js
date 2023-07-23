@@ -13,7 +13,7 @@ import ProfilePage from '../pages/User/ProfilePage';
 // import Login from '../pages/Login';
 // import NotFound from '../pages/NotFound';
 import EditPage from '../pages/User/EditPage';
-import ProtectedPage from '../pages/User/ProtectedPage'; 
+import ConfigurePage from '../pages/User/ConfigurePage'; 
 import DefaultLayout from '../components/DefaultLayout';
 import UserSettingPageLayout from '../components/UserSettingPageLayout';
 //Public Route
@@ -50,14 +50,14 @@ const privateRoutes = [
         layout: UserSettingPageLayout,
     },
     {
-        path: config.routes.protected,
-        component: ProtectedPage,
-        layout: null,
+        path: config.routes.configure,
+        component: ConfigurePage,
+        layout: UserSettingPageLayout,
     },
     {
         path: config.routes.security,
-        component: ProtectedPage,
-        layout: null,
+        component: ConfigurePage,
+        layout: UserSettingPageLayout,
     },
 
 ];

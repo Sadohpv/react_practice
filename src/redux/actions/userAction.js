@@ -49,10 +49,10 @@ export const handleGetDataUserRedux = ()=>{
 // 	};
 // };
 
-// export const handleRefresh = ()=>{
-// 	return (dispatch, getState) => {
-// 		dispatch({
-// 			type: USER_REFRESH,
-// 		})
-// 	};
-// }
+export const handleRefresh = ()=>{
+	return (dispatch, getState) => {
+		dispatch({
+			type: USER_REFESH,
+		})
+	};
+}

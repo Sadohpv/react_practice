@@ -4,7 +4,9 @@ import classNames from "classnames/bind";
 import FormRegister from "./FormRegister";
 import images from "../../asset/images/test/";
 import { userService } from "../../services/index";
+import { FormattedMessage } from "react-intl";
 
+import {emitter} from "../../utils/emitter";
 const cx = classNames.bind(styles);
 
 function RegisterPage() {
@@ -41,7 +43,7 @@ function RegisterPage() {
 			
 			if(res && res.errCode === 0 ){
 				setNote("Register Success!");	
-
+				
 			} 
 			else if(res && res.errCode && res.errCode === 1){
 				if(res.errCodeMessage){
@@ -108,7 +110,7 @@ function RegisterPage() {
 						setValue4={setPhone}
 						placehold4={"Phone Number"}
 						toggle={toggle}
-						title={"Register"}
+						title={<FormattedMessage id="Login_Page.register" />}
 						handleOnClick={handleRegister}
 						leaf={true}
 						note={note}

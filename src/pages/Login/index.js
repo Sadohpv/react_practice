@@ -3,12 +3,18 @@ import classNames from "classnames/bind";
 import images from "../../asset/images/test/";
 import LoginBlock from "./loginBlock";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 // import { handleRefreshWebRedux } from "../../redux/actions/userAction";
+import { changeLanguageRedux } from "../../redux/actions/appAction";
+
 const cx = classNames.bind(styles);
 
 function LoginComponent() {
+	const currentLang = useSelector(state => state.app.language);
+
+	const [checkLanguage,setCheckLanguage] = useState( currentLang === 'en' ? false : true );
+	
 	const [background, setBackground] = useState(
 		localStorage.getItem("background") || images.loginBack
 	);
@@ -17,10 +23,11 @@ function LoginComponent() {
 	);
 	const [styleMessage, setStyleMessage] = useState("#182d54");
 	const [controlBack, setControlBack] = useState(background !== "block" ? `none` : "block");
-
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
 	const data_user = useSelector((state) => state.user.data_user);
+	
 	const handleChangeBack = (image, num, color) => {
 		setBackground(image);
 		setActiveBackground(num);
@@ -33,14 +40,42 @@ function LoginComponent() {
 		localStorage.setItem("background", image);
 		localStorage.setItem("activeBack", num);
 	};
-	useEffect(() => {
-		if (localStorage.getItem("token")) {
-			navigate("/");
+
+
+	const handleChangeLanguage = ()=>{
+		setCheckLanguage(!checkLanguage);
+		if(checkLanguage === true){
+			dispatch(changeLanguageRedux('en'));
+		}else{
+			dispatch(changeLanguageRedux('vi'));
+			
 		}
-	}, [data_user]);
-	console.log(activeBackground);
+
+	}
+	// useEffect(() => {
+	// 	if (localStorage.getItem("token")) {
+	// 		navigate("/");
+	// 	}
+	// }, [data_user]);
+	
+	
 	return (
 		<div className={cx("container")}>
+			<div className={cx("language")}>
+				<label className={cx("switch")}>
+					<input type="checkbox" 
+					
+					onChange={handleChangeLanguage}
+					checked={!checkLanguage}
+					/>
+					<span className={cx("slider", "round")}></span>
+					<div className={cx("language-title")}>
+						<span className={cx("on")}> VI</span>
+						<span className={cx("off")}> EN </span>
+
+					</div>
+				</label>
+			</div>
 			<div className={cx("option")}>
 				<div
 					style={{ backgroundImage: `url(${images.loginBack})`, backgroundSize: `cover` }}
@@ -51,6 +86,7 @@ function LoginComponent() {
 					style={{
 						backgroundImage: `url(${images.loginBack2})`,
 						backgroundSize: `cover`,
+						
 					}}
 					onClick={(e) => handleChangeBack(images.loginBack2, 2, "#fbedf4")}
 					className={activeBackground == 2 ? cx("active") : ""}
@@ -76,6 +112,7 @@ function LoginComponent() {
 					muted
 					loop
 					style={{ display: `${controlBack}` }}
+					disablePictureInPicture={true}
 				>
 					<source src={images.videoBack3} />
 				</video>

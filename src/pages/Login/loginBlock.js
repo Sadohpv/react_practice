@@ -4,6 +4,9 @@ import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { handleLoginRedux } from "../../redux/actions/userAction";
 import { userService } from "../../services/index";
+import { FormattedMessage } from "react-intl";
+import Line from "../../components/Temp/Line";
+import { NavLink } from "react-router-dom";
 const cx = classNames.bind(styles);
 
 function LoginBlock({ color }) {
@@ -31,10 +34,9 @@ function LoginBlock({ color }) {
 	};
 
 	const handleSetMessage = (message, orMessage) => {
-		if(message){
-
+		if (message) {
 			setMessage(message);
-		}else{
+		} else {
 			setMessage(orMessage);
 		}
 		return;
@@ -44,19 +46,24 @@ function LoginBlock({ color }) {
 			const res = await userService.handleLoginService(email.trim(), password);
 			console.log(res);
 			if (res && res.userData && res.userData.errCode === 4) {
-				handleSetMessage(res.userData.errMessage,"Missing data !");
-			}  else if (res && res.userData && res.userData.errCode === 1) {
-				handleSetMessage(res.userData.errMessage,"Incorrect Email !");
+				handleSetMessage(res.userData.errMessage, "Missing data !");
+			} else if (res && res.userData && res.userData.errCode === 1) {
+				handleSetMessage(res.userData.errMessage, "Incorrect Email !");
 			} else if (res.userData && res.userData.errCode === 3) {
-				handleSetMessage(res.userData.errMessage,"Incorrect Password !");
-			}else if (res && res.userData && res.userData.errCode === 0) {
-				dispatch(handleLoginRedux(res.userData.user.email, res.userData.user.isAdmin,res.accessToken));
+				handleSetMessage(res.userData.errMessage, "Incorrect Password !");
+			} else if (res && res.userData && res.userData.errCode === 0) {
+				dispatch(
+					handleLoginRedux(
+						res.userData.user.email,
+						res.userData.user.isAdmin,
+						res.accessToken
+					)
+				);
 			} else {
 				setMessage("No response from server !");
 			}
 		} catch (error) {
 			setMessage("Something went wrong and i dont know what is that !");
-
 		}
 	};
 	const handleInputEmail = (e) => {
@@ -65,10 +72,10 @@ function LoginBlock({ color }) {
 	const handleInputPassword = (e) => {
 		setPassword(e.target.value);
 	};
-
-	
-
-
+	const [passHolder,setPassHolder] = useState(
+		<FormattedMessage id="Login_Page.email" />
+); 
+		console.log(passHolder);
 	return (
 		<div
 			className={cx("block")}
@@ -76,16 +83,22 @@ function LoginBlock({ color }) {
 			onMouseOut={(e) => handleOnMouseOut(e)}
 			ref={block}
 		>
-			<span className={cx("welcome")}>WELCOME</span>
+			<span className={cx("welcome")}>
+				<FormattedMessage id="Login_Page.welcome" />
+			</span>
 			<div className={cx("login")}>
-				<span>Email</span>
+				<span>
+					<FormattedMessage id="Login_Page.email" />
+				</span>
 				<input
 					type="text"
 					className={cx("email_input")}
 					placeholder="Email"
 					onChange={(e) => handleInputEmail(e)}
 				/>
-				<span>Password</span>
+				<span>
+					<FormattedMessage id="Login_Page.password" />
+				</span>
 				<input
 					type="password"
 					className={cx("pass_input")}
@@ -95,7 +108,16 @@ function LoginBlock({ color }) {
 				<div className={cx("message")} style={{ color: `${color}` }}>
 					{message}
 				</div>
-				<button onClick={handleLogin}>Login</button>
+				<button className={cx("login")} onClick={handleLogin}>
+					<FormattedMessage id="Login_Page.login" />
+				</button>
+				<Line />
+
+				<NavLink to="/register">
+					<button className={cx("register")}>
+						<FormattedMessage id="Login_Page.register" />
+					</button>
+				</NavLink>
 			</div>
 		</div>
 	);

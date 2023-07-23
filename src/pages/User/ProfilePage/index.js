@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import styles from "./Profile.module.scss";
 import classNames from "classnames/bind";
 import { EditInfor, HomeIcon, LocationIcon, PlusIcon } from "../../../asset/icons";
+import { FormattedMessage } from "react-intl";
 
 const cx = classNames.bind(styles);
 
@@ -20,9 +21,6 @@ function ProfilePage({ children }) {
 		}
 		fetchData();
 	}, []);
-
-
-	
 
 	return (
 		<div className={cx("all")}>
@@ -66,55 +64,72 @@ function ProfilePage({ children }) {
 								<div className={cx("action_icon")}>
 									<PlusIcon />
 								</div>
-								<div className={cx("action_title")}>Add to story</div>
+								<div className={cx("action_title")}>
+									<FormattedMessage id="Profile_Page.add-story" />
+								</div>
 							</div>
 							<div className={cx("action")}>
 								<div className={cx("action_icon")}>
 									<EditInfor />
 								</div>
-								<div className={cx("action_title")}>Edit profile photos</div>
+								<div className={cx("action_title")}>
+									<FormattedMessage id="Profile_Page.edit-profile-pic" />
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div className={cx("content_bar")}>
 					<div className={cx("bar_cover")}>
-						<div className={cx("bar_item", "bar_item-active")}>About</div>
-						<div className={cx("bar_item")}>Post</div>
-						<div className={cx("bar_item")}>Friends</div>
-						<div className={cx("bar_item")}>Photos</div>
+						<div className={cx("bar_item", "bar_item-active")}>
+							<FormattedMessage id="Profile_Page.about" />
+						</div>
+						<div className={cx("bar_item")}>
+							<FormattedMessage id="Profile_Page.post" />
+						</div>
+						<div className={cx("bar_item")}>
+							<FormattedMessage id="Profile_Page.friends" />
+						</div>
+						<div className={cx("bar_item")}>
+							<FormattedMessage id="Profile_Page.photos" />
+						</div>
 					</div>
 				</div>
 			</div>
 			<div className={cx("body")}>
 				<div className={cx("container")}>
 					<div className={cx("right_block")}>
-						<div className={cx("right_title")}>Introduction</div>
+						<div className={cx("right_title")}>
+							<FormattedMessage id="Profile_Page.introduction" />
+						</div>
 						<div className={cx("right_content")}>
 							<div className={cx("content_from")}>
 								<HomeIcon />
-								Lives in{" "}
+								<FormattedMessage id="Profile_Page.lives-in" />
+
 								{res !== {} && res.reg && res.reg.avatar && res.reg.address}
 							</div>
 							<div className={cx("content_from")}>
 								<LocationIcon />
-								From {res !== {} && res.reg && res.reg.avatar && res.reg.address}
+								<FormattedMessage id="Profile_Page.from" />
+								{res !== {} && res.reg && res.reg.avatar && res.reg.address}
 							</div>
 
 							<Link className={cx("content_action")} to={`/${params.idUser}/edit`}>
-								Edit details
+								<FormattedMessage id="Profile_Page.edit-details" />
 							</Link>
 						</div>
 
 						<div className={cx("right_action")}>
-								
-							<div className={cx("content_action")}>Add hobbies</div>
+							<div className={cx("content_action")}>
+								<FormattedMessage id="Profile_Page.add-hobbies" />
+							</div>
 						</div>
 						<div className={cx("right_action")}>
-							<div className={cx("featured")}>
-									
+							<div className={cx("featured")}></div>
+							<div className={cx("content_action")}>
+								<FormattedMessage id="Profile_Page.add-featured" />
 							</div>
-							<div className={cx("content_action")}>Add featured</div>
 						</div>
 					</div>
 

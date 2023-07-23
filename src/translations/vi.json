@@ -1,0 +1,50 @@
+{
+    "Configure_Page":{
+        "title" : "Chỉnh sửa cấu hình",
+        "language" : "Ngôn ngữ",
+        "test" :"Kiểm tra chuyển đổi ngôn ngữ"
+    },
+    "Edit_Page":{
+        "setting-title" : "Chỉnh sửa thông tin cá nhân",
+        "password" : "Mật khẩu",
+        "first-name": "Tên",
+        "last-name": "Họ",
+        "address" : "Địa chỉ",
+        "phone-number": "Số điện thoại",
+        "edit-button" : "Chỉnh sửa",
+        "save-button" : "Lưu",
+        "cancel-button" : "Huỷ"
+    },
+    "Setting_Menu":{
+        "title": "Cài đặt",
+        "profile": "Thông tin cá nhân",
+        "protected": "Cấu hình",
+        "security" : "Bảo mật"
+    },
+    "Login_Page":{
+        "welcome" : "Chào Mừng",
+        "email" : "Email",
+        "password" : "Mật khẩu",
+        "login" : "Đăng Nhập",
+        "register": "Đăng Ký"
+
+    },
+    "Profile_Page":{
+        "add-story":"Thêm story",
+        "edit-profile-pic": "Ảnh cá nhân",
+        "about": "Cá nhân",
+        "post":"Bài viết",
+        "friends": "Bạn bè",
+        "photos" : "Ảnh",
+        "introduction": "Giới thiệu",
+        "lives-in": "Sống tại",
+        "from": "Đến từ",
+        "edit-details": "Chi tiết",
+        "add-hobbies": "Sở thích",
+        "add-featured": "Nổi bật"
+    },
+    "Navbar":{
+        "home": "Trang chủ",
+        "settings": "Cài đặt"
+    }
+}

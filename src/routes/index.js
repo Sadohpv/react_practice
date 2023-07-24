@@ -14,14 +14,15 @@ import ProfilePage from '../pages/User/ProfilePage';
 // import NotFound from '../pages/NotFound';
 import EditPage from '../pages/User/EditPage';
 import ConfigurePage from '../pages/User/ConfigurePage'; 
-import DefaultLayout from '../components/DefaultLayout';
-import UserSettingPageLayout from '../components/UserSettingPageLayout';
+import DefaultLayout from '../components/Layout/DefaultLayout';
+import UserSettingPageLayout from '../components/Layout/UserSettingPageLayout';
+import HomeLayout from '../components/Layout/HomeLayout';
 //Public Route
 const publicRoutes = [
     {
         path: config.routes.home,
         component: Home,
-        layout: DefaultLayout,
+        layout: HomeLayout,
     },
     {
         path: config.routes.login,

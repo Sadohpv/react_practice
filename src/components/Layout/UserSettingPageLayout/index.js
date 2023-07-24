@@ -1,6 +1,6 @@
 import styles from "./UserSettingPageLayout.module.scss";
 import classNames from "classnames/bind";
-import NavbarCustom from "../Navbar/Navbar";
+import NavbarCustom from "../../Tools/Navbar/Navbar";
 import SettingMenu from "./SettingMenu";
 const cx = classNames.bind(styles);
 

@@ -1,7 +1,6 @@
-
 import styles from "./DefaultLayout.module.scss";
 import classNames from "classnames/bind";
-import NavbarCustom from "../Navbar/Navbar";
+import NavbarCustom from "../../Tools/Navbar/Navbar";
 const cx = classNames.bind(styles);
 
 function DefaultLayout({ children }) {

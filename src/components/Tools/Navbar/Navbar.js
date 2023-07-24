@@ -1,11 +1,11 @@
 import styles from "./Navbar.module.scss";
 import classNames from "classnames/bind";
-import { HomeIcon,SettingIcon} from "../../asset/icons";
+import { HomeIcon,SettingIcon} from "../../../asset/icons";
 import { NavLink, useNavigate } from "react-router-dom";
 // import { useEffect } from "react";
 // import { toast } from "react-toastify";
 // import ToastifyUser from "../../pages/ListUser/toastUser";
-import TippyCustom from "../Tippy/index";
+import TippyCustom from "../../Tippy/index";
 import { useDispatch, useSelector } from "react-redux";
 import { FormattedMessage } from "react-intl";
 

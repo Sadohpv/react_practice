@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { privateRoutes, publicRoutes } from "./routes";
 import PrivateRoute from "./routes/privateRoute";
-import DefaultLayout from "./components/DefaultLayout";
+import DefaultLayout from "./components/Layout/DefaultLayout";
 import "./App.css";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";

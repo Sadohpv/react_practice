@@ -1,0 +1,14 @@
+.slick-slide{
+    box-sizing: border-box;
+   
+    width: 115px !important;
+    margin-right: 10px;
+}
+.slick-list{
+    box-sizing: border-box;
+    padding: 16px  !important;
+    
+}
+.slick-track{
+    width: 3000px !important;
+}

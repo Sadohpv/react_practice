@@ -4,10 +4,12 @@ import { LeftArrow, RightArrow } from "../../../asset/icons";
 const cx = classNames.bind(styles);
 
 function ButtonPreNext({ direction, butFunc,className }) {
-	const handleSlide = () => {
+	const handleSlide = (e) => {
+		
+		
 		butFunc();
 	};
-
+	
 	return (
 		<div
 			className={cx(
@@ -16,6 +18,7 @@ function ButtonPreNext({ direction, butFunc,className }) {
 				className
 			)}
 			onClick={handleSlide}
+			
 		>
 			
 			

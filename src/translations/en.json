@@ -2,7 +2,15 @@
     "Configure_Page":{
         "title":"Setting configure",
         "language" : "Languge",
-        "test" :"Check change Languge"
+        "language-english" : "English",
+        "language-vietnam" : "Vietnamese",
+
+        "theme" :"Theme Interface",
+     
+        "light-theme" : "Light",
+        "dark-theme" : "Dark"
+
+
     },
     "Edit_Page":{
         "setting-title" : "Profile settings",

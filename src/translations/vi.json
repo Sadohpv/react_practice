@@ -2,7 +2,13 @@
     "Configure_Page":{
         "title" : "Chỉnh sửa cấu hình",
         "language" : "Ngôn ngữ",
-        "test" :"Kiểm tra chuyển đổi ngôn ngữ"
+        "language-english" : "Tiếng Anh",
+        "language-vietnam" : "Tiếng Việt",
+
+        "theme" :"Giao diện",
+        "light-theme" : "Sáng",
+        "dark-theme" : "Tối"
+
     },
     "Edit_Page":{
         "setting-title" : "Chỉnh sửa thông tin cá nhân",

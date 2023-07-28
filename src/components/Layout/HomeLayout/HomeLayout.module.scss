@@ -1,3 +1,5 @@
+
+
 .wrapper {
 	display: flex;
 	flex-direction: column;
@@ -12,29 +14,66 @@
 
 	.side_bar {
 		height: inherit;
-		min-width: 300px;
-		background-color: rgb(255, 255, 255);
+		min-width: 360px;
+		background-color: white;
 		display: flex;
 		flex-direction: column;
-		box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.328);
-
-		.title {
-			display: block;
-			height: 60px;
-			width: 100%;
-			background-color: red;
-		}
+		// box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.328);
+		position: relative;
+		
 		.block {
 			flex: 1;
 			width: 100%;
-			// overflow: hidden;
-			overflow-y: scroll;
-
+			overflow: hidden;
+			// scroll-padding: 8px;
+			padding-right: auto ;
+			&:hover {
+				
+				overflow-y: scroll;
+			}
+			
+			  
 			// background-color: red;
 			.block_tab {
 				height: 1000px;
-				width: 100%;
+				width: 340px !important;
+				
+				position: relative;
+				
 			}
+
+		}
+	}
+
+	.right_bar {
+		min-width: 360px;
+		height: 100%;
+		background-color: white;
+
+		display: flex;
+		flex-direction: column;
+		direction:rtl;
+		.block {
+			flex: 1;
+			width: 100%;
+			overflow: hidden;
+			// scroll-padding: 8px;
+			padding-right: auto ;
+			&:hover {
+				
+				overflow-y: scroll;
+			}
+			
+			  
+			// background-color: red;
+			.block_tab {
+				height: 1000px;
+				width: 340px !important;
+				
+				position: relative;
+				
+			}
+
 		}
 	}
 }
@@ -42,4 +81,18 @@
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
+	display: flex;
+	justify-content: center;
+}
+::-webkit-scrollbar {
+	width: 6px;
+}
+
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+::-webkit-scrollbar-thumb {
+	background: #dededed7;
+	border-radius: 10px;
+	
 }

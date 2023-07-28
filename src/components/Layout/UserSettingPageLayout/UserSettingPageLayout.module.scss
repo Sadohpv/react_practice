@@ -6,7 +6,7 @@
 	width: 300px;
 	min-width: 180px;
 	padding: 0 1px 0 20px;
-	box-shadow: 2px 0 5px rgba(0, 0, 0, 0.328);
+	box-shadow: 2px 0 5px rgba(0, 0, 0, 0.746);
 	background-color: #ffffff;
 	font-family: "Myriad Pro", sans-serif;
 	letter-spacing: 0.5px;
@@ -29,7 +29,7 @@
 			height: 100%;
 
 			.left_content {
-				width: 100%;
+				width: 279px;
 				height: 1000px;
 			}
 			&:hover {
@@ -81,6 +81,21 @@
 }
 .children {
 	flex: 1;
-	
+	// width: 100%;
 
+}
+
+
+
+.dark {
+	background-color: var(--background-color-dark);
+	color: var(--dark-mode-color-text) !important;
+	.content{
+	color: var(--dark-mode-color-text);
+
+	}
+	.line{
+	background-color: rgba(255, 255, 255, 0.496);
+
+	}
 }

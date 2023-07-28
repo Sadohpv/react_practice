@@ -29,7 +29,7 @@
 				justify-content: space-between;
 				padding: 0 20px;
 
-				.language {
+				.swip {
 					span {
 						margin-left: 16px;
 						cursor: pointer;
@@ -40,8 +40,8 @@
 						&.active {
 							color: black;
 							cursor: default;
-                            user-select: none;
-                            pointer-events: none;
+							user-select: none;
+							pointer-events: none;
 							&:hover {
 								color: black;
 							}
@@ -50,9 +50,34 @@
 				}
 			}
 
-			&:hover {
-				background-color: #f0f0f052;
-			}
+			
 		}
+	}
+}
+
+.dark {
+	background-color: var(--background-color-dark);
+	color: var(--dark-mode-color-text) !important;
+	.container {
+		.swip {
+			span {
+				color: #ababab !important;
+				&.active {
+				color: var(--dark-mode-color-text) !important;
+				cursor: default;
+				user-select: none;
+				pointer-events: none;
+				&:hover {
+					color: black;
+				}
+			}
+			}
+			&:hover {
+				color: rgb(36, 87, 146);
+			}
+			
+		}
+
+		
 	}
 }

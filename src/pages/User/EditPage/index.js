@@ -6,6 +6,8 @@ import { useParams } from "react-router-dom";
 import EditBlock from "./EditBlock";
 import { emitter } from "../../../utils/emitter";
 import { FormattedMessage } from "react-intl";
+import { useSelector } from "react-redux";
+import { THEMES} from "../../../utils/constant";
 
 const cx = classNames.bind(styles);
 
@@ -32,6 +34,8 @@ function EditPage() {
 	const [message, setMessage] = useState("Here is your message");
 	const params = useParams();
 
+	const currentTheme = useSelector((state) => state.app.theme);
+
 	const listenToEmitter= ()=>{
 		emitter.on('EVENT_EMIT_TEST',data=>{
 			console.log("Listen emitter from parent: ",data);
@@ -40,7 +44,7 @@ function EditPage() {
 
 	listenToEmitter();
 	return (
-		<div className={cx("container")}>
+		<div className={cx("container",currentTheme === THEMES.DARK && THEMES.DARK)}>
 			<div className={cx("edit")}>
 				<div className={cx("right")}>
 					<div className={cx("right_main-head")}>

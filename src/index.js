@@ -10,8 +10,9 @@ import { BrowserRouter } from "react-router-dom";
 import store from "./redux/store";
 
 import { Provider } from "react-redux";
+import GlobalStyles from "./components/GlobalStyles";
 // import {persistor} from './redux'
-import { IntlProvider } from "react-intl";
+
 import IntlProviderWrapper from "./hook/IntlProviderWrapper";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -19,7 +20,9 @@ root.render(
 		<React.StrictMode>
 			<BrowserRouter>
 				<IntlProviderWrapper>
-					<App />
+					<GlobalStyles>
+						<App />
+					</GlobalStyles>
 				</IntlProviderWrapper>
 			</BrowserRouter>
 		</React.StrictMode>

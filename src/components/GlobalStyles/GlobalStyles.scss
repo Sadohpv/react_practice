@@ -1,0 +1,91 @@
+@import "normalize.css";
+@import url("https://fonts.cdnfonts.com/css/proxima-nova-2?styles=44818,44819,44817,44816,44820,44821,44812,44813");
+
+:root {
+	--primary-color: #fe2c55;
+	--black: #000;
+	--text-color: #3d3d3d;
+	--rgba-color: rgba(22, 24, 35, 0.06);
+	--rgba-color-blur: rgba(22, 24, 35, 0.075);
+	// Default Layout
+	--default-layout-header-height: 60px;
+	--background-color-dark: #282828;
+	--background-color-light: #ffffff;
+    --background-color-grey: #f0f2f5;
+    --dark-mode-color-text: #ffffff;
+}
+
+html {
+	font-size: 62.5%;
+    scroll-behavior: smooth;
+
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: "Proxima Nova", sans-serif;
+	font-size: 1.6rem;
+	line-height: 1.5;
+	text-rendering: optimizeSpeed; // tối ưu tốc độ render font lấy từ nguồn khác
+	overflow-y: overlay;
+}
+//Scrollbar CSS
+
+html *::-webkit-scrollbar {
+	// toàn bộ thanh scroll
+	border-radius: 0;
+	width: 8px;
+}
+html *::-webkit-scrollbar-thumb {
+	//Thanh Scroll
+	border-radius: 4px;
+	background-color: rgba(0, 0, 0, 0.2);
+}
+html *::-webkit-scrollbar-track {
+	// Đường trượt scrollbar
+	border-radius: 0;
+	background-color: rgba(255, 255, 255, 0);
+}
+
+button,
+input,
+[tabindex] {
+	outline: none;
+	border: none;
+}
+
+a[href] {
+	color: var(--text-color);
+	text-decoration: none;
+}
+//Font Embedded
+
+// @font-face {
+//     font-family: ProximaSemibold;
+//     src: url('/asset/font/ProximaNova-Semibold.woff2');
+//     font-weight: 600;
+// }
+// @font-face {
+//     font-family: ProximaRegular;
+//     src: url('/asset/font/Proxima-Nova-Regular.woff2');
+//     font-weight: 400;
+// }
+// @font-face {
+//     font-family: SogiaPro;
+//     src: url('/asset/font/sofiapro-bold.woff2');
+//     font-weight: 700;
+// }
+
+//Custom tippy tooltips
+.tippy-arrow {
+	display: none;
+}
+
+.tippy-box {
+	background-color: #535353;
+}

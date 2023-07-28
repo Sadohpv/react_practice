@@ -9,6 +9,8 @@ import TippyCustom from "../../Tippy/index";
 import { useDispatch, useSelector } from "react-redux";
 import { FormattedMessage } from "react-intl";
 
+import { THEMES} from "../../../utils/constant";
+
 // import { handleLogoutRedux, handleRefresh } from "../../redux/actions/userAction";
 const cx = classNames.bind(styles);
 function NavbarCustom() {
@@ -33,8 +35,10 @@ function NavbarCustom() {
 
 	// 	}
 	// },[user]);
+	const currentTheme = useSelector((state) => state.app.theme);
+
 	return (
-		<div className={cx("container_block")}>
+		<div className={cx("container_block",currentTheme === THEMES.DARK && THEMES.DARK)}>
 			<div className={cx("navbar")}>
 				<TippyCustom content={<FormattedMessage id="Navbar.home"/>}>
 					<div className={classes}>

@@ -4,17 +4,21 @@ import PrivateRoute from "./routes/privateRoute";
 import DefaultLayout from "./components/Layout/DefaultLayout";
 import "./App.css";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { handleRefreshWebRedux } from "./redux/actions/userAction";
 import { Fragment } from "react"; // Thẻ chứa không sinh ra thẻ thật trong dom
 
+
 function App() {
 	const dispatch = useDispatch();
+	const currentTheme = useSelector(state => state.app.theme);
+	
+
 	useEffect(() => {
 		dispatch(handleRefreshWebRedux());
 	}, []);
 	return (
-		<div className="App">
+		<div className="App" theme={currentTheme}>
 			{/* <Navbar /> */}
 
 			<Routes>

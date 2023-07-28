@@ -56,3 +56,25 @@
 	// }
 	
 }
+
+.dark{
+	.navbar{
+
+		background-color:  var(--background-color-dark) !important;
+	}
+	.nav_item{
+		&:hover {
+			background-color: rgba(238, 237, 237, 0.799);
+	
+		}
+	}
+	
+	svg{
+		fill : #888a8e !important;
+	}
+	.active{
+		svg {
+			fill: #73dfd6 !important;
+		}
+	}
+}

@@ -5,7 +5,7 @@
 	font-family: "Myriad Pro", sans-serif;
 	letter-spacing: 0.5px;
 	overflow: hidden;
-	
+
 	.edit {
 		display: flex;
 		width: 100%;
@@ -29,10 +29,10 @@
 					height: 0.5px;
 					width: 100%;
 				}
-				.notify{
+				.notify {
 					display: flex;
-					justify-content: space-between;	
-					.message{
+					justify-content: space-between;
+					.message {
 						display: flex;
 						flex-direction: column;
 						justify-content: flex-end;
@@ -41,7 +41,6 @@
 						color: green;
 						text-align: right;
 						font-weight: 400;
-						
 					}
 				}
 			}
@@ -73,6 +72,7 @@
 								span {
 									width: 20%;
 									min-width: 200px;
+
 								}
 								p {
 									margin: 0;
@@ -168,24 +168,42 @@
 	span {
 		padding-left: 20px;
 	}
-	
 }
-.hover{
+.hover {
 	border-radius: 8px;
-	&:hover{
+	&:hover {
 		background-color: #f0f0f052;
 	}
 }
-::-webkit-scrollbar {
-	width: 6px;
-}
+// ::-webkit-scrollbar {
+// 	width: 6px;
+// }
 
-::-webkit-scrollbar-track {
-	background: transparent;
-}
-::-webkit-scrollbar-thumb {
-	background: #dededea4;
-	border-radius: 10px;
-	
-}
+// ::-webkit-scrollbar-track {
+// 	background: transparent;
+// }
+// ::-webkit-scrollbar-thumb {
+// 	background: #dededea4;
+// 	border-radius: 10px;
 
+// }
+
+.dark {
+	background-color: var(--background-color-dark);
+	color: var(--dark-mode-color-text) !important;
+	.right {
+		background-color: var(--background-color-dark) !important;
+		color: var(--dark-mode-color-text) !important; 
+	}
+	.current {
+		color: var(--dark-mode-color-text) !important; 
+		
+		span {
+			color: var(--dark-mode-color-text) !important; 
+
+		}
+	}
+	.message{
+		color : rgb(139, 255, 100) !important;
+	}
+}

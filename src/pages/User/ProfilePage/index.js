@@ -6,6 +6,8 @@ import styles from "./Profile.module.scss";
 import classNames from "classnames/bind";
 import { EditInfor, HomeIcon, LocationIcon, PlusIcon } from "../../../asset/icons";
 import { FormattedMessage } from "react-intl";
+import { THEMES} from "../../../utils/constant";
+import { useSelector } from "react-redux";
 
 const cx = classNames.bind(styles);
 
@@ -21,9 +23,10 @@ function ProfilePage({ children }) {
 		}
 		fetchData();
 	}, []);
+	const currentTheme = useSelector((state) => state.app.theme);
 
 	return (
-		<div className={cx("all")}>
+		<div className={cx("all",currentTheme === THEMES.DARK && THEMES.DARK)}>
 			<div className={cx("banner")}>
 				<div className={cx("cover")}>
 					<div className={cx("cover_img")}>

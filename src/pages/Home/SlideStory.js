@@ -8,11 +8,11 @@ import "slick-carousel/slick/slick-theme.css";
 import ButtonPreNext from "../../components/Tools/ButtonPreNext/ButtonPreNext";
 import images from "../../asset/images/slideTest";
 import { PlusIcon } from "../../asset/icons";
-
+import { THEMES } from "../../utils/constant";
 
 const cx = classNames.bind(styles);
 
-function SlideStory() {
+function SlideStory({ dark }) {
 	const slider = useRef();
 	const [numberSlide, setNumberSlide] = useState(0);
 
@@ -24,7 +24,7 @@ function SlideStory() {
 		slidesToScroll: 1,
 		swipeToSlide: false,
 	};
-	console.log(numberSlide);
+	
 
 	const handleNextSlide = () => {
 		if (numberSlide < 2) {
@@ -39,45 +39,40 @@ function SlideStory() {
 			setNumberSlide(numberSlide - 1);
 		}
 	};
-	
 
 	return (
-		<div className={cx("wrapper")}>
+		<div className={cx("wrapper", dark && THEMES.DARK)}>
 			<div className={cx("slide")}>
 				<div className={cx("slide_header")}></div>
 				<div className={cx("slide_body")}>
 					<Slider ref={slider} {...settings}>
 						<div className={cx("one_slide", "first_slide")}>
-							<div
-								className={cx("first_slide-cover")}
-								onClick={() => {
-									alert("Here");
-								}}
-							>
+							<div className={cx("upper_layer")}
+								onClick={()=> console.log('Here') }
+							></div>
+							<div className={cx("first_slide-cover")}>
 								<div className={cx("first_slide-white-box")}></div>
 								<div className={cx("first_slide-icon")}>
 									<PlusIcon />
 								</div>
 							</div>
-							<img className={cx("slide_img")} src={images.slide6} alt="None"/>
+							<img className={cx("slide_img")} src={images.slide6} alt="None" />
 						</div>
 						<div className={cx("one_slide")}>
-							<img className={cx("slide_img")} src={images.slide2} alt="None"/>
+							<img className={cx("slide_img")} src={images.slide2} alt="None" />
 						</div>
 						<div className={cx("one_slide")}>
-							<img className={cx("slide_img")} src={images.slide3} alt="None"/>
+							<img className={cx("slide_img")} src={images.slide3} alt="None" />
 						</div>
 						<div className={cx("one_slide")}>
-							<img className={cx("slide_img")} src={images.slide4} alt="None"/>
+							<img className={cx("slide_img")} src={images.slide4} alt="None" />
 						</div>
 						<div className={cx("one_slide")}>
-							<img className={cx("slide_img")} src={images.slide5} alt="None"/>
+							<img className={cx("slide_img")} src={images.slide5} alt="None" />
 						</div>
 						<div className={cx("one_slide")}>
-							<img className={cx("slide_img")} src={images.slide1} alt="None"/>
+							<img className={cx("slide_img")} src={images.slide1} alt="None" />
 						</div>
-						
-						
 					</Slider>
 					<div className={cx("control", "butPrev", numberSlide > 0 && "enable")}>
 						<ButtonPreNext direction="prev" butFunc={() => handlePrevSlide()} />

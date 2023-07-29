@@ -3,6 +3,7 @@
 	display: flex;
 	flex-direction: column;
 	width: 100%;
+
 	font-family: "Myriad Pro", sans-serif;
 	letter-spacing: 0.7px;
 	.banner {
@@ -100,7 +101,6 @@
 							-webkit-box-orient: vertical;
 							font-weight: 700;
 							text-align: start;
-							
 						}
 					}
 					.profile_friend {
@@ -115,7 +115,6 @@
 						padding-top: 6px;
 						.profile_friend-num {
 							margin: 0 0 0 8px;
-						
 						}
 						.profile_friend-cover {
 							padding-top: 12px;
@@ -169,9 +168,12 @@
 					display: flex;
 					align-items: center;
 					justify-content: flex-end;
+
 					.action {
-						padding: 2px 10px 2px 2px;
+						height: 38px;
+
 						background-color: #e4e6eb;
+						padding-right: 10px;
 						margin-left: 20px;
 						border-radius: 6px;
 						display: flex;
@@ -252,17 +254,16 @@
 					}
 				}
 
-			&::after{
-				content: "";
-				position: absolute;
-				width: 100%;
-				max-width: 940px;
-				top:-5px;
-				height: 1px;
-				background-color: rgb(177, 177, 177);
+				&::after {
+					content: "";
+					position: absolute;
+					width: 100%;
+					max-width: 940px;
+					top: -5px;
+					height: 1px;
+					background-color: rgb(177, 177, 177);
+				}
 			}
-			}
-			
 		}
 	}
 
@@ -337,7 +338,7 @@
 						line-height: 36px;
 						border-radius: 8px;
 					}
-					.featured{
+					.featured {
 						height: auto;
 						width: 100%;
 						background-color: red;
@@ -362,19 +363,18 @@
 					display: flex;
 					flex-direction: column;
 					justify-content: space-between;
-					.input_content{
+					.input_content {
 						width: 100%;
 						height: 50px;
 						background-color: red;
 					}
-					.input_content_file{
+					.input_content_file {
 						width: 100%;
 						height: 50px;
 						background-color: rgb(0, 255, 247);
-
 					}
 				}
-				.view_mode{
+				.view_mode {
 					box-sizing: border-box;
 
 					background-color: rgba(255, 255, 255);
@@ -382,16 +382,15 @@
 					height: 100px;
 					border-radius: 10px;
 					padding: 12px 16px 10px;
-					.input_content{
+					.input_content {
 						width: 100%;
 						height: 50%;
 						background-color: red;
 					}
-					.input_content_file{
+					.input_content_file {
 						width: 100%;
 						height: 50%;
 						background-color: rgb(0, 255, 247);
-
 					}
 				}
 			}
@@ -462,13 +461,12 @@
 	.content_bar {
 		.bar_cover {
 			width: 100% !important;
-			&::after{
+			&::after {
 				width: calc(100%) !important;
 				// max-width: 100% !important;
 				left: 0px;
 			}
 		}
-		
 	}
 
 	.container {
@@ -488,5 +486,63 @@
 
 			width: 80% !important;
 		}
+	}
+}
+
+.dark {
+	.banner {
+		background-image: linear-gradient(
+			to bottom,
+			#626262,
+			#5c5c5c,
+			#575757,
+			#515151,
+			#4c4c4c,
+			#474747,
+			#434343,
+			#3e3e3e,
+			#383838,
+			#333333,
+			#2d2d2d,
+			#282828
+		);
+	}
+	.profile_header {
+		color: var(--dark-mode-color-text) !important;
+		.action_title {
+			color: #282828 !important;
+		}
+		.add {
+			.action_title {
+				color: var(--dark-mode-color-text) !important;
+			}
+		}
+	}
+	.bar_item {
+		color: var(--dark-mode-color-text) !important;
+	}
+	.bar_item-active {
+		&::after {
+			background-color: var(--primary-color) !important;
+		}
+	}
+	.body {
+		background-color: var(--background-color-grey) !important;
+		.right_block {
+			background-color: var(--background-color-dark) !important;
+		}
+		.right_title {
+			color: var(--dark-mode-color-text) !important;
+		}
+		.content_from {
+			color: var(--dark-mode-color-text) !important;
+			svg {
+				fill: var(--dark-mode-color-text) !important;
+			}
+		}
+	}
+	.view_mode,
+	.add_new_content {
+		background-color: var(--background-color-dark) !important;
 	}
 }

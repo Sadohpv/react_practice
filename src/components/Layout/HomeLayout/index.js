@@ -17,12 +17,11 @@ function HomeLayout({ children }) {
 				<div className={cx("side_bar")}>
 					<div className={cx("block")}>
 						<div className={cx("block_tab")}>
-							<Card shape="around"/>
-							<Card shape="square"/>
-							<Card shape="icon"/>
+							<Card shape="around" />
+							<Card shape="square" />
+							<Card shape="icon" />
 							<Card />
 							<Card />
-
 						</div>
 					</div>
 				</div>
@@ -30,7 +29,13 @@ function HomeLayout({ children }) {
 				<div className={cx("content")}>{children}</div>
 				<div className={cx("right_bar")}>
 					<div className={cx("block")}>
-						<div className={cx("block_tab")}></div>
+						<div className={cx("block_tab")}>
+							<Card shape="around" />
+							<Card shape="square" />
+							<Card shape="icon" />
+							<Card />
+							<Card />
+						</div>
 					</div>
 				</div>
 			</div>

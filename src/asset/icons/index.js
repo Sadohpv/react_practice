@@ -77,7 +77,12 @@ const EditInfor = ({ width = "28px", height = "28px" }) => {
 
 const PlusIcon = ({ width = "20px", height = "20px" }) => {
 	return (
-		<svg xmlns="http://www.w3.org/2000/svg" width={width} height={height} viewBox="-20 0 512 512">
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			width={width}
+			height={height}
+			viewBox="-20 0 512 512"
+		>
 			<path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
 		</svg>
 	);
@@ -134,18 +139,77 @@ const LeafIcon = ({ width = "28px", height = "28px" }) => {
 };
 const LeftArrow = ({ width = "28px", height = "28px" }) => {
 	return (
-		<svg xmlns="http://www.w3.org/2000/svg" fill="#65676b" width={width} height={height} viewBox="0 0 320 512">
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			fill="#65676b"
+			width={width}
+			height={height}
+			viewBox="0 0 320 512"
+		>
 			<path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z" />
 		</svg>
 	);
 };
 const RightArrow = ({ width = "28px", height = "28px" }) => {
 	return (
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			width={width}
+			stroke="black"
+			strokeWidth="0"
+			height={height}
+			fill="#65676b"
+			viewBox="0 0 320 512"
+		>
+			<path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
+		</svg>
+	);
+};
+const BookIcon = ({ width = "28px", height = "28px" }) => {
+	return (
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 576 512"
+			width={width}
+			height={height}
+			fill="#65676b"
+		>
+			<path d="M249.6 471.5c10.8 3.8 22.4-4.1 22.4-15.5V78.6c0-4.2-1.6-8.4-5-11C247.4 52 202.4 32 144 32C93.5 32 46.3 45.3 18.1 56.1C6.8 60.5 0 71.7 0 83.8V454.1c0 11.9 12.8 20.2 24.1 16.5C55.6 460.1 105.5 448 144 448c33.9 0 79 14 105.6 23.5zm76.8 0C353 462 398.1 448 432 448c38.5 0 88.4 12.1 119.9 22.6c11.3 3.8 24.1-4.6 24.1-16.5V83.8c0-12.1-6.8-23.3-18.1-27.6C529.7 45.3 482.5 32 432 32c-58.4 0-103.4 20-123 35.6c-3.3 2.6-5 6.8-5 11V456c0 11.4 11.7 19.3 22.4 15.5z" />
+		</svg>
+	);
+};
+const ThreeDotsIcon = ({ width = "28px", height = "28px" }) => {
+	return (
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			width={width}
+			height={height}
+			fill="#65676b"
+			viewBox="0 0 448 512"
+		>
+			<path d="M8 256a56 56 0 1 1 112 0A56 56 0 1 1 8 256zm160 0a56 56 0 1 1 112 0 56 56 0 1 1 -112 0zm216-56a56 56 0 1 1 0 112 56 56 0 1 1 0-112z" />
+		</svg>
+	);
+};
+const CancelIcon = ({ width = "28px", height = "28px" }) => {
+	return (
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			width={width}
+			height={height}
+			fill="#65676b"
+			viewBox="0 0 384 512"
+		>
+			<path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+		</svg>
+	);
+};
+const CommentIcon = ({ width = "28px", height = "28px" }) => {
+	return (
 		<svg xmlns="http://www.w3.org/2000/svg" width={width}
-		stroke="black" strokeWidth="0"
-		height={height} fill="#65676b" viewBox="0 0 320 512">
-
-		<path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg>
+		height={height}
+		fill="#65676b" viewBox="0 0 512 512">
+		<path d="M123.6 391.3c12.9-9.4 29.6-11.8 44.6-6.4c26.5 9.6 56.2 15.1 87.8 15.1c124.7 0 208-80.5 208-160s-83.3-160-208-160S48 160.5 48 240c0 32 12.4 62.8 35.7 89.2c8.6 9.7 12.8 22.5 11.8 35.5c-1.4 18.1-5.7 34.7-11.3 49.4c17-7.9 31.1-16.7 39.4-22.7zM21.2 431.9c1.8-2.7 3.5-5.4 5.1-8.1c10-16.6 19.5-38.4 21.4-62.9C17.7 326.8 0 285.1 0 240C0 125.1 114.6 32 256 32s256 93.1 256 208s-114.6 208-256 208c-37.1 0-72.3-6.4-104.1-17.9c-11.9 8.7-31.3 20.6-54.3 30.6c-15.1 6.6-32.3 12.6-50.1 16.1c-.8 .2-1.6 .3-2.4 .5c-4.4 .8-8.7 1.5-13.2 1.9c-.2 0-.5 .1-.7 .1c-5.1 .5-10.2 .8-15.3 .8c-6.5 0-12.3-3.9-14.8-9.9c-2.5-6-1.1-12.8 3.4-17.4c4.1-4.2 7.8-8.7 11.3-13.5c1.7-2.3 3.3-4.6 4.8-6.9c.1-.2 .2-.3 .3-.5z"/></svg>
 	);
 };
 export {
@@ -163,5 +227,9 @@ export {
 	PenclipIcon,
 	LeafIcon,
 	LeftArrow,
-	RightArrow
+	RightArrow,
+	BookIcon,
+	ThreeDotsIcon,
+	CancelIcon,
+	CommentIcon,
 };

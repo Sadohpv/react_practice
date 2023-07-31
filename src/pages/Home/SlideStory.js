@@ -7,15 +7,15 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ButtonPreNext from "../../components/Tools/ButtonPreNext/ButtonPreNext";
 import images from "../../asset/images/slideTest";
-import { PlusIcon } from "../../asset/icons";
+import { BookIcon, PlusIcon } from "../../asset/icons";
 import { THEMES } from "../../utils/constant";
-
+import { FormattedMessage } from "react-intl";
 const cx = classNames.bind(styles);
 
 function SlideStory({ dark }) {
 	const slider = useRef();
 	const [numberSlide, setNumberSlide] = useState(0);
-
+	const [slideActive, setSlideActive] = useState(true);
 	const settings = {
 		className: cx("slide_content"),
 		infinite: false,
@@ -24,7 +24,6 @@ function SlideStory({ dark }) {
 		slidesToScroll: 1,
 		swipeToSlide: false,
 	};
-	
 
 	const handleNextSlide = () => {
 		if (numberSlide < 2) {
@@ -43,12 +42,40 @@ function SlideStory({ dark }) {
 	return (
 		<div className={cx("wrapper", dark && THEMES.DARK)}>
 			<div className={cx("slide")}>
-				<div className={cx("slide_header")}></div>
+				<div className={cx("slide_header")}>
+					<div
+						className={cx("header_story", slideActive === true && "active")}
+						onClick={() => {
+							setSlideActive(true);
+						}}
+					>
+						<div className={cx("story_content")}>
+							<BookIcon />
+							<span>
+								<FormattedMessage id="Home_Page.story" />
+							</span>
+						</div>
+					</div>
+					<div
+						className={cx("header_reels", slideActive === false && "active")}
+						onClick={() => {
+							setSlideActive(false);
+						}}
+					>
+						<div className={cx("story_content")}>
+							<BookIcon />
+							<span>
+								<FormattedMessage id="Home_Page.reels" />
+							</span>
+						</div>
+					</div>
+				</div>
 				<div className={cx("slide_body")}>
 					<Slider ref={slider} {...settings}>
 						<div className={cx("one_slide", "first_slide")}>
-							<div className={cx("upper_layer")}
-								onClick={()=> console.log('Here') }
+							<div
+								className={cx("upper_layer")}
+								onClick={() => console.log("Here")}
 							></div>
 							<div className={cx("first_slide-cover")}>
 								<div className={cx("first_slide-white-box")}></div>

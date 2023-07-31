@@ -52,5 +52,9 @@
     "Navbar":{
         "home": "Trang chủ",
         "settings": "Cài đặt"
+    },
+    "Home_Page":{
+        "story":"Tin",
+        "reels":"Video ngắn"
     }
 }

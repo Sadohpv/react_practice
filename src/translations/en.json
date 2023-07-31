@@ -53,6 +53,10 @@
     "Navbar":{
         "home": "Home",
         "settings": "Settings"
+    },
+    "Home_Page":{
+        "story":"Story",
+        "reels":"Reels"
     }
     
 }

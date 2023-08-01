@@ -1,6 +1,7 @@
 .container_block{
 	
-	position: sticky;
+	position: fixed;
+	// position: -webkit-sticky;
 	top: 0;
 	z-index: 1000;
 	width: 100%;

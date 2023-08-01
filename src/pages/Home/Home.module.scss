@@ -1,37 +1,69 @@
-.main{
+.main {
 	width: 100%;
-	height: 2000px;
+
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: flex-start;
-	.status{
-		
+	.status {
 		width: 510px;
-		height: 112px;
-		
+		height: 120px;
+
 		border-radius: 12px;
 		display: flex;
 		flex-direction: column;
 		margin-bottom: 20px;
 		border-radius: 12px;
+		padding: 10px 16px;
+
 		overflow: hidden;
-		.status_input{
+		background-color: white;
+		.status_input {
 			width: 100%;
 			height: 50%;
-			background-color: yellow;
+			display: flex;
+			justify-content: space-between;
+			position: relative;
+
+			.open_input-popup {
+				width: 88%;
+				height: 48px;
+				background-color: var(--background-light-hover);
+				cursor: pointer;
+				border-radius: 100px;
+				padding: 8px 16px;
+				display: flex;
+				span {
+					height: 100%;
+					width: 100%;
+					line-height: 32px;
+					text-align: left;
+					color: #bfc1c5;
+				}
+				&:hover {
+					background-color: rgba(212, 212, 212, 0.652);
+				}
+			}
+			&::before {
+				position: absolute;
+				content: "";
+				height: 1px;
+				width: 100%;
+				background-color: var(--background-light-hover);
+				bottom: -7px;
+				left: 0px;
+			}
 		}
-		.status_input-file{
+		.status_input-file {
 			width: 100%;
-			height: 50%;
-			background-color: red;
+			height: 50px;
+			display: flex;
+			align-items: flex-end;
+			justify-content: space-between;
 		}
 	}
 
-	.main_post_block{
-		width: 510px;	
-
+	.main_post_block {
+		width: 510px;
 	}
-
-
 }

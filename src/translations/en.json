@@ -57,6 +57,19 @@
     "Home_Page":{
         "story":"Story",
         "reels":"Reels"
+    },
+    "Post_Comp":{
+        "like": "Like",
+        "comments" : "comments",
+        "share" : "Share",
+        "comment" : "Comment",
+        "shared" : "shared"
+    },
+    "Status_Comp":{
+        "image" : "Image",
+        "video" : "Video",
+        "sticker" : "Sticker",
+        "question" : "What are you thinking ?"
     }
     
 }

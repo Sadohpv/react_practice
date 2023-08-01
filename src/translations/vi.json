@@ -56,5 +56,19 @@
     "Home_Page":{
         "story":"Tin",
         "reels":"Video ngắn"
+    },
+    "Post_Comp":{
+        "like": "Thích",
+        "comments" : "bình luận",
+        "share" : "Chia sẻ",
+        "comment" : "Bình luận",
+        "shared" : "lượt chia sẻ"
+    },
+    "Status_Comp":{
+        "image" : "Ảnh",
+        "video" : "Video",
+        "sticker" : "Nhãn dán",
+        "question" : "Bạn đang nghĩ gì thế ?"
+
     }
 }

@@ -1,0 +1,25 @@
+.wrapper {
+	width: 31%;
+	height: 36px;
+	background-color: var(--background-light-hover);
+	// background-color: rgba(217, 217, 217, 0.579);
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	&:hover{
+	background-color: rgba(212, 212, 212, 0.652);
+
+	}
+	.icon {
+		height: 20px;
+		// background-color: red;
+		margin-right: 8px;
+		
+	}
+    
+	.text {
+        color: var(--text-color);
+	}
+}

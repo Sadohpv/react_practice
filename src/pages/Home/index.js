@@ -5,38 +5,63 @@ import styles from "./Home.module.scss";
 import classNames from "classnames/bind";
 import SlideStory from "./SlideStory";
 import { useEffect } from "react";
-import { THEMES} from "../../utils/constant";
+import { THEMES } from "../../utils/constant";
 import { useSelector } from "react-redux";
 import Post from "../../components/Post";
+import Avartar from "../../components/Avatar/Avatar";
+import ButtonPost from "../../components/Post/ButtonPost";
+import { FormattedMessage } from "react-intl";
+import {
+	CommentIcon,
+	ImageIcon,
+	ShareIcon,
+	StickerIcon,
+	UnLikeIcon,
+	VideoIcon,
+} from "../../asset/icons";
+import ButtonStatus from "../../components/Tools/ButtonStatus/ButtonStatus.js";
 
 const cx = classNames.bind(styles);
 
 function Home() {
-
 	const currentTheme = useSelector((state) => state.app.theme);
 
 	return (
 		<>
-			
-			<div className={cx('main')}>
-				<SlideStory dark={currentTheme===THEMES.DARK ? true : false}/>
-				<div className={cx('status')}>
-					<div className={cx('status_input')}>
-
+			<div className={cx("main")}>
+				<SlideStory dark={currentTheme === THEMES.DARK ? true : false} />
+				<div className={cx("status")}>
+					<div className={cx("status_input")}>
+						<Avartar />
+						<div className={cx("open_input-popup")}>
+							<span>
+							<FormattedMessage id="Status_Comp.question" />
+							</span>
+						</div>
 					</div>
-					<div className={cx('status_input-file')}>
+					<div className={cx("status_input-file")}>
+						<ButtonStatus
+							icon={<ImageIcon width="20px" height="20px" fill="#45bd62"/>}
+							text={<FormattedMessage id="Status_Comp.image" />}
+						/>
 
+						<ButtonStatus
+							icon={<VideoIcon  width="20px" height="20px" fill="#e42645"/>}
+							text={<FormattedMessage id="Status_Comp.video" />}
+						/>
+
+						<ButtonStatus
+							icon={<StickerIcon width="20px" height="20px" fill="#f7b928"/>}
+							text={<FormattedMessage id="Status_Comp.sticker" />}
+						/>
 					</div>
 				</div>
-				<div className={cx('main_post_block')}>
+				<div className={cx("main_post_block")}>
 					<Post />
 					<Post />
 					<Post />
-
 				</div>
 			</div>
-
-
 		</>
 	);
 }

@@ -52,7 +52,8 @@
     },
     "Navbar":{
         "home": "Home",
-        "settings": "Settings"
+        "settings": "Settings",
+        "search_place" : "Wanna searching something ?"
     },
     "Home_Page":{
         "story":"Story",

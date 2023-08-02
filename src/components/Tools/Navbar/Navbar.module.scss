@@ -5,16 +5,19 @@
 	top: 0;
 	z-index: 1000;
 	width: 100%;
+	height: 56px;
+	background-color: rgb(255, 255, 255);
+	box-shadow: 0 2px 1px #e0e0e0;
+
+	display: flex;
 }
 .navbar {
-	width: 100%;
+	flex: 1;
 
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	height: 56px;
-	box-shadow: 0 2px 1px #e0e0e0;
-	background-color: rgb(255, 255, 255);
 }
 .nav_item {
 	width: 80px;

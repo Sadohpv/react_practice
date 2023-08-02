@@ -5,6 +5,7 @@ const images = {
     videoBack3 : require('./login-back3.mp4'),
     loginBack3 : require('./login-back3.png'),
     registerBack: require('./register_back.mp4'),
+    logo: require('./logo.jpg'),
 }
 
 export default images;

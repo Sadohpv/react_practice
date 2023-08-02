@@ -51,7 +51,8 @@
     },
     "Navbar":{
         "home": "Trang chủ",
-        "settings": "Cài đặt"
+        "settings": "Cài đặt",
+        "search_place" : "Tìm kiếm"
     },
     "Home_Page":{
         "story":"Tin",

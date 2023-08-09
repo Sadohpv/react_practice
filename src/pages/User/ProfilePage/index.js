@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { userService } from "../../../services";
 import { Link } from "react-router-dom";
@@ -8,7 +9,6 @@ import { EditInfor, HomeIcon, LocationIcon, PlusIcon } from "../../../asset/icon
 import { FormattedMessage } from "react-intl";
 import { THEMES} from "../../../utils/constant";
 import { useSelector } from "react-redux";
-
 const cx = classNames.bind(styles);
 
 function ProfilePage({ children }) {

@@ -6,17 +6,18 @@ import { FormattedMessage } from "react-intl";
 
 const cx = classNames.bind(styles);
 
-function Post() {
+function Post({data}) {
+	
 	return (
-		<div className={cx("wrapper")}>
+		<div className={cx("wrapper")} >
 			<div className={cx("post_header")}>
 				<div className={cx("header_avt")}></div>
 				<div className={cx("header_name")}>
 					<div className={cx("name_user-post")}>
-						<span>KUSAKARI</span>
+						<span>{data.User.userName}</span>
 					</div>
 					<div className={cx("time")}>
-						<span>2 hours ago</span>
+						<span>{data.createdAt}</span>
 					</div>
 				</div>
 				<div className={cx("header_action")}>
@@ -35,20 +36,22 @@ function Post() {
 			<div className={cx("post_body")}>
 				<div className={cx("post_body-text")}>
 					<span>
-						Sometime, I wish i can came back the day we met. I'll not loving you this
-						time ! Sometime, I wish i can came back the day we met. I'll not loving you this
-						time !Sometime, I wish i can came back the day we met. I'll not loving you this
-						time !Sometime, I wish i can came back the day we met. I'll not loving you this
-						time !Sometime, I wish i can came back the day we met. I'll not loving you this
-						time !
+						{data.content}
 					</span>
 				</div>
-				<div className={cx("post_body-img")}></div>
+				{
+					data.imgPost &&
+
+				<div className={cx("post_body-img")}>
+					<img src={data.imgPost}/>
+				</div>
+				}
+
 			</div>
 			<div className={cx("post_footer")}>
 				<div className={cx("footer_infor")}>
 					<div className={cx("infor_reaction")}>
-						<span className={cx("text")}>10K likes</span>
+						<span className={cx("text")}>{data.likeCount}</span>
 					</div>
 					<div className={cx("infor_action")}>
 						<div className={cx("comment")}>
@@ -58,7 +61,7 @@ function Post() {
 						</div>
 						<div className={cx("shared")}>
 							<span className={cx("text")}>
-								2000 <FormattedMessage id="Post_Comp.shared" />
+								{data.shareCount} <FormattedMessage id="Post_Comp.shared" />
 							</span>
 						</div>
 					</div>

@@ -1,0 +1,130 @@
+.wrapper {
+	position: fixed;
+	top: 0;
+	height: 100vh;
+	width: 100vw;
+	background-color: rgba(145, 145, 145, 0.218);
+	z-index: 1222;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	.block {
+		width: 600px;
+		height: 400px;
+		background-color: rgb(255, 255, 255);
+		display: flex;
+		align-items: flex-start;
+		border-radius: 8px;
+
+		flex-direction: column;
+	}
+	.title {
+		width: 100%;
+		height: 56px;
+		padding: 0 16px;
+		display: flex;
+		align-items: center;
+		justify-self: center;
+		position: relative;
+		span {
+			width: 100%;
+			font-size: 22px;
+			font-weight: 700;
+			user-select: none;
+		}
+	}
+	.content {
+		width: 100%;
+		flex: 1;
+
+		// background-color: rgba(255, 255, 0, 0.491);
+
+		display: flex;
+		justify-content: center;
+		overflow: scroll;
+		overflow-x: hidden;
+
+		.body {
+			// background-color: rgba(248, 248, 248, 0.491);
+			width: 95%;
+			height: 600px;
+			display: flex;
+			flex-direction: column;
+			.input_content {
+				height: 40px;
+				width: 100%;
+				display: flex;
+				textarea {
+					height: 100%;
+					width: 100%;
+					padding: 8px 16px;
+					line-height: 24x;
+					font-size: 16px;
+					// background-color: red;
+					resize: none;
+					outline: none;
+					border: none;
+				}
+				
+			}
+			.block_img{
+				height: 300px;
+				width: 100%;
+				border-radius: 24px;
+				overflow: hidden;
+				position: relative;
+				display: flex;
+				.background_input{
+					position: absolute;
+				background-color: red;
+
+					top:0;
+					bottom:0;
+					right:0;
+					left:0;
+				}
+				input {
+					width:100%;
+					height: 100%;
+					opacity: 0;
+					cursor:pointer;
+				}
+			}
+		}
+	}
+}
+.header {
+	height: 60px;
+	display: flex;
+	padding: 0 16px;
+	.header_avt {
+		width: 48px;
+		height: 48px;
+		background-color: var(--background-light-hover);
+		border-radius: 50%;
+	}
+	.header_name {
+		flex: 1;
+		margin-left: 12px;
+		display: flex;
+		flex-direction: column;
+		span {
+			float: left;
+		}
+		.name_user-post {
+			width: 300px;
+			height: 28px;
+			// background-color: white;
+			line-height: 28px;
+			font-size: 18px;
+
+			cursor: pointer;
+		}
+		.time {
+			width: 300px;
+			height: 20px;
+			line-height: 20px;
+			font-size: 14px;
+		}
+	}
+}

@@ -27,17 +27,28 @@ function handleRegisterService(
 		userName: userName,
 		gender: gender,
 		address: address,
-		phoneNumber: phoneNumber
-
+		phoneNumber: phoneNumber,
 	});
 }
 
-function handleEditUserService(attribute,tokenData,data){
-
-	return axios.post(`/api/edit/${attribute}`, {
-		tokenData : tokenData,
-		data:data,
+function handleEditUserService(attribute, tokenData, data) {
+	return axios.put(`/api/edit/${attribute}`, {
+		tokenData: tokenData,
+		data: data,
 	});
 }
 
-export default { handleLoginService, handleGetDataUserService, handleRegisterService,handleEditUserService };
+function handleSearchService(keyWord) {
+
+	return axios.post(`/api/search`, {
+		keyWordSearch : keyWord,
+	});
+}
+
+export default {
+	handleLoginService,
+	handleGetDataUserService,
+	handleRegisterService,
+	handleEditUserService,
+	handleSearchService,
+};

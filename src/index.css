@@ -22,22 +22,29 @@ code {
 
 }
 
-html::-webkit-scrollbar{
+::-webkit-scrollbar{
 
-  width: 6px !important;
+  width: 5px !important;
   scrollbar-gutter: stable;
 }
 
-html::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
 
+ 
 
 	
 	background: transparent;
 }
 ::-webkit-scrollbar-thumb {
 
+  width: 2px !important;
 	background: #dededeec;
 	
 	border-radius: 10px;
 }
-
+::-webkit-file-upload-button {
+  display: none;
+}
+::file-selector-button {
+  display: none;
+}

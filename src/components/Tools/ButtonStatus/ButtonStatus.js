@@ -5,9 +5,15 @@ import classNames from "classnames/bind";
 
 const cx = classNames.bind(styles);
 
-function ButtonStatus({ icon, text,color }) {
+function ButtonStatus({ icon, text,color,funClick }) {
+	const handleFunClick = ()=>{
+		if(typeof funClick === 'function'){
+
+			funClick();
+		}
+	}
 	return (
-		<div className={cx("wrapper")}>
+		<div className={cx("wrapper")} onClick={handleFunClick}>
 			<div className={cx("icon")}>
 				{icon}
 			</div>

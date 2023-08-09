@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { FormattedMessage } from "react-intl";
 
 import { THEMES} from "../../../utils/constant";
+
 import Search from "./Search";
 import UserBar from "./UserBar";
 // import { handleLogoutRedux, handleRefresh } from "../../redux/actions/userAction";

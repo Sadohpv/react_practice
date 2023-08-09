@@ -63,7 +63,8 @@
         "comments" : "bình luận",
         "share" : "Chia sẻ",
         "comment" : "Bình luận",
-        "shared" : "lượt chia sẻ"
+        "shared" : "lượt chia sẻ",
+        "add_title": "Tạo bài viết"
     },
     "Status_Comp":{
         "image" : "Ảnh",

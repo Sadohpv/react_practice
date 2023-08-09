@@ -6,13 +6,15 @@ import { LocationIcon } from "../../asset/icons";
 
 const cx = classNames.bind(styles);
 
-function Avartar({  }) {
-
-
+function Avartar({ width, height, src }) {
+	if (!src) {
+		src =
+			"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJ7ai1K2JsaQon_7Fo8IzTaogvmolSx4UL3RjnXISJvnDLmBvyHyl3AGS4qrOTFxM3Xuk&usqp=CAU";
+	}
 	return (
-		<div className={cx("wrapper")}>
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJ7ai1K2JsaQon_7Fo8IzTaogvmolSx4UL3RjnXISJvnDLmBvyHyl3AGS4qrOTFxM3Xuk&usqp=CAU"/>
-        </div>
+		<div className={cx("wrapper")} style={{ width: width, height: height }}>
+			<img src={src} />
+		</div>
 	);
 }
 

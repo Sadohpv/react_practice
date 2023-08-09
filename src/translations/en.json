@@ -64,7 +64,8 @@
         "comments" : "comments",
         "share" : "Share",
         "comment" : "Comment",
-        "shared" : "shared"
+        "shared" : "shared",
+        "add_title": "Add post"
     },
     "Status_Comp":{
         "image" : "Image",

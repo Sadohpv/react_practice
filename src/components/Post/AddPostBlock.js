@@ -2,7 +2,14 @@ import styles from "./AddPostBlock.module.scss";
 import classNames from "classnames/bind";
 import { FormattedMessage } from "react-intl";
 import ButtonRoundIcon from "../Tools/ButtonRoundIcon/ButtonRoundIcon";
-import { CancelIcon } from "../../asset/icons";
+import {
+	CancelIcon,
+	CloudIcon,
+	ImagesIcon,
+	ImageIcon,
+	VideoIcon,
+	StickerIcon,
+} from "../../asset/icons";
 import { useEffect, useRef, useState } from "react";
 const cx = classNames.bind(styles);
 
@@ -10,6 +17,12 @@ function AddPostBlock({ setAddBlock, addBlockImg, setAddBlockImg }) {
 	const closeAddPostBlock = () => {
 		setAddBlockImg(false);
 		setAddBlock(false);
+	};
+	const closeInputImg = () => {
+		setAddBlockImg(false);
+	};
+	const openInputImg = () => {
+		setAddBlockImg(true);
 	};
 	const textAreaAdjust = (e) => {
 		e.target.style.height = "40px";
@@ -46,7 +59,7 @@ function AddPostBlock({ setAddBlock, addBlockImg, setAddBlockImg }) {
 					</div>
 
 					<div className={cx("content")}>
-						<div className={cx("body")}>
+						<div className={cx("main")}>
 							<div className={cx("input_content")}>
 								<textarea
 									onKeyUp={(e) => textAreaAdjust(e)}
@@ -54,12 +67,55 @@ function AddPostBlock({ setAddBlock, addBlockImg, setAddBlockImg }) {
 									placeholder="Write something you wanna say in here!"
 								/>
 							</div>
+
 							{addBlockImg && (
-								<div className={cx("block_img")}>
-									<div className={cx("background_input")}></div>
-									<input type="file" title=" "/>
+								<div className={cx("body")}>
+									<div className={cx("block_img")}>
+										<div className={cx("background_input")}>
+											<div className={cx("layer_1")}>
+												<CloudIcon width="90px" height="90px" />
+											</div>
+											<div className={cx("layer_2")}>
+												<ImagesIcon
+													width="30px"
+													height="30px"
+													fill="white"
+												/>
+											</div>
+										</div>
+										<input type="file" title=" " />
+										<div className={cx("close_img")} onClick={closeInputImg}>
+											<CancelIcon width="22px" height="22px" />
+										</div>
+									</div>
 								</div>
 							)}
+						</div>
+					</div>
+					<div className={cx("footer")}>
+						<div className={cx("action")}>
+							<div className={cx("action_title")}>
+								<span>
+									<FormattedMessage id="Post_Comp.insert_something" />
+								</span>
+							</div>
+							<div className={cx("action_body")}>
+								<div className={cx("action_btn")} onClick={openInputImg}>
+									<ImageIcon width="22px" height="22px" />
+								</div>
+								<div className={cx("action_btn")}>
+									<VideoIcon width="22px" height="22px" />
+								</div>
+								<div className={cx("action_btn")}>
+									<StickerIcon width="22px" height="22px" />
+								</div>
+								<div className={cx("action_btn")}></div>
+							</div>
+						</div>
+						<div className={cx("submit")}>
+							<div className={cx("submit_btn")}>
+								<span>Đăng bài</span>
+							</div>
 						</div>
 					</div>
 				</div>

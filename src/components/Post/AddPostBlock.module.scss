@@ -10,12 +10,12 @@
 	justify-content: center;
 	.block {
 		width: 600px;
-		height: 400px;
+		max-height: 600px;
 		background-color: rgb(255, 255, 255);
 		display: flex;
 		align-items: flex-start;
-		border-radius: 8px;
-
+		border-radius: 12px;
+		overflow: hidden;
 		flex-direction: column;
 	}
 	.title {
@@ -35,7 +35,7 @@
 	}
 	.content {
 		width: 100%;
-		flex: 1;
+		max-height: 360px;
 
 		// background-color: rgba(255, 255, 0, 0.491);
 
@@ -43,51 +43,106 @@
 		justify-content: center;
 		overflow: scroll;
 		overflow-x: hidden;
-
-		.body {
-			// background-color: rgba(248, 248, 248, 0.491);
-			width: 95%;
-			height: 600px;
+		.main {
+			width: 100%;
+			height: 100%;
 			display: flex;
 			flex-direction: column;
+			justify-content: center;
+			align-items: center;
 			.input_content {
-				height: 40px;
+				
 				width: 100%;
 				display: flex;
 				textarea {
 					height: 100%;
 					width: 100%;
 					padding: 8px 16px;
-					line-height: 24x;
+					line-height: 20x;
 					font-size: 16px;
 					// background-color: red;
 					resize: none;
 					outline: none;
 					border: none;
 				}
-				
+				margin-bottom: 18px;
 			}
-			.block_img{
+		}
+		.body {
+			// background-color: rgba(248, 248, 248, 0.491);
+			width: 95%;
+			height: 380px;
+			display: flex;
+			flex-direction: column;
+
+			.block_img {
 				height: 300px;
 				width: 100%;
 				border-radius: 24px;
 				overflow: hidden;
 				position: relative;
+				padding: 12px;
 				display: flex;
-				.background_input{
-					position: absolute;
-				background-color: red;
+				border: 1px solid rgba(0, 0, 0, 0.414);
+				.background_input {
+					--margin-inside: 14px;
 
-					top:0;
-					bottom:0;
-					right:0;
-					left:0;
+					position: absolute;
+					background-color: #f7f8fa;
+					border-radius: 24px;
+
+					top: var(--margin-inside);
+					bottom: var(--margin-inside);
+					right: var(--margin-inside);
+					left: var(--margin-inside);
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					.layer_1 {
+						width: 100%;
+						height: 100%;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						svg {
+							fill: #e4e6eb;
+						}
+					}
+					.layer_2 {
+						width: 100%;
+						height: 100%;
+						position: absolute;
+						top: 48%;
+					}
 				}
 				input {
-					width:100%;
+					width: 100%;
 					height: 100%;
 					opacity: 0;
-					cursor:pointer;
+					cursor: pointer;
+				}
+				.close_img{
+				position: absolute;
+				height: 40px;
+				width: 40px;
+				background-color: rgb(251, 251, 251);
+				border: 0.7px solid rgb(191, 191, 191);
+				border-radius: 50%;
+				right: 20px;
+				top: 20px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+					
+					svg{
+						opacity: 0.3;
+					}
+					&:hover{
+						background-color: #e4e6eb;
+						svg{
+							opacity: 1;
+						}
+					}
 				}
 			}
 		}
@@ -97,6 +152,7 @@
 	height: 60px;
 	display: flex;
 	padding: 0 16px;
+	margin-bottom: 12px;
 	.header_avt {
 		width: 48px;
 		height: 48px;
@@ -125,6 +181,86 @@
 			height: 20px;
 			line-height: 20px;
 			font-size: 14px;
+		}
+	}
+}
+.footer {
+	height: 120px;
+	width: 100%;
+	// background-color: red;
+	padding: 0 16px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	.action {
+		height: 58px;
+		width: 100%;
+		// background-color: yellow;
+		border-radius: 8px;
+		border: 1px solid rgba(0, 0, 0, 0.42);
+		box-shadow: 0.8px 0.8px 1.2px rgba(0, 0, 0, 0.41);
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		.action_title{
+			width: 45%;
+			height: 100%;
+			display: flex;
+			padding-left: 16px;
+			user-select: none;
+			align-items: center;
+			span{
+				text-align: left;
+				width: 100%;
+			}
+		}
+		.action_body{
+			padding-right: 16px;
+
+			width: 55%;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			.action_btn{
+				cursor: pointer;
+				border-radius: 8px;
+				width: 23%;
+				height: 40px;
+				// background-color: red;
+				
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				&:hover{
+					background-color: var(--background-light-hover);
+				}
+			}
+		}
+		
+
+	}
+	.submit {
+		width: 100%;
+
+		height: 40px;
+		// background-color: yellow;
+		display: flex;
+		align-items: center;
+		.submit_btn{
+			width: 100%;
+			height: 36px;
+			border-radius: 24px;
+			background-color: var(--primary-color);
+			margin-bottom: 12px;
+			display:flex;
+			span{
+			width: 100%;
+			height: 100%;
+			line-height: 36px;
+			font-weight: 600;
+			}
 		}
 	}
 }

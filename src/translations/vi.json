@@ -64,7 +64,8 @@
         "share" : "Chia sẻ",
         "comment" : "Bình luận",
         "shared" : "lượt chia sẻ",
-        "add_title": "Tạo bài viết"
+        "add_title": "Tạo bài viết",
+        "insert_something" : "Thềm gì đó vào bài viết của bạn ?"
     },
     "Status_Comp":{
         "image" : "Ảnh",

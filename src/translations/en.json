@@ -65,7 +65,8 @@
         "share" : "Share",
         "comment" : "Comment",
         "shared" : "shared",
-        "add_title": "Add post"
+        "add_title": "Add post",
+        "insert_something" : "Add something fun in your post ?"
     },
     "Status_Comp":{
         "image" : "Image",

@@ -8,7 +8,11 @@
         "theme" :"Theme Interface",
      
         "light-theme" : "Light",
-        "dark-theme" : "Dark"
+        "dark-theme" : "Dark",
+        "cloud_rain" : "Cloud rain",
+        "cloud_rain_text" : "What cloud rain text ?",
+        "on": "On",
+        "off": "Off"
 
 
     },

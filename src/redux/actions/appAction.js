@@ -1,7 +1,8 @@
-const APP_START_UP = "APP_START_UP";
+
 const CHANGE_LANGUAE = "CHANGE_LANGUAE";
 const CHANGE_THEME = "CHANGE_THEME ";
-export {APP_START_UP,CHANGE_LANGUAE,CHANGE_THEME }
+const CLOUD_RAIN = "CLOUD_RAIN";
+export {CHANGE_LANGUAE,CHANGE_THEME,CLOUD_RAIN }
 
 export const changeLanguageRedux = (language) => {
 
@@ -21,4 +22,14 @@ export const changeThemeRedux = (theme) => {
 		});
 	};
 };
+
+export const handleCouldRainRedux = (show,text) =>{
+	return async (dispatch,getState) =>{
+		dispatch({
+			type: CLOUD_RAIN,
+			show,
+			text,
+		})
+	};
+}
 

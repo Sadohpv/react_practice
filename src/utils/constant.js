@@ -6,3 +6,7 @@ export const THEMES ={
     LIGHT: 'light',
     DARK: 'dark'
 }
+export const CLOUD_RAIN = {
+    ON : 'on',
+    OFF : 'off'
+}

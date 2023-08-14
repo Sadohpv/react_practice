@@ -63,7 +63,7 @@ function NavbarCustom() {
 							to="/list"
 							className={(nav) => cx("menu_item", { active: nav.isActive })}
 						>
-							{/* <ListUserIcon /> */}
+							 
 						</NavLink>
 					</div>
 				</TippyCustom>

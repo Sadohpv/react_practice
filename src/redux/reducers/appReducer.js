@@ -1,8 +1,10 @@
-import { APP_START_UP, CHANGE_LANGUAE,CHANGE_THEME } from "../actions/appAction";
+import { APP_START_UP, CHANGE_LANGUAE,CHANGE_THEME,CLOUD_RAIN } from "../actions/appAction";
 
 const INITIAL_STATE = {
 	language: localStorage.getItem("language") === null ? "en" : localStorage.getItem("language"),
 	theme: localStorage.getItem("theme") === null ? "light" : localStorage.getItem("theme"),
+	cloud_rain:  localStorage.getItem("cloud_rain") === null ? "on" : localStorage.getItem("cloud_rain"),
+	cloud_rain_text : localStorage.getItem("cloud_rain_text") === null ? "Kusakari♥" : localStorage.getItem("cloud_rain_text"),
 };
 
 const appReducer = (state = INITIAL_STATE, action) => {
@@ -19,6 +21,14 @@ const appReducer = (state = INITIAL_STATE, action) => {
 				...state,
 				theme: action.theme,
 			};
+		case CLOUD_RAIN : 
+			localStorage.setItem("cloud_rain",action.show);
+			localStorage.setItem("cloud_rain_text",action.text);
+			return{
+				...state,
+				cloud_rain: action.show,
+				cloud_rain_text : action.text,
+			}
 		default:
 			return state;
 	}

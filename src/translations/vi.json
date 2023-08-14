@@ -7,7 +7,11 @@
 
         "theme" :"Giao diện",
         "light-theme" : "Sáng",
-        "dark-theme" : "Tối"
+        "dark-theme" : "Tối",
+        "cloud_rain" : "Mưa",
+        "cloud_rain_text" : "Mưa gì nhỉ ?",
+        "on": "Bật",
+        "off": "Tắt"
 
     },
     "Edit_Page":{

@@ -4,6 +4,7 @@ import NavbarCustom from "../../Tools/Navbar/Navbar";
 import { THEMES } from "../../../utils/constant";
 import { useSelector } from "react-redux";
 import Card from "../../Card";
+import CloudRain from "../../Temp/CloudRain";
 const cx = classNames.bind(styles);
 
 function HomeLayout({ children }) {
@@ -39,6 +40,7 @@ function HomeLayout({ children }) {
 					</div>
 				</div>
 			</div>
+			{/* <CloudRain /> */}
 		</div>
 	);
 }

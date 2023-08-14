@@ -32,6 +32,12 @@ function AddPostBlock({ setAddBlock, addBlockImg, setAddBlockImg }) {
 		}
 	};
 
+	const handleInputImg =(e)=>{
+		// const [file] = 
+	}
+	const handleErrorImg = (e)=>{
+		e.target.style.display = "none";
+	}
 	return (
 		<>
 			<div className={cx("wrapper")} onClick={closeAddPostBlock}>
@@ -83,7 +89,10 @@ function AddPostBlock({ setAddBlock, addBlockImg, setAddBlockImg }) {
 												/>
 											</div>
 										</div>
-										<input type="file" title=" " />
+										<div className={cx("preview_img")}>
+											<img id="preview"/>
+										</div>
+										<input accept="image/*" type="file" title=" " onChange={(e)=>handleInputImg()} onError={(e)=>handleErrorImg()}/>
 										<div className={cx("close_img")} onClick={closeInputImg}>
 											<CancelIcon width="22px" height="22px" />
 										</div>

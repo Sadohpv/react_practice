@@ -29,7 +29,7 @@ function App() {
 	// 	}
 	// },[cloudShow])
 	
-	console.log(cloudShow);
+
 	return (
 		<div className="App" theme={currentTheme}>
 			{/* <Navbar /> */}

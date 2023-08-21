@@ -8,8 +8,8 @@
         "theme" :"Giao diện",
         "light-theme" : "Sáng",
         "dark-theme" : "Tối",
-        "cloud_rain" : "Mưa",
-        "cloud_rain_text" : "Mưa gì nhỉ ?",
+        "cloud_rain" : "Đám mây",
+        "cloud_rain_text" : "Hạt mưa ",
         "on": "Bật",
         "off": "Tắt"
 
@@ -69,7 +69,8 @@
         "comment" : "Bình luận",
         "shared" : "lượt chia sẻ",
         "add_title": "Tạo bài viết",
-        "insert_something" : "Thềm gì đó vào bài viết của bạn ?"
+        "insert_something" : "Thềm gì đó vào bài viết của bạn ?",
+        "posting" : "Đăng bài"
     },
     "Status_Comp":{
         "image" : "Ảnh",

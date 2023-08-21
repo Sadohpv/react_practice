@@ -42,6 +42,7 @@ function Home() {
 		setAddBlockImg(true);
 		setAddBlock(true);
 	};
+	
 	return (
 		<>
 			<div className={cx("main")}>
@@ -74,12 +75,12 @@ function Home() {
 					</div>
 				</div>
 				<div className={cx("main_post_block")}>
-					{/* {postData.length > 0 &&
+					{postData.length > 0 &&
 						postData.map(( post,index) => (
 							
 								<Post data={post} key={Math.random()}/>
 							
-						))} */}
+						))}
 				</div>
 			</div>
 			{addBlock && <AddPostBlock setAddBlock={setAddBlock} addBlockImg={addBlockImg} setAddBlockImg={setAddBlockImg} />}

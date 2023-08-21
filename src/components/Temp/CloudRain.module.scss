@@ -15,7 +15,8 @@
 	scale: 0.5;
 	--color: #404759;
 //    -webkit-box-reflect: below 1px linear-gradient(transparent,transparent,transparent,transparent,#000) ; 
-
+	user-select: none;
+	pointer-events: none;
 }
 
 .cloud {
@@ -42,7 +43,15 @@
 	background-color: var(--color);
 	box-shadow: 90px 0 0 30px var(--color);
 }
+// #rain{
+// 	// width: 100%;
+// 	// height: 100%;
+// 	background-color: red;
+// 	display: flex;
+// 	align-items: center;
+// 	justify-content: center;
 
+// }
 .text {
 	position: absolute;
 	top: 40px;
@@ -51,9 +60,9 @@
 	text-transform: uppercase;
 	color: var(--color);
 	text-shadow: 0 0 5px var(--color), 0 0 5px var(--color), 0 0 5px var(--color);
-	// font-family: "Wingdings"; for icon
-	font-family: "ANWUTOKTRIAL", sans-serif;
-
+	font-family: "Wingdings",sans-serif; 
+	// font-family: "ANWUTOKTRIAL", sans-serif;
+	margin-left: 10px;
 	transform-origin: bottom;
 	animation: animate 2s linear forwards;
 }

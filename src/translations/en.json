@@ -9,8 +9,8 @@
      
         "light-theme" : "Light",
         "dark-theme" : "Dark",
-        "cloud_rain" : "Cloud rain",
-        "cloud_rain_text" : "What cloud rain text ?",
+        "cloud_rain" : "Cloud",
+        "cloud_rain_text" : "Rain",
         "on": "On",
         "off": "Off"
 
@@ -70,7 +70,8 @@
         "comment" : "Comment",
         "shared" : "shared",
         "add_title": "Add post",
-        "insert_something" : "Add something fun in your post ?"
+        "insert_something" : "Add something fun in your post ?",
+        "posting" : "Posting"
     },
     "Status_Comp":{
         "image" : "Image",

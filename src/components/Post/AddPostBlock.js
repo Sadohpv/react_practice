@@ -2,6 +2,7 @@ import styles from "./AddPostBlock.module.scss";
 import classNames from "classnames/bind";
 import { FormattedMessage } from "react-intl";
 import ButtonRoundIcon from "../Tools/ButtonRoundIcon/ButtonRoundIcon";
+import { postService } from "../../services";
 import {
 	CancelIcon,
 	CloudIcon,
@@ -11,32 +12,61 @@ import {
 	StickerIcon,
 } from "../../asset/icons";
 import { useEffect, useRef, useState } from "react";
+
 const cx = classNames.bind(styles);
 
 function AddPostBlock({ setAddBlock, addBlockImg, setAddBlockImg }) {
+	const [contentPost, setContentPost] = useState("");
+	const [image, setImage] = useState("");
+	const [preview,setPreview] =  useState("");
 	const closeAddPostBlock = () => {
 		setAddBlockImg(false);
 		setAddBlock(false);
 	};
-	const closeInputImg = () => {
-		setAddBlockImg(false);
+	const clearInputImg = () => {
+		setImage("");
+
 	};
 	const openInputImg = () => {
-		setAddBlockImg(true);
+		setAddBlockImg(!addBlockImg);
 	};
-	const textAreaAdjust = (e) => {
+	// const textAreaAdjust = (e) => {
+	// 	e.target.style.height = "40px";
+	// 	const height = e.target.scrollHeight;
+	// 	if (height > 0) {
+	// 		e.target.style.height = 4 + e.target.scrollHeight + "px";
+	// 	}
+	// };
+
+	const handleInputImg = (event) => {
+		// console.log(event);
+		if (event.target.files && event.target.files[0]) {
+			setPreview(URL.createObjectURL(event.target.files[0]));
+			setImage(event.target.files[0]);
+		  }
+	};
+	
+	const handleErrorImg = (e) => {
+		e.target.style.display = "none";
+	};
+	const handleContentPost = (e) => {
 		e.target.style.height = "40px";
 		const height = e.target.scrollHeight;
 		if (height > 0) {
 			e.target.style.height = 4 + e.target.scrollHeight + "px";
 		}
-	};
 
-	const handleInputImg =(e)=>{
-		// const [file] = 
-	}
-	const handleErrorImg = (e)=>{
-		e.target.style.display = "none";
+		setContentPost(e.target.value);
+	};
+	const handlePosting = async()=>{
+		if (contentPost === "") {
+			console.log("Not allow empty content")
+		} else {
+			// const tokenData =
+			// 	"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRGF0YSI6eyJlcnJDb2RlIjowLCJlcnJNZXNzYWdlIjoiT0shIE5vdCBmb3VuZCBlcnJvciIsInVzZXIiOnsiaWRVc2VyIjo0LCJlbWFpbCI6IkVtYWlsNEBnbWFpbC5jb20iLCJpc0FkbWluIjowfX0sImlhdCI6MTY4OTQ5NzIwMX0.LC42Slp5CngGBSZqrGQsCQ5xzlDZEwQQocqxHOQJjgA";
+			const res = await postService.handleAddPostService(contentPost,image);
+			// const 
+		}
 	}
 	return (
 		<>
@@ -68,9 +98,10 @@ function AddPostBlock({ setAddBlock, addBlockImg, setAddBlockImg }) {
 						<div className={cx("main")}>
 							<div className={cx("input_content")}>
 								<textarea
-									onKeyUp={(e) => textAreaAdjust(e)}
+									// onKeyDown={(e) => textAreaAdjust(e)}
 									type="text"
 									placeholder="Write something you wanna say in here!"
+									onChange={(e) => handleContentPost(e)}
 								/>
 							</div>
 
@@ -90,10 +121,16 @@ function AddPostBlock({ setAddBlock, addBlockImg, setAddBlockImg }) {
 											</div>
 										</div>
 										<div className={cx("preview_img")}>
-											<img id="preview"/>
+											<img id={cx("preview")} src={preview} />
 										</div>
-										<input accept="image/*" type="file" title=" " onChange={(e)=>handleInputImg()} onError={(e)=>handleErrorImg()}/>
-										<div className={cx("close_img")} onClick={closeInputImg}>
+										<input
+											accept="image/*"
+											type="file"
+											title=" "
+											onChange={(e) => handleInputImg(e)}
+											// onError={(e) => handleErrorImg()}
+										/>
+										<div className={cx("close_img")} onClick={clearInputImg}>
 											<CancelIcon width="22px" height="22px" />
 										</div>
 									</div>
@@ -110,7 +147,7 @@ function AddPostBlock({ setAddBlock, addBlockImg, setAddBlockImg }) {
 							</div>
 							<div className={cx("action_body")}>
 								<div className={cx("action_btn")} onClick={openInputImg}>
-									<ImageIcon width="22px" height="22px" />
+									<ImageIcon width="22px" height="22px" fill={addBlockImg ? "#73dfd6" : "#65676b"}/>
 								</div>
 								<div className={cx("action_btn")}>
 									<VideoIcon width="22px" height="22px" />
@@ -121,9 +158,11 @@ function AddPostBlock({ setAddBlock, addBlockImg, setAddBlockImg }) {
 								<div className={cx("action_btn")}></div>
 							</div>
 						</div>
-						<div className={cx("submit")}>
+						<div className={cx("submit")} onClick={handlePosting}>
 							<div className={cx("submit_btn")}>
-								<span>Đăng bài</span>
+								<span>
+								<FormattedMessage id="Post_Comp.posting" />
+								</span>
 							</div>
 						</div>
 					</div>

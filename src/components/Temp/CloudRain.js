@@ -12,16 +12,18 @@ function CloudRain() {
 
 	// const [interval,setInterval] = useState("");
 	const cloudShow = useSelector((state) => state.app.cloud_rain);
-	
 
+	const rainText = useSelector((state) => state.app.cloud_rain_text);
+	const [curRain,setRain] = useState(rainText);
 	function randomText() {
-		var text = "Kusakari♥";
+		var text = rainText;
 		let letter = text[Math.floor(Math.random() * text.length)];
 		return letter;
 	}
+	
 	function rain() {
 		let cloud = document.querySelector("#rain");
-		
+
 		if (cloud) {
 			let e = document.createElement("div");
 			let left = Math.floor(Math.random() * 280);
@@ -33,25 +35,21 @@ function CloudRain() {
 			cloud.appendChild(e);
 			e.innerText = randomText();
 			e.style.left = left + "px";
-			e.style.fontSize = 1 + size + "em";
+			e.style.fontSize = 1.5 + size + "em";
 			e.style.animationDuration = 1 + duration + "s";
 			setTimeout(function () {
 				cloud.removeChild(e);
 			}, 2000);
 		}
-		
 	}
 	const myInterval = setInterval(function () {
 		let cloud = document.querySelector("#rain");
-if(cloud){
-
-	rain();
-	
-}else{
-	clearInterval(myInterval);
-}
-		
-	}, 500);
+		if (cloud) {
+			rain();
+		} else {
+			clearInterval(myInterval);
+		}
+	}, 450);
 
 	
 

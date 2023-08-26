@@ -7,7 +7,7 @@ import { FormattedMessage } from "react-intl";
 const cx = classNames.bind(styles);
 
 function Post({data}) {
-	
+	// console.log(data);
 	return (
 		<div className={cx("wrapper")} >
 			<div className={cx("post_header")}>

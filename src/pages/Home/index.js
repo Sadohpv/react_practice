@@ -34,7 +34,10 @@ function Home() {
 	useEffect(() => {
 		async function fetchData() {
 			const response = await postService.handleGetPostService();
-			setPostData(response.reg);
+			if(response.reg){
+
+				setPostData(response.reg);
+			}
 		}
 		fetchData();
 	}, []);

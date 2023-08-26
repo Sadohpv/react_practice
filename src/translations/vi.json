@@ -70,7 +70,8 @@
         "shared" : "lượt chia sẻ",
         "add_title": "Tạo bài viết",
         "insert_something" : "Thềm gì đó vào bài viết của bạn ?",
-        "posting" : "Đăng bài"
+        "posting" : "Đăng bài",
+        "empty_content" : "Nội dung bài đăng không được để trống !"
     },
     "Status_Comp":{
         "image" : "Ảnh",

@@ -71,7 +71,8 @@
         "shared" : "shared",
         "add_title": "Add post",
         "insert_something" : "Add something fun in your post ?",
-        "posting" : "Posting"
+        "posting" : "Posting",
+        "empty_content" : "Not allow empty content !"
     },
     "Status_Comp":{
         "image" : "Image",

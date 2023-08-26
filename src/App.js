@@ -9,7 +9,9 @@ import { handleRefreshWebRedux } from "./redux/actions/userAction";
 import { Fragment } from "react"; // Thẻ chứa không sinh ra thẻ thật trong dom
 import CloudRain from "./components/Temp/CloudRain";
 import { CLOUD_RAIN } from "./utils/constant";
-import { emitter } from "./utils/emitter";
+// import { emitter } from "./utils/emitter";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 function App() {
 	const dispatch = useDispatch();
 	const currentTheme = useSelector((state) => state.app.theme);
@@ -84,6 +86,7 @@ function App() {
 				<Route path="/*" element={<Navigate to="/404" replace />} />
 			</Routes>
 			{cloudShow === CLOUD_RAIN.ON && <CloudRain />}
+			<ToastContainer/>
 		</div>
 	);
 }

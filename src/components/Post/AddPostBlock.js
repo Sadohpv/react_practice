@@ -3,6 +3,7 @@ import classNames from "classnames/bind";
 import { FormattedMessage } from "react-intl";
 import ButtonRoundIcon from "../Tools/ButtonRoundIcon/ButtonRoundIcon";
 import { postService } from "../../services";
+import { toast } from "react-toastify";
 import {
 	CancelIcon,
 	CloudIcon,
@@ -18,14 +19,13 @@ const cx = classNames.bind(styles);
 function AddPostBlock({ setAddBlock, addBlockImg, setAddBlockImg }) {
 	const [contentPost, setContentPost] = useState("");
 	const [image, setImage] = useState("");
-	const [preview,setPreview] =  useState("");
+	const [preview, setPreview] = useState("");
 	const closeAddPostBlock = () => {
 		setAddBlockImg(false);
 		setAddBlock(false);
 	};
 	const clearInputImg = () => {
 		setImage("");
-
 	};
 	const openInputImg = () => {
 		setAddBlockImg(!addBlockImg);
@@ -41,11 +41,16 @@ function AddPostBlock({ setAddBlock, addBlockImg, setAddBlockImg }) {
 	const handleInputImg = (event) => {
 		// console.log(event);
 		if (event.target.files && event.target.files[0]) {
+			const reader = new FileReader();
+			reader.readAsDataURL(event.target.files[0]);
 			setPreview(URL.createObjectURL(event.target.files[0]));
-			setImage(event.target.files[0]);
-		  }
+			reader.onloadend = () => {
+				setImage(reader.result);
+			};
+			// console.log(reader.result);
+		}
 	};
-	
+
 	const handleErrorImg = (e) => {
 		e.target.style.display = "none";
 	};
@@ -58,16 +63,19 @@ function AddPostBlock({ setAddBlock, addBlockImg, setAddBlockImg }) {
 
 		setContentPost(e.target.value);
 	};
-	const handlePosting = async()=>{
+	const handlePosting = async () => {
 		if (contentPost === "") {
-			console.log("Not allow empty content")
+			toast.info(<FormattedMessage id="Post_Comp.empty_content" />, {
+				position: toast.POSITION.TOP_RIGHT,
+			});
 		} else {
-			// const tokenData =
-			// 	"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRGF0YSI6eyJlcnJDb2RlIjowLCJlcnJNZXNzYWdlIjoiT0shIE5vdCBmb3VuZCBlcnJvciIsInVzZXIiOnsiaWRVc2VyIjo0LCJlbWFpbCI6IkVtYWlsNEBnbWFpbC5jb20iLCJpc0FkbWluIjowfX0sImlhdCI6MTY4OTQ5NzIwMX0.LC42Slp5CngGBSZqrGQsCQ5xzlDZEwQQocqxHOQJjgA";
-			const res = await postService.handleAddPostService(contentPost,image);
-			// const 
+			console.log(image);
+			const tokenData =
+				"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRGF0YSI6eyJlcnJDb2RlIjowLCJlcnJNZXNzYWdlIjoiT0shIE5vdCBmb3VuZCBlcnJvciIsInVzZXIiOnsiaWRVc2VyIjo0LCJlbWFpbCI6IkVtYWlsNEBnbWFpbC5jb20iLCJpc0FkbWluIjowfX0sImlhdCI6MTY4OTQ5NzIwMX0.LC42Slp5CngGBSZqrGQsCQ5xzlDZEwQQocqxHOQJjgA";
+			const res = await postService.handleAddPostService(tokenData, contentPost, image);
+			// const
 		}
-	}
+	};
 	return (
 		<>
 			<div className={cx("wrapper")} onClick={closeAddPostBlock}>
@@ -147,7 +155,11 @@ function AddPostBlock({ setAddBlock, addBlockImg, setAddBlockImg }) {
 							</div>
 							<div className={cx("action_body")}>
 								<div className={cx("action_btn")} onClick={openInputImg}>
-									<ImageIcon width="22px" height="22px" fill={addBlockImg ? "#73dfd6" : "#65676b"}/>
+									<ImageIcon
+										width="22px"
+										height="22px"
+										fill={addBlockImg ? "#73dfd6" : "#65676b"}
+									/>
 								</div>
 								<div className={cx("action_btn")}>
 									<VideoIcon width="22px" height="22px" />
@@ -161,7 +173,7 @@ function AddPostBlock({ setAddBlock, addBlockImg, setAddBlockImg }) {
 						<div className={cx("submit")} onClick={handlePosting}>
 							<div className={cx("submit_btn")}>
 								<span>
-								<FormattedMessage id="Post_Comp.posting" />
+									<FormattedMessage id="Post_Comp.posting" />
 								</span>
 							</div>
 						</div>

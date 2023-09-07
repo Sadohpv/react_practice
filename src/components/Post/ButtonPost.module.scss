@@ -12,6 +12,9 @@
     .text{
         padding: 4px 0 0 4px;
     }
+    .liked{
+        color: var(--primary-color);
+    }
 &:hover{
     cursor: pointer;
     background-color:var(--background-light-hover);

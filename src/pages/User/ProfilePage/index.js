@@ -1,4 +1,4 @@
-
+import jwt_decode from "jwt-decode";
 import { useEffect, useState } from "react";
 import { userService } from "../../../services";
 import { Link } from "react-router-dom";
@@ -13,12 +13,15 @@ const cx = classNames.bind(styles);
 
 function ProfilePage({ children }) {
 	// const userData = useSelector((state) => state.user.data_user);
-
+	;
+	const user = useSelector((state) => state.user);
+	const decoded = jwt_decode(user.token);
+	const idUser = decoded.userData.idUser;
 	const params = useParams();
 	const [res, setRes] = useState({});
 	useEffect(() => {
 		async function fetchData() {
-			const response = await userService.handleGetDataUserService(params.idUser);
+			const response = await userService.handleGetDataUserService(idUser);
 			setRes(response);
 		}
 		fetchData();
@@ -118,7 +121,7 @@ function ProfilePage({ children }) {
 								{res !== {} && res.reg && res.reg.avatar && res.reg.address}
 							</div>
 
-							<Link className={cx("content_action")} to={`/${params.idUser}/edit`}>
+							<Link className={cx("content_action")} to={`/detail`}>
 								<FormattedMessage id="Profile_Page.edit-details" />
 							</Link>
 						</div>

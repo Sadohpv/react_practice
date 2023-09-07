@@ -10,18 +10,22 @@ import { useDispatch, useSelector } from "react-redux";
 import { FormattedMessage } from "react-intl";
 
 import { THEMES} from "../../../utils/constant";
-
+import { useEffect } from "react";
 import Search from "./Search";
 import UserBar from "./UserBar";
+import jwt_decode from "jwt-decode";
+
 // import { handleLogoutRedux, handleRefresh } from "../../redux/actions/userAction";
 const cx = classNames.bind(styles);
 function NavbarCustom() {
 	const classes = cx("nav_item", cx("item"));
 
-	const user = useSelector((state) => state.user.data_init);
+	const user = useSelector((state) => state.user);
+	const decoded = jwt_decode(user.token);
+	const idUser = decoded.userData.idUser;
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-
+	
 	const handleLogout = () => {
 		// dispatch(handleLogoutRedux());
 		// toast.success("Logout Success");
@@ -32,13 +36,13 @@ function NavbarCustom() {
 	// 	dispatch(handleRefresh());
 	// }, []);
 
-	// useEffect(() => {
-	// 	if(user && user.auth === false && window.location.pathname !=='/login'){
-
-	// 	}
-	// },[user]);
+	useEffect(() => {
+		if(user && user.token === ""  && window.location.pathname !=='/login'){
+			navigate("/login");
+		}
+	},[]);
 	const currentTheme = useSelector((state) => state.app.theme);
-
+	
 	return (
 		<div className={cx("container_block",currentTheme === THEMES.DARK && THEMES.DARK)}>
 			<Search />
@@ -52,7 +56,7 @@ function NavbarCustom() {
 				</TippyCustom>
 				<TippyCustom content={<FormattedMessage id="Navbar.settings"/>}>
 					<div className={classes}>
-						<NavLink to="/edit" className={(nav) => cx("menu_item", { active: nav.isActive })}>
+						<NavLink to={`/${idUser}`} className={(nav) => cx("menu_item", { active: nav.isActive })}>
 							<SettingIcon />
 						</NavLink>
 					</div>

@@ -4,7 +4,7 @@ const routesConfig = {
     login: '/login',
     register: '/register',
     user: '/:idUser',
-    edit: '/:idUser/edit',
+    edit: '/detail',
     configure : '/:idUser/configure',
     security : '/:idUser/security',
 

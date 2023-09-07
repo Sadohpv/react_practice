@@ -8,20 +8,27 @@ import { emitter } from "../../../utils/emitter";
 import { FormattedMessage } from "react-intl";
 import { useSelector } from "react-redux";
 import { THEMES} from "../../../utils/constant";
+import jwt_decode from "jwt-decode";
+	
 
 const cx = classNames.bind(styles);
 
 function EditPage() {
+	const token = useSelector((state) => state.user.token);
+	const decoded = jwt_decode(token);
+	const idUser = decoded.userData.idUser;
 	const [res, setRes] = useState({});
+	
 	useEffect(() => {
 		async function fetchData() {
-			const response = await userService.handleGetDataUserService(params.idUser);
+			const response = await userService.handleGetDataUserService(idUser);
 			setRes(response.reg);
 			setEmail(response.reg.email);
 			setFirstName(response.reg.firstName);
 			setLastName(response.reg.lastName);
 			setAddress(response.reg.address);
 			setPhoneNumber(response.reg.phoneNumber);
+		
 		}
 		fetchData();
 	}, []);
@@ -32,7 +39,7 @@ function EditPage() {
 	const [address, setAddress] = useState("");
 	const [phoneNumber, setPhoneNumber] = useState("");
 	const [message, setMessage] = useState("Here is your message");
-	const params = useParams();
+
 
 	const currentTheme = useSelector((state) => state.app.theme);
 

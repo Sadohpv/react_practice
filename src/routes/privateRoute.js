@@ -3,10 +3,10 @@ import { Alert } from "react-bootstrap";
 import { useSelector } from "react-redux";
 
 function PrivateRoute({ children }) {
-	const user = useSelector((state) => state.user.data_user);
+	const user = useSelector((state) => state.user.token);
 	return (
 		<>
-			{user && user.auth ? (
+			{user ? (
 				children
 			) : (
 				<Alert variant="warning" className="w-75 mt-3 mx-auto">

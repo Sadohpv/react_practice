@@ -1,17 +1,29 @@
-import { CancelIcon, CommentIcon, ShareIcon, ThreeDotsIcon, UnLikeIcon } from "../../asset/icons";
+import { CancelIcon, CommentIcon, ShareIcon, ThreeDotsIcon, UnLikeIcon ,LikeIcon} from "../../asset/icons";
 import ButtonPost from "./ButtonPost";
 import styles from "./Post.module.scss";
 import classNames from "classnames/bind";
 import { FormattedMessage } from "react-intl";
-
+import Avartar from "../Avatar/Avatar";
+import { useState } from "react";
 const cx = classNames.bind(styles);
 
-function Post({data}) {
+function Post({ data }) {
 	// console.log(data);
+	const [liked,setLiked] = useState(false);
+	const [icon,setIcon] = useState({});
+	const handleToggleLike = ()=>{
+		
+		setLiked(!liked);
+
+	}
 	return (
-		<div className={cx("wrapper")} >
+		<div className={cx("wrapper")}>
 			<div className={cx("post_header")}>
-				<div className={cx("header_avt")}></div>
+				<div className={cx("header_avt")}>
+					
+					{/* {data.User && data.User.avatar && <img src={data.User.avatar} />} */}
+					<Avartar src={data.User.avatar} />
+				</div>
 				<div className={cx("header_name")}>
 					<div className={cx("name_user-post")}>
 						<span>{data.User.userName}</span>
@@ -35,18 +47,13 @@ function Post({data}) {
 			</div>
 			<div className={cx("post_body")}>
 				<div className={cx("post_body-text")}>
-					<span>
-						{data.content}
-					</span>
+					<span>{data.content}</span>
 				</div>
-				{
-					data.imgPost &&
-
-				<div className={cx("post_body-img")}>
-					<img src={data.imgPost}/>
-				</div>
-				}
-
+				{data.imgPost && (
+					<div className={cx("post_body-img")}>
+						<img src={data.imgPost} />
+					</div>
+				)}
 			</div>
 			<div className={cx("post_footer")}>
 				<div className={cx("footer_infor")}>
@@ -68,8 +75,10 @@ function Post({data}) {
 				</div>
 				<div className={cx("footer_action")}>
 					<ButtonPost
-						icon={<UnLikeIcon width="20px" height="20px" />}
+						liked = {liked}
+						icon={liked===false ? <UnLikeIcon width="20px" height="20px" /> :  <LikeIcon width="20px" height="20px" fill="#65c6be" />}
 						text={<FormattedMessage id="Post_Comp.like" />}
+						onClick={handleToggleLike}
 					/>
 					<ButtonPost
 						icon={<CommentIcon width="20px" height="20px" />}

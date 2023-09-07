@@ -23,11 +23,16 @@ import {
 } from "../../asset/icons";
 import ButtonStatus from "../../components/Tools/ButtonStatus/ButtonStatus.js";
 import AddPostBlock from "../../components/Post/AddPostBlock";
+import jwt_decode from "jwt-decode";
+	
 
 const cx = classNames.bind(styles);
 
 function Home() {
 	const currentTheme = useSelector((state) => state.app.theme);
+	const user = useSelector((state) => state.user);
+	const decoded = jwt_decode(user.token);
+	const idUser = decoded.userData.idUser;
 	const [postData, setPostData] = useState([]);
 	const [addBlock, setAddBlock] = useState(false);
 	const [addBlockImg, setAddBlockImg] = useState(false);
@@ -81,7 +86,7 @@ function Home() {
 					{postData.length > 0 &&
 						postData.map(( post,index) => (
 							
-								<Post data={post} key={Math.random()}/>
+								<Post data={post} idUser={idUser} key={Math.random()}/>
 							
 						))}
 				</div>

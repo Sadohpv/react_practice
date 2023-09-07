@@ -4,18 +4,27 @@ import styles from "./Post.module.scss";
 import classNames from "classnames/bind";
 import { FormattedMessage } from "react-intl";
 import Avartar from "../Avatar/Avatar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { postService } from "../../services";
 const cx = classNames.bind(styles);
 
-function Post({ data }) {
+function Post({ data,idUser }) {
 	// console.log(data);
 	const [liked,setLiked] = useState(false);
-	const [icon,setIcon] = useState({});
-	const handleToggleLike = ()=>{
-		
+	// const [icon,setIcon] = useState({});
+	const handleToggleLike = async()=>{
+		if(liked === true){
+			const res = await postService.handleLikedPostService(false,data.idPost,idUser);
+			// alert("UnLike")	
+		}
+		if(liked === false){
+			const res = await postService.handleLikedPostService(true,data.idPost,idUser);
+			// alert("Like")
+		}
 		setLiked(!liked);
 
 	}
+	// fecth all like and check one vs one in home
 	return (
 		<div className={cx("wrapper")}>
 			<div className={cx("post_header")}>
@@ -80,6 +89,7 @@ function Post({ data }) {
 						text={<FormattedMessage id="Post_Comp.like" />}
 						onClick={handleToggleLike}
 					/>
+
 					<ButtonPost
 						icon={<CommentIcon width="20px" height="20px" />}
 						text={<FormattedMessage id="Post_Comp.comment" />}

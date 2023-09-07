@@ -6,23 +6,15 @@ function handleGetPostService() {
 const handleAddPostService = async ( tokenData , content, image) => {
 	const resContent = await axios.post("/post/addPost", { content: content,token: tokenData,image });
 
-	// const formData = new FormData();
-	// formData.append("image", image);
-	// formData.append("content", content);
-	// formData.append("token", tokenData);
-	// console.log("Here");
-	// const resImg = await axios.post("/post/addPost", formData, {
-	// 	headers: {
-	// 		"Content-Type": "multipart/form-data",
-	// 	},
-	// });
-
-	console.log(resContent);
-	// console.log(resImg);
-
-	// return resImg;
+	
 };
+const handleLikedPostService = async (liked,idPost,idUser) => {
+	const resContent = await axios.put("/post/likedPost", {liked:liked , idPost:idPost,idUser:idUser});
+
+	
+}; 
 export default {
 	handleGetPostService,
 	handleAddPostService,
+	handleLikedPostService
 };

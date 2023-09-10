@@ -4,10 +4,10 @@ const routesConfig = {
     login: '/login',
     register: '/register',
     user: '/:idUser',
-    edit: '/detail',
+    edit: '/:idUser/detail',
     configure : '/:idUser/configure',
     security : '/:idUser/security',
-
+    ElectricSpider: '/games/spider',
 }
 
 export default routesConfig;

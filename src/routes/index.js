@@ -17,6 +17,7 @@ import ConfigurePage from '../pages/User/ConfigurePage';
 import DefaultLayout from '../components/Layout/DefaultLayout';
 import UserSettingPageLayout from '../components/Layout/UserSettingPageLayout';
 import HomeLayout from '../components/Layout/HomeLayout';
+import ElectricSpider from '../pages/Games/ElectricSpider';
 //Public Route
 const publicRoutes = [
     {
@@ -59,6 +60,11 @@ const privateRoutes = [
         path: config.routes.security,
         component: ConfigurePage,
         layout: UserSettingPageLayout,
+    },
+    {
+        path: config.routes.ElectricSpider,
+        component: ElectricSpider,
+        layout: DefaultLayout,
     },
 
 ];

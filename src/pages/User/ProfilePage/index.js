@@ -121,7 +121,7 @@ function ProfilePage({ children }) {
 								{res !== {} && res.reg && res.reg.avatar && res.reg.address}
 							</div>
 
-							<Link className={cx("content_action")} to={`/detail`}>
+							<Link className={cx("content_action")} to={`/${idUser}/detail`}>
 								<FormattedMessage id="Profile_Page.edit-details" />
 							</Link>
 						</div>

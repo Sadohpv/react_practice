@@ -24,24 +24,30 @@ import {
 import ButtonStatus from "../../components/Tools/ButtonStatus/ButtonStatus.js";
 import AddPostBlock from "../../components/Post/AddPostBlock";
 import jwt_decode from "jwt-decode";
-	
 
 const cx = classNames.bind(styles);
 
 function Home() {
 	const currentTheme = useSelector((state) => state.app.theme);
-	const user = useSelector((state) => state.user);
-	const decoded = jwt_decode(user.token);
+	const user = useSelector((state) => state.user.token);
+
+	const decoded = jwt_decode(user);
 	const idUser = decoded.userData.idUser;
 	const [postData, setPostData] = useState([]);
+	const [postLike, setPostLike] = useState([]);
 	const [addBlock, setAddBlock] = useState(false);
 	const [addBlockImg, setAddBlockImg] = useState(false);
 	useEffect(() => {
 		async function fetchData() {
-			const response = await postService.handleGetPostService();
-			if(response.reg){
-
+			const response = await postService.handleGetPostService(idUser);
+			if (response.reg) {
 				setPostData(response.reg);
+				// const likeRes = await postService.handleCheckLikeService(idUser);
+				// if (likeRes) {
+				// 	setPostLike(likeRes);
+
+				// 	console.log(likeRes.reg);
+				// }
 			}
 		}
 		fetchData();
@@ -50,7 +56,7 @@ function Home() {
 		setAddBlockImg(true);
 		setAddBlock(true);
 	};
-	
+
 	return (
 		<>
 			<div className={cx("main")}>
@@ -84,14 +90,18 @@ function Home() {
 				</div>
 				<div className={cx("main_post_block")}>
 					{postData.length > 0 &&
-						postData.map(( post,index) => (
-							
-								<Post data={post} idUser={idUser} key={Math.random()}/>
-							
+						postData.map((post, index) => (
+							<Post data={post} idUser={idUser} key={Math.random()} />
 						))}
 				</div>
 			</div>
-			{addBlock && <AddPostBlock setAddBlock={setAddBlock} addBlockImg={addBlockImg} setAddBlockImg={setAddBlockImg} />}
+			{addBlock && (
+				<AddPostBlock
+					setAddBlock={setAddBlock}
+					addBlockImg={addBlockImg}
+					setAddBlockImg={setAddBlockImg}
+				/>
+			)}
 		</>
 	);
 }

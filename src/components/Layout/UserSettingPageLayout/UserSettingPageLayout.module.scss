@@ -83,20 +83,23 @@
 .children {
 	flex: 1;
 	// width: 100%;
-
 }
 
+.active {
+	span {
+		color: var(--primary-color);
+		
+	}
+	background-color: #ebebeb7a;
 
-
+}
 .dark {
 	background-color: var(--background-color-dark);
 	color: var(--dark-mode-color-text) !important;
-	.content{
-	color: var(--dark-mode-color-text);
-
+	.content {
+		color: var(--dark-mode-color-text);
 	}
-	.line{
-	background-color: rgba(255, 255, 255, 0.496);
-
+	.line {
+		background-color: rgba(255, 255, 255, 0.496);
 	}
 }

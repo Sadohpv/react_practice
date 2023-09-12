@@ -43,6 +43,7 @@ function LoginBlock({ color }) {
 	};
 	const handleLogin = async () => {
 		try {
+			console.log(email,password);
 			const res = await userService.handleLoginService(email.trim(), password);
 			console.log(res);
 			if (res && res.userData && res.userData.errCode === 4) {
@@ -75,7 +76,7 @@ function LoginBlock({ color }) {
 	const [passHolder,setPassHolder] = useState(
 		<FormattedMessage id="Login_Page.email" />
 ); 
-		console.log(passHolder);
+		
 	return (
 		<div
 			className={cx("block")}

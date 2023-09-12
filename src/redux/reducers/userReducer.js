@@ -1,8 +1,8 @@
 import { USER_LOGIN, USER_REFESH } from "../actions/userAction";
 
 const INITIAL_STATE = {
-	token : localStorage.getItem("token"),
 	
+	token: sessionStorage.getItem("token") === null ? null : sessionStorage.getItem("token"),
 	
 };
 
@@ -12,7 +12,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
 			
 			
 			localStorage.setItem("auth", true);
-			localStorage.setItem("token", action.data.token);
+			sessionStorage.setItem("token", action.data.token);
 			return {
 				...state,
 				data_user: {
@@ -24,7 +24,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
 
 			};
 		case USER_REFESH:
-			if (localStorage.getItem("token")) {
+			if (sessionStorage.getItem("token")) {
 				return {
 					...state,
 					data_user: {

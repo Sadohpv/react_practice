@@ -9,7 +9,7 @@ import { postService } from "../../services";
 const cx = classNames.bind(styles);
 
 function Post({ data,idUser }) {
-	console.log(data);
+	// console.log(data);
 	const [liked,setLiked] = useState(data.userLiked);
 	// const [icon,setIcon] = useState({});
 	const handleToggleLike = async()=>{

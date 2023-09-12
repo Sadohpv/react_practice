@@ -21,8 +21,10 @@ function NavbarCustom() {
 	const classes = cx("nav_item", cx("item"));
 
 	const user = useSelector((state) => state.user);
-	const decoded = jwt_decode(user.token);
-	const idUser = decoded.userData.idUser;
+	// const decoded = jwt_decode(user.token);
+	const idUser = 4;
+	// const idUser = decoded.userData.idUser;
+	
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	
@@ -36,11 +38,11 @@ function NavbarCustom() {
 	// 	dispatch(handleRefresh());
 	// }, []);
 
-	useEffect(() => {
-		if(user && user.token === ""  && window.location.pathname !=='/login'){
-			navigate("/login");
-		}
-	},[]);
+	// useEffect(() => {
+	// 	if(user && user.token === ""  && window.location.pathname !=='/login'){
+	// 		navigate("/login");
+	// 	}
+	// },[]);
 	const currentTheme = useSelector((state) => state.app.theme);
 	
 	return (

@@ -3,6 +3,7 @@ const routesConfig = {
     home: '/',
     login: '/login',
     register: '/register',
+    notFound: '/404',
     user: '/:idUser',
     edit: '/:idUser/detail',
     configure : '/:idUser/configure',

@@ -34,6 +34,11 @@ const publicRoutes = [
         path: config.routes.register,
         component: RegisterPage,
         layout: null,
+    },
+    {
+        path: config.routes.notFound,
+        component: LoginComponent,
+        layout: null,
     }
 
 ];

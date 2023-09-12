@@ -3,7 +3,7 @@ import axios from "axios";
 const instance = axios.create({
 	baseURL: "http://localhost:2110",
 	headers: {"Access-Control-Allow-Origin": "*"},
-	withCredentials: false,
+	withCredentials: true, // false nếu muốn chặn server set cookies
 	
 });
 

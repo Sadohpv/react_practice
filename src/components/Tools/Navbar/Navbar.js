@@ -20,9 +20,9 @@ const cx = classNames.bind(styles);
 function NavbarCustom() {
 	const classes = cx("nav_item", cx("item"));
 
-	const user = useSelector((state) => state.user);
+	// const user = useSelector((state) => state.user);
 	// const decoded = jwt_decode(user.token);
-	const idUser = 4;
+	 const idUser = 4;
 	// const idUser = decoded.userData.idUser;
 	
 	const dispatch = useDispatch();

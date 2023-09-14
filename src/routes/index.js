@@ -20,11 +20,7 @@ import HomeLayout from '../components/Layout/HomeLayout';
 import ElectricSpider from '../pages/Games/ElectricSpider';
 //Public Route
 const publicRoutes = [
-    {
-        path: config.routes.home,
-        component: Home,
-        layout: HomeLayout,
-    },
+    
     {
         path: config.routes.login,
         component: LoginComponent,
@@ -46,6 +42,11 @@ const publicRoutes = [
 
 // Private Route
 const privateRoutes = [
+    {
+        path: config.routes.home,
+        component: Home,
+        layout: HomeLayout,
+    },
     {
         path: config.routes.user,
         component: ProfilePage,

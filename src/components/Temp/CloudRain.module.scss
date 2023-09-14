@@ -13,7 +13,7 @@
 	display: flex;
 	justify-content: center;
 	scale: 0.25;
-	--color: #404759;
+	--color: #68ccc4;
 //    -webkit-box-reflect: below 1px linear-gradient(transparent,transparent,transparent,transparent,#000) ; 
 	user-select: none;
 	pointer-events: none;
@@ -27,7 +27,7 @@
 	background-color: var(--color);
 	border-radius: 100px;
 	z-index: 100;
-	filter: drop-shadow(0 0 15px var(--color));
+	filter: drop-shadow(0 0 10px var(--color));
 	display: flex;
 	align-items: center;
 	justify-content: center;

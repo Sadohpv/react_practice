@@ -29,7 +29,7 @@ const cx = classNames.bind(styles);
 
 function Home() {
 	const currentTheme = useSelector((state) => state.app.theme);
-	const user = useSelector((state) => state.user.token);
+	// const user = useSelector((state) => state.user.token);
 
 	// const decoded = jwt_decode(user);
 	// const idUser = decoded.userData.idUser;
@@ -38,21 +38,21 @@ function Home() {
 	const [postLike, setPostLike] = useState([]);
 	const [addBlock, setAddBlock] = useState(false);
 	const [addBlockImg, setAddBlockImg] = useState(false);
-	// useEffect(() => {
-	// 	async function fetchData() {
-	// 		const response = await postService.handleGetPostService(idUser);
-	// 		if (response.reg) {
-	// 			setPostData(response.reg);
-	// 			// const likeRes = await postService.handleCheckLikeService(idUser);
-	// 			// if (likeRes) {
-	// 			// 	setPostLike(likeRes);
+	useEffect(() => {
+		async function fetchData() {
+			const response = await postService.handleGetPostService(idUser);
+			if (response.reg) {
+				setPostData(response.reg);
+				// const likeRes = await postService.handleCheckLikeService(idUser);
+				// if (likeRes) {
+				// 	setPostLike(likeRes);
 
-	// 			// 	console.log(likeRes.reg);
-	// 			// }
-	// 		}
-	// 	}
-	// 	fetchData();
-	// }, []);
+				// 	console.log(likeRes.reg);
+				// }
+			}
+		}
+		fetchData();
+	}, []);
 	const handleOnClick = () => {
 		setAddBlockImg(true);
 		setAddBlock(true);

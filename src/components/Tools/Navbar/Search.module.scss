@@ -132,9 +132,7 @@
 					overflow: hidden;
 					display: flex;
 					flex-direction: column;
-					
 				}
-					
 			}
 		}
 	}
@@ -190,6 +188,39 @@
 	scrollbar-gutter: stable;
 }
 
-.dark{
+.dark {
 	background-color: var(--background-color-dark);
+}
+
+@media (max-width: 960px) {
+	.inputReponsive2 {
+		.input_block {
+			left: 180px;
+		}
+		width: 15vw !important;
+		min-width: 125px !important;
+	}
+	.inputReponsive {
+		// position: absolute;
+
+		.search {
+			left: 80px;
+		}
+		.input_block {
+			width: 44px !important;
+
+			left: 0px;
+			input{
+				&::placeholder{
+					// display: none;
+					// color: red;
+					opacity:0;
+				}
+			}
+			.input_button {
+				// display:block !important;
+				width: 44px !important;
+			}
+		}
+	}
 }

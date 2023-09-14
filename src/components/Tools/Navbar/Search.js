@@ -62,6 +62,7 @@ function Search() {
 		function handleClickOutside(event) {
 		  if (searchElement.current && !searchElement.current.contains(event.target)) {
 			setInputClick(false);
+			setKeyWord("");
 		  }
 		}
 		// Bind the event listener
@@ -72,7 +73,7 @@ function Search() {
 		};
 	  }, [searchElement]);
 	return (
-		<div className={cx("wrapper", currentTheme === THEMES.DARK && THEMES.DARK)}>
+		<div className={cx("wrapper", currentTheme === THEMES.DARK && THEMES.DARK,inputClick ===false && "inputReponsive","inputReponsive2")}>
 			<div className={cx("logo")}>
 				<div className={cx("logo_box")}>
 					<NavLink to="/">
@@ -98,7 +99,7 @@ function Search() {
 									<span>Search Result</span>
 								</div>
 								<div className={cx("search_user")}>
-									{searchResult.length > 0 &&
+									{searchResult && searchResult.length > 0 &&
 										searchResult.map((result) => (
 											<UserSearchBlock data={result} key={result.idUser} />
 									))}
@@ -117,7 +118,9 @@ function Search() {
 						onChange={(e) => handleChangeKeyWord(e)}
 						onKeyDown={(e) => handleEnter(e)}
 					/>
-					<div className={cx("input_button")}>
+					<div className={cx("input_button")}
+						onClick={() => setInputClick(true)}
+					>
 						<SearchIcon width="16px" height="16px" fill="#bfc1c5" />
 					</div>
 				</div>

@@ -11,24 +11,25 @@ const USER_DATA = "USER_DATA";
 
 export { USER_LOGIN, USER_REFESH };
 
-export const handleLoginRedux = (email, isAdmin,token) => {
+export const handleLoginRedux = (userData,token) => {
 
 	return async (dispatch, getState) => {
+		// console.log(token);
 		dispatch({
 			type: USER_LOGIN,
 			data: {
-				email: email.trim(),
-				isAdmin: !isAdmin,
+				userData : userData,
 				token: token,
 			},
 		});
 	};
 };
 
-export const handleRefreshWebRedux = ()=>{
+export const handleRefreshWebRedux = (id)=>{
 	return async (dispatch, getState) => {
 		dispatch({
 			type: USER_REFESH,
+			id: id,
 		});
 	};
 }

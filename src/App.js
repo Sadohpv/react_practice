@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import { privateRoutes, publicRoutes } from "./routes";
 import PrivateRoute from "./routes/privateRoute";
 import DefaultLayout from "./components/Layout/DefaultLayout";
@@ -11,82 +11,103 @@ import CloudRain from "./components/Temp/CloudRain";
 import { CLOUD_RAIN } from "./utils/constant";
 // import { emitter } from "./utils/emitter";
 import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
+import { userService } from "./services";
+import React from "react";
+import AtomicSpinner from "atomic-spinner";
 function App() {
 	const dispatch = useDispatch();
 	const currentTheme = useSelector((state) => state.app.theme);
 
 	const cloudShow = useSelector((state) => state.app.cloud_rain);
-
+	const loading = useSelector((state) => state.user.isLoading);
+	console.log(loading);
+	const navigate = useNavigate();
 	useEffect(() => {
-		dispatch(handleRefreshWebRedux());
-	}, []);
+		// async function fetch() {
+		// 	let res = await userService.handleGetAccounService();
 
-	// useEffect(()=>{
-	// 	if(cloudShow === CLOUD_RAIN.OFF){
-	// 		emitter.on('CLEAR_INTERVAL',interval=>{
-	// 			clearInterval(interval);
-	// 			console.log("Here");
-	// 		});
-	// 	}
-	// },[cloudShow])
-	
+		// 	if (res && res.reg && res.reg) {
+		// 		dispatch(handleRefreshWebRedux(res.reg.userData.idUser));
+		// 	}
+		// }
+		// fetch();
+		async function fetchData() {
+			let res = await userService.handleGetAccounService();
+
+			if (res) {
+				if (res.status !== 401) {
+					if (res.reg) {
+						dispatch(handleRefreshWebRedux(res.reg.userData.idUser));
+					}
+				} else {
+					// dispatch(handleRefreshWebRedux(res.reg.userData.idUser));
+					navigate("/login");
+				}
+			}
+		}
+		fetchData();
+	}, []);
 
 	return (
 		<div className="App" theme={currentTheme}>
 			{/* <Navbar /> */}
+		
+				<Routes>
+					{publicRoutes.map((route, index) => {
+						const Page = route.component;
 
-			<Routes>
-				{publicRoutes.map((route, index) => {
-					const Page = route.component;
+						let Layout = DefaultLayout;
+						if (route.layout) {
+							Layout = route.layout;
+						} else if (route.layout === null) {
+							Layout = Fragment;
+						}
 
-					let Layout = DefaultLayout;
-					if (route.layout) {
-						Layout = route.layout;
-					} else if (route.layout === null) {
-						Layout = Fragment;
-					}
-
-					return (
-						<Route
-							key={index}
-							path={route.path}
-							element={
-								// <ErrorBoundary>
-								<Layout>
-									<Page />
-								</Layout>
-								/* </ErrorBoundary> */
-							}
-						/>
-					);
-				})}
-				{privateRoutes.map((route, index) => {
-					const Page = route.component;
-					let Layout = DefaultLayout;
-					if (route.layout) {
-						Layout = route.layout;
-					} else if (route.layout === null) {
-						Layout = Fragment;
-					}
-					return (
-						<Route
-							key={index}
-							path={route.path}
-							element={
-								<PrivateRoute>
+						return (
+							<Route
+								key={index}
+								path={route.path}
+								element={
+									// <ErrorBoundary>
 									<Layout>
 										<Page />
 									</Layout>
-								</PrivateRoute>
-							}
-						/>
-					);
-				})}
-				<Route path="/*" element={<Navigate to="/404" replace />} />
-			</Routes>
+									/* </ErrorBoundary> */
+								}
+							/>
+						);
+					})}
+
+					{privateRoutes.map((route, index) => {
+						const Page = route.component;
+						let Layout = DefaultLayout;
+						if (route.layout) {
+							Layout = route.layout;
+						} else if (route.layout === null) {
+							Layout = Fragment;
+						}
+
+						return (
+							<Route
+								key={index}
+								path={route.path}
+								element={
+									<PrivateRoute>
+										<Layout>
+											<Page />
+										</Layout>
+									</PrivateRoute>
+								}
+							/>
+						);
+						// }
+					})}
+					<Route path="/*" element={<Navigate to="/404" replace />} />
+				</Routes>
+			
 			{cloudShow === CLOUD_RAIN.ON && <CloudRain />}
-			<ToastContainer/>
+			<ToastContainer />
 		</div>
 	);
 }

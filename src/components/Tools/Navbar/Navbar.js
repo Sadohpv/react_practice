@@ -22,7 +22,7 @@ function NavbarCustom() {
 
 	// const user = useSelector((state) => state.user);
 	// const decoded = jwt_decode(user.token);
-	 const idUser = 4;
+	const idUser = useSelector((state) => state.user.userId);
 	// const idUser = decoded.userData.idUser;
 	
 	const dispatch = useDispatch();

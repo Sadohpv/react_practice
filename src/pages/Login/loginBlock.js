@@ -43,9 +43,9 @@ function LoginBlock({ color }) {
 	};
 	const handleLogin = async () => {
 		try {
-			console.log(email,password);
+			// console.log(email,password);
 			const res = await userService.handleLoginService(email.trim(), password);
-			console.log(res);
+			// console.log(res);
 			if (res && res.userData && res.userData.errCode === 4) {
 				handleSetMessage(res.userData.errMessage, "Missing data !");
 			} else if (res && res.userData && res.userData.errCode === 1) {
@@ -55,8 +55,8 @@ function LoginBlock({ color }) {
 			} else if (res && res.userData && res.userData.errCode === 0) {
 				dispatch(
 					handleLoginRedux(
-						res.userData.user.email,
-						res.userData.user.isAdmin,
+						res.userData.user,
+						
 						res.accessToken
 					)
 				);

@@ -44,11 +44,17 @@ function handleSearchService(keyWord) {
 		keyWordSearch : keyWord,
 	});
 }
+function handleGetAccounService() {
 
+	return axios.get(`/api/account`, {
+		
+	});
+}
 export default {
 	handleLoginService,
 	handleGetDataUserService,
 	handleRegisterService,
 	handleEditUserService,
 	handleSearchService,
+	handleGetAccounService
 };

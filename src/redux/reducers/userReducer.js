@@ -1,41 +1,37 @@
 import { USER_LOGIN, USER_REFESH } from "../actions/userAction";
-
+import { userService } from "../../services";
 const INITIAL_STATE = {
-	
-	token: sessionStorage.getItem("token") === null ? null : sessionStorage.getItem("token"),
-	
+	token: "I'm Here",
+	auth: false,
+	userId: null,
+	isLoading : true,
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
 	switch (action.type) {
 		case USER_LOGIN:
-			
-			
-			localStorage.setItem("auth", true);
-			sessionStorage.setItem("token", action.data.token);
+			// console.log(action.data.userData);
+			console.log("Login");
 			return {
 				...state,
-				data_user: {
-					
-					admin: !action.data.isAdmin,
-					auth: true,
-				},
-				token: action.data.token,
 
+				auth: true,
+				token: action.data.token,
+				userId: action.data.userData.idUser,
 			};
 		case USER_REFESH:
-			if (sessionStorage.getItem("token")) {
-				return {
-					...state,
-					data_user: {
-						
-						admin: localStorage.getItem("admin"),
-						auth: localStorage.getItem("auth"),
-					},
-				};
-			}
+			return {
+				...state,
+
+				auth: true,
+				userId: action.id,
+				isLoading : false,
+			};
 
 		default:
+			// console.log("Default");
+			// console.log(state);
+
 			return state;
 	}
 };

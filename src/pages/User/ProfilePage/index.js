@@ -14,9 +14,8 @@ const cx = classNames.bind(styles);
 function ProfilePage({ children }) {
 	// const userData = useSelector((state) => state.user.data_user);
 	;
-	const user = useSelector((state) => state.user);
-	const decoded = jwt_decode(user.token);
-	const idUser = decoded.userData.idUser;
+	const idUser = useSelector((state) => state.user.userId);
+
 	const params = useParams();
 	const [res, setRes] = useState({});
 	useEffect(() => {

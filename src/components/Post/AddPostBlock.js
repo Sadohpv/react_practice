@@ -13,13 +13,14 @@ import {
 	StickerIcon,
 } from "../../asset/icons";
 import { useEffect, useRef, useState } from "react";
-
+import { useSelector } from "react-redux";
 const cx = classNames.bind(styles);
 
 function AddPostBlock({ setAddBlock, addBlockImg, setAddBlockImg }) {
 	const [contentPost, setContentPost] = useState("");
 	const [image, setImage] = useState("");
 	const [preview, setPreview] = useState("");
+	const userId = useSelector((state)=>state.user.userId);
 	const closeAddPostBlock = () => {
 		setAddBlockImg(false);
 		setAddBlock(false);
@@ -64,16 +65,17 @@ function AddPostBlock({ setAddBlock, addBlockImg, setAddBlockImg }) {
 		setContentPost(e.target.value);
 	};
 	const handlePosting = async () => {
+		console.log("here");
 		if (contentPost === "") {
 			toast.info(<FormattedMessage id="Post_Comp.empty_content" />, {
 				position: toast.POSITION.TOP_RIGHT,
 			});
 		} else {
-			console.log(image);
-			const tokenData =
-				"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRGF0YSI6eyJlcnJDb2RlIjowLCJlcnJNZXNzYWdlIjoiT0shIE5vdCBmb3VuZCBlcnJvciIsInVzZXIiOnsiaWRVc2VyIjo0LCJlbWFpbCI6IkVtYWlsNEBnbWFpbC5jb20iLCJpc0FkbWluIjowfX0sImlhdCI6MTY4OTQ5NzIwMX0.LC42Slp5CngGBSZqrGQsCQ5xzlDZEwQQocqxHOQJjgA";
-			const res = await postService.handleAddPostService(tokenData, contentPost, image);
+			// console.log(image);
+			
+			const res = await postService.handleAddPostService(userId, contentPost, image);
 			// const
+			console.log(res);
 		}
 	};
 	return (

@@ -30,6 +30,7 @@ function FormRegister({
 	const handleSetLastName = (e) => {
 		setValue4(e.target.value);
 	};
+	const auth = useSelector((state) => state.user.auth);
 
 	return (
 		<div

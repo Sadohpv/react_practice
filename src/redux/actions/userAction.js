@@ -25,11 +25,13 @@ export const handleLoginRedux = (userData,token) => {
 	};
 };
 
-export const handleRefreshWebRedux = (id)=>{
+export const handleRefreshWebRedux = (id,reload,auth)=>{
 	return async (dispatch, getState) => {
 		dispatch({
 			type: USER_REFESH,
 			id: id,
+			reload : reload,
+			auth: auth,
 		});
 	};
 }

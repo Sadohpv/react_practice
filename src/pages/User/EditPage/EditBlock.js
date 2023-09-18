@@ -3,6 +3,7 @@ import classNames from "classnames/bind";
 import { useState } from "react";
 import { userService } from "../../../services";
 import { emitter } from "../../../utils/emitter";
+import { useSelector } from "react-redux";
 
 import { FormattedMessage } from "react-intl";
 
@@ -13,6 +14,7 @@ function EditBlock({ data, title, api, changeData, setMessage, disable }) {
 	const [edit, setEdit] = useState(false);
 
 	const [nextValue, setNextValue] = useState();
+	const userId = useSelector((state) => state.user.userId);
 
 	const handleChange = (e) => {
 		setNextValue(e.target.value);
@@ -21,9 +23,8 @@ function EditBlock({ data, title, api, changeData, setMessage, disable }) {
 		if (nextValue === undefined) {
 			setEdit(false);
 		} else {
-			const tokenData =
-				"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRGF0YSI6eyJlcnJDb2RlIjowLCJlcnJNZXNzYWdlIjoiT0shIE5vdCBmb3VuZCBlcnJvciIsInVzZXIiOnsiaWRVc2VyIjo0LCJlbWFpbCI6IkVtYWlsNEBnbWFpbC5jb20iLCJpc0FkbWluIjowfX0sImlhdCI6MTY4OTQ5NzIwMX0.LC42Slp5CngGBSZqrGQsCQ5xzlDZEwQQocqxHOQJjgA";
-			const response = await userService.handleEditUserService(api, tokenData, nextValue);
+			console.log(userId);
+			const response = await userService.handleEditUserService(api, userId, nextValue);
 			const message = response.reg.message;
 			setMessage(message);
 			changeData(nextValue);

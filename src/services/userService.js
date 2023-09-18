@@ -31,9 +31,9 @@ function handleRegisterService(
 	});
 }
 
-function handleEditUserService(attribute, tokenData, data) {
+function handleEditUserService(attribute, userId, data) {
 	return axios.put(`/api/edit/${attribute}`, {
-		tokenData: tokenData,
+		userId: userId,
 		data: data,
 	});
 }

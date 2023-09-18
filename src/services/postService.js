@@ -3,8 +3,8 @@ import FormData from "form-data";
 function handleGetPostService(idUser) {
 	return axios.get(`/post/getPost/${idUser}`, {});
 }
-const handleAddPostService = async ( tokenData , content, image) => {
-	const resContent = await axios.post("/post/addPost", { content: content,token: tokenData,image });
+const handleAddPostService = async ( userId , content, image) => {
+	const resContent = await axios.post("/post/addPost", { content: content,userId: userId,image });
 
 	return resContent;
 	

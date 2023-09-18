@@ -23,17 +23,15 @@ import {
 } from "../../asset/icons";
 import ButtonStatus from "../../components/Tools/ButtonStatus/ButtonStatus.js";
 import AddPostBlock from "../../components/Post/AddPostBlock";
-import jwt_decode from "jwt-decode";
+
 
 const cx = classNames.bind(styles);
 
 function Home() {
 	const currentTheme = useSelector((state) => state.app.theme);
-	// const user = useSelector((state) => state.user.token);
+	const idUser = useSelector((state) => state.user.userId);
 
-	// const decoded = jwt_decode(user);
-	// const idUser = decoded.userData.idUser;
-	const idUser = 4;
+	
 	const [postData, setPostData] = useState([]);
 	const [postLike, setPostLike] = useState([]);
 	const [addBlock, setAddBlock] = useState(false);

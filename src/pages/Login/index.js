@@ -50,12 +50,7 @@ function LoginComponent() {
 		}
 	};
 
-	// useEffect(() => {
-	// 	if (token) {
-	// 		navigate("/");
-	// 	}
-	// }, [token]);
-	// console.log(auth);
+	
 	if (auth) {
 		return <Navigate to="/" replace />;
 	} else {

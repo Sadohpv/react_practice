@@ -1,7 +1,7 @@
 import { USER_LOGIN, USER_REFESH } from "../actions/userAction";
 import { userService } from "../../services";
 const INITIAL_STATE = {
-	token: "I'm Here",
+	token: null,
 	auth: false,
 	userId: null,
 	isLoading : true,
@@ -23,9 +23,9 @@ const userReducer = (state = INITIAL_STATE, action) => {
 			return {
 				...state,
 
-				auth: true,
+				auth: action.auth,
 				userId: action.id,
-				isLoading : false,
+				isLoading : action.reload,
 			};
 
 		default:

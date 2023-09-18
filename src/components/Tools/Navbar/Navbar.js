@@ -13,17 +13,15 @@ import { THEMES} from "../../../utils/constant";
 import { useEffect } from "react";
 import Search from "./Search";
 import UserBar from "./UserBar";
-import jwt_decode from "jwt-decode";
+
 
 // import { handleLogoutRedux, handleRefresh } from "../../redux/actions/userAction";
 const cx = classNames.bind(styles);
 function NavbarCustom() {
 	const classes = cx("nav_item", cx("item"));
 
-	// const user = useSelector((state) => state.user);
-	// const decoded = jwt_decode(user.token);
+	
 	const idUser = useSelector((state) => state.user.userId);
-	// const idUser = decoded.userData.idUser;
 	
 	const dispatch = useDispatch();
 	const navigate = useNavigate();

@@ -21,6 +21,8 @@ function App() {
 
 	const cloudShow = useSelector((state) => state.app.cloud_rain);
 	const loading = useSelector((state) => state.user.isLoading);
+	const auth = useSelector((state) => state.user.auth);
+	console.log(auth);
 	console.log(loading);
 	const navigate = useNavigate();
 	useEffect(() => {
@@ -34,15 +36,17 @@ function App() {
 		// fetch();
 		async function fetchData() {
 			let res = await userService.handleGetAccounService();
-
+			console.log(res);
 			if (res) {
 				if (res.status !== 401) {
 					if (res.reg) {
-						dispatch(handleRefreshWebRedux(res.reg.userData.idUser));
+						// console.log("Here");
+
+						dispatch(handleRefreshWebRedux(res.reg.userData.idUser, false, true));
 					}
 				} else {
-					// dispatch(handleRefreshWebRedux(res.reg.userData.idUser));
-					navigate("/login");
+					// console.log("Here");
+					dispatch(handleRefreshWebRedux(null, false, false));
 				}
 			}
 		}
@@ -52,60 +56,60 @@ function App() {
 	return (
 		<div className="App" theme={currentTheme}>
 			{/* <Navbar /> */}
-		
-				<Routes>
-					{publicRoutes.map((route, index) => {
-						const Page = route.component;
 
-						let Layout = DefaultLayout;
-						if (route.layout) {
-							Layout = route.layout;
-						} else if (route.layout === null) {
-							Layout = Fragment;
-						}
+			<Routes>
+				{publicRoutes.map((route, index) => {
+					const Page = route.component;
 
-						return (
-							<Route
-								key={index}
-								path={route.path}
-								element={
-									// <ErrorBoundary>
+					let Layout = DefaultLayout;
+					if (route.layout) {
+						Layout = route.layout;
+					} else if (route.layout === null) {
+						Layout = Fragment;
+					}
+
+					return (
+						<Route
+							key={index}
+							path={route.path}
+							element={
+								// <ErrorBoundary>
+								<Layout>
+									<Page />
+								</Layout>
+								/* </ErrorBoundary> */
+							}
+						/>
+					);
+				})}
+
+				{privateRoutes.map((route, index) => {
+					const Page = route.component;
+					let Layout = DefaultLayout;
+					if (route.layout) {
+						Layout = route.layout;
+					} else if (route.layout === null) {
+						Layout = Fragment;
+					}
+
+					return (
+						<Route
+							key={index}
+							path={route.path}
+							element={
+								<PrivateRoute>
 									<Layout>
 										<Page />
 									</Layout>
-									/* </ErrorBoundary> */
-								}
-							/>
-						);
-					})}
+								</PrivateRoute>
+							}
+						/>
+					);
+					// }
+				})}
+				<Route path="/*" element={<Navigate to="/404" replace />} />
+			</Routes>
 
-					{privateRoutes.map((route, index) => {
-						const Page = route.component;
-						let Layout = DefaultLayout;
-						if (route.layout) {
-							Layout = route.layout;
-						} else if (route.layout === null) {
-							Layout = Fragment;
-						}
-
-						return (
-							<Route
-								key={index}
-								path={route.path}
-								element={
-									<PrivateRoute>
-										<Layout>
-											<Page />
-										</Layout>
-									</PrivateRoute>
-								}
-							/>
-						);
-						// }
-					})}
-					<Route path="/*" element={<Navigate to="/404" replace />} />
-				</Routes>
-			
 			{cloudShow === CLOUD_RAIN.ON && <CloudRain />}
 			<ToastContainer />
 		</div>

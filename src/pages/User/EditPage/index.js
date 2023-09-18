@@ -14,14 +14,13 @@ import jwt_decode from "jwt-decode";
 const cx = classNames.bind(styles);
 
 function EditPage() {
-	const token = useSelector((state) => state.user.token);
-	const decoded = jwt_decode(token);
-	const idUser = decoded.userData.idUser;
+	const userId = useSelector((state) => state.user.userId);
+	
 	const [res, setRes] = useState({});
 	
 	useEffect(() => {
 		async function fetchData() {
-			const response = await userService.handleGetDataUserService(idUser);
+			const response = await userService.handleGetDataUserService(userId);
 			setRes(response.reg);
 			setEmail(response.reg.email);
 			setFirstName(response.reg.firstName);

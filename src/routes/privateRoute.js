@@ -7,7 +7,7 @@ import AtomicSpinner from "atomic-spinner";
 function PrivateRoute({ children }) {
 	const auth = useSelector((state) => state.user.auth);
 	const loading = useSelector((state) => state.user.isLoading);
-	console.log(auth);
+	// console.log(auth);
 	return (
 		<>
 			{loading === true ? (

@@ -46,7 +46,11 @@ function handleSearchService(keyWord) {
 }
 function handleGetAccounService() {
 
-	return axios.get(`/api/account`, {
+	return axios.get(`/api/account`);
+}
+function handleGetAllFriendService(id) {
+
+	return axios.get(`/api/friend/getFriend/${id}`, {
 		
 	});
 }
@@ -56,5 +60,6 @@ export default {
 	handleRegisterService,
 	handleEditUserService,
 	handleSearchService,
-	handleGetAccounService
+	handleGetAccounService,
+	handleGetAllFriendService
 };

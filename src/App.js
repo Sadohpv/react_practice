@@ -22,8 +22,8 @@ function App() {
 	const cloudShow = useSelector((state) => state.app.cloud_rain);
 	const loading = useSelector((state) => state.user.isLoading);
 	const auth = useSelector((state) => state.user.auth);
-	console.log(auth);
-	console.log(loading);
+	// console.log(auth);
+	// console.log(loading);
 	const navigate = useNavigate();
 	useEffect(() => {
 		// async function fetch() {
@@ -36,7 +36,7 @@ function App() {
 		// fetch();
 		async function fetchData() {
 			let res = await userService.handleGetAccounService();
-			console.log(res);
+			// console.log(res);
 			if (res) {
 				if (res.status !== 401) {
 					if (res.reg) {

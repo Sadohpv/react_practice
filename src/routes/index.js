@@ -72,6 +72,11 @@ const privateRoutes = [
         component: ElectricSpider,
         layout: DefaultLayout,
     },
+    // {
+    //     path : config.routes.friend,
+    //     component: 
+    //     layout : DefaultLayout
+    // },
 
 ];
 

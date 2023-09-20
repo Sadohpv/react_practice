@@ -23,11 +23,13 @@ function EditBlock({ data, title, api, changeData, setMessage, disable }) {
 		if (nextValue === undefined) {
 			setEdit(false);
 		} else {
-			console.log(userId);
+			// console.log(userId);
 			const response = await userService.handleEditUserService(api, userId, nextValue);
-			const message = response.reg.message;
-			setMessage(message);
-			changeData(nextValue);
+			if (response) {
+				const message = response.reg.message;
+				setMessage(message);
+				changeData(nextValue);
+			}
 			setEdit(false);
 		}
 	};

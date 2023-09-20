@@ -56,7 +56,7 @@ function LoginBlock({ color }) {
 				dispatch(
 					handleLoginRedux(
 						res.userData.user,
-						
+
 						res.accessToken
 					)
 				);
@@ -68,15 +68,26 @@ function LoginBlock({ color }) {
 		}
 	};
 	const handleInputEmail = (e) => {
-		setEmail(e.target.value);
+		if (e.keyCode === 13) {
+			handleLogin();
+		} else if (e.keyCode === 32) {
+			e.preventDefault();
+		} else {
+			setEmail(e.target.value);
+		}
 	};
 	const handleInputPassword = (e) => {
-		setPassword(e.target.value);
+		if (e.keyCode === 13) {
+			handleLogin();
+		} else if (e.keyCode === 32) {
+			e.preventDefault();
+		} else {
+			setPassword(e.target.value);
+		}
 	};
-	const [passHolder,setPassHolder] = useState(
-		<FormattedMessage id="Login_Page.email" />
-); 
-		
+
+	// const [passHolder, setPassHolder] = useState(<FormattedMessage id="Login_Page.email" />);
+
 	return (
 		<div
 			className={cx("block")}
@@ -96,6 +107,7 @@ function LoginBlock({ color }) {
 					className={cx("email_input")}
 					placeholder="Email"
 					onChange={(e) => handleInputEmail(e)}
+					onKeyDown={(e) => handleInputEmail(e)}
 				/>
 				<span>
 					<FormattedMessage id="Login_Page.password" />
@@ -105,6 +117,7 @@ function LoginBlock({ color }) {
 					className={cx("pass_input")}
 					placeholder="Password"
 					onChange={(e) => handleInputPassword(e)}
+					onKeyDown={(e) => handleInputPassword(e)}
 				/>
 				<div className={cx("message")} style={{ color: `${color}` }}>
 					{message}

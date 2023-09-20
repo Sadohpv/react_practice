@@ -27,6 +27,8 @@ function AddPostBlock({ setAddBlock, addBlockImg, setAddBlockImg }) {
 	};
 	const clearInputImg = () => {
 		setImage("");
+		setAddBlockImg(false);
+		setPreview("");
 	};
 	const openInputImg = () => {
 		setAddBlockImg(!addBlockImg);
@@ -75,7 +77,16 @@ function AddPostBlock({ setAddBlock, addBlockImg, setAddBlockImg }) {
 			
 			const res = await postService.handleAddPostService(userId, contentPost, image);
 			// const
-			console.log(res);
+			if(res && res.errCode === 0){
+				toast.success(<FormattedMessage id="Post_Comp.add_success" />, {
+					position: toast.POSITION.TOP_RIGHT,
+				});
+				closeAddPostBlock();
+			}else{
+				toast.danger(<FormattedMessage id="Post_Comp.add_fail" />, {
+					position: toast.POSITION.TOP_RIGHT,
+				});
+			}
 		}
 	};
 	return (

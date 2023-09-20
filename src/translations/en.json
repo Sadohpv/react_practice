@@ -48,8 +48,8 @@
         "friends": "Friends",
         "photos" : "Photos",
         "introduction": "Introduction",
-        "lives-in": "Lives in",
-        "from": "From",
+        "lives-in": "Lives in ",
+        "from": "From ",
         "edit-details": "Edit details",
         "add-hobbies": "Add hobbies",
         "add-featured": "Add featured"
@@ -72,7 +72,9 @@
         "add_title": "Add post",
         "insert_something" : "Add something fun in your post ?",
         "posting" : "Posting",
-        "empty_content" : "Not allow empty content !"
+        "empty_content" : "Not allow empty content !",
+        "add_success" : "Posting success !",
+        "add_fail" : "Posting fail !"
     },
     "Status_Comp":{
         "image" : "Image",

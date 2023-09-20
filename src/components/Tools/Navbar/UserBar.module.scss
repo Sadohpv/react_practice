@@ -3,3 +3,10 @@
     height: 100%;
     background-color: red;
 }
+
+@media (max-width: 960px) {
+	.wrapper{
+        width: 15vw !important;
+		min-width: 125px !important;
+    }
+}

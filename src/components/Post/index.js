@@ -12,19 +12,26 @@ function Post({ data,idUser }) {
 	// console.log(data);
 	const [liked,setLiked] = useState(data.userLiked);
 	// const [icon,setIcon] = useState({});
+	const [likeCount,setLikeCount] = useState(data.likeCount);
 	const handleToggleLike = async()=>{
 		if(liked === true){
 			const res = await postService.handleLikedPostService(false,data.idPost,idUser);
 			// alert("UnLike")	
+			setLikeCount(likeCount-1);
+			
 		}
 		if(liked === false){
 			const res = await postService.handleLikedPostService(true,data.idPost,idUser);
 			// alert("Like")
+			setLikeCount(likeCount+1);
 		}
 		setLiked(!liked);
 
 	}
 	// fecth all like and check one vs one in home
+
+
+
 	return (
 		<div className={cx("wrapper")}>
 			<div className={cx("post_header")}>
@@ -67,7 +74,7 @@ function Post({ data,idUser }) {
 			<div className={cx("post_footer")}>
 				<div className={cx("footer_infor")}>
 					<div className={cx("infor_reaction")}>
-						<span className={cx("text")}>{data.likeCount}</span>
+						<span className={cx("text")}>{likeCount}</span>
 					</div>
 					<div className={cx("infor_action")}>
 						<div className={cx("comment")}>

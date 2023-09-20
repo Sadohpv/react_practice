@@ -47,8 +47,8 @@
         "friends": "Bạn bè",
         "photos" : "Ảnh",
         "introduction": "Giới thiệu",
-        "lives-in": "Sống tại",
-        "from": "Đến từ",
+        "lives-in": "Sống tại ",
+        "from": "Đến từ ",
         "edit-details": "Chi tiết",
         "add-hobbies": "Sở thích",
         "add-featured": "Nổi bật"
@@ -71,7 +71,10 @@
         "add_title": "Tạo bài viết",
         "insert_something" : "Thềm gì đó vào bài viết của bạn ?",
         "posting" : "Đăng bài",
-        "empty_content" : "Nội dung bài đăng không được để trống !"
+        "empty_content" : "Nội dung bài đăng không được để trống !",
+        "add_success" : "Đăng bài thành công !",
+        "add_fail" : "Đăng bài thất bại !"
+
     },
     "Status_Comp":{
         "image" : "Ảnh",

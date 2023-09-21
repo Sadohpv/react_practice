@@ -1,0 +1,59 @@
+.wrapper {
+	height: 100%;
+	width: 100%;
+	// background-color: red;
+	display: flex;
+	justify-content: center;
+    padding: 40px 0 20px 0;
+	.main {
+
+		// width: 80%;
+	    width: 940px;
+		background-color: white;
+		height: 100%;
+        border-radius: 12px;
+        height: 100%;
+        display:flex;
+        justify-content: space-between;
+        padding: 20px;
+        flex-wrap: wrap;
+        .friend_block{
+            width: 260px;
+            height: 120px;
+            margin-right: 30px;
+            margin-bottom: 40px;
+		    background-color: white;
+            border-radius: 12px;
+            display:flex;
+            flex-direction: column;
+            .friend_infor{
+                height: 60%;
+                width: 100%;
+
+                background-color: red;
+                display: flex;
+                .friend_avatar{
+                    height: 100%;
+                    width: 30%;
+                    background-color: aquamarine;
+                }
+            }
+            .friend_action{
+                height: 40%;
+                width: 100%;
+                background-color: green;
+
+            }
+        }
+	}
+}
+
+.dark {
+	.main {
+		background-color: var(--background-color-dark) !important;
+        .friend_block{
+		    background-color: var(--background-color-grey) !important;
+
+        }
+    }
+}

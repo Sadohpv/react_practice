@@ -3,7 +3,7 @@ const routesConfig = {
     home: '/',
     login: '/login',
     register: '/register',
-    friend : '/friend',
+    friend : '/:idUser/friend',
     notFound: '/404',
     user: '/:idUser',
     edit: '/:idUser/detail',

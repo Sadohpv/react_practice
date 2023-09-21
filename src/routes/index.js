@@ -18,6 +18,8 @@ import DefaultLayout from '../components/Layout/DefaultLayout';
 import UserSettingPageLayout from '../components/Layout/UserSettingPageLayout';
 import HomeLayout from '../components/Layout/HomeLayout';
 import ElectricSpider from '../pages/Games/ElectricSpider';
+import ProfileLayout from '../components/Layout/ProfileLayout';
+import FriendPage from '../pages/Friend';
 //Public Route
 const publicRoutes = [
     
@@ -50,7 +52,7 @@ const privateRoutes = [
     {
         path: config.routes.user,
         component: ProfilePage,
-        layout: DefaultLayout,
+        layout: ProfileLayout,
     },
     {
         path: config.routes.edit,
@@ -72,11 +74,11 @@ const privateRoutes = [
         component: ElectricSpider,
         layout: DefaultLayout,
     },
-    // {
-    //     path : config.routes.friend,
-    //     component: 
-    //     layout : DefaultLayout
-    // },
+    {
+        path : config.routes.friend,
+        component: FriendPage,
+        layout : ProfileLayout
+    },
 
 ];
 

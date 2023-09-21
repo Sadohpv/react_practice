@@ -1,7 +1,7 @@
 import styles from "./DefaultLayout.module.scss";
 import classNames from "classnames/bind";
 import NavbarCustom from "../../Tools/Navbar/Navbar";
-import CloudRain from "../../Temp/CloudRain";
+
 const cx = classNames.bind(styles);
 
 function DefaultLayout({ children }) {

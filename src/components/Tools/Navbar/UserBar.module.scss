@@ -1,9 +1,15 @@
 .wrapper{
     width: 320px;
     height: 100%;
-    background-color: red;
+    background-color: transparent;
+    display: flex;
+    padding-right: 10px;
+    justify-content: flex-end;
+    align-items: center;
 }
-
+.dark {
+	background-color: var(--background-color-dark);
+}
 @media (max-width: 960px) {
 	.wrapper{
         width: 15vw !important;

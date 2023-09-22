@@ -82,5 +82,10 @@
         "sticker" : "Nhãn dán",
         "question" : "Bạn đang nghĩ gì thế ?"
 
+    },
+    "Friend_Page":{
+        "unfriend" : "Huỷ kết bạn",
+        "follow" : "Theo dõi",
+        "unfollow" : "Huỷ theo dõi"
     }
 }

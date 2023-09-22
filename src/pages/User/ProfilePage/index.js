@@ -38,90 +38,9 @@ function ProfilePage({ children }) {
 		}
 		fetchData();
 	}, []);
-	// const currentTheme = useSelector((state) => state.app.theme);
-	// console.log(friend);
+	
 	return (
-		// <div className={cx("all", currentTheme === THEMES.DARK && THEMES.DARK)}>
-		// 	<div className={cx("banner")}>
-		// 		<div className={cx("cover")}>
-		// 			<div className={cx("cover_img")}>
-		// 				<img src="https://wallpaperaccess.com/full/4495015.jpg" alt="Cover" />
-		// 			</div>
-		// 		</div>
-		// 		<div className={cx("profile_header")}>
-		// 			<div className={cx("profile_cover")}>
-		// 				<div className={cx("profile_image")}>
-		// 					{(res !== {} && res.reg && res.reg.avatar && (
-		// 						<img src={res.reg.avatar} alt="Image" />
-		// 					)) || (
-		// 						<img
-		// 							src="https://wallpaperaccess.com/full/4495015.jpg"
-		// 							alt="Avatar_User"
-		// 						/>
-		// 					)}
-		// 				</div>
-		// 				<div className={cx("profile_details")}>
-		// 					<div className={cx("profile_name")}>
-		// 						{(res !== {} && res.reg && res.reg.userName && (
-		// 							<p>{res.reg.userName}</p>
-		// 						)) || <p>Trần Minh Nhật Hoàng</p>}
-		// 					</div>
-		// 					<div className={cx("profile_friend")}>
-		// 						<p className={cx("profile_friend-num")}>{friend.length} friends</p>
-		// 						<div className={cx("profile_friend-cover")}>
-		// 							{friend.length > 0 && 
-		// 								friend.slice(0, 2).map((bro,index) => (
-											
-		// 									<FriendBlock key={Math.random()} data={bro} index={index} />
-		// 								))}
-										
-
-		// 							{/* <div className={cx("friend_avatar")}>
-		// 								<img
-		// 									src="https://img.thuthuatphanmem.vn/uploads/2018/10/20/galaxy-desktop-wallpaper_104250290.jpg"
-		// 									alt="avatar_friend"
-		// 								/>
-		// 							</div> */}
-		// 						</div>
-		// 					</div>
-		// 				</div>
-		// 				<div className={cx("profile_action")}>
-		// 					<div className={cx("action", "add")}>
-		// 						<div className={cx("action_icon")}>
-		// 							<PlusIcon />
-		// 						</div>
-		// 						<div className={cx("action_title")}>
-		// 							<FormattedMessage id="Profile_Page.add-story" />
-		// 						</div>
-		// 					</div>
-		// 					<div className={cx("action")}>
-		// 						<div className={cx("action_icon")}>
-		// 							<EditInfor />
-		// 						</div>
-		// 						<div className={cx("action_title")}>
-		// 							<FormattedMessage id="Profile_Page.edit-profile-pic" />
-		// 						</div>
-		// 					</div>
-		// 				</div>
-		// 			</div>
-		// 		</div>
-		// 		<div className={cx("content_bar")}>
-		// 			<div className={cx("bar_cover")}>
-		// 				<div className={cx("bar_item", "bar_item-active")}>
-		// 					<FormattedMessage id="Profile_Page.about" />
-		// 				</div>
-		// 				<div className={cx("bar_item")}>
-		// 					<FormattedMessage id="Profile_Page.post" />
-		// 				</div>
-		// 				<div className={cx("bar_item")}>
-		// 					<FormattedMessage id="Profile_Page.friends" />
-		// 				</div>
-		// 				<div className={cx("bar_item")}>
-		// 					<FormattedMessage id="Profile_Page.photos" />
-		// 				</div>
-		// 			</div>
-		// 		</div>
-		// 	</div>
+	
 			<div className={cx("body")}>
 				<div className={cx("container")}>
 					<div className={cx("right_block")}>

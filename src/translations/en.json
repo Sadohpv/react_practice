@@ -81,6 +81,11 @@
         "video" : "Video",
         "sticker" : "Sticker",
         "question" : "What are you thinking ?"
+    },
+    "Friend_Page":{
+        "unfriend" : "Unfriend",
+        "follow" : "Follow",
+        "unfollow" : "Unfollow"
     }
     
 }

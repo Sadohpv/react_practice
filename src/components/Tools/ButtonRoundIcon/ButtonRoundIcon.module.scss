@@ -23,3 +23,18 @@
     position: absolute;
     right: 16px;
 }
+
+.button_logout{
+    background-color: #ffffff;
+    &:hover{
+        background-color: rgb(238, 238, 238) !important;
+        cursor: pointer;
+        svg{
+            fill : rgb(68, 68, 68) !important;
+        }
+    }
+    .box{
+        box-shadow: 0.5px 0.25px 2px #686868;
+        border-radius: 50%;
+    }
+}

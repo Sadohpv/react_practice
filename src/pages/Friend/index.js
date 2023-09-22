@@ -6,6 +6,8 @@ import classNames from "classnames/bind";
 import { THEMES } from "../../utils/constant";
 
 import { useSelector } from "react-redux";
+// import Avartar from "../../components/Avatar/Avatar";
+import FriendElement from "./FriendElement";
 
 const cx = classNames.bind(styles);
 
@@ -21,18 +23,12 @@ function FriendPage({ children }) {
 	return (
 		<div className={cx("wrapper", currentTheme === THEMES.DARK && THEMES.DARK)}>
 			<div className={cx("main")}>
-				<div className={cx("friend_block")}>
-					<div className={cx("friend_infor")}>
-						<div className={cx("friend_avatar")}></div>
-						<div className={cx("friend_title")}></div>
+					<FriendElement />
+					<FriendElement />
+					<FriendElement />
+					<FriendElement />
+					<FriendElement />
 
-					</div>
-
-					<div className={cx("friend_action")}></div>
-				</div>
-				<div className={cx("friend_block")}></div>
-				<div className={cx("friend_block")}></div>
-				<div className={cx("friend_block")}></div>
 			</div>
 		</div>
 	);

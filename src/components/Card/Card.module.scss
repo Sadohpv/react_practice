@@ -6,6 +6,8 @@
 	border-radius: 12px;
 	background-color: transparent;
 	overflow: hidden;
+    display: flex;
+    align-items: center;
 	&:hover {
 		background-color: var(--background-light-hover);
 	}

@@ -85,7 +85,8 @@
     "Friend_Page":{
         "unfriend" : "Unfriend",
         "follow" : "Follow",
-        "unfollow" : "Unfollow"
+        "unfollow" : "Unfollow",
+        "mutual_friend" : "Mutual friends"
     }
     
 }

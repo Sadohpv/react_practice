@@ -86,6 +86,7 @@
     "Friend_Page":{
         "unfriend" : "Huỷ kết bạn",
         "follow" : "Theo dõi",
-        "unfollow" : "Huỷ theo dõi"
+        "unfollow" : "Huỷ theo dõi",
+        "mutual_friend" : "Bạn chung"
     }
 }

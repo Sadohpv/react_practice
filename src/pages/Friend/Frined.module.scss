@@ -20,7 +20,8 @@
         .friend_block{
             width: 260px;
             height: 120px;
-            margin-right: 40px;
+            margin-right: 20px;
+            margin-left: 20px;
             margin-bottom: 40px;
 		    background-color: white;
             border-radius: 12px;
@@ -84,6 +85,8 @@
                     .action_text{
                         font-size: 14px;
                         user-select: none;
+        // color: #000000 !important;
+
                     }
                     &:hover{
                         cursor: pointer;
@@ -103,5 +106,21 @@
 	// 	    // background-color: var(--background-color-grey) !important;
 
     //     }
+    }
+}
+a{
+    color: #000000 !important;
+
+}
+
+@media (max-width: 960px){
+    .main{
+        width: 80% !important;
+        justify-content: space-between !important;
+        .friend_block{
+            margin-right: 0 !important;
+            margin-left: 0 !important;
+
+        }
     }
 }

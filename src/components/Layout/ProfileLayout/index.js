@@ -82,11 +82,11 @@ function ProfileLayout({ children }) {
 											<div className={cx("profile_friend-cover")}>
 												{friend.length > 0 &&
 													friend
-														.slice(0, 2)
+														
 														.map((bro, index) => (
 															<FriendBlock
 																key={Math.random()}
-																data={bro}
+																data={bro.User}
 																index={index}
                                                                 idFriend = {idFriend.idUser}
 															/>

@@ -3,14 +3,14 @@ import styles from "./ProfileLayout.module.scss";
 import classNames from "classnames/bind";
 const cx = classNames.bind(styles);
 
-function FriendBlock({ data, index,idFriend }) {
-	const friend = data.User;
+function FriendBlock({ data, index,idFriend, }) {
 	
-	const [href, setHref] = useState(index === 0 ? `/${idFriend}/friend` : `/${friend.idUser}`);
+	
+	const [href, setHref] = useState(index === 0 ? `/${idFriend}/friend` : `/${data.idUser}`);
 	
 	return (
 		<a href={href} className={cx("friend_avatar")}>
-			<img src={friend.avatar} alt="avatar_friend" />
+			<img src={data.avatar} alt="avatar_friend" />
 		</a>
 	);
 }

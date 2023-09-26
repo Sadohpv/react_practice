@@ -18,7 +18,7 @@
 
 	--icon-color: #65676b;
 	--icon-color-dark: #95979d;
-	--text-color: #737579;
+	--text-color: #333333;
 }
 
 html {
@@ -94,3 +94,9 @@ a[href] {
 .tippy-box {
 	background-color: #535353;
 }
+
+.tippy-box[data-theme~='customTheme'] {
+	background-color: white;
+	color: black;
+	box-shadow: 0.5px 0.5px 1.5px black;
+  }

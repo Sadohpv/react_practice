@@ -22,6 +22,7 @@ function ProfileLayout({ children }) {
 	// const params = useParams();
 	const [res, setRes] = useState({});
 	const [friend, setFriend] = useState({});
+	const [numFriend,setNumFriend] = useState(0);
     const idFriend = useParams();
 	// console.log(idFriend.idUser);
     useEffect(() => {
@@ -30,6 +31,8 @@ function ProfileLayout({ children }) {
 			setRes(response);
 			const resFriend = await userService.handleGetAllFriendService(idFriend.idUser);
 			if (resFriend && resFriend.EC === 0) {
+				setNumFriend(resFriend.reg.length);
+
 				if (resFriend.reg.length > 5) {
 					setFriend(resFriend.reg.slice(0, 4));
 				} else {
@@ -40,6 +43,7 @@ function ProfileLayout({ children }) {
 		}
 		fetchData();
 	}, []);
+	// console.log(friend);
 	const currentTheme = useSelector((state) => state.app.theme);
 	return (
 		<div className={cx("wrapper")}>
@@ -77,7 +81,7 @@ function ProfileLayout({ children }) {
 										</div>
 										<div className={cx("profile_friend")}>
 											<p className={cx("profile_friend-num")}>
-												{friend.length} friends
+												{numFriend} friends
 											</p>
 											<div className={cx("profile_friend-cover")}>
 												{friend.length > 0 &&
@@ -86,7 +90,7 @@ function ProfileLayout({ children }) {
 														.map((bro, index) => (
 															<FriendBlock
 																key={Math.random()}
-																data={bro.User}
+																data={bro}
 																index={index}
                                                                 idFriend = {idFriend.idUser}
 															/>

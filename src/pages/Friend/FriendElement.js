@@ -6,16 +6,29 @@ import { FormattedMessage } from "react-intl";
 import { useState, useEffect } from "react";
 import TippyCustom from "../../components/Tippy";
 import FriendElementHover from "./FriendElementHover";
+import { friendService } from "../../services";
+
 const cx = classNames.bind(styles);
 
 function FriendElement({ data, index, idFriend }) {
 	const [toggleFollow, setToggleFollow] = useState(true);
-	const friend = data.User;
+	const [mutual,setMutual] = useState([]);
+	const friend = data;
 	const handleToggleFollow = () => {
 		setToggleFollow(!toggleFollow);
 	};
+	// console.log(data);
+	useEffect(() => {
+		async function fetchData() {
+			const resFriend = await friendService.handleGetMutualFriendService(friend.idUser,+idFriend);
+			// console.log(idFriend);
+			
+			setMutual(resFriend.reg);
+		}
+		fetchData();
+	}, []);
 	return (
-		<TippyCustom content={<FriendElementHover data={friend}/>} place={"top-start"} offSet={[-50,10]}>
+		<TippyCustom content={<FriendElementHover data={friend} mutual={mutual} />} place={"top-start"} offSet={[-50,10]}>
 			<div className={cx("friend_block")}>
 				<a href={`/${friend.idUser}`} className={cx("friend_infor")}>
 					<div className={cx("friend_avatar")}>

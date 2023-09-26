@@ -1,4 +1,4 @@
-import { LocationIcon } from "../../asset/icons";
+import { GroupIcon, LocationIcon } from "../../asset/icons";
 import Avartar from "../../components/Avatar/Avatar";
 import FriendBlock from "../../components/Layout/ProfileLayout/FriendBlock";
 import styles from "./FriendElementHover.module.scss";
@@ -7,12 +7,13 @@ import { FormattedMessage } from "react-intl";
 
 const cx = classNames.bind(styles);
 
-function FriendElementHover({ data }) {
+function FriendElementHover({ data ,mutual}) {
 	// console.log(data);
+
 	return (
 		<div className={cx("wrapper")}>
 			<div className={cx("review_avatar")}>
-				<Avartar src={data.avatar} borderCustom={"review_avatar"} />
+				<Avartar src={data.avatar} borderCustom={"reivew_avatar"} width={'80px'} height={'80px'}/>
 			</div>
 			<div className={cx("review_infor")}>
 				{/* <div className={cx("infor")}>
@@ -31,9 +32,9 @@ function FriendElementHover({ data }) {
 					<span>{data.address}</span>
 				</div>
 				<div className={cx("infor")}>
-					<span>21</span>
+					<span><GroupIcon width="16px" height="16px" /></span>
 					<span>
-						<FormattedMessage id="Friend_Page.mutual_friend" />
+						{mutual.length} <FormattedMessage id="Friend_Page.mutual_friend" />
 					</span>
 				</div>
 				<div className={cx("friend_mutual")}>

@@ -26,9 +26,11 @@ function FriendPage({ children }) {
 				setFriend(resFriend.reg);
 			}
 		}
+		
 		fetchData();
-	}, []);
 
+	}, []);
+	// console.log(friend);
 	return (
 		<div className={cx("wrapper", currentTheme === THEMES.DARK && THEMES.DARK)}>
 			<div className={cx("main")}>

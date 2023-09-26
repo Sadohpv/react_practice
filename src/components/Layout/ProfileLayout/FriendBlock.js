@@ -5,7 +5,7 @@ const cx = classNames.bind(styles);
 
 function FriendBlock({ data, index,idFriend, }) {
 	
-	
+	// console.log(data);
 	const [href, setHref] = useState(index === 0 ? `/${idFriend}/friend` : `/${data.idUser}`);
 	
 	return (

@@ -41,6 +41,7 @@ function FriendPage({ children }) {
 							data={bro}
 							index={index}
 							idFriend={idFriend.idUser}
+							
 						/>
 					))}
 				

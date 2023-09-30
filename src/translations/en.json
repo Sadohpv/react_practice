@@ -86,7 +86,9 @@
         "unfriend" : "Unfriend",
         "follow" : "Follow",
         "unfollow" : "Unfollow",
-        "mutual_friend" : "Mutual friends"
+        "mutual_friend" : "Mutual friends",
+        "add_friend" : "Add friend",
+        "cancel_add_friend": "Cancel request"
     }
     
 }

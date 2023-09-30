@@ -87,6 +87,8 @@
         "unfriend" : "Huỷ kết bạn",
         "follow" : "Theo dõi",
         "unfollow" : "Huỷ theo dõi",
-        "mutual_friend" : "Bạn chung"
+        "mutual_friend" : "Bạn chung",
+        "add_friend" : "Thêm bạn",
+        "cancel_add_friend": "Huỷ lời mời"
     }
 }

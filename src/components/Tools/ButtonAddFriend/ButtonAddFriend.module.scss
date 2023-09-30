@@ -1,0 +1,31 @@
+.action_button{
+    width: 45%;
+    height: 100%;
+    background-color: var(--primary-color);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 0px 0;
+    .action_icon{
+        height: 20px;
+        
+        margin-right: 8px;
+    }
+    .action_text{
+        font-size: 14px;
+        user-select: none;
+
+
+    }
+    &:hover{
+        cursor: pointer;
+        user-select: none;
+
+    }
+}
+.cancel_button{
+    width: 50%;
+    background-color: var(--background-light-hover);
+
+}

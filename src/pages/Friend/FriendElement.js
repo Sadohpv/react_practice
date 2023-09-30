@@ -1,18 +1,23 @@
 import styles from "./Frined.module.scss";
 import classNames from "classnames/bind";
 import Avartar from "../../components/Avatar/Avatar";
-import { UnfriendIcon, UnFollowIcon, FollowIcon } from "../../asset/icons";
+import { UnfriendIcon, UnFollowIcon, FollowIcon, AddFriendIcon } from "../../asset/icons";
 import { FormattedMessage } from "react-intl";
 import { useState, useEffect } from "react";
 import TippyCustom from "../../components/Tippy";
 import FriendElementHover from "./FriendElementHover";
 import { friendService } from "../../services";
+import { useSelector } from "react-redux";
+import ButtonAddFriend from "../../components/Tools/ButtonAddFriend";
 
 const cx = classNames.bind(styles);
 
 function FriendElement({ data, index, idFriend }) {
+	const idUser = useSelector((state) => state.user.userId);
+
 	const [toggleFollow, setToggleFollow] = useState(true);
-	const [mutual,setMutual] = useState([]);
+	const [unfriendButton, setUnfriendButton] = useState(true);
+	const [mutual, setMutual] = useState([]);
 	const friend = data;
 	const handleToggleFollow = () => {
 		setToggleFollow(!toggleFollow);
@@ -20,15 +25,33 @@ function FriendElement({ data, index, idFriend }) {
 	// console.log(data);
 	useEffect(() => {
 		async function fetchData() {
-			const resFriend = await friendService.handleGetMutualFriendService(friend.idUser,+idFriend);
+			// const resFriend = await friendService.handleGetMutualFriendService(friend.idUser,+idFriend);
+			const resFriend = await friendService.handleGetMutualFriendService(
+				friend.idUser,
+				idUser
+			);
+
 			// console.log(idFriend);
-			
+
 			setMutual(resFriend.reg);
 		}
 		fetchData();
 	}, []);
+	const handleUnfriend = async () => {
+		console.log("Unfriend");
+		const res = await friendService.handleUnfriendService(friend.idUser, idUser);
+		if (res) {
+			console.log("Unfriend Success");
+			console.log(res);
+		}
+		setUnfriendButton(false);
+	};
 	return (
-		<TippyCustom content={<FriendElementHover data={friend} mutual={mutual} />} place={"top-start"} offSet={[-50,10]}>
+		<TippyCustom
+			content={<FriendElementHover data={friend} mutual={mutual} />}
+			place={"top-start"}
+			offSet={[-50, 10]}
+		>
 			<div className={cx("friend_block")}>
 				<a href={`/${friend.idUser}`} className={cx("friend_infor")}>
 					<div className={cx("friend_avatar")}>
@@ -62,14 +85,20 @@ function FriendElement({ data, index, idFriend }) {
 							)}
 						</span>
 					</div>
-					<div className={cx("action_button")}>
-						<span className={cx("action_icon")}>
-							<UnfriendIcon height="16px" width="16px" />
-						</span>
-						<span className={cx("action_text")}>
-							<FormattedMessage id="Friend_Page.unfriend" />
-						</span>
-					</div>
+
+					{unfriendButton ? (
+						<div className={cx("action_button")} onClick={handleUnfriend}>
+							<span className={cx("action_icon")}>
+								<UnfriendIcon height="16px" width="16px" />
+							</span>
+							<span className={cx("action_text")}>
+								<FormattedMessage id="Friend_Page.unfriend" />
+							</span>
+						</div>
+					) : (
+						
+						<ButtonAddFriend idAsked={friend.idUser}/>
+					)}
 				</div>
 			</div>
 		</TippyCustom>

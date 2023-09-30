@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { userService } from "../../../services";
 import { Link } from "react-router-dom";
-// import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import styles from "./Profile.module.scss";
 import classNames from "classnames/bind";
 import { HomeIcon, LocationIcon} from "../../../asset/icons";
@@ -19,9 +19,11 @@ function ProfilePage({ children }) {
 	// const params = useParams();
 	const [res, setRes] = useState({});
 	const [friend, setFriend] = useState({});
+    const idFriend = useParams();
+	
 	useEffect(() => {
 		async function fetchData() {
-			const response = await userService.handleGetDataUserService(idUser);
+			const response = await userService.handleGetDataUserService(idFriend.idUser);
 			setRes(response);
 			// const resFriend = await userService.handleGetAllFriendService(idUser);
 			// if (resFriend && resFriend.EC === 0) {

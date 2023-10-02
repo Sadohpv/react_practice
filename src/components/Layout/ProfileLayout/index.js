@@ -22,10 +22,10 @@ function ProfileLayout({ children }) {
 	// const params = useParams();
 	const [res, setRes] = useState({});
 	const [friend, setFriend] = useState({});
-	const [numFriend,setNumFriend] = useState(0);
-    const idFriend = useParams();
+	const [numFriend, setNumFriend] = useState(0);
+	const idFriend = useParams();
 	// console.log(idFriend.idUser);
-    useEffect(() => {
+	useEffect(() => {
 		async function fetchData() {
 			const response = await userService.handleGetDataUserService(idFriend.idUser);
 			setRes(response);
@@ -85,16 +85,14 @@ function ProfileLayout({ children }) {
 											</p>
 											<div className={cx("profile_friend-cover")}>
 												{friend.length > 0 &&
-													friend
-														
-														.map((bro, index) => (
-															<FriendBlock
-																key={Math.random()}
-																data={bro}
-																index={index}
-                                                                idFriend = {idFriend.idUser}
-															/>
-														))}
+													friend.map((bro, index) => (
+														<FriendBlock
+															key={Math.random()}
+															data={bro}
+															index={index}
+															idFriend={idFriend.idUser}
+														/>
+													))}
 											</div>
 										</div>
 									</div>
@@ -126,12 +124,15 @@ function ProfileLayout({ children }) {
 										className={(nav) =>
 											cx("bar_item", { "bar_item-active": nav.isActive })
 										}
-                                        // exact
-                                        end
+										// exact
+										end
 									>
 										<FormattedMessage id="Profile_Page.about" />
 									</NavLink>
-									<NavLink className={cx("bar_item")}>
+									<NavLink
+										className={cx("bar_item")}
+										to={`/${idFriend.idUser}/post`}
+									>
 										<FormattedMessage id="Profile_Page.post" />
 									</NavLink>
 									<NavLink
@@ -139,8 +140,8 @@ function ProfileLayout({ children }) {
 										className={(nav) =>
 											cx("bar_item", { "bar_item-active": nav.isActive })
 										}
-                                        // exact
-                                        end
+										// exact
+										end
 									>
 										<FormattedMessage id="Profile_Page.friends" />
 									</NavLink>
@@ -152,7 +153,6 @@ function ProfileLayout({ children }) {
 						</div>
 						<div className={cx("body")}>{children}</div>
 					</div>
-					
 				</div>
 			</div>
 		</div>

@@ -460,3 +460,8 @@
 	}
 	
 }
+.noPseudo{
+	&.friend_avatar:first-child::after{
+		display:none !important;
+	}
+}

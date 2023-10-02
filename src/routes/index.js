@@ -20,6 +20,7 @@ import HomeLayout from '../components/Layout/HomeLayout';
 import ElectricSpider from '../pages/Games/ElectricSpider';
 import ProfileLayout from '../components/Layout/ProfileLayout';
 import FriendPage from '../pages/Friend';
+import PostPage from '../pages/PostPage';
 //Public Route
 const publicRoutes = [
     
@@ -79,6 +80,11 @@ const privateRoutes = [
         component: FriendPage,
         layout : ProfileLayout
     },
+    {
+        path: config.routes.post,
+        component : PostPage,
+        layout : ProfileLayout
+    }
 
 ];
 

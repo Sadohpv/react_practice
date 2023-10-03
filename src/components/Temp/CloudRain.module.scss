@@ -14,7 +14,7 @@
 	justify-content: center;
 	scale: 0.25;
 	--color: #68ccc4;
-//    -webkit-box-reflect: below 1px linear-gradient(transparent,transparent,transparent,transparent,#000) ; 
+	//    -webkit-box-reflect: below 1px linear-gradient(transparent,transparent,transparent,transparent,#000) ;
 	user-select: none;
 	pointer-events: none;
 }
@@ -60,7 +60,7 @@
 	text-transform: uppercase;
 	color: var(--color);
 	text-shadow: 0 0 5px var(--color), 0 0 5px var(--color), 0 0 5px var(--color);
-	font-family: "Wingdings",sans-serif; 
+	font-family: "Wingdings", sans-serif;
 	// font-family: "ANWUTOKTRIAL", sans-serif;
 	margin-left: 10px;
 	transform-origin: bottom;
@@ -80,3 +80,58 @@
 .dark {
 	--color: white;
 }
+.red {
+	animation: red 1s linear forwards;
+}
+.blue {
+	animation: blue 4s linear forwards;
+}
+@keyframes red {
+	0%{--color:#ffffff;}
+		2%{--color:#fcfbff;}
+		4%{--color:#faf7ff;}
+		6%{--color:#f8f3ff;}
+		8%{--color:#f6efff;}
+		10%{--color:#f5ebff;}
+		12%{--color:#f4e7ff;}
+		14%{--color:#f3e3fe;}
+		16%{--color:#f2defd;}
+		18%{--color:#f2dafc;}
+		20%{--color:#f2d5fb;}
+		22%{--color:#f2d0f9;}
+		24%{--color:#f2cbf7;}
+		26%{--color:#f3c6f5;}
+		28%{--color:#f4c1f2;}
+		30%{--color:#f5bcef;}
+		32%{--color:#f6b7ec;}
+		34%{--color:#f8b3e9;}
+		36%{--color:#f9aee5;}
+		38%{--color:#faa8e1;}
+		40%{--color:#fca3dc;}
+		43%{--color:#fd9dd7;}
+		45%{--color:#ff97d2;}
+		47%{--color:#ff91cc;}
+		50%{--color:#ff8bc6;}
+		52%{--color:#ff84c0;}
+		54%{--color:#ff7eb9;}
+		56%{--color:#ff78b3;}
+		58%{--color:#ff73ac;}
+		60%{--color:#ff6da5;}
+		63%{--color:#ff669d;}
+		65%{--color:#ff5f95;}
+		68%{--color:#ff588c;}
+		70%{--color:#ff5183;}
+		72%{--color:#ff4a79;}
+		74%{--color:#ff4270;}
+		78%{--color:#ff3b65;}
+		82%{--color:#ff335b;}
+		86%{--color:#ff2c52;}
+		88%{--color:#ff2549;}
+		90%{--color:#ff1d3f;}
+		93%{--color:#ff1434;}
+		95%{--color:#ff0a27;}
+		98%{--color:#ff0318;}
+		100%{--color:#ff0000;}
+}
+
+

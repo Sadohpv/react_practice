@@ -12,7 +12,6 @@ function CloudRain() {
 
 	// const [interval,setInterval] = useState("");
 	const cloudShow = useSelector((state) => state.app.cloud_rain);
-
 	const rainText = useSelector((state) => state.app.cloud_rain_text);
 	const [curRain,setRain] = useState(rainText);
 	// function randomText() {
@@ -50,7 +49,7 @@ function CloudRain() {
 	// 		clearInterval(myInterval);
 	// 	}
 	// }, 450);
-
+	// console.log(rainColor);
 	useEffect(()=>{
 		function randomText() {
 			var text = rainText;

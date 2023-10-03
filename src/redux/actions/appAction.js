@@ -2,7 +2,8 @@
 const CHANGE_LANGUAE = "CHANGE_LANGUAE";
 const CHANGE_THEME = "CHANGE_THEME ";
 const CLOUD_RAIN = "CLOUD_RAIN";
-export {CHANGE_LANGUAE,CHANGE_THEME,CLOUD_RAIN }
+const GOJO = "GOJO";
+export {CHANGE_LANGUAE,CHANGE_THEME,CLOUD_RAIN,GOJO}
 
 export const changeLanguageRedux = (language) => {
 
@@ -32,4 +33,11 @@ export const handleCouldRainRedux = (show,text) =>{
 		})
 	};
 }
-
+export const handleGojoRedux = (color)=>{
+	return async (dispatch,getState) =>{
+		dispatch({
+			type: GOJO,
+			color
+		})
+	};
+}

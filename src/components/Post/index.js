@@ -11,6 +11,7 @@ const cx = classNames.bind(styles);
 function Post({ data,idUser }) {
 	// console.log(data);
 	const [liked,setLiked] = useState(data.userLiked);
+	
 	// const [icon,setIcon] = useState({});
 	const [likeCount,setLikeCount] = useState(data.likeCount);
 	const handleToggleLike = async()=>{

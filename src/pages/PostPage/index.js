@@ -8,102 +8,36 @@ import images from "../../asset/images/slideTest";
 import { CommentIcon } from "../../asset/icons";
 import { FormattedMessage } from "react-intl";
 import { handleGojoRedux } from "../../redux/actions/appAction";
-
+import Gojo from "../../components/Temp/Gojo";
+import { postService } from "../../services";
+import Post from "../../components/Post";
+import { NavItem } from "react-bootstrap";
 const cx = classNames.bind(styles);
 
 function PostPage() {
-	const [speech, setSpeech] = useState(false);
-	const [location, setLocation] = useState(0);
-	const [qoute, setQoute] = useState(0);
-	const [technical, setTechnical] = useState(false);
-	const [technical2, setTechnical2] = useState(false);
-
-	const [technical3, setTechnical3] = useState(false);
-	const [domain, setDomain] = useState(false);
-	const dispatch = useDispatch();
-
-	const handleGojoSaid = async() => {
-		const random = Math.floor(Math.random() * (2 - 1 + 1) + 1);
-		setLocation(random);
-		const randomQuote = Math.floor(Math.random() * (9 - 1 + 1) + 1);
-		if (randomQuote === 7) {
-			setTechnical(true);
-			dispatch(handleGojoRedux("red"));
-			setTimeout(() => handleBack(1), 5000);
-		}
-		if (randomQuote === 9) {
-			setTechnical3(true);
-
-			dispatch(handleGojoRedux("blue"));
-			setTimeout(() => handleBack(3), 5000);
-		}
-		if (randomQuote === 8) {
-			setTechnical2(true);
-
-			dispatch(handleGojoRedux("purple"));
-			setTimeout(() => handleBack(2), 5000);
-		}
-		if (randomQuote === 2) {
-			setTimeout(()=>setDomain(true),1000);
-			
-
-			setTimeout(() => handleBack(4), 6000);
-		}
-		setQoute(randomQuote);
-		setSpeech(true);
-	};
-	const handleGojoUnSaid = () => {
-		setSpeech(false);
-	};
-	const currentTheme = useSelector((state) => state.app.theme);
-	const handleBack = async (tech) => {
-		if (tech === 1) {
-			setTechnical(false);
-		}
-		if (tech === 2) {
-			setTechnical2(false);
-		}
-		if (tech === 3) {
-			setTechnical3(false);
-		}
-		if (tech === 4) {
-			setDomain(false);
-		}
-		await dispatch(handleGojoRedux("white"));
-	};
+	const idUser = useSelector((state) => state.user.userId);
+	const idFriend = useParams();
 	const rainColor = useSelector((state) => state.app.rain_color);
+	const currentTheme = useSelector((state) => state.app.theme);
+	const [post, setPost] = useState([]);
+	useEffect(() => {
+		async function fetchData() {
+			const post = await postService.handleGetOwnerPost(idFriend.idUser, idUser);
+			// console.log(post);
+			if (post && post.reg) {
+				setPost(post.reg);
+			}
+		}
 
+		fetchData();
+	}, []);
+	console.log(post);
 	return (
 		<div className={cx("wrapper", currentTheme === THEMES.DARK && THEMES.DARK)}>
-			<div className={cx("body")}>
-				<div className={cx("title")}>
-					<p>You don't have any post. Posting something on your wall and check again</p>
-				</div>
-				<div className={cx("qoutes")}>
-					{speech && (
-						<div className={cx(`qoute_${location}`)}>
-							<CommentIcon width="200px" height="200px" fill="transparent" />
-							<div className={cx("speech")}>
-								<p>
-									<FormattedMessage id={`Gojo_Satoru.${qoute}`} />
-								</p>
-							</div>
-						</div>
-					)}
-				</div>
-
-				<div
-					className={cx("no_post")}
-					onMouseOver={handleGojoSaid}
-					onMouseLeave={handleGojoUnSaid}
-				>
-					<img src={images.gojo} alt="Gravity Fall Gif" />
-				</div>
-				{technical && <div class={cx("waves", "red")}></div>}
-				{technical2 && <div class={cx("waves", "purple")}></div> }
-				
-				{technical3 && <div class={cx("waves", "blue")}></div>}
-				{domain && <img className={cx("domain")} src={images.unlimitedVoid} />}
+			{post.length === 0 && <Gojo />}
+			<div className={cx("main")}>
+				{post.length > 0 && post.map((item) => <Post data={item} idUser={idUser} />)}
+			
 			</div>
 		</div>
 	);

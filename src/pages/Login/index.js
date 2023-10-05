@@ -65,8 +65,8 @@ function LoginComponent() {
 						/>
 						<span className={cx("slider", "round")}></span>
 						<div className={cx("language-title")}>
-							<span className={cx("on")}> VI</span>
-							<span className={cx("off")}> EN </span>
+							<span className={cx("on")}> vi</span>
+							<span className={cx("off")}> en </span>
 						</div>
 					</label>
 				</div>

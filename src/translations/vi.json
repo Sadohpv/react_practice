@@ -73,7 +73,10 @@
         "posting" : "Đăng bài",
         "empty_content" : "Nội dung bài đăng không được để trống !",
         "add_success" : "Đăng bài thành công !",
-        "add_fail" : "Đăng bài thất bại !"
+        "add_fail" : "Đăng bài thất bại !",
+        "private" : "Riêng tư",
+        "public" : "Công khai"
+        
 
     },
     "Status_Comp":{

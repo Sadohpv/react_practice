@@ -1,4 +1,13 @@
-import { CancelIcon, CommentIcon, ShareIcon, ThreeDotsIcon, UnLikeIcon ,LikeIcon} from "../../asset/icons";
+import {
+	CancelIcon,
+	CommentIcon,
+	ShareIcon,
+	ThreeDotsIcon,
+	UnLikeIcon,
+	LikeIcon,
+	GolobalIcon,
+	LockIcon,
+} from "../../asset/icons";
 import ButtonPost from "./ButtonPost";
 import styles from "./Post.module.scss";
 import classNames from "classnames/bind";
@@ -6,38 +15,40 @@ import { FormattedMessage } from "react-intl";
 import Avartar from "../Avatar/Avatar";
 import { useEffect, useState } from "react";
 import { postService } from "../../services";
+import moment from "moment";
+import Moment from "react-moment";
+import vi from "moment/locale/vi";
+import { useSelector } from "react-redux";
 const cx = classNames.bind(styles);
 
-function Post({ data,idUser }) {
+function Post({ data, idUser }) {
 	// console.log(data);
-	const [liked,setLiked] = useState(data.userLiked);
-	
+	const language = useSelector((state) => state.app.language);
+	const [liked, setLiked] = useState(data.userLiked);
+	const [date, setDate] = useState(data.createdAt);
+	const [privatePost, setPrivatePost] = useState(data.privatePost);
 	// const [icon,setIcon] = useState({});
-	const [likeCount,setLikeCount] = useState(data.likeCount);
-	const handleToggleLike = async()=>{
-		if(liked === true){
-			const res = await postService.handleLikedPostService(false,data.idPost,idUser);
-			// alert("UnLike")	
-			setLikeCount(likeCount-1);
-			
+	const [likeCount, setLikeCount] = useState(data.likeCount);
+	const handleToggleLike = async () => {
+		if (liked === true) {
+			const res = await postService.handleLikedPostService(false, data.idPost, idUser);
+			// alert("UnLike")
+			setLikeCount(likeCount - 1);
 		}
-		if(liked === false){
-			const res = await postService.handleLikedPostService(true,data.idPost,idUser);
+		if (liked === false) {
+			const res = await postService.handleLikedPostService(true, data.idPost, idUser);
 			// alert("Like")
-			setLikeCount(likeCount+1);
+			setLikeCount(likeCount + 1);
 		}
 		setLiked(!liked);
-
-	}
+	};
 	// fecth all like and check one vs one in home
-
-
+	// console.log(language);
 
 	return (
 		<div className={cx("wrapper")}>
 			<div className={cx("post_header")}>
 				<div className={cx("header_avt")}>
-					
 					{/* {data.User && data.User.avatar && <img src={data.User.avatar} />} */}
 					<Avartar src={data.User.avatar} />
 				</div>
@@ -46,7 +57,17 @@ function Post({ data,idUser }) {
 						<span>{data.User.userName}</span>
 					</div>
 					<div className={cx("time")}>
-						<span>{data.createdAt}</span>
+						<span>
+							<Moment locale={language} fromNow>
+								{date}
+							</Moment>
+						
+						</span>
+						<span className={cx("dot")}>·</span>
+						<div className={cx("privatePost")}>
+							{privatePost === 0 && <GolobalIcon width="12px" height="12px" />}
+							{privatePost === 1 && <LockIcon width="12px" height="12px" />}
+						</div>
 					</div>
 				</div>
 				<div className={cx("header_action")}>
@@ -92,8 +113,14 @@ function Post({ data,idUser }) {
 				</div>
 				<div className={cx("footer_action")}>
 					<ButtonPost
-						liked = {liked}
-						icon={liked===false ? <UnLikeIcon width="20px" height="20px" /> :  <LikeIcon width="20px" height="20px" fill="#65c6be" />}
+						liked={liked}
+						icon={
+							liked === false ? (
+								<UnLikeIcon width="20px" height="20px" />
+							) : (
+								<LikeIcon width="20px" height="20px" fill="#65c6be" />
+							)
+						}
 						text={<FormattedMessage id="Post_Comp.like" />}
 						onClick={handleToggleLike}
 					/>

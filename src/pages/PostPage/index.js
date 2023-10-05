@@ -36,7 +36,7 @@ function PostPage() {
 		<div className={cx("wrapper", currentTheme === THEMES.DARK && THEMES.DARK)}>
 			{post.length === 0 && <Gojo />}
 			<div className={cx("main")}>
-				{post.length > 0 && post.map((item) => <Post data={item} idUser={idUser} />)}
+				{post.length > 0 && post.map((item) => <Post key={Math.random()} data={item} idUser={idUser} />)}
 			
 			</div>
 		</div>

@@ -51,6 +51,7 @@ function FriendElement({ data, index, idFriend }) {
 			content={<FriendElementHover data={friend} mutual={mutual} />}
 			place={"top-start"}
 			offSet={[-50, 10]}
+			customTheme
 		>
 			<div className={cx("friend_block")}>
 				<a href={`/${friend.idUser}`} className={cx("friend_infor")}>

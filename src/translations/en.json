@@ -74,7 +74,9 @@
         "posting" : "Posting",
         "empty_content" : "Not allow empty content !",
         "add_success" : "Posting success !",
-        "add_fail" : "Posting fail !"
+        "add_fail" : "Posting fail !",
+        "private" : "Private",
+        "public" : "Public"
     },
     "Status_Comp":{
         "image" : "Image",

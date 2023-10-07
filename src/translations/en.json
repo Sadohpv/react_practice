@@ -102,6 +102,14 @@
         "7" : "Reverse Cursed Technique : Red",
         "8" : "Hollow Technique: Purple",
         "9" : "Cursed Technique : Blue"
+    },
+    "Error_Page" : {
+        "not_found" : "Page not found",
+        "bad_req" : "Your request is bad!",
+        "all_wrong" : "Something wrong! Please try later!",
+        "auth": "You don't have permission to access!",
+        "go_home" : "Homepage",
+        "login" : "Login"
     }
     
 }

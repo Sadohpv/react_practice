@@ -1,6 +1,7 @@
 import { EmailIcon, KeyIcon, LeafIcon, PenIcon, PenclipIcon } from "../../asset/icons";
 import styles from "./Register.module.scss";
 import classNames from "classnames/bind";
+import { useSelector } from "react-redux";
 const cx = classNames.bind(styles);
 
 function FormRegister({

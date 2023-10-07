@@ -104,6 +104,15 @@
         "7" : "Thuật thức phản chuyển : Hách",
         "8" : "Hư thức : Tử",
         "9" : "Thuật thức thuận chuyển : Thương"
+    },
+    "Error_Page" : {
+        "not_found" : "Không tìm thấy trang!",
+        "bad_req" : "Truy cập của bạn bị từ chối!",
+        "all_wrong" : "Có lỗi xảy ra vui lòng thử lại sau",
+        "auth": "Bạn không có quyền truy cập!",
+        "go_home" : "Trang chủ",
+        "login" : "Đăng nhập"
     }
+    
     
 }

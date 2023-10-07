@@ -9,7 +9,7 @@ import { FormattedMessage } from "react-intl";
 import { THEMES } from "../../../utils/constant";
 import { useSelector } from "react-redux";
 import FriendBlock from "./FriendBlock";
-import { NavLink, Link, useParams } from "react-router-dom";
+import { NavLink, useParams, useNavigate } from "react-router-dom";
 
 // import { THEMES } from "../../../utils/constant";
 // const currentTheme = useSelector((state) => state.app.theme);
@@ -18,28 +18,44 @@ const cx = classNames.bind(styles);
 
 function ProfileLayout({ children }) {
 	const idUser = useSelector((state) => state.user.userId);
-
+	const navigate = useNavigate();
 	// const params = useParams();
 	const [res, setRes] = useState({});
 	const [friend, setFriend] = useState({});
 	const [numFriend, setNumFriend] = useState(0);
 	const idFriend = useParams();
-	// console.log(idFriend.idUser);
+	// const {idUser} = useParams();
+	// console.log(+idFriend.idUser);
+// 	const checkAllowedRoutes = ()=>{
+// 		if(typeof(+idFriend.idUser) !== "number" ){
+// 			navigate("/404");
+// 		}
+// 	}
+// checkAllowedRoutes();
+
 	useEffect(() => {
+	
+
 		async function fetchData() {
 			const response = await userService.handleGetDataUserService(idFriend.idUser);
 			setRes(response);
+			if(response.status !== 400){
 			const resFriend = await userService.handleGetAllFriendService(idFriend.idUser);
-			if (resFriend && resFriend.EC === 0) {
-				setNumFriend(resFriend.reg.length);
 
-				if (resFriend.reg.length > 5) {
-					setFriend(resFriend.reg.slice(0, 4));
-				} else {
-					// console.log(res)
-					setFriend(resFriend.reg);
+				if (resFriend && resFriend.EC === 0) {
+					setNumFriend(resFriend.reg.length);
+	
+					if (resFriend.reg.length > 5) {
+						setFriend(resFriend.reg.slice(0, 4));
+					} else {
+						// console.log(res)
+						setFriend(resFriend.reg);
+					}
 				}
+			}else{
+				navigate("/404");
 			}
+			
 		}
 		fetchData();
 	}, []);
@@ -130,8 +146,11 @@ function ProfileLayout({ children }) {
 										<FormattedMessage id="Profile_Page.about" />
 									</NavLink>
 									<NavLink
-										className={cx("bar_item")}
+										className={(nav) =>
+											cx("bar_item", { "bar_item-active": nav.isActive })
+										}
 										to={`/${idFriend.idUser}/post`}
+										end
 									>
 										<FormattedMessage id="Profile_Page.post" />
 									</NavLink>
@@ -145,7 +164,12 @@ function ProfileLayout({ children }) {
 									>
 										<FormattedMessage id="Profile_Page.friends" />
 									</NavLink>
-									<NavLink className={cx("bar_item")}>
+									<NavLink to={`/${idFriend.idUser}/photos`}
+										className={(nav) =>
+											cx("bar_item", { "bar_item-active": nav.isActive })
+										}
+										// exact
+										end>
 										<FormattedMessage id="Profile_Page.photos" />
 									</NavLink>
 								</div>

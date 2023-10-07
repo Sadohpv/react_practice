@@ -108,6 +108,8 @@ function LoginBlock({ color }) {
 					placeholder="Email"
 					onChange={(e) => handleInputEmail(e)}
 					onKeyDown={(e) => handleInputEmail(e)}
+					style={{ color: `${color}` }}
+
 				/>
 				<span>
 					<FormattedMessage id="Login_Page.password" />
@@ -118,6 +120,7 @@ function LoginBlock({ color }) {
 					placeholder="Password"
 					onChange={(e) => handleInputPassword(e)}
 					onKeyDown={(e) => handleInputPassword(e)}
+					style={{ color: `${color}` }}
 				/>
 				<div className={cx("message")} style={{ color: `${color}` }}>
 					{message}

@@ -21,6 +21,7 @@ import ElectricSpider from '../pages/Games/ElectricSpider';
 import ProfileLayout from '../components/Layout/ProfileLayout';
 import FriendPage from '../pages/Friend';
 import PostPage from '../pages/PostPage';
+import NotFoundPage from '../pages/NotFound';
 //Public Route
 const publicRoutes = [
     
@@ -36,7 +37,7 @@ const publicRoutes = [
     },
     {
         path: config.routes.notFound,
-        component: LoginComponent,
+        component: NotFoundPage,
         layout: null,
     }
 

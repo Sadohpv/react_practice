@@ -92,7 +92,7 @@ function LoginComponent() {
 							backgroundImage: `url(${images.loginBack3})`,
 							backgroundSize: `cover`,
 						}}
-						onClick={(e) => handleChangeBack("block", 3, "#a2ebff")}
+						onClick={(e) => handleChangeBack("block", 3, "#000000")}
 						className={activeBackground == 3 ? cx("active") : ""}
 					></div>
 				</div>

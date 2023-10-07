@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { Navigate } from "react-router-dom";
 import AtomicSpinner from "atomic-spinner";
+import NotFoundPage from "../pages/NotFound";
 function PrivateRoute({ children }) {
 	const auth = useSelector((state) => state.user.auth);
 	const loading = useSelector((state) => state.user.isLoading);
@@ -21,11 +22,7 @@ function PrivateRoute({ children }) {
 			) : auth ? (
 				children
 			) : (
-				<Alert variant="warning" className="w-75 mt-3 mx-auto">
-					<Alert.Heading>404 Page! You got an Error!</Alert.Heading>
-					<p>You have no permission to access this route! Please LOGIN first</p>
-					<Navigate to="/login"></Navigate>
-				</Alert>
+				<NotFoundPage />
 			)}
 		</>
 	);

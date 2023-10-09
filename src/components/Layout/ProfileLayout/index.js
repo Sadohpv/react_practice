@@ -24,14 +24,8 @@ function ProfileLayout({ children }) {
 	const [friend, setFriend] = useState({});
 	const [numFriend, setNumFriend] = useState(0);
 	const idFriend = useParams();
-	// const {idUser} = useParams();
-	// console.log(+idFriend.idUser);
-// 	const checkAllowedRoutes = ()=>{
-// 		if(typeof(+idFriend.idUser) !== "number" ){
-// 			navigate("/404");
-// 		}
-// 	}
-// checkAllowedRoutes();
+	
+	
 
 	useEffect(() => {
 	
@@ -39,6 +33,7 @@ function ProfileLayout({ children }) {
 		async function fetchData() {
 			const response = await userService.handleGetDataUserService(idFriend.idUser);
 			setRes(response);
+			
 			if(response.status !== 400){
 			const resFriend = await userService.handleGetAllFriendService(idFriend.idUser);
 
@@ -53,13 +48,14 @@ function ProfileLayout({ children }) {
 					}
 				}
 			}else{
+				console.log("Here");
 				navigate("/404");
 			}
 			
 		}
 		fetchData();
 	}, []);
-	// console.log(friend);
+	// console.log(res);
 	const currentTheme = useSelector((state) => state.app.theme);
 	return (
 		<div className={cx("wrapper")}>
@@ -164,7 +160,7 @@ function ProfileLayout({ children }) {
 									>
 										<FormattedMessage id="Profile_Page.friends" />
 									</NavLink>
-									<NavLink to={`/${idFriend.idUser}/photos`}
+									<NavLink to={`/${idFriend.idUser}/photo`}
 										className={(nav) =>
 											cx("bar_item", { "bar_item-active": nav.isActive })
 										}

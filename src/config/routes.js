@@ -8,6 +8,7 @@ const routesConfig = {
     edit: '/:idUser/detail',
     friend : '/:idUser/friend',
     post : '/:idUser/post',
+    photo : '/:idUser/photo',
     configure : '/:idUser/configure',
     security : '/:idUser/security',
     ElectricSpider: '/games/spider',

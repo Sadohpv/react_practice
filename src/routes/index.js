@@ -22,6 +22,7 @@ import ProfileLayout from '../components/Layout/ProfileLayout';
 import FriendPage from '../pages/Friend';
 import PostPage from '../pages/PostPage';
 import NotFoundPage from '../pages/NotFound';
+import PhotoPage from '../pages/PhotoPage';
 //Public Route
 const publicRoutes = [
     
@@ -84,6 +85,11 @@ const privateRoutes = [
     {
         path: config.routes.post,
         component : PostPage,
+        layout : ProfileLayout
+    },
+    {
+        path: config.routes.photo,
+        component : PhotoPage,
         layout : ProfileLayout
     }
 

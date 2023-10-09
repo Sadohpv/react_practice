@@ -31,7 +31,7 @@ function PostPage() {
 
 		fetchData();
 	}, []);
-	console.log(post);
+	// console.log(post);
 	return (
 		<div className={cx("wrapper", currentTheme === THEMES.DARK && THEMES.DARK)}>
 			{post.length === 0 && <Gojo />}

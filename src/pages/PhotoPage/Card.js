@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./PhotoPage.module.scss";
 import classNames from "classnames/bind";
+import { CommentIcon, HeartIcon } from "../../asset/icons";
 // import { THEMES } from "../../utils/constant";
 // import { useSelector, useDispatch } from "react-redux";
 // import { useParams } from "react-router-dom";
@@ -13,21 +14,18 @@ import classNames from "classnames/bind";
 // import { NavItem } from "react-bootstrap";
 const cx = classNames.bind(styles);
 
-function CardPhoto({index,src="https://wallpapercave.com/wp/wp9083232.jpg" }) {
+function CardPhoto({ index, src = "https://wallpapercave.com/wp/wp9083232.jpg" }) {
 	// const idUser = useSelector((state) => state.user.userId);
 	// const idFriend = useParams();
 
 	// const currentTheme = useSelector((state) => state.app.theme);
 	// const [post, setPost] = useState([]);
 	useEffect(() => {
-		
 		function card() {
 			let card = document.querySelector(`.card_id_${index}`);
 			let glow = document.querySelector(`.glow_id_${index}`);
 
 			let bounds;
-			console.log(card);
-			console.log(glow);
 
 			function rotateToMouse(e) {
 				const mouseX = e.clientX;
@@ -80,6 +78,20 @@ function CardPhoto({index,src="https://wallpapercave.com/wp/wp9083232.jpg" }) {
 		<div className={cx("card", `card_id_${index}`)}>
 			<img src={src} alt="test_sonat" />
 			<div className={cx("glow", `glow_id_${index}`)} />
+			<div className={cx("infor")}>
+				<div className={cx("like")}>
+					<HeartIcon width="22px" height="22px" fill="#ff3e4c" />
+					<span>
+						211K
+					</span>
+				</div>
+				<div className={cx("like")}>
+					<CommentIcon noneStroke width="26px" height="26px" fill="#ff3e4c" />
+					<span>
+						211K
+					</span>
+				</div>
+			</div>
 		</div>
 	);
 }

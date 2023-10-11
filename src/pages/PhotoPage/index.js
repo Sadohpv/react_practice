@@ -20,28 +20,32 @@ function PhotoPage() {
 
 	const currentTheme = useSelector((state) => state.app.theme);
 	const [post, setPost] = useState([]);
-	// 	useEffect(() => {
-	// 		// async function fetchData() {
-	// 		// 	const post = await postService.handleGetOwnerPost(idFriend.idUser, idUser);
-	// 		// 	// console.log(post);
-	// 		// 	if (post && post.reg) {
-	// 		// 		setPost(post.reg);
-	// 		// 	}
-	// 		// }
+		useEffect(() => {
+			async function fetchData() {
+				const post = await postService.handleGetOwnerPost(idFriend.idUser, idUser);
+				// console.log(post);
+				if (post && post.reg) {
+					setPost(post.reg);
+				}
+			}
 
-	// 		// fetchData();
-	//
-	// 	}, []);
+			fetchData();
+	
+		}, []);
+				// console.log(post);
 
 	return (
 		<div className={cx("wrapper", currentTheme === THEMES.DARK && THEMES.DARK)}>
 			<div className={cx("main")}>
 				<div className={cx("body")}>
-					<CardPhoto index={1} src = "https://images6.alphacoders.com/838/838543.png"/>
+					{/* <CardPhoto index={1} src = "https://images6.alphacoders.com/838/838543.png"/>
 					<CardPhoto index={2} src="https://c4.wallpaperflare.com/wallpaper/976/723/820/anime-girls-anime-hatsune-miku-vocaloid-wallpaper-preview.jpg"/>
 					<CardPhoto index={4} src="https://c4.wallpaperflare.com/wallpaper/805/768/847/fantasy-art-bright-colorful-wallpaper-preview.jpg" />
                  	<CardPhoto index={3} />
-				    <CardPhoto index={5} src="https://img.freepik.com/premium-photo/cityscape-view-night_950633-891.jpg"/>
+				    <CardPhoto index={5} src="https://img.freepik.com/premium-photo/cityscape-view-night_950633-891.jpg"/> */}
+					{post.length > 0 && post.map((item,index)=>(
+						<CardPhoto key={Math.random()} index={index} data={item}/>
+					))}
 				</div>
 			</div>
 		</div>

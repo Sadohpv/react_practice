@@ -26,18 +26,11 @@ function App() {
 	// console.log(loading);
 	const navigate = useNavigate();
 	useEffect(() => {
-		// async function fetch() {
-		// 	let res = await userService.handleGetAccounService();
-
-		// 	if (res && res.reg && res.reg) {
-		// 		dispatch(handleRefreshWebRedux(res.reg.userData.idUser));
-		// 	}
-		// }
-		// fetch();
+		document.title="Z i i k";
 		async function fetchData() {
 			let res = await userService.handleGetAccounService();
 			// console.log(res);
-			if (res) {
+			if (res !== 400) {
 				if (res.status !== 401) {
 					if (res.reg) {
 						// console.log("Here");
@@ -48,6 +41,9 @@ function App() {
 					// console.log("Here");
 					dispatch(handleRefreshWebRedux(null, false, false));
 				}
+			} else {
+				// console.log("Here");
+				dispatch(handleRefreshWebRedux(null, null, false));
 			}
 		}
 		fetchData();

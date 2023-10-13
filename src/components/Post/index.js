@@ -15,10 +15,11 @@ import { FormattedMessage } from "react-intl";
 import Avartar from "../Avatar/Avatar";
 import { useEffect, useState } from "react";
 import { postService } from "../../services";
-import moment from "moment";
+// import moment from "moment";
 import Moment from "react-moment";
 import vi from "moment/locale/vi";
 import { useSelector } from "react-redux";
+import { abbreviateNumber } from "js-abbreviation-number";
 const cx = classNames.bind(styles);
 
 function Post({ data, idUser }) {
@@ -96,17 +97,18 @@ function Post({ data, idUser }) {
 			<div className={cx("post_footer")}>
 				<div className={cx("footer_infor")}>
 					<div className={cx("infor_reaction")}>
-						<span className={cx("text")}>{likeCount}</span>
+						<span className={cx("text")}>{abbreviateNumber(likeCount, 2, { padding: false })}</span>
 					</div>
 					<div className={cx("infor_action")}>
 						<div className={cx("comment")}>
 							<span className={cx("text")}>
-								2110 <FormattedMessage id="Post_Comp.comments" />
+							{abbreviateNumber(data.commentCount, 2, { padding: false })} <FormattedMessage id="Post_Comp.comments" />
 							</span>
 						</div>
 						<div className={cx("shared")}>
 							<span className={cx("text")}>
-								{data.shareCount} <FormattedMessage id="Post_Comp.shared" />
+								{abbreviateNumber(data.shareCount, 2, { padding: false })} <FormattedMessage id="Post_Comp.shared" />
+								
 							</span>
 						</div>
 					</div>

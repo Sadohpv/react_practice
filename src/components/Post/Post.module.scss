@@ -55,10 +55,8 @@
 					width: auto;
 					height: 100%;
 					// background-color: rgb(132, 255, 0);
-					
-				
 				}
-				.dot{
+				.dot {
 					margin: 0 4px;
 					color: #65676b;
 				}
@@ -144,13 +142,16 @@
 				}
 				.shared {
 					margin-left: 12px;
+					
 				}
 				.text {
 					height: 100%;
 					line-height: 44px;
 					display: flex;
 					align-items: center;
+					letter-spacing: 0.7px;
 
+					// font-family: "Proxima Nova", sans-serif;
 					&:hover {
 						cursor: pointer;
 						text-decoration: underline;

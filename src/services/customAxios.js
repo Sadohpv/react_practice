@@ -21,6 +21,7 @@ instance.interceptors.response.use(
 			res.status = error.response.status;
 			res.headers = error.response.headers;
 		}else if(error.request){
+			return res.code = 400;
 
 		}else {
 			console.log('Error: ' + error.message);

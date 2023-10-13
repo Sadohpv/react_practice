@@ -12,8 +12,11 @@ const cx = classNames.bind(styles);
 
 
 function NotFoundPage(code = 4) {
+	const loading = useSelector((state) => state.user.isLoading);
+
 	const auth = useSelector((state) => state.user.auth);
-	const [message, setMessage] = useState(auth ? 4 : 1);
+	const [message, setMessage] = useState(loading === null ? 0 : (auth ? 4 : 1));
+	console.log(auth);
 	useEffect(() => {
 		
 		const notFound = () => {
@@ -55,7 +58,10 @@ function NotFoundPage(code = 4) {
 			
 				if (i > 100) {
 					clearInterval(loop1);
-					if(auth){
+					if(message === 0){
+						selector1.textContent = 0;
+
+					}else if(auth){
 
 						selector1.textContent = 4;
 					}else{

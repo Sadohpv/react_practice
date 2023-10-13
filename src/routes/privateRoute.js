@@ -1,14 +1,14 @@
-import { Alert } from "react-bootstrap";
+// import { Alert } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
-import { useNavigate } from "react-router";
-import { Navigate } from "react-router-dom";
+// import { useNavigate } from "react-router";
+// import { Navigate } from "react-router-dom";
 import AtomicSpinner from "atomic-spinner";
 import NotFoundPage from "../pages/NotFound";
 function PrivateRoute({ children }) {
 	const auth = useSelector((state) => state.user.auth);
 	const loading = useSelector((state) => state.user.isLoading);
-	// console.log(auth);
+	console.log(loading);
 	return (
 		<>
 			{loading === true ? (

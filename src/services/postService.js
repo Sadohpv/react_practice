@@ -26,10 +26,17 @@ const handleGetOwnerPost = async (userPage,owner) =>{
 
 	return resContent; 
 };
+const handleGetOnePostService = async (idPost,idUser)=>{
+	// console.log("Here");
+	const resContent = await axios.post(`/post/onePost`,{idPost:idPost,owner:idUser});
+
+	return resContent
+};
 export default {
 	handleGetPostService,
 	handleAddPostService,
 	handleLikedPostService,
 	handleCheckLikeService,
-	handleGetOwnerPost
+	handleGetOwnerPost,handleGetOnePostService
+
 };

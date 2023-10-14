@@ -23,6 +23,8 @@ import FriendPage from '../pages/Friend';
 import PostPage from '../pages/PostPage';
 import NotFoundPage from '../pages/NotFound';
 import PhotoPage from '../pages/PhotoPage';
+// import FullPost from '../components/Post/FullPost';
+import FullPostPage from '../pages/FullPostPage';
 //Public Route
 const publicRoutes = [
     
@@ -91,6 +93,11 @@ const privateRoutes = [
         path: config.routes.photo,
         component : PhotoPage,
         layout : ProfileLayout
+    },
+    {
+        path: config.routes.fullPost,
+        component : FullPostPage,
+        layout : DefaultLayout
     }
 
 ];

@@ -122,6 +122,16 @@
 		row-gap: 10px;
 		column-gap: 10px;
 	}
+	.infor{
+		justify-content: space-around;
+		div{
+			scale: 0.7;
+		}
+		.like{
+			margin: 0 !important;
+		}
+		padding: 10px 5px !important;
+	}
 }
 @media (min-width: 451px) and (max-width: 640px) {
 	.card {

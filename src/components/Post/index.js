@@ -74,12 +74,12 @@ function Post({ data, idUser }) {
 				<div className={cx("header_action")}>
 					<div className={cx("action_control")}>
 						<div className={cx("action_icon")}>
-							<ThreeDotsIcon />
+							<ThreeDotsIcon width={"24px"} height="24px" />
 						</div>
 					</div>
 					<div className={cx("action_delete-post")}>
 						<div className={cx("action_icon")}>
-							<CancelIcon />
+							<CancelIcon width={"24px"} height="24px" />
 						</div>
 					</div>
 				</div>

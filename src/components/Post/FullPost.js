@@ -24,7 +24,7 @@ import CommentCard from "../Comment";
 const cx = classNames.bind(styles);
 function FullPost({ handleClose, data }) {
 	const idUser = useSelector((state) => state.user.userId);
-	console.log(data);
+	// console.log(data);
 	// const [liked, setLiked] = useState(data.userLiked);
 	const [liked, setLiked] = useState(true);
 	const language = useSelector((state) => state.app.language);
@@ -33,7 +33,7 @@ function FullPost({ handleClose, data }) {
 	const [privatePost, setPrivatePost] = useState(data.privatePost);
 	// const [icon,setIcon] = useState({});
 	const [likeCount, setLikeCount] = useState(data.likeCount);
-	const [comment,setComment] = useState("");
+	const [comment,setComment] = useState([]);
 	const handleCloseFullPost = () => {
 		if (typeof handleClose === "function") {
 			// console.log("Here");
@@ -64,6 +64,19 @@ function FullPost({ handleClose, data }) {
 
 		setComment(e.target.value);
 	};
+
+	useEffect(()=>{
+		async function fetchData() {
+			const commentPost = await postService.handleGetCommentPost(data.idPost);
+			console.log(commentPost);
+			if(commentPost && commentPost.reg){
+				setComment(commentPost.reg);
+			}
+			
+		}
+
+		fetchData();
+	},[])
 	return (
 		<div className={cx("wrapper")}>
 			<div className={cx("left")}>
@@ -164,13 +177,12 @@ function FullPost({ handleClose, data }) {
 				</div>
 
 				<div className={cx("comments")}>
-					<CommentCard />
-					<CommentCard />
-					<CommentCard />
-					<CommentCard />
-					<CommentCard />
-					<CommentCard />
-					<CommentCard />
+					{comment.length > 0 && comment.map((com,index)=>(
+
+					<CommentCard key={Math.random()} com={com} index={index}/>
+					))}
+					
+					{/* <CommentCard /> */}
 				</div>
 
 				<div className={cx("add_comment")}>

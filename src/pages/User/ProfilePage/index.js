@@ -40,8 +40,8 @@ function ProfilePage({ children }) {
 		}
 		fetchData();
 	}, []);
-	console.log(idFriend);
-	console.log(idUser);
+	// console.log(idFriend);
+	// console.log(idUser);
 
 	return (
 		<div className={cx("body")}>

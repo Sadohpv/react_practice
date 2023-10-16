@@ -30,13 +30,18 @@ const handleGetOnePostService = async (idPost,idUser)=>{
 	// console.log("Here");
 	const resContent = await axios.post(`/post/onePost`,{idPost:idPost,owner:idUser});
 
-	return resContent
+	return resContent;
 };
+const handleGetCommentPost = async(id)=>{
+	const res = await axios.get(`/post/comment/${id}`);
+	return res;
+}
 export default {
 	handleGetPostService,
 	handleAddPostService,
 	handleLikedPostService,
 	handleCheckLikeService,
-	handleGetOwnerPost,handleGetOnePostService
+	handleGetOwnerPost,handleGetOnePostService,
+	handleGetCommentPost
 
 };

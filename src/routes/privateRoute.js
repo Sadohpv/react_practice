@@ -8,7 +8,7 @@ import NotFoundPage from "../pages/NotFound";
 function PrivateRoute({ children }) {
 	const auth = useSelector((state) => state.user.auth);
 	const loading = useSelector((state) => state.user.isLoading);
-	console.log(loading);
+	// console.log(loading);
 	return (
 		<>
 			{loading === true ? (

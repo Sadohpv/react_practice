@@ -30,9 +30,10 @@ function FullPostPage() {
 	const idPost = useParams();
 	// console.log(idPost);
 	const [data, setData] = useState(false);
+	
 	useEffect(() => {
 		async function fetchData() {
-			const response = await postService.handleGetOnePostService(idPost.idPost, idUser);
+			const response = await postService.handleGetOnePostService(+idPost.idPost, idUser);
 			if (response.reg) {
 				setData(response.reg);
 				// const likeRes = await postService.handleCheckLikeService(idUser);
@@ -45,7 +46,8 @@ function FullPostPage() {
 		}
 		fetchData();
 	}, []);
-    console.log(data);
+	console.log(data)
+    // console.log(data);
 	return <div className={cx("wrapper")}>{data && <FullPost data={data} />}</div>;
 }
 

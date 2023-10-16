@@ -1,17 +1,24 @@
-.wrapper {
+.wrapper{
+    display:flex;
+    flex-direction: column;
+}
+.infor {
     height: auto;
     display: flex;
-    margin-bottom: 12px;
+    // margin-bottom: 12px;
 	.avatar {
         margin-right: 10px;
 	}
 	.body {
+    position: relative;
+
 		background-color: #f6f3f3;
         width: auto;
+        // min-height: 30px;
 		max-width: 280px;
 		// height: 50px;
 		border-radius: 12px;
-        padding: 4px 12px 8px;
+        padding: 6px 8px 6px 12px;
         display: flex;
         flex-direction: column;
        align-items: flex-start;
@@ -25,5 +32,49 @@
             font-size: 14px;
 
         }
+       
 	}
+    .likeCom{
+    position: absolute;
+        right:-8px;
+        bottom: -8px;
+        height: 16px ;
+        width: 30px ;
+        border-radius: 66px;
+        background-color: rgb(255, 255, 255) ;
+        box-shadow: 0.5px 0.5px 1px 0px rgb(118, 118, 118);
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        svg{
+            fill:var(--primary-color);
+        }
+        span{
+            line-height: 16px;
+            margin: 1.5px 0 0 2px;
+        }
+    }
+}
+.action{
+    height: 36px;
+    // background-color: red;
+    width: 100%;
+    display: flex;
+    padding:  4px 0 0 62px;
+    div{
+        font-size: 12px;
+    }
+    .like{
+        margin-right: 12px;
+
+    }
+    .answer{
+        margin-right: 12px;
+
+    }
+    .day{
+        font-weight:400;
+        color : #6b6b6c;
+    }
 }

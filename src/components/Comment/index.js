@@ -21,19 +21,33 @@ import vi from "moment/locale/vi";
 import { useSelector } from "react-redux";
 import { abbreviateNumber } from "js-abbreviation-number";
 const cx = classNames.bind(styles);
-function CommentCard({data}) {
+function CommentCard({ com, index }) {
+	const language = useSelector((state) => state.app.language);
+	console.log(com);
 	return (
 		<div className={cx("wrapper")}>
-			<div className={cx("avatar")}>
-				<Avartar width={"40px"} height={"40px"} />
+			<div className={cx("infor")}>
+				<div className={cx("avatar")}>
+					<Avartar src={com.User.avatar} width={"40px"} height={"40px"} />
+				</div>
+				<div className={cx("body")}>
+					<div className={cx("name")}>{com.User.userName}</div>
+					<div className={cx("content")}>{com.content}</div>
+					{com.likeComment > 0 && (
+						<div className={cx("likeCom")}>
+							<LikeIcon width="12px" height="12px" />
+							<span>{com.likeComment}</span>
+						</div>
+					)}
+				</div>
 			</div>
-			<div className={cx("body")}>
-				<div className={cx("name")}>
-                    Rick Sanchez
-                </div>
-				<div className={cx("content")}>
-					Listen, Morty, I hate to break it to you, but what people call ‘love’ is just a
-					chemical reaction that compels animals to breed.
+			<div className={cx("action")}>
+				<div className={cx("answer")}>Like</div>
+				<div className={cx("like")}>Answer</div>
+				<div className={cx("day")}>
+					<Moment locale={language} fromNow>
+						{com.createdAt}
+					</Moment>
 				</div>
 			</div>
 		</div>

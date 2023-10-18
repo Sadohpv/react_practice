@@ -58,7 +58,7 @@ function Home() {
 
 	return (
 		<>
-			<div className={cx("main")}>
+			<div className={cx("main",currentTheme === THEMES.DARK && "dark")}>
 				<SlideStory dark={currentTheme === THEMES.DARK ? true : false} />
 				<div className={cx("status")}>
 					<div className={cx("status_input")} onClick={() => setAddBlock(true)}>

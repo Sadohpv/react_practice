@@ -56,7 +56,8 @@
     "Navbar":{
         "home": "Trang chủ",
         "settings": "Cài đặt",
-        "search_place" : "Tìm kiếm"
+        "search_place" : "Tìm kiếm",
+        "friend_list" : "Bạn bè"
     },
     "Home_Page":{
         "story":"Tin",
@@ -112,6 +113,11 @@
         "auth": "Bạn không có quyền truy cập!",
         "go_home" : "Trang chủ",
         "login" : "Đăng nhập"
+    },
+    "Friend_List_Page":{
+        "invitation" : "Lời mời kết bạn",
+        "request" : "Yêu cầu đã gửi",
+        "recommend" : "Gợi ý"
     }
     
     

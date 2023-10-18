@@ -25,6 +25,8 @@ import NotFoundPage from '../pages/NotFound';
 import PhotoPage from '../pages/PhotoPage';
 // import FullPost from '../components/Post/FullPost';
 import FullPostPage from '../pages/FullPostPage';
+import FriendListLayout from '../components/Layout/FriendListLayout';
+import FriendResponsePage from '../pages/FriendList/Response';
 //Public Route
 const publicRoutes = [
     
@@ -98,6 +100,11 @@ const privateRoutes = [
         path: config.routes.fullPost,
         component : FullPostPage,
         layout : DefaultLayout
+    },
+    {
+        path: config.routes.friendList,
+        component : FriendResponsePage,
+        layout : FriendListLayout
     }
 
 ];

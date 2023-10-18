@@ -57,7 +57,8 @@
     "Navbar":{
         "home": "Home",
         "settings": "Settings",
-        "search_place" : "Wanna searching something ?"
+        "search_place" : "Wanna searching something ?",
+        "friend_list" : "List Friend"
     },
     "Home_Page":{
         "story":"Story",
@@ -110,6 +111,11 @@
         "auth": "You don't have permission to access!",
         "go_home" : "Homepage",
         "login" : "Login"
+    },
+    "Friend_List_Page":{
+        "invitation" : "Invitation",
+        "request" : "Receive",
+        "recommend" : "Recommend"
     }
     
 }

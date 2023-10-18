@@ -2,9 +2,9 @@ import styles from "./ProfileLayout.module.scss";
 import classNames from "classnames/bind";
 import NavbarCustom from "../../Tools/Navbar/Navbar";
 import { useEffect, useState } from "react";
-import { userService } from "../../../services";
+import { friendService, userService } from "../../../services";
 
-import { EditInfor, PlusIcon } from "../../../asset/icons";
+import { CancelIcon, EditInfor, PlusIcon } from "../../../asset/icons";
 import { FormattedMessage } from "react-intl";
 import { THEMES } from "../../../utils/constant";
 import { useSelector } from "react-redux";
@@ -23,23 +23,20 @@ function ProfileLayout({ children }) {
 	const [res, setRes] = useState({});
 	const [friend, setFriend] = useState({});
 	const [numFriend, setNumFriend] = useState(0);
+	const [isFriend, setIsFriend] = useState(0);
 	const idFriend = useParams();
-	
-	
 
 	useEffect(() => {
-	
-
 		async function fetchData() {
 			const response = await userService.handleGetDataUserService(idFriend.idUser);
 			setRes(response);
-			
-			if(response.status !== 400){
-			const resFriend = await userService.handleGetAllFriendService(idFriend.idUser);
+
+			if (response.status !== 400) {
+				const resFriend = await userService.handleGetAllFriendService(idFriend.idUser);
 
 				if (resFriend && resFriend.EC === 0) {
 					setNumFriend(resFriend.reg.length);
-	
+
 					if (resFriend.reg.length > 5) {
 						setFriend(resFriend.reg.slice(0, 4));
 					} else {
@@ -47,15 +44,25 @@ function ProfileLayout({ children }) {
 						setFriend(resFriend.reg);
 					}
 				}
-			}else{
+			} else {
 				console.log("Here");
 				navigate("/404");
 			}
-			
+			if (idUser !== +idFriend.idUser) {
+				const isFriend = await friendService.handleIsFriendService(idFriend.idUser, idUser);
+				if (isFriend) {
+					if (isFriend.reg && isFriend.reg.status) {
+						setIsFriend(isFriend.reg.status);
+					} else {
+						setIsFriend(null);
+					}
+					// console.log(isFriend.reg);
+				}
+			}
 		}
 		fetchData();
 	}, []);
-	// console.log(res);
+	// console.log(isFriend);
 	const currentTheme = useSelector((state) => state.app.theme);
 	return (
 		<div className={cx("wrapper")}>
@@ -109,22 +116,57 @@ function ProfileLayout({ children }) {
 										</div>
 									</div>
 									<div className={cx("profile_action")}>
-										<div className={cx("action", "add")}>
-											<div className={cx("action_icon")}>
-												<PlusIcon />
+										{idUser === +idFriend.idUser && (
+											<>
+												<div className={cx("action", "add")}>
+													<div className={cx("action_icon")}>
+														<PlusIcon />
+													</div>
+													<div className={cx("action_title")}>
+														<FormattedMessage id="Profile_Page.add-story" />
+													</div>
+												</div>
+
+												<div className={cx("action")}>
+													<div className={cx("action_icon")}>
+														<EditInfor />
+													</div>
+													<div className={cx("action_title")}>
+														<FormattedMessage id="Profile_Page.edit-profile-pic" />
+													</div>
+												</div>
+											</>
+										)}
+										{idUser !== +idFriend.idUser && isFriend === 1 && (
+											<div className={cx("action")}>
+												<div className={cx("action_icon")}>
+													<CancelIcon />
+												</div>
+												<div className={cx("action_title")}>
+													<FormattedMessage id="Friend_Page.unfriend" />
+												</div>
 											</div>
-											<div className={cx("action_title")}>
-												<FormattedMessage id="Profile_Page.add-story" />
+										)}
+										{idUser !== +idFriend.idUser && isFriend === 2 && (
+											<div className={cx("action")}>
+												<div className={cx("action_icon")}>
+													<CancelIcon />
+												</div>
+												<div className={cx("action_title")}>
+													<FormattedMessage id="Friend_Page.cancel_add_friend" />
+												</div>
 											</div>
-										</div>
-										<div className={cx("action")}>
-											<div className={cx("action_icon")}>
-												<EditInfor />
+										)}
+										{idUser !== +idFriend.idUser && isFriend === null && (
+											<div className={cx("action","add")}>
+												<div className={cx("action_icon")}>
+													<PlusIcon />
+												</div>
+												<div className={cx("action_title")}>
+													<FormattedMessage id="Friend_Page.add_friend" />
+												</div>
 											</div>
-											<div className={cx("action_title")}>
-												<FormattedMessage id="Profile_Page.edit-profile-pic" />
-											</div>
-										</div>
+										)}
 									</div>
 								</div>
 							</div>
@@ -160,12 +202,14 @@ function ProfileLayout({ children }) {
 									>
 										<FormattedMessage id="Profile_Page.friends" />
 									</NavLink>
-									<NavLink to={`/${idFriend.idUser}/photo`}
+									<NavLink
+										to={`/${idFriend.idUser}/photo`}
 										className={(nav) =>
 											cx("bar_item", { "bar_item-active": nav.isActive })
 										}
 										// exact
-										end>
+										end
+									>
 										<FormattedMessage id="Profile_Page.photos" />
 									</NavLink>
 								</div>

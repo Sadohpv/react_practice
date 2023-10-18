@@ -54,9 +54,9 @@ function Post({ data, idUser }) {
 					<Avartar src={data.User.avatar} />
 				</div>
 				<div className={cx("header_name")}>
-					<div className={cx("name_user-post")}>
+					<a href={`/${data.User.idUser}`} className={cx("name_user-post")}>
 						<span>{data.User.userName}</span>
-					</div>
+					</a>
 					<div className={cx("time")}>
 						<span>
 							<Moment locale={language} fromNow>

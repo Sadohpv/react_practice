@@ -26,9 +26,16 @@ function handleCancelAddFriendService(asking,asked){
 		asking: asking,
 	});
 }
+function handleIsFriendService(userPage , owner){
+	return axios.post(`/friend/isFriend`, {
+		userPage: userPage,
+		owner: owner,
+	});
+}
 export default {
 	handleGetMutualFriendService,
 	handleUnfriendService,
 	handleAddFriendService,
-	handleCancelAddFriendService
+	handleCancelAddFriendService,handleIsFriendService
+	
 };

@@ -1,6 +1,6 @@
 import styles from "./Navbar.module.scss";
 import classNames from "classnames/bind";
-import { HomeIcon,SettingIcon} from "../../../asset/icons";
+import { HomeIcon,ListUserIcon,SettingIcon} from "../../../asset/icons";
 import { NavLink, useNavigate } from "react-router-dom";
 // import { useEffect } from "react";
 // import { toast } from "react-toastify";
@@ -61,13 +61,13 @@ function NavbarCustom() {
 						</NavLink>
 					</div>
 				</TippyCustom>
-				<TippyCustom content="List User">
+				<TippyCustom content={<FormattedMessage id="Navbar.friend_list"/>}>
 					<div className={classes}>
 						<NavLink
-							to="/list"
+							to="/friend"
 							className={(nav) => cx("menu_item", { active: nav.isActive })}
 						>
-							 
+							 <ListUserIcon />
 						</NavLink>
 					</div>
 				</TippyCustom>

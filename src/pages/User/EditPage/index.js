@@ -8,7 +8,7 @@ import { emitter } from "../../../utils/emitter";
 import { FormattedMessage } from "react-intl";
 import { useSelector } from "react-redux";
 import { THEMES} from "../../../utils/constant";
-import jwt_decode from "jwt-decode";
+
 	
 
 const cx = classNames.bind(styles);
@@ -37,7 +37,7 @@ function EditPage() {
 	const [lastName, setLastName] = useState("");
 	const [address, setAddress] = useState("");
 	const [phoneNumber, setPhoneNumber] = useState("");
-	const [message, setMessage] = useState("Here is your message");
+	const [message, setMessage] = useState("");
 
 
 	const currentTheme = useSelector((state) => state.app.theme);

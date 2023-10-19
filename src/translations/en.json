@@ -113,9 +113,12 @@
         "login" : "Login"
     },
     "Friend_List_Page":{
-        "invitation" : "Invitation",
-        "request" : "Receive",
-        "recommend" : "Recommend"
+        "invitation" : "Received",
+        "request" : "Requests",
+        "recommend" : "Recommend",
+        "title" : "Make friend",
+        "accept": "Accept",
+        "deny" : "Deny"
     }
     
 }

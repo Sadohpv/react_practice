@@ -117,7 +117,10 @@
     "Friend_List_Page":{
         "invitation" : "Lời mời kết bạn",
         "request" : "Yêu cầu đã gửi",
-        "recommend" : "Gợi ý"
+        "recommend" : "Gợi ý",
+        "title" : "Kết bạn",
+        "accept": "Chấp nhận",
+        "deny" : "Từ chối"
     }
     
     

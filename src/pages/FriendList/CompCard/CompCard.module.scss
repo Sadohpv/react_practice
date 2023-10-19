@@ -1,0 +1,71 @@
+.card{
+    width: 210px;
+    min-height: 350px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    box-shadow: 1px 1px 2px rgb(198, 198, 198);
+    overflow: hidden;
+    // margin: 20px 50px 0 0;
+    .user_pic{
+        width: 100%;
+        height: 210px;
+        // background-color: red;
+        display:flex;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    .user_infor{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        justify-content: flex-start;
+        .name{
+            width: 100%;
+            min-height: 20px;
+            text-align: start;
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 20px;
+        }
+        .friend{
+            width: 100%;
+            height: 40px;
+            background-color: red;
+        }
+        .action{
+            // flex: 1;
+            margin-top: 10px;
+            width: 100%;
+            display: flex;
+            // flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            .button{
+                height: 34px;
+                width: 47%;
+                background-color: #d0d0d0;
+                font-size: 14px;
+                border-radius: 8px;
+                font-weight: 600;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                &:hover{
+                    cursor: pointer;
+                }
+            }
+            :first-child{
+                background-color: var(--primary-color);
+                color: white;
+            }
+        }
+
+    }
+}

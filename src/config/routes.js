@@ -6,6 +6,7 @@ const routesConfig = {
     notFound: '/404',
     fullPost : '/post/:idPost',
     friendList: '/friend',
+    friendRequest: '/friend/request',
     user: '/:idUser',
     edit: '/:idUser/detail',
     friend : '/:idUser/friend',
@@ -14,6 +15,7 @@ const routesConfig = {
     configure : '/:idUser/configure',
     security : '/:idUser/security',
     ElectricSpider: '/games/spider',
+
 }
 
 export default routesConfig;

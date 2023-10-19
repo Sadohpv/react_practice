@@ -17,7 +17,7 @@ function FriendListMenu() {
 		<div className={cx("left", currentTheme === THEMES.DARK && THEMES.DARK)}>
 			<div className={cx("left_main")}>
 				<div className={cx("left_main-head")}>
-					<FormattedMessage id="Setting_Menu.title" />
+					<FormattedMessage id="Friend_List_Page.title" />
 					<div className={cx("line")}></div>
 				</div>
 				<div className={cx("left_main-body")}>

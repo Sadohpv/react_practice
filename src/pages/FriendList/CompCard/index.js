@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { userService } from "../../../services";
-import styles from "./Response.module.scss";
+import styles from "./CompCard.module.scss";
 import classNames from "classnames/bind";
 import { useParams } from "react-router-dom";
 
@@ -9,18 +9,17 @@ import { FormattedMessage } from "react-intl";
 import { useSelector } from "react-redux";
 import { THEMES } from "../../../utils/constant";
 import FriendBlock from "../../../components/Layout/ProfileLayout/FriendBlock";
-import CompCard from "../CompCard";
 
 const cx = classNames.bind(styles);
 
-function FriendResponsePage() {
+function CompCard({data}) {
 	const userId = useSelector((state) => state.user.userId);
 
 	const [res, setRes] = useState({});
 	const [friend, setFriend] = useState({});
 	const [numFriend, setNumFriend] = useState(0);
 
-	const currentTheme = useSelector((state) => state.app.theme);
+	// const currentTheme = useSelector((state) => state.app.theme);
 
 	const idFriend = useParams();
 	useEffect(() => {
@@ -42,17 +41,40 @@ function FriendResponsePage() {
 	}, []);
 
 	return (
-		<div className={cx("container", currentTheme === THEMES.DARK && THEMES.DARK)}>
-			
-			<CompCard />
-			<CompCard />
+	
+			<div className={cx("card")}>
+				<div className={cx("user_pic")}>
+					<img
+						src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYMH32LNHOFH68P8rGQ5akiUE_G3CvM6gZzm9pj8yq9G2R2EQRL2DqMRtYaMDugCIkcR8&usqp=CAU"
+						alt="user_pic"
+					/>
+				</div>
+				<div className={cx("user_infor")}>
+					<div className={cx("name")}>Kusakari Leonado Davaci Alexander Junior</div>
+					<div className={cx("friend")}>
+						{friend.length > 0 &&
+							friend.map((bro, index) => (
+								<FriendBlock
+									key={Math.random()}
+									data={bro}
+									index={index}
+									idFriend={idFriend.idUser}
+								/>
+							))}
+					</div>
+					<div className={cx("action")}>
+						<div className={cx("button")}>
+							<FormattedMessage id="Friend_List_Page.accept"/>
+						</div>
+						<div className={cx("button")}>
+						<FormattedMessage id="Friend_List_Page.deny"/>
 
-
-			<CompCard />
-			<CompCard />
-			<CompCard />
-		</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	
 	);
 }
 
-export default FriendResponsePage;
+export default CompCard;

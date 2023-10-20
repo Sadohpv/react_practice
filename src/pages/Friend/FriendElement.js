@@ -18,6 +18,7 @@ function FriendElement({ data, index, idFriend }) {
 	const [toggleFollow, setToggleFollow] = useState(true);
 	const [unfriendButton, setUnfriendButton] = useState(true);
 	const [mutual, setMutual] = useState([]);
+	const [checkFriend, setCheckFriend] = useState(null);
 	const friend = data;
 	const handleToggleFollow = () => {
 		setToggleFollow(!toggleFollow);
@@ -34,11 +35,31 @@ function FriendElement({ data, index, idFriend }) {
 			// console.log(idFriend);
 
 			setMutual(resFriend.reg);
+			if (idUser !== idFriend) {
+				const friendCheck = await friendService.handleIsFriendService(
+					friend.idUser,
+					idUser
+				);
+				// console.log(friendCheck);
+				if (friendCheck && friendCheck.reg) {
+					if (friendCheck.reg.status === 1) {
+						setCheckFriend(1);
+					} else if (friendCheck.reg.status === 2) {
+						setCheckFriend(2);
+					} else {
+						setCheckFriend(false);
+					}
+				} else {
+					setCheckFriend(false);
+				}
+			} else {
+				setCheckFriend(1);
+			}
 		}
 		fetchData();
 	}, []);
 	const handleUnfriend = async () => {
-		console.log("Unfriend");
+		// console.log("Unfriend");
 		const res = await friendService.handleUnfriendService(friend.idUser, idUser);
 		if (res) {
 			console.log("Unfriend Success");
@@ -87,7 +108,7 @@ function FriendElement({ data, index, idFriend }) {
 						</span>
 					</div>
 
-					{unfriendButton ? (
+					{checkFriend === 1 && unfriendButton === true && (
 						<div className={cx("action_button")} onClick={handleUnfriend}>
 							<span className={cx("action_icon")}>
 								<UnfriendIcon height="16px" width="16px" />
@@ -96,10 +117,10 @@ function FriendElement({ data, index, idFriend }) {
 								<FormattedMessage id="Friend_Page.unfriend" />
 							</span>
 						</div>
-					) : (
-						
-						<ButtonAddFriend idAsked={friend.idUser}/>
 					)}
+					{checkFriend !== 1&&
+						<ButtonAddFriend idAsked={friend.idUser} isFriend={checkFriend} />
+					}
 				</div>
 			</div>
 		</TippyCustom>

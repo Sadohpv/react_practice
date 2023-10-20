@@ -2,15 +2,15 @@ import styles from "./ButtonAddFriend.module.scss";
 import classNames from "classnames/bind";
 import { AddFriendIcon, CancelIcon } from "../../../asset/icons";
 import { FormattedMessage } from "react-intl";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { friendService } from "../../../services";
 import { useSelector } from "react-redux";
 
 const cx = classNames.bind(styles);
 
-function ButtonAddFriend({ idAsked }) {
+function ButtonAddFriend({ idAsked, isFriend }) {
 	const idUser = useSelector((state) => state.user.userId);
-	const [buttonAddFriend, setButtonAddFriend] = useState(true);
+	const [buttonAddFriend, setButtonAddFriend] = useState("");
 
 	const handleAddFriend = async () => {
 		const res = await friendService.handleAddFriendService(idUser, idAsked);
@@ -24,9 +24,20 @@ function ButtonAddFriend({ idAsked }) {
 			setButtonAddFriend(true);
 		}
 	};
+	// console.log(typeof isFriend);
+
+	useEffect(()=>{
+		if(isFriend === 2){
+			setButtonAddFriend(false);
+			// consoleelse.log("Here");
+		}else{
+			setButtonAddFriend(true);
+
+		}
+	},[isFriend])
 	return (
 		<>
-			{buttonAddFriend ? (
+			{buttonAddFriend === true &&
 				<div className={cx("action_button")} onClick={handleAddFriend}>
 					<span className={cx("action_icon")}>
 						<AddFriendIcon height="16px" width="16px" />
@@ -35,7 +46,8 @@ function ButtonAddFriend({ idAsked }) {
 						<FormattedMessage id="Friend_Page.add_friend" />
 					</span>
 				</div>
-			) : (
+			}
+			{buttonAddFriend === false &&
 				<div
 					className={cx("action_button", "cancel_button")}
 					onClick={handleCancelAddFriend}
@@ -47,7 +59,7 @@ function ButtonAddFriend({ idAsked }) {
 						<FormattedMessage id="Friend_Page.cancel_add_friend" />
 					</span>
 				</div>
-			)}
+			}
 		</>
 	);
 }

@@ -25,6 +25,8 @@ function FriendListMenu() {
 						<NavLink
 							className={(nav) => cx("content", { active: nav.isActive })}
 							to={`/friend`}
+							
+							end
 						>
 							<span>
 								<FormattedMessage id="Friend_List_Page.invitation" />
@@ -33,6 +35,8 @@ function FriendListMenu() {
 						<NavLink
 							className={(nav) => cx("content", { active: nav.isActive })}
 							to={`/friend/request`}
+					
+
 						>
 							<span>
 								<FormattedMessage id="Friend_List_Page.request" />
@@ -41,6 +45,7 @@ function FriendListMenu() {
 						<NavLink
 							className={(nav) => cx("content", { active: nav.isActive })}
                             to={`/friend/recommend`}
+							
 
 						>
 							<span>

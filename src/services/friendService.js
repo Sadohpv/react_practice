@@ -20,22 +20,42 @@ function handleAddFriendService(asking, asked) {
 		asking: asking,
 	});
 }
-function handleCancelAddFriendService(asking,asked){
+function handleCancelAddFriendService(asking, asked) {
 	return axios.post(`/friend/cancelAddFriend`, {
 		asked: asked,
 		asking: asking,
 	});
 }
-function handleIsFriendService(userPage , owner){
+function handleIsFriendService(userPage, owner) {
 	return axios.post(`/friend/isFriend`, {
 		userPage: userPage,
 		owner: owner,
+	});
+}
+function handleGetResponseAddFriendService(idUser) {
+	return axios.post(`/friend/addFriendResponse`, {
+		idUser: idUser,
+	});
+}
+function handleAnswerFriendService(friend_1,friend_2,answer){
+	return axios.post(`/friend/addFriendAnswer`, {
+		friend_1:friend_1,
+		friend_2:friend_2,
+		answer : answer,
+	});
+}
+function handleGetRequestAddFriendService(idUser) {
+	return axios.post(`/friend/addFriendRequest`, {
+		idUser: idUser,
 	});
 }
 export default {
 	handleGetMutualFriendService,
 	handleUnfriendService,
 	handleAddFriendService,
-	handleCancelAddFriendService,handleIsFriendService
-	
+	handleCancelAddFriendService,
+	handleIsFriendService,
+	handleGetResponseAddFriendService,
+	handleAnswerFriendService,
+	handleGetRequestAddFriendService
 };

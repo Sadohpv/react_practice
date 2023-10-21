@@ -88,9 +88,9 @@ function CompCard({ data, request = false }) {
 	}
 	return (
 		<div className={cx("card")}>
-			<div className={cx("user_pic")}>
+			<a href={`/${dataFriend.idUser}`} className={cx("user_pic")}>
 				<img src={dataFriend.avatar} alt="user_pic" />
-			</div>
+			</a>
 			<div className={cx("user_infor")}>
 				<div className={cx("name")}>{dataFriend.userName}</div>
 				<div className={cx("friend")}>
@@ -108,6 +108,7 @@ function CompCard({ data, request = false }) {
 				<div className={cx("number")}>
 					{numFriend} <FormattedMessage id="Friend_Page.mutual_friend" />
 				</div>
+				
 				{request === false && (
 					<div className={cx("action", result !== 0 && "disable")}>
 						{result !== 1 && (

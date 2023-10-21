@@ -37,7 +37,7 @@ function FriendRequestPage() {
 	console.log(friend);
 	return (
 		<div className={cx("container",currentTheme === THEMES.DARK && THEMES.DARK)}>
-		
+			
 			{friend.length > 0 && friend.map((data) => <CompCard data={data} key={Math.random()} request/>)}
 		
             

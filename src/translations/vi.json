@@ -120,7 +120,10 @@
         "recommend" : "Gợi ý",
         "title" : "Kết bạn",
         "accept": "Chấp nhận",
-        "deny" : "Từ chối"
+        "deny" : "Từ chối",
+        "add_friend_message":"Gửi yêu cầu kết bạn thành công!",
+        "cancel_add_friend_message":"Huỷ yêu cầu !",
+        "unfriend_message":"Huỷ kết bạn !"
     }
     
     

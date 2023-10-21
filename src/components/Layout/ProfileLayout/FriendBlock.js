@@ -6,7 +6,7 @@ const cx = classNames.bind(styles);
 function FriendBlock({ data, index,idFriend,noPseudo=false }) {
 	
 	// console.log(data);
-	const [href, setHref] = useState(noPseudo ? `/${idFriend}` :(index === 0 ? `/${idFriend}/friend` : `/${data.idUser}`));
+	const [href, setHref] = useState(noPseudo ? `/${data.idUser}` :(index === 0 ? `/${idFriend}/friend` : `/${data.idUser}`));
 	
 	return (
 		<a href={href} className={cx("friend_avatar",(noPseudo ? "noPseudo" : ""))}>

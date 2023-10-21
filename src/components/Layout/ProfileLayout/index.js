@@ -61,9 +61,41 @@ function ProfileLayout({ children }) {
 			}
 		}
 		fetchData();
-	}, []);
+	}, [idFriend.idUser]);
 	// console.log(isFriend);
 	const currentTheme = useSelector((state) => state.app.theme);
+	const handleUnfriend = async () => {
+		// console.log("Unfriend");
+		const res = await friendService.handleUnfriendService(idFriend.idUser, idUser);
+		if (res) {
+			// console.log("Unfriend Success");
+			// console.log(res);
+			toast.success(<FormattedMessage id="Friend_List_Page.unfriend_message" />, {
+				position: toast.POSITION.TOP_RIGHT,
+			});
+			setIsFriend(null);
+		}
+	};
+	const handleAddFriend = async () => {
+		const res = await friendService.handleAddFriendService(idUser, idFriend.idUser);
+		if (res) {
+			toast.success(<FormattedMessage id="Friend_List_Page.add_friend_message" />, {
+				position: toast.POSITION.TOP_RIGHT,
+			});
+			// setButtonAddFriend(false);
+			setIsFriend(2);
+		}
+
+	};
+	const handleCancelAddFriend = async () => {
+		const res = await friendService.handleCancelAddFriendService(idUser, idFriend.idUser);
+		if (res) {
+			toast.success(<FormattedMessage id="Friend_List_Page.cancel_add_friend_message" />, {
+				position: toast.POSITION.TOP_RIGHT,
+			});
+			setIsFriend(null);
+		}
+	};
 	return (
 		<div className={cx("wrapper")}>
 			<NavbarCustom />
@@ -110,6 +142,7 @@ function ProfileLayout({ children }) {
 															data={bro}
 															index={index}
 															idFriend={idFriend.idUser}
+															noPseudo={numFriend < 5 && true}
 														/>
 													))}
 											</div>
@@ -138,7 +171,7 @@ function ProfileLayout({ children }) {
 											</>
 										)}
 										{idUser !== +idFriend.idUser && isFriend === 1 && (
-											<div className={cx("action")}>
+											<div className={cx("action")} onClick={handleUnfriend}>
 												<div className={cx("action_icon")}>
 													<CancelIcon />
 												</div>
@@ -148,7 +181,7 @@ function ProfileLayout({ children }) {
 											</div>
 										)}
 										{idUser !== +idFriend.idUser && isFriend === 2 && (
-											<div className={cx("action")}>
+											<div className={cx("action")} onClick={handleCancelAddFriend} >
 												<div className={cx("action_icon")}>
 													<CancelIcon />
 												</div>
@@ -158,7 +191,7 @@ function ProfileLayout({ children }) {
 											</div>
 										)}
 										{idUser !== +idFriend.idUser && isFriend === null && (
-											<div className={cx("action","add")}>
+											<div className={cx("action","add")} onClick={handleAddFriend}>
 												<div className={cx("action_icon")}>
 													<PlusIcon />
 												</div>

@@ -10,17 +10,23 @@ const cx = classNames.bind(styles);
 
 function ButtonAddFriend({ idAsked, isFriend }) {
 	const idUser = useSelector((state) => state.user.userId);
-	const [buttonAddFriend, setButtonAddFriend] = useState("");
+	const [buttonAddFriend, setButtonAddFriend] = useState(null);
 
 	const handleAddFriend = async () => {
 		const res = await friendService.handleAddFriendService(idUser, idAsked);
 		if (res) {
 			setButtonAddFriend(false);
+			toast.success(<FormattedMessage id="Friend_List_Page.add_friend_message" />, {
+				position: toast.POSITION.TOP_RIGHT,
+			});
 		}
 	};
 	const handleCancelAddFriend = async () => {
 		const res = await friendService.handleCancelAddFriendService(idUser, idAsked);
 		if (res) {
+			toast.success(<FormattedMessage id="Friend_List_Page.cancel_add_friend_message" />, {
+				position: toast.POSITION.TOP_RIGHT,
+			});
 			setButtonAddFriend(true);
 		}
 	};
@@ -30,11 +36,12 @@ function ButtonAddFriend({ idAsked, isFriend }) {
 		if(isFriend === 2){
 			setButtonAddFriend(false);
 			// consoleelse.log("Here");
-		}else{
+		}else if(isFriend === null){
 			setButtonAddFriend(true);
 
 		}
 	},[isFriend])
+	console.log(isFriend);
 	return (
 		<>
 			{buttonAddFriend === true &&

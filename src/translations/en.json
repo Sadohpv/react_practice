@@ -118,7 +118,10 @@
         "recommend" : "Recommend",
         "title" : "Make friend",
         "accept": "Accept",
-        "deny" : "Deny"
+        "deny" : "Deny",
+        "add_friend_message":"Send request success!",
+        "cancel_add_friend_message":"Cancel request !",
+        "unfriend_message":"Cut relationship huh !"
     }
     
 }

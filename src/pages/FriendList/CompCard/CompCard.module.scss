@@ -1,6 +1,7 @@
 .card{
     width: 210px;
-    min-height: 310px;
+    height: 350px;
+    
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -21,10 +22,11 @@
     }
     .user_infor{
         flex: 1;
+        max-height: 210px;
         display: flex;
         flex-direction: column;
         padding: 10px;
-        justify-content: flex-start;
+        justify-content: space-between;
         .name{
             width: 100%;
             min-height: 20px;

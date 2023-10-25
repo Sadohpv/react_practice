@@ -10,7 +10,7 @@ import { THEMES } from "../../../utils/constant";
 import { useSelector } from "react-redux";
 import FriendBlock from "./FriendBlock";
 import { NavLink, useParams, useNavigate } from "react-router-dom";
-
+import { toast } from "react-toastify";
 // import { THEMES } from "../../../utils/constant";
 // const currentTheme = useSelector((state) => state.app.theme);
 

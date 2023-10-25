@@ -109,7 +109,7 @@ function FriendElement({ data, index, idFriend }) {
 					</div>
 
 					{checkFriend === 1 && unfriendButton === true && (
-						<div className={cx("action_button")} onClick={handleUnfriend}>
+						<div className={cx("action_button","sub")} onClick={handleUnfriend}>
 							<span className={cx("action_icon")}>
 								<UnfriendIcon height="16px" width="16px" />
 							</span>

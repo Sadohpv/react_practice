@@ -23,7 +23,7 @@ import { abbreviateNumber } from "js-abbreviation-number";
 const cx = classNames.bind(styles);
 function CommentCard({ com, index }) {
 	const language = useSelector((state) => state.app.language);
-	console.log(com);
+	// console.log(com);
 	return (
 		<div className={cx("wrapper")}>
 			<div className={cx("infor")}>

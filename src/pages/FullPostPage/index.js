@@ -46,9 +46,9 @@ function FullPostPage() {
 		}
 		fetchData();
 	}, []);
-	console.log(data)
+	// console.log(data)
     // console.log(data);
-	return <div className={cx("wrapper")}>{data && <FullPost data={data} />}</div>;
+	return <div className={cx("wrapper")}>{data && <FullPost data={data} noBack={true}/>}</div>;
 }
 
 export default FullPostPage;

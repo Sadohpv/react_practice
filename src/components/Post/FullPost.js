@@ -22,7 +22,7 @@ import { useSelector } from "react-redux";
 import { abbreviateNumber } from "js-abbreviation-number";
 import CommentCard from "../Comment";
 const cx = classNames.bind(styles);
-function FullPost({ handleClose, data }) {
+function FullPost({ handleClose, data, noBack = false }) {
 	const idUser = useSelector((state) => state.user.userId);
 	// console.log(data);
 	// const [liked, setLiked] = useState(data.userLiked);
@@ -31,9 +31,11 @@ function FullPost({ handleClose, data }) {
 
 	const [date, setDate] = useState(data.createdAt);
 	const [privatePost, setPrivatePost] = useState(data.privatePost);
-	// const [icon,setIcon] = useState({});
+	const [commentCount, setCommentCount] = useState(data.commentCount);
 	const [likeCount, setLikeCount] = useState(data.likeCount);
-	const [comment,setComment] = useState([]);
+	const [comment, setComment] = useState([]);
+	const [userComment, setUserComment] = useState("");
+	const [loadComment, setLoadComment] = useState(true);
 	const handleCloseFullPost = () => {
 		if (typeof handleClose === "function") {
 			// console.log("Here");
@@ -58,31 +60,55 @@ function FullPost({ handleClose, data }) {
 		const height = e.target.scrollHeight;
 		if (height > 0) {
 			e.target.style.height = e.target.scrollHeight + "px";
-			
-
 		}
-
-		setComment(e.target.value);
+		setUserComment(e.target.value);
+	};
+	const handleContentKeyDown = async (e) => {
+		if(userComment !== ""){
+			if (e.keyCode === 13 && e.shiftKey === false) {
+		
+				console.log("OK");
+				const res = await postService.handlePushCommentPostService(
+					idUser,
+					data.idPost,
+					userComment.trim()
+				);
+	
+				if (res) {
+					// console.log(res);
+					if (res.errCode === 0) {
+						setCommentCount(commentCount+1);
+						setLoadComment(!loadComment);
+						setUserComment("")
+					}
+				}
+			}
+		}else{
+			console.log("No")
+		}
+		
 	};
 
-	useEffect(()=>{
+	useEffect(() => {
 		async function fetchData() {
 			const commentPost = await postService.handleGetCommentPost(data.idPost);
-			console.log(commentPost);
-			if(commentPost && commentPost.reg){
+			// console.log(commentPost);
+			if (commentPost && commentPost.reg) {
 				setComment(commentPost.reg);
 			}
-			
 		}
 
 		fetchData();
-	},[])
+	}, [loadComment]);
 	return (
 		<div className={cx("wrapper")}>
 			<div className={cx("left")}>
-				<div className={cx("cancel_button")} onClick={handleCloseFullPost}>
-					<CancelIcon width="20px" height="20px" />
-				</div>
+				{noBack === false && (
+					<div className={cx("cancel_button")} onClick={handleCloseFullPost}>
+						<CancelIcon width="20px" height="20px" />
+					</div>
+				)}
+
 				<div className={cx("img_post")}>
 					<img src={data.imgPost} alt="full_post" />
 				</div>
@@ -92,7 +118,7 @@ function FullPost({ handleClose, data }) {
 					<div className={cx("post_header")}>
 						<div className={cx("header_avt")}>
 							{/* {data.User && data.User.avatar && <img src={data.User.avatar} />} */}
-							<Avartar src={data.User.avatar} height={"38px"} width={"38px"}/>
+							<Avartar src={data.User.avatar} height={"38px"} width={"38px"} />
 						</div>
 						<div className={cx("header_name")}>
 							<div className={cx("name_user-post")}>
@@ -119,7 +145,6 @@ function FullPost({ handleClose, data }) {
 									<ThreeDotsIcon />
 								</div>
 							</div>
-							
 						</div>
 					</div>
 					<div className={cx("post_body")}>
@@ -138,7 +163,7 @@ function FullPost({ handleClose, data }) {
 							<div className={cx("infor_action")}>
 								<div className={cx("comment")}>
 									<span className={cx("text")}>
-										{abbreviateNumber(data.commentCount, 2, { padding: false })}{" "}
+										{abbreviateNumber(commentCount, 2, { padding: false })}{" "}
 										<FormattedMessage id="Post_Comp.comments" />
 									</span>
 								</div>
@@ -177,21 +202,26 @@ function FullPost({ handleClose, data }) {
 				</div>
 
 				<div className={cx("comments")}>
-					{comment.length > 0 && comment.map((com,index)=>(
+					{comment.length > 0 &&
+						comment.map((com, index) => (
+							<CommentCard key={Math.random()} com={com} index={index} />
+						))}
 
-					<CommentCard key={Math.random()} com={com} index={index}/>
-					))}
-					
 					{/* <CommentCard /> */}
 				</div>
 
 				<div className={cx("add_comment")}>
 					<Avartar width={"40px"} height={"40px"} />
 					<div className={cx("input_comment")}>
-								<textarea type="text" placeholder="Comment in this post !" 	onChange={(e) => handleContentPost(e)}/> 
+						<textarea
+							type="text"
+							placeholder="Comment in this post !"
+							value={userComment}
+							onChange={(e) => handleContentPost(e)}
+							onKeyDown={(e) => handleContentKeyDown(e)}
+						/>
 					</div>
 				</div>
-
 			</div>
 		</div>
 	);

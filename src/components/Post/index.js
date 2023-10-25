@@ -20,16 +20,22 @@ import Moment from "react-moment";
 import vi from "moment/locale/vi";
 import { useSelector } from "react-redux";
 import { abbreviateNumber } from "js-abbreviation-number";
+import FullPost from "./FullPost.js"
+import { useNavigate } from "react-router";
 const cx = classNames.bind(styles);
 
 function Post({ data, idUser }) {
 	// console.log(data);
+	const navigate = useNavigate();
+	const [modal,setModal] = useState(false);
+
 	const language = useSelector((state) => state.app.language);
 	const [liked, setLiked] = useState(data.userLiked);
 	const [date, setDate] = useState(data.createdAt);
 	const [privatePost, setPrivatePost] = useState(data.privatePost);
 	// const [icon,setIcon] = useState({});
 	const [likeCount, setLikeCount] = useState(data.likeCount);
+	const [currentURL,setCurrentURL] = useState(window.location.pathname);
 	const handleToggleLike = async () => {
 		if (liked === true) {
 			const res = await postService.handleLikedPostService(false, data.idPost, idUser);
@@ -45,8 +51,22 @@ function Post({ data, idUser }) {
 	};
 	// fecth all like and check one vs one in home
 	// console.log(language);
+	const handleFullPhoto = () => {
+		setModal(true);
+		window.history.pushState(null, null, `/post/${data.idPost}`)
+		// console.log(currentURL);
+	};
+	const handleCloseFullPhoto = ()=>{
+		setModal(false);
+		// console.log(window.history);
+		// navigate("/");
+		// console.log(currentURL);
+		
+		window.history.pushState(null, null,  currentURL)
 
+	}
 	return (
+		<>
 		<div className={cx("wrapper")}>
 			<div className={cx("post_header")}>
 				<div className={cx("header_avt")}>
@@ -89,7 +109,7 @@ function Post({ data, idUser }) {
 					<span>{data.content}</span>
 				</div>
 				{data.imgPost && (
-					<div className={cx("post_body-img")}>
+					<div className={cx("post_body-img")} onClick={handleFullPhoto}>
 						<img src={data.imgPost} />
 					</div>
 				)}
@@ -138,6 +158,16 @@ function Post({ data, idUser }) {
 				</div>
 			</div>
 		</div>
+		{
+				modal&&
+				<div className={cx("modal_photo")}>
+				<div className={cx("post")}>
+					<FullPost data={data} handleClose={handleCloseFullPhoto} />
+				</div>
+			</div>
+		}
+		</>
+		
 	);
 }
 

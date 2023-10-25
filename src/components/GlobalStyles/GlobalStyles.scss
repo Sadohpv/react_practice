@@ -1,7 +1,7 @@
 @import "normalize.css";
 @import url("https://fonts.cdnfonts.com/css/proxima-nova-2?styles=44818,44819,44817,44816,44820,44821,44812,44813");
 
-:root {
+:root {@import url('https://fonts.cdnfonts.com/css/helvetica-neue-55?styles=30125,16008,16007,15983,15984,15991,15992');
 	// --primary-color: #73dfd6;
 	--primary-color: #48cbd0;
 	--black: #000;
@@ -33,11 +33,14 @@ html {
 }
 
 body {
-	font-family: "Proxima Nova", sans-serif;
+	// font-family: "Proxima Nova", sans-serif;
+	font-family: 'Helvetica Neue', sans-serif;
 	font-size: 1.6rem;
 	line-height: 1.5;
 	text-rendering: optimizeSpeed; // tối ưu tốc độ render font lấy từ nguồn khác
 	overflow-y: overlay;
+	font-weight: 400;
+	// letter-spacing: 0.5px;
 }
 //Scrollbar CSS
 
@@ -100,4 +103,10 @@ a[href] {
 	color: black;
 	box-shadow: 0.5px 0.5px 1.5px black;
 	border-radius: 12px;
+  }
+  .tippy-box[data-theme~='dark'] {
+	background-color: red !important;
+	color: black;
+	box-shadow: 0.5px 0.5px 1.5px black;
+	// border-radius: 12px;
   }

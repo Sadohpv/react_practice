@@ -184,12 +184,14 @@
 					border-radius: 6px;
 					display: flex;
 					align-items: center;
+					cursor: pointer;
 					.action_icon {
 						margin-top: 2px;
 						scale: 0.6;
 						svg {
 							fill: black;
 						}
+						
 					}
 					&:hover {
 						background-color: #cacaca;

@@ -11,7 +11,7 @@ import { THEMES } from "../../../utils/constant";
 import FriendBlock from "../../../components/Layout/ProfileLayout/FriendBlock";
 import { set } from "lodash";
 import ButtonAddFriend from "../../../components/Tools/ButtonAddFriend";
-
+import { toast } from "react-toastify";
 const cx = classNames.bind(styles);
 
 function CompCard({ data, request = false }) {

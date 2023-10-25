@@ -5,7 +5,7 @@ import { FormattedMessage } from "react-intl";
 import { useEffect, useState } from "react";
 import { friendService } from "../../../services";
 import { useSelector } from "react-redux";
-
+import { toast } from "react-toastify";
 const cx = classNames.bind(styles);
 
 function ButtonAddFriend({ idAsked, isFriend }) {

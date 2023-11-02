@@ -6,12 +6,13 @@ import { useParams } from "react-router-dom";
 
 import { emitter } from "../../../utils/emitter";
 import { FormattedMessage } from "react-intl";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { THEMES } from "../../../utils/constant";
 import FriendBlock from "../../../components/Layout/ProfileLayout/FriendBlock";
 import { set } from "lodash";
 import ButtonAddFriend from "../../../components/Tools/ButtonAddFriend";
 import { toast } from "react-toastify";
+import { handleNumberAddFriendReceiveRedux } from "../../../redux/actions/userAction";
 const cx = classNames.bind(styles);
 
 function CompCard({ data, request = false }) {
@@ -23,9 +24,10 @@ function CompCard({ data, request = false }) {
 	const [friend, setFriend] = useState({});
 	const [numFriend, setNumFriend] = useState(0);
 	const [result, setResult] = useState(0);
-	// const currentTheme = useSelector((state) => state.app.theme);
+	const numberReceive = useSelector((state) => state.user.numberReceive);
 		const [toggle,setToggle] = useState(false);
 	// const idFriend = useParams();
+	const dispatch = useDispatch();
 	const [checkFriend,setCheckFriend] = useState(false);
 	useEffect(() => {
 		async function fetchData() {
@@ -62,7 +64,7 @@ function CompCard({ data, request = false }) {
 		}
 		fetchData();
 	}, []);
-	console.log(checkFriend);
+	// console.log(checkFriend);
 	const handleAcceptAddFriend = async () => {
 		if (result === 0) {
 			const resFriend = await friendService.handleAnswerFriendService(
@@ -72,6 +74,9 @@ function CompCard({ data, request = false }) {
 			);
 			setResult(2);
 		}
+		let reNumberReceive = numberReceive - 1;
+		dispatch(handleNumberAddFriendReceiveRedux(reNumberReceive));
+
 	};
 	const handleAcceptDenyFriend = async () => {
 		if (result === 0) {
@@ -82,6 +87,8 @@ function CompCard({ data, request = false }) {
 			);
 			setResult(1);
 		}
+		let reNumberReceive = numberReceive - 1;
+		dispatch(handleNumberAddFriendReceiveRedux(reNumberReceive));
 	};
 	const handleCancelRequestAddFriend = async ()=>{
 

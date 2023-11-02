@@ -33,6 +33,7 @@ function Post({ data, idUser }) {
 	const [liked, setLiked] = useState(data.userLiked);
 	const [date, setDate] = useState(data.createdAt);
 	const [privatePost, setPrivatePost] = useState(data.privatePost);
+	const [comCount,setComCount] = useState(data.commentCount);
 	// const [icon,setIcon] = useState({});
 	const [likeCount, setLikeCount] = useState(data.likeCount);
 	const [currentURL,setCurrentURL] = useState(window.location.pathname);
@@ -122,7 +123,7 @@ function Post({ data, idUser }) {
 					<div className={cx("infor_action")}>
 						<div className={cx("comment")}>
 							<span className={cx("text")}>
-							{abbreviateNumber(data.commentCount, 2, { padding: false })} <FormattedMessage id="Post_Comp.comments" />
+							{abbreviateNumber(comCount, 2, { padding: false })} <FormattedMessage id="Post_Comp.comments" />
 							</span>
 						</div>
 						<div className={cx("shared")}>
@@ -162,7 +163,7 @@ function Post({ data, idUser }) {
 				modal&&
 				<div className={cx("modal_photo")}>
 				<div className={cx("post")}>
-					<FullPost data={data} handleClose={handleCloseFullPhoto} />
+					<FullPost data={data} handleClose={handleCloseFullPhoto} setComCount={setComCount} />
 				</div>
 			</div>
 		}

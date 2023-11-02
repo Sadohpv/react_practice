@@ -24,6 +24,11 @@ const cx = classNames.bind(styles);
 function CommentCard({ com, index }) {
 	const language = useSelector((state) => state.app.language);
 	// console.log(com);
+	const [liked,setLiked] = useState(false)
+
+	const handleLikeComment = ()=>{
+		setLiked(!liked);
+	}
 	return (
 		<div className={cx("wrapper")}>
 			<div className={cx("infor")}>
@@ -34,7 +39,7 @@ function CommentCard({ com, index }) {
 					<div className={cx("name")}>{com.User.userName}</div>
 					<div className={cx("content")}>{com.content}</div>
 					{com.likeComment > 0 && (
-						<div className={cx("likeCom")}>
+						<div className={cx("likeCom")} >
 							<LikeIcon width="12px" height="12px" />
 							<span>{com.likeComment}</span>
 						</div>
@@ -42,8 +47,8 @@ function CommentCard({ com, index }) {
 				</div>
 			</div>
 			<div className={cx("action")}>
-				<div className={cx("answer")}>Like</div>
-				<div className={cx("like")}>Answer</div>
+				<div className={cx("like",liked && "likedCom")} onClick={handleLikeComment}>Like</div>
+				<div className={cx("answer")}>Answer</div>
 				<div className={cx("day")}>
 					<Moment locale={language} fromNow>
 						{com.createdAt}

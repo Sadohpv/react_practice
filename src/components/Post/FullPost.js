@@ -22,7 +22,7 @@ import { useSelector } from "react-redux";
 import { abbreviateNumber } from "js-abbreviation-number";
 import CommentCard from "../Comment";
 const cx = classNames.bind(styles);
-function FullPost({ handleClose, data, noBack = false }) {
+function FullPost({ handleClose, data, noBack = false,setComCount }) {
 	const idUser = useSelector((state) => state.user.userId);
 	// console.log(data);
 	// const [liked, setLiked] = useState(data.userLiked);
@@ -61,13 +61,18 @@ function FullPost({ handleClose, data, noBack = false }) {
 		if (height > 0) {
 			e.target.style.height = e.target.scrollHeight + "px";
 		}
-		setUserComment(e.target.value);
+		const content = e.target.value;
+	
+		// const searchValueCurrent = e.target.value;
+		if (!content.startsWith(" ")) {
+			setUserComment(content);
+		}
 	};
 	const handleContentKeyDown = async (e) => {
 		if(userComment !== ""){
 			if (e.keyCode === 13 && e.shiftKey === false) {
 		
-				console.log("OK");
+				// console.log("OK");
 				const res = await postService.handlePushCommentPostService(
 					idUser,
 					data.idPost,
@@ -79,7 +84,12 @@ function FullPost({ handleClose, data, noBack = false }) {
 					if (res.errCode === 0) {
 						setCommentCount(commentCount+1);
 						setLoadComment(!loadComment);
-						setUserComment("")
+						setUserComment("");
+						e.target.blur();
+						e.target.style.height = "40px";
+						if(typeof setComCount === 'function'){
+							setComCount(commentCount+1);
+						}
 					}
 				}
 			}

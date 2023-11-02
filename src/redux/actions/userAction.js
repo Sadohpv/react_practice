@@ -8,8 +8,8 @@ const USER_DATA = "USER_DATA";
 // const FETCH_USER_SUCCESS = "FETCH_USER_SUCCESS";
 // const USER_REFRESH = "USER_REFRESH";
 // const USER_LOGOUT = "USER_LOGOUT";
-
-export { USER_LOGIN, USER_REFESH };
+const NUMBER_ADD_FRIEND_RECEIVE = "NUMBER_ADD_FRIEND_RECEIVE";
+export { USER_LOGIN, USER_REFESH,NUMBER_ADD_FRIEND_RECEIVE };
 
 export const handleLoginRedux = (userData,token) => {
 
@@ -44,13 +44,15 @@ export const handleGetDataUserRedux = ()=>{
 	};
 }
 
-// export const handleLogoutRedux = () => {
-// 	return (dispatch, getState) => {
-// 		dispatch({
-// 			type: USER_LOGOUT,
-// 		});
-// 	};
-// };
+export const handleNumberAddFriendReceiveRedux = (data) => {
+	// console.log(data);
+	return (dispatch, getState) => {
+		dispatch({
+			type: NUMBER_ADD_FRIEND_RECEIVE,
+			data:data,
+		});
+	};
+};
 
 export const handleRefresh = ()=>{
 	return (dispatch, getState) => {

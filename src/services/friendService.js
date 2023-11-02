@@ -49,6 +49,11 @@ function handleGetRequestAddFriendService(idUser) {
 		idUser: idUser,
 	});
 }
+function handleGetNumberResponseAddFriendService(idUser) {
+	return axios.post(`/friend/addNumberFriendResponse`, {
+		idUser: idUser,
+	});
+}
 export default {
 	handleGetMutualFriendService,
 	handleUnfriendService,
@@ -57,5 +62,6 @@ export default {
 	handleIsFriendService,
 	handleGetResponseAddFriendService,
 	handleAnswerFriendService,
+	handleGetNumberResponseAddFriendService,
 	handleGetRequestAddFriendService
 };

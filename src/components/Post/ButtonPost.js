@@ -3,7 +3,7 @@ import classNames from "classnames/bind";
 const cx = classNames.bind(styles);
 					
 
-function ButtonPost({icon,text,onClick,liked}) {
+function ButtonPost({icon,text,onClick,liked,nopad}) {
     const handleOnClick = ()=>{
         if(typeof onClick==='function'){
             onClick();
@@ -17,7 +17,7 @@ function ButtonPost({icon,text,onClick,liked}) {
             <div className={cx('icon')}>
                 {icon}
             </div>
-            <div className={cx('text',liked &&'liked')}>
+            <div className={cx('text',liked &&'liked',nopad && "no_pad")}>
                 {text}
             </div>
         </div>

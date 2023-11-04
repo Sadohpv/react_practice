@@ -41,7 +41,7 @@ function ButtonAddFriend({ idAsked, isFriend }) {
 
 		}
 	},[isFriend])
-	console.log(isFriend);
+	// console.log(isFriend);
 	return (
 		<>
 			{buttonAddFriend === true &&

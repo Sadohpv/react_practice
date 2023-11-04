@@ -95,18 +95,25 @@ a[href] {
 }
 
 .tippy-box {
-	background-color: #535353;
+	// background-color: white;
 }
 
-.tippy-box[data-theme~='customTheme'] {
-	background-color: white;
-	color: black;
-	box-shadow: 0.5px 0.5px 1.5px black;
-	border-radius: 12px;
-  }
+// .tippy-box[data-theme~='customTheme'] {
+// 	background-color: white;
+// 	color: black;
+// 	box-shadow: 0.5px 0.5px 1.5px black;
+// 	border-radius: 12px;
+//   }
   .tippy-box[data-theme~='dark'] {
-	background-color: red !important;
-	color: black;
+	background-color: #535353 !important;
+	color: rgb(255, 255, 255);
 	box-shadow: 0.5px 0.5px 1.5px black;
 	// border-radius: 12px;
+  }
+
+  .tippy-box[data-theme~='white'] {
+	background-color: rgb(255, 255, 255) !important;
+	box-shadow: 0.5px 0.5px 1.5px black;
+	
+	border-radius: 12px;
   }

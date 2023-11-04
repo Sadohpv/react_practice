@@ -139,22 +139,27 @@ function Post({ data, idUser }) {
 						liked={liked}
 						icon={
 							liked === false ? (
-								<UnLikeIcon width="20px" height="20px" />
+								<UnLikeIcon width="18px" height="18px" />
 							) : (
-								<LikeIcon width="20px" height="20px" fill="#65c6be" />
+								<LikeIcon width="18px" height="18px" fill="#65c6be" />
 							)
 						}
 						text={<FormattedMessage id="Post_Comp.like" />}
 						onClick={handleToggleLike}
+						nopad
+						
 					/>
 
 					<ButtonPost
-						icon={<CommentIcon width="20px" height="20px" />}
+						icon={<CommentIcon width="18px" height="18px" />}
 						text={<FormattedMessage id="Post_Comp.comment" />}
+						// nopad
+						onClick={handleFullPhoto}
 					/>
 					<ButtonPost
-						icon={<ShareIcon width="20px" height="20px" />}
+						icon={<ShareIcon width="18px" height="18px" />}
 						text={<FormattedMessage id="Post_Comp.share" />}
+						// nopad
 					/>
 				</div>
 			</div>

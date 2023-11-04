@@ -14,13 +14,14 @@ import classNames from "classnames/bind";
 import { FormattedMessage } from "react-intl";
 import Avartar from "../Avatar/Avatar";
 import { useEffect, useState } from "react";
-import { postService } from "../../services";
+import { postService,commentService } from "../../services";
 // import moment from "moment";
 import Moment from "react-moment";
 import vi from "moment/locale/vi";
 import { useSelector } from "react-redux";
 import { abbreviateNumber } from "js-abbreviation-number";
 import CommentCard from "../Comment";
+
 const cx = classNames.bind(styles);
 function FullPost({ handleClose, data, noBack = false,setComCount }) {
 	const idUser = useSelector((state) => state.user.userId);
@@ -36,6 +37,7 @@ function FullPost({ handleClose, data, noBack = false,setComCount }) {
 	const [comment, setComment] = useState([]);
 	const [userComment, setUserComment] = useState("");
 	const [loadComment, setLoadComment] = useState(true);
+	const [likeComment, setLikeComment] = useState([]);
 	const handleCloseFullPost = () => {
 		if (typeof handleClose === "function") {
 			// console.log("Here");
@@ -105,6 +107,11 @@ function FullPost({ handleClose, data, noBack = false,setComCount }) {
 			// console.log(commentPost);
 			if (commentPost && commentPost.reg) {
 				setComment(commentPost.reg);
+			}
+
+			const resultCommentLike = await commentService.handleCheckLikedCommentService(idUser);
+			if(resultCommentLike && resultCommentLike.EC === 0){
+				setLikeComment(resultCommentLike.reg);
 			}
 		}
 
@@ -196,16 +203,20 @@ function FullPost({ handleClose, data, noBack = false,setComCount }) {
 									)
 								}
 								text={<FormattedMessage id="Post_Comp.like" />}
+
 								onClick={handleToggleLike}
+								nopad
 							/>
 
 							<ButtonPost
 								icon={<CommentIcon width="18px" height="18px" />}
 								text={<FormattedMessage id="Post_Comp.comment" />}
+								// nopad
 							/>
 							<ButtonPost
 								icon={<ShareIcon width="18px" height="18px" />}
 								text={<FormattedMessage id="Post_Comp.share" />}
+								// nopad
 							/>
 						</div>
 					</div>
@@ -214,7 +225,7 @@ function FullPost({ handleClose, data, noBack = false,setComCount }) {
 				<div className={cx("comments")}>
 					{comment.length > 0 &&
 						comment.map((com, index) => (
-							<CommentCard key={Math.random()} com={com} index={index} />
+							<CommentCard key={Math.random()} com={com} index={index} likeComment={likeComment}/>
 						))}
 
 					{/* <CommentCard /> */}

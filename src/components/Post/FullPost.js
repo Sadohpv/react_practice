@@ -14,16 +14,17 @@ import classNames from "classnames/bind";
 import { FormattedMessage } from "react-intl";
 import Avartar from "../Avatar/Avatar";
 import { useEffect, useState } from "react";
-import { postService,commentService } from "../../services";
+import { postService, commentService } from "../../services";
 // import moment from "moment";
 import Moment from "react-moment";
 import vi from "moment/locale/vi";
 import { useSelector } from "react-redux";
 import { abbreviateNumber } from "js-abbreviation-number";
 import CommentCard from "../Comment";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const cx = classNames.bind(styles);
-function FullPost({ handleClose, data, noBack = false,setComCount }) {
+function FullPost({ handleClose, data, noBack = false, setComCount }) {
 	const idUser = useSelector((state) => state.user.userId);
 	// console.log(data);
 	// const [liked, setLiked] = useState(data.userLiked);
@@ -38,6 +39,8 @@ function FullPost({ handleClose, data, noBack = false,setComCount }) {
 	const [userComment, setUserComment] = useState("");
 	const [loadComment, setLoadComment] = useState(true);
 	const [likeComment, setLikeComment] = useState([]);
+	const [commentPage, setCommentPage] = useState(1);
+	const [hasMoreCom, setHasMoreCom] = useState(true);
 	const handleCloseFullPost = () => {
 		if (typeof handleClose === "function") {
 			// console.log("Here");
@@ -64,59 +67,77 @@ function FullPost({ handleClose, data, noBack = false,setComCount }) {
 			e.target.style.height = e.target.scrollHeight + "px";
 		}
 		const content = e.target.value;
-	
+
 		// const searchValueCurrent = e.target.value;
 		if (!content.startsWith(" ")) {
 			setUserComment(content);
 		}
 	};
 	const handleContentKeyDown = async (e) => {
-		if(userComment !== ""){
+		if (userComment !== "") {
 			if (e.keyCode === 13 && e.shiftKey === false) {
-		
 				// console.log("OK");
 				const res = await postService.handlePushCommentPostService(
 					idUser,
 					data.idPost,
 					userComment.trim()
 				);
-	
+
 				if (res) {
 					// console.log(res);
 					if (res.errCode === 0) {
-						setCommentCount(commentCount+1);
+						setCommentCount(commentCount + 1);
 						setLoadComment(!loadComment);
 						setUserComment("");
 						e.target.blur();
 						e.target.style.height = "40px";
-						if(typeof setComCount === 'function'){
-							setComCount(commentCount+1);
+						if (typeof setComCount === "function") {
+							setComCount(commentCount + 1);
 						}
 					}
 				}
 			}
-		}else{
-			console.log("No")
+		} else {
+			console.log("No");
 		}
-		
 	};
 
 	useEffect(() => {
 		async function fetchData() {
-			const commentPost = await postService.handleGetCommentPost(data.idPost);
-			// console.log(commentPost);
+			const commentPost = await postService.handleGetCommentPost(data.idPost, commentPage);
+			console.log(commentPost.reg);
+
 			if (commentPost && commentPost.reg) {
 				setComment(commentPost.reg);
 			}
 
 			const resultCommentLike = await commentService.handleCheckLikedCommentService(idUser);
-			if(resultCommentLike && resultCommentLike.EC === 0){
+			if (resultCommentLike && resultCommentLike.EC === 0) {
 				setLikeComment(resultCommentLike.reg);
 			}
 		}
 
 		fetchData();
-	}, [loadComment]);
+	}, []);
+	const fetchDataCommentPage = async () => {
+		// console.log("Here");
+		setTimeout(async ()=>{
+			const commentPost = await postService.handleGetCommentPost(data.idPost, commentPage + 1);
+			console.log(commentPost.reg);
+			setCommentPage(commentPage + 1);
+			if (commentPost && commentPost.reg && commentPost.reg.length > 0) {
+				setComment([...comment, ...commentPost.reg]);
+			} else {
+				setHasMoreCom(false);
+			}
+	
+			const resultCommentLike = await commentService.handleCheckLikedCommentService(idUser);
+			if (resultCommentLike && resultCommentLike.EC === 0) {
+				setLikeComment([...likeComment, ...resultCommentLike.reg]);
+			}
+		},500)
+		
+	};
 	return (
 		<div className={cx("wrapper")}>
 			<div className={cx("left")}>
@@ -203,7 +224,6 @@ function FullPost({ handleClose, data, noBack = false,setComCount }) {
 									)
 								}
 								text={<FormattedMessage id="Post_Comp.like" />}
-
 								onClick={handleToggleLike}
 								nopad
 							/>
@@ -222,16 +242,36 @@ function FullPost({ handleClose, data, noBack = false,setComCount }) {
 					</div>
 				</div>
 
-				<div className={cx("comments")}>
-					{comment.length > 0 &&
-						comment.map((com, index) => (
-							<CommentCard key={Math.random()} com={com} index={index} likeComment={likeComment}/>
-						))}
-
-					{/* <CommentCard /> */}
+				<div id="comment_box" className={cx("comments")}>
+					<InfiniteScroll
+						dataLength={comment.length}
+						next={fetchDataCommentPage}
+						hasMore={hasMoreCom}
+						scrollableTarget="comment_box"
+						style={{
+							width: "100%",
+							overflowX: "hidden",
+							height: "100%",
+							display: "flex",
+							flexDirection: "column",
+						}}
+					>
+						{comment.length > 0 &&
+							comment.map((com, index) => (
+								<CommentCard
+									key={Math.random()}
+									com={com}
+									index={index}
+									likeComment={likeComment}
+									numberLoaded={comment.length}
+									numberTotal = {commentCount}
+								/>
+							))}
+					</InfiniteScroll>
 				</div>
 
 				<div className={cx("add_comment")}>
+					
 					<Avartar width={"40px"} height={"40px"} />
 					<div className={cx("input_comment")}>
 						<textarea

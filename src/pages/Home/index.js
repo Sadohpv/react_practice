@@ -23,7 +23,7 @@ import {
 } from "../../asset/icons";
 import ButtonStatus from "../../components/Tools/ButtonStatus/ButtonStatus.js";
 import AddPostBlock from "../../components/Post/AddPostBlock";
-
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const cx = classNames.bind(styles);
 
@@ -31,14 +31,18 @@ function Home() {
 	const currentTheme = useSelector((state) => state.app.theme);
 	const idUser = useSelector((state) => state.user.userId);
 
-	
 	const [postData, setPostData] = useState([]);
 	const [postLike, setPostLike] = useState([]);
 	const [addBlock, setAddBlock] = useState(false);
 	const [addBlockImg, setAddBlockImg] = useState(false);
+	const [postPage, setPostPage] = useState(1);
+	const [hasMorePost, setHasMorePost] = useState(true);
+	const [isLoading, setIsLoading] = useState(false);
 	useEffect(() => {
+		window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+
 		async function fetchData() {
-			const response = await postService.handleGetPostService(idUser);
+			const response = await postService.handleGetPostService(idUser, postPage);
 			if (response.reg) {
 				setPostData(response.reg);
 				// const likeRes = await postService.handleCheckLikeService(idUser);
@@ -48,17 +52,40 @@ function Home() {
 				// 	console.log(likeRes.reg);
 				// }
 			}
+			console.log(response.reg);
 		}
 		fetchData();
+		// window.addEventListener("scroll", (event) => {
+		// 	const position = window.pageYOffset;
+		// 	console.log(position);
+		// });
 	}, []);
 	const handleOnClick = () => {
 		setAddBlockImg(true);
 		setAddBlock(true);
 	};
-
+	const fetchDataHomePage = async () => {
+		// console.log("Here");
+		console.log(isLoading);
+		if(isLoading === true){
+			setTimeout(async () => {
+				const response = await postService.handleGetPostService(idUser, postPage + 1);
+				console.log(response.reg);
+	
+				setPostPage(postPage + 1);
+				if (response && response.reg && response.reg.length > 0) {
+					setPostData([...postData, ...response.reg]);
+				} else {
+					setHasMorePost(false);
+				}
+			}, 500);
+		}
+	
+	};
+	// console.log(postData);
 	return (
 		<>
-			<div className={cx("main",currentTheme === THEMES.DARK && "dark")}>
+			<div id="home_main" className={cx("main", currentTheme === THEMES.DARK && "dark")}>
 				<SlideStory dark={currentTheme === THEMES.DARK ? true : false} />
 				<div className={cx("status")}>
 					<div className={cx("status_input")} onClick={() => setAddBlock(true)}>
@@ -88,10 +115,32 @@ function Home() {
 					</div>
 				</div>
 				<div className={cx("main_post_block")}>
-					{postData.length > 0 &&
-						postData.map((post, index) => (
-							<Post data={post} idUser={idUser} key={Math.random()} />
-						))}
+					<InfiniteScroll
+						dataLength={postData.length}
+						next={fetchDataHomePage}
+						hasMore={hasMorePost}
+						// scrollableTarget="home_main"
+						style={{
+							width: "100%",
+							overflowX: "hidden",
+							height: "100%",
+							display: "flex",
+							flexDirection: "column",
+						}}
+					>
+						{postData.length > 0 &&
+							postData.map((post, index) => (
+								<Post
+									data={post}
+									idUser={idUser}
+									key={Math.random()}
+									dataPagi={postPage}
+									index={index}
+									setIsLoading={setIsLoading}
+									firstLoad={postData.length}
+								/>
+							))}
+					</InfiniteScroll>
 				</div>
 			</div>
 			{addBlock && (

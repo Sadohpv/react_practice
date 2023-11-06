@@ -1,7 +1,7 @@
 import axios from "../services/customAxios";
-import FormData from "form-data";
-function handleGetPostService(idUser) {
-	return axios.get(`/post/getPost/${idUser}`, {});
+// import FormData from "form-data";
+function handleGetPostService(idUser,page) {
+	return axios.get(`/post/getPost/${idUser}/${page}`, {});
 }
 const handleAddPostService = async (userId, content, image) => {
 	const resContent = await axios.post("/post/addPost", {
@@ -37,8 +37,8 @@ const handleGetOnePostService = async (idPost, idUser) => {
 
 	return resContent;
 };
-const handleGetCommentPost = async (id) => {
-	const res = await axios.get(`/post/comment/${id}`);
+const handleGetCommentPost = async (id,commentPage) => {
+	const res = await axios.get(`/post/comment/${id}/${commentPage}`);
 	return res;
 };
 const handlePushCommentPostService = async (idWhoComment, idPostComment, content) => {

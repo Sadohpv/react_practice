@@ -1,6 +1,7 @@
 .wrapper {
 	display: flex;
 	flex-direction: column;
+	position: relative;
 }
 .infor {
 	height: auto;
@@ -102,4 +103,11 @@
 		color: #6b6b6c;
         user-select: none;
 	}
+}
+.frac{
+	position: absolute;
+	right: 8px;
+	bottom: 0;
+	font-size: 12px;
+	color: #6b6b6c;
 }

@@ -65,6 +65,8 @@
 		.comments {
 			flex: 1;
 			width: 100%;
+			position: relative;
+			
 		}
 	}
 }
@@ -288,7 +290,7 @@
 	// background-color: yellow;
 	width: 100%;
 	flex: 1;
-	padding: 8px 16px;
+	padding: 8px 8px 0px 16px;
 	display: flex;
 	flex-direction: column;
 	overflow: scroll;

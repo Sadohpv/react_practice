@@ -204,7 +204,7 @@ const CancelIcon = ({ width = "28px", height = "28px" }) => {
 		</svg>
 	);
 };
-const CommentIcon = ({ width = "28px", height = "28px", fill = "#65676b",noneStroke=false }) => {
+const CommentIcon = ({ width = "28px", height = "28px", fill = "#65676b", noneStroke = false }) => {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -212,7 +212,7 @@ const CommentIcon = ({ width = "28px", height = "28px", fill = "#65676b",noneStr
 			height={height}
 			fill={fill}
 			viewBox="0 0 512 512"
-			stroke={noneStroke ? "": "black"}
+			stroke={noneStroke ? "" : "black"}
 			strokeWidth={noneStroke ? "" : 6}
 		>
 			<path d="M123.6 391.3c12.9-9.4 29.6-11.8 44.6-6.4c26.5 9.6 56.2 15.1 87.8 15.1c124.7 0 208-80.5 208-160s-83.3-160-208-160S48 160.5 48 240c0 32 12.4 62.8 35.7 89.2c8.6 9.7 12.8 22.5 11.8 35.5c-1.4 18.1-5.7 34.7-11.3 49.4c17-7.9 31.1-16.7 39.4-22.7z" />
@@ -246,7 +246,7 @@ const LikeIcon = ({ width = "28px", height = "28px", fill = "#65676b" }) => {
 		</svg>
 	);
 };
-const ShareIcon = ({ width = "28px", height = "28px",fill="#65676b"}) => {
+const ShareIcon = ({ width = "28px", height = "28px", fill = "#65676b" }) => {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -455,10 +455,36 @@ const HeartIcon = ({ width = "28px", height = "28px", fill = "#65676b" }) => {
 			width={width}
 			height={height}
 			fill={fill}
-	
 			viewBox="0 0 512 512"
 		>
 			<path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z" />
+		</svg>
+	);
+};
+
+const BellNotifyIcon = ({ width = "28px", height = "28px", fill = "#65676b" }) => {
+	return (
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			width={width}
+			height={height}
+			fill={fill}
+			viewBox="0 0 448 512"
+		>
+			<path d="M224 0c-17.7 0-32 14.3-32 32V49.9C119.5 61.4 64 124.2 64 200v33.4c0 45.4-15.5 89.5-43.8 124.9L5.3 377c-5.8 7.2-6.9 17.1-2.9 25.4S14.8 416 24 416H424c9.2 0 17.6-5.3 21.6-13.6s2.9-18.2-2.9-25.4l-14.9-18.6C399.5 322.9 384 278.8 384 233.4V200c0-75.8-55.5-138.6-128-150.1V32c0-17.7-14.3-32-32-32zm0 96h8c57.4 0 104 46.6 104 104v33.4c0 47.9 13.9 94.6 39.7 134.6H72.3C98.1 328 112 281.3 112 233.4V200c0-57.4 46.6-104 104-104h8zm64 352H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7s18.7-28.3 18.7-45.3z" />
+		</svg>
+	);
+};
+const BellNotifyFullIcon = ({ width = "28px", height = "28px", fill = "#65676b" }) => {
+	return (
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			width={width}
+			height={height}
+			fill={fill}
+			viewBox="0 0 448 512"
+		>
+			<path d="M224 0c-17.7 0-32 14.3-32 32V51.2C119 66 64 130.6 64 208v18.8c0 47-17.3 92.4-48.5 127.6l-7.4 8.3c-8.4 9.4-10.4 22.9-5.3 34.4S19.4 416 32 416H416c12.6 0 24-7.4 29.2-18.9s3.1-25-5.3-34.4l-7.4-8.3C401.3 319.2 384 273.9 384 226.8V208c0-77.4-55-142-128-156.8V32c0-17.7-14.3-32-32-32zm45.3 493.3c12-12 18.7-28.3 18.7-45.3H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7z" />
 		</svg>
 	);
 };
@@ -499,5 +525,7 @@ export {
 	AddFriendIcon,
 	GolobalIcon,
 	LockIcon,
-	HeartIcon
+	HeartIcon,
+	BellNotifyIcon,
+	BellNotifyFullIcon,
 };

@@ -13,6 +13,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        
     }
     &:hover{
         background-color: var(--background-light-hover);
@@ -26,6 +27,7 @@
 
 .button_logout{
     background-color: #ffffff;
+    margin-left: 10px;
     &:hover{
         background-color: rgb(238, 238, 238) !important;
         cursor: pointer;

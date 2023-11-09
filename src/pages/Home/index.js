@@ -24,6 +24,7 @@ import {
 import ButtonStatus from "../../components/Tools/ButtonStatus/ButtonStatus.js";
 import AddPostBlock from "../../components/Post/AddPostBlock";
 import InfiniteScroll from "react-infinite-scroll-component";
+import IsLoading from "./IsLoading";
 
 const cx = classNames.bind(styles);
 
@@ -42,7 +43,8 @@ function Home() {
 		window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 
 		async function fetchData() {
-			const response = await postService.handleGetPostService(idUser, postPage);
+			setPostPage(1);
+			const response = await postService.handleGetPostService(idUser, 1);
 			if (response.reg) {
 				setPostData(response.reg);
 				// const likeRes = await postService.handleCheckLikeService(idUser);
@@ -52,7 +54,7 @@ function Home() {
 				// 	console.log(likeRes.reg);
 				// }
 			}
-			console.log(response.reg);
+			// console.log(response.reg);
 		}
 		fetchData();
 		// window.addEventListener("scroll", (event) => {
@@ -66,21 +68,19 @@ function Home() {
 	};
 	const fetchDataHomePage = async () => {
 		// console.log("Here");
-		console.log(isLoading);
-		if(isLoading === true){
-			setTimeout(async () => {
-				const response = await postService.handleGetPostService(idUser, postPage + 1);
-				console.log(response.reg);
-	
-				setPostPage(postPage + 1);
-				if (response && response.reg && response.reg.length > 0) {
-					setPostData([...postData, ...response.reg]);
-				} else {
-					setHasMorePost(false);
-				}
-			}, 500);
+		// console.log(isLoading);
+		if (isLoading === true) {
+			const response = await postService.handleGetPostService(idUser, postPage + 1);
+			// console.log(response.reg);
+
+			setPostPage(postPage + 1);
+			if (response && response.reg && response.reg.length > 0) {
+				setPostData([...postData, ...response.reg]);
+			} else {
+				setHasMorePost(false);
+			}
+			
 		}
-	
 	};
 	// console.log(postData);
 	return (
@@ -127,6 +127,7 @@ function Home() {
 							display: "flex",
 							flexDirection: "column",
 						}}
+						loader={<IsLoading />}
 					>
 						{postData.length > 0 &&
 							postData.map((post, index) => (

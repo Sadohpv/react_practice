@@ -122,6 +122,10 @@
 	// .content{
 	// 	margin-left: 50px;
 	// }
+	.content{
+		width: calc(100vw - 320px);
+
+	}
 }
 @media (max-width: 900px) {
 	.container {
@@ -131,5 +135,10 @@
 	.side_bar,
 	.right_bar {
 		display: none !important;
+	}
+	.content{
+		width: 510px;
+
+
 	}
 }

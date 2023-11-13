@@ -13,14 +13,18 @@ import { THEMES } from "../../../utils/constant";
 import ButtonRoundIcon from "../ButtonRoundIcon/ButtonRoundIcon";
 import { LogoutIcon } from "../../../asset/icons";
 import NotifyBox from "../NotifyBox";
+import { notifyService } from "../../../services";
+import { handleNumberNotifyRedux } from "../../../redux/actions/notifyAction";
+import ButtonNotify from "../ButtonNotify/ButtonNotify";
 // import { handleLogoutRedux, handleRefresh } from "../../redux/actions/userAction";
 const cx = classNames.bind(styles);
 function UserBar() {
 	const classes = cx("nav_item", cx("item"));
 
-	const user = useSelector((state) => state.user.data_init);
+	const idUser = useSelector((state) => state.user.userId);
+	// const numberNotify = useSelector((state) => state.notify.numberNotify);
 	const [notifyIcon, setNotifyIcon] = useState(false);
-	const [notifyAnimation, setNotifyAnimation] = useState(false);
+	// const [number,setNumber] = useState(numberNotify);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
@@ -31,25 +35,17 @@ function UserBar() {
 		alert("Logout");
 	};
 	const handleOpenNoTiFy = () => {
-		if (notifyIcon === true) {
-			setNotifyAnimation(true);
-		} else {
-			setNotifyAnimation(false);
-		}
 		setTimeout(() => {
 			setNotifyIcon(!notifyIcon);
 		}, 600);
 	};
-	// useEffect(() => {
-	// 	dispatch(handleRefresh());
-	// }, []);
 
 	const currentTheme = useSelector((state) => state.app.theme);
 
 	return (
 		<>
 			<div className={cx("wrapper", currentTheme === THEMES.DARK && THEMES.DARK)}>
-				<ButtonRoundIcon
+				<ButtonNotify
 					icon={
 						notifyIcon === false ? (
 							<BellNotifyIcon height="16px" width="16px" />
@@ -62,13 +58,14 @@ function UserBar() {
 					className={cx("button_logout")}
 					butFunc={handleOpenNoTiFy}
 				/>
+
 				<ButtonRoundIcon
 					icon={<LogoutIcon height="16px" width="16px" />}
 					className={cx("button_logout")}
 					butFunc={handleLogout}
 				/>
 			</div>
-			{notifyIcon && <NotifyBox key={Math.random()} out={notifyAnimation} />}
+			{notifyIcon && <NotifyBox key={Math.random()} />}
 		</>
 	);
 }

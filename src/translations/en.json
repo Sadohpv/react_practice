@@ -122,6 +122,13 @@
         "add_friend_message":"Send request success!",
         "cancel_add_friend_message":"Cancel request !",
         "unfriend_message":"Cut relationship huh !"
+    },
+    "Notify":{
+        "notification" : "Notifycation",
+        "content_1" : "mentioned you in a comment.",
+        "content_2" : "reacted to your post.",
+        "content_3" : "wanna make friend with you.",
+        "content_4" : ""
     }
     
 }

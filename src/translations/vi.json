@@ -124,6 +124,14 @@
         "add_friend_message":"Gửi yêu cầu kết bạn thành công!",
         "cancel_add_friend_message":"Huỷ yêu cầu !",
         "unfriend_message":"Huỷ kết bạn !"
+    },
+    "Notify":{
+        "notification" : "Thông báo",
+        "content_1" : "đã nhắc đến bạn trong một bình luận.",
+        "content_2" : "đã thích một bài viết của bạn.",
+        "content_3" : "gửi bạn một lời mời kết ban. ",
+        "content_4" : ""
+        
     }
     
     

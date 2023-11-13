@@ -34,7 +34,7 @@ function FriendRequestPage() {
 		fetchData();
 	}, []);
 
-	console.log(friend);
+	// console.log(friend);
 	return (
 		<div className={cx("container",currentTheme === THEMES.DARK && THEMES.DARK)}>
 			

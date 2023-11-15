@@ -12,7 +12,14 @@ function handleUpdateLikedCommentService(idUser,idCom, option) {
 		option: option,
 	});
 }
+function handleTagFriendCommentService(id) {
+
+	return axios.get(`/comment/tagFriend/${id}`, {
+		
+	});
+}
 export default {
 	handleCheckLikedCommentService,
 	handleUpdateLikedCommentService,
+	handleTagFriendCommentService
 };

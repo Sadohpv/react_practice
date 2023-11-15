@@ -22,6 +22,8 @@ import { useSelector } from "react-redux";
 import { abbreviateNumber } from "js-abbreviation-number";
 import CommentCard from "../Comment";
 import InfiniteScroll from "react-infinite-scroll-component";
+import Mentions from "../Mention";
+import { Mention, MentionsInput } from "react-mentions";
 
 const cx = classNames.bind(styles);
 function FullPost({ handleClose, data, noBack = false, setComCount }) {
@@ -36,11 +38,12 @@ function FullPost({ handleClose, data, noBack = false, setComCount }) {
 	const [commentCount, setCommentCount] = useState(data.commentCount);
 	const [likeCount, setLikeCount] = useState(data.likeCount);
 	const [comment, setComment] = useState([]);
-	const [userComment, setUserComment] = useState("");
 	const [loadComment, setLoadComment] = useState(true);
+
 	const [likeComment, setLikeComment] = useState([]);
 	const [commentPage, setCommentPage] = useState(1);
 	const [hasMoreCom, setHasMoreCom] = useState(true);
+
 	const handleCloseFullPost = () => {
 		if (typeof handleClose === "function") {
 			// console.log("Here");
@@ -60,52 +63,55 @@ function FullPost({ handleClose, data, noBack = false, setComCount }) {
 		}
 		setLiked(!liked);
 	};
-	const handleContentPost = (e) => {
-		e.target.style.height = "40px";
-		const height = e.target.scrollHeight;
-		if (height > 0) {
-			e.target.style.height = e.target.scrollHeight + "px";
-		}
-		const content = e.target.value;
+	// const handleContentPost = (e) => {
+	// 	e.target.style.height = "40px";
+	// 	const height = e.target.scrollHeight;
+	// 	if (height > 0) {
+	// 		e.target.style.height = e.target.scrollHeight + "px";
+	// 	}
+	// 	const content = e.target.value;
+	// 	if (e.shiftKey === true) {
+	// 		console.log("Here");
+	// 	}
+	// 	// const searchValueCurrent = e.target.value;
+	// 	if (!content.startsWith(" ")) {
+	// 		setUserComment(content);
+	// 	}
+	// };
+	// const handleContentKeyDown = async (e) => {
+	// 	if (userComment !== "") {
+	// 		if (e.keyCode === 13 && e.shiftKey === false) {
+	// 			// console.log("OK");
+	// 			const res = await postService.handlePushCommentPostService(
+	// 				idUser,
+	// 				data.idPost,
+	// 				userComment.trim()
+	// 			);
 
-		// const searchValueCurrent = e.target.value;
-		if (!content.startsWith(" ")) {
-			setUserComment(content);
-		}
-	};
-	const handleContentKeyDown = async (e) => {
-		if (userComment !== "") {
-			if (e.keyCode === 13 && e.shiftKey === false) {
-				// console.log("OK");
-				const res = await postService.handlePushCommentPostService(
-					idUser,
-					data.idPost,
-					userComment.trim()
-				);
-
-				if (res) {
-					// console.log(res);
-					if (res.errCode === 0) {
-						setCommentCount(commentCount + 1);
-						setLoadComment(!loadComment);
-						setUserComment("");
-						e.target.blur();
-						e.target.style.height = "40px";
-						if (typeof setComCount === "function") {
-							setComCount(commentCount + 1);
-						}
-					}
-				}
-			}
-		} else {
-			console.log("No");
-		}
-	};
+	// 			if (res) {
+	// 				// console.log(res);
+	// 				if (res.errCode === 0) {
+	// 					setCommentCount(commentCount + 1);
+	// 					setLoadComment(!loadComment);
+	// 					setUserComment("");
+	// 					e.target.blur();
+	// 					e.target.style.height = "40px";
+	// 					if (typeof setComCount === "function") {
+	// 						setComCount(commentCount + 1);
+	// 					}
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// 	if (e.keyCode === 50 && e.shiftKey === true) {
+	// 		console.log(e.target.value);
+	// 	}
+	// };
 
 	useEffect(() => {
 		async function fetchData() {
 			const commentPost = await postService.handleGetCommentPost(data.idPost, commentPage);
-			console.log(commentPost.reg);
+			// console.log(commentPost.reg);
 
 			if (commentPost && commentPost.reg) {
 				setComment(commentPost.reg);
@@ -115,14 +121,18 @@ function FullPost({ handleClose, data, noBack = false, setComCount }) {
 			if (resultCommentLike && resultCommentLike.EC === 0) {
 				setLikeComment(resultCommentLike.reg);
 			}
+		
 		}
 
 		fetchData();
-	}, []);
+	}, [loadComment]);
 	const fetchDataCommentPage = async () => {
 		// console.log("Here");
-		setTimeout(async ()=>{
-			const commentPost = await postService.handleGetCommentPost(data.idPost, commentPage + 1);
+		setTimeout(async () => {
+			const commentPost = await postService.handleGetCommentPost(
+				data.idPost,
+				commentPage + 1
+			);
 			console.log(commentPost.reg);
 			setCommentPage(commentPage + 1);
 			if (commentPost && commentPost.reg && commentPost.reg.length > 0) {
@@ -130,13 +140,12 @@ function FullPost({ handleClose, data, noBack = false, setComCount }) {
 			} else {
 				setHasMoreCom(false);
 			}
-	
+
 			const resultCommentLike = await commentService.handleCheckLikedCommentService(idUser);
 			if (resultCommentLike && resultCommentLike.EC === 0) {
 				setLikeComment([...likeComment, ...resultCommentLike.reg]);
 			}
-		},500)
-		
+		}, 500);
 	};
 	return (
 		<div className={cx("wrapper")}>
@@ -264,23 +273,33 @@ function FullPost({ handleClose, data, noBack = false, setComCount }) {
 									index={index}
 									likeComment={likeComment}
 									numberLoaded={comment.length}
-									numberTotal = {commentCount}
+									numberTotal={commentCount}
 								/>
 							))}
 					</InfiniteScroll>
 				</div>
 
 				<div className={cx("add_comment")}>
-					
 					<Avartar width={"40px"} height={"40px"} />
 					<div className={cx("input_comment")}>
-						<textarea
+						{/* <textarea
 							type="text"
 							placeholder="Comment in this post !"
 							value={userComment}
 							onChange={(e) => handleContentPost(e)}
 							onKeyDown={(e) => handleContentKeyDown(e)}
-						/>
+						/> */}
+						<div className={cx("textarea")}>
+							<Mentions
+								loadComment={loadComment}
+								setLoadComment={setLoadComment}
+								idPost={data.idPost}
+								setComCount={setComCount}
+								commentCount={commentCount}
+								setCommentCount={setCommentCount}
+								
+							/>
+						</div>
 					</div>
 				</div>
 			</div>

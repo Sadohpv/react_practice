@@ -40,7 +40,7 @@ function CommentCard({ com, index, likeComment, numberLoaded, numberTotal }) {
 		}
 		setLiked(!liked);
 	};
-	console.log(index, numberLoaded);
+	
 	return (
 		<>
 			<div className={cx("wrapper")}>

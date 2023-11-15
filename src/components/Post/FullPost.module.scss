@@ -11,6 +11,8 @@
 		background-color: black;
 		position: relative;
 		display: flex;
+		z-index: 8900;
+
 		.cancel_button {
 			position: absolute;
 			top: 12px;
@@ -290,10 +292,10 @@
 	// background-color: yellow;
 	width: 100%;
 	flex: 1;
-	padding: 8px 8px 0px 16px;
+	padding: 8px 8px 0 16px;
 	display: flex;
 	flex-direction: column;
-	overflow: scroll;
+	overflow-y: scroll;
 }
 
 .add_comment{
@@ -302,8 +304,10 @@
 	// background-color: red;
 	display: flex;
 	align-items: start;
-	padding: 0 16px;
-	margin-bottom: 4px;
+	padding: 8px 16px 8px;
+	margin-bottom: 2px;
+	box-shadow: 0px -1px 3px rgb(73, 73, 73);
+	z-index: 8777;
 	.input_comment{
 		margin-left: 12px;
 		flex: 1;
@@ -325,9 +329,19 @@
 			// vertical-align: middle;
 			resize: none;
 		}
+		
 	}
 }
-
+.textarea{
+	width: 100%;
+	min-height: 40px;
+	// background-color: red;
+	display: flex;
+	align-items: start;
+	justify-content: center;
+	// padding: 8px 0;
+	
+}
 @media (max-width: 450px) {
 
 	.wrapper{

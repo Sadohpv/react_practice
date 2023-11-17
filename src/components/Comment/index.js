@@ -40,7 +40,27 @@ function CommentCard({ com, index, likeComment, numberLoaded, numberTotal }) {
 		}
 		setLiked(!liked);
 	};
-	
+
+	const handleComTag = (comment) => {
+		const result = comment.split("@t@g");
+		// console.log(result);
+
+		return (
+			<div className={cx("tag")}>
+				{result.map((item, index) => handleNextTag(result, item, index))}
+			</div>
+		);
+	};
+	const handleNextTag = (result, item, index,) => {
+		if (item.includes("@")) {
+			return <a className={cx("tag_link")} href={`/${item.slice(1)}`}>{result[++index].slice(2)}</a>;
+		} if(item.includes("$*")) {
+			return <></>
+		}else{
+
+			return <>{result[index]}</>;
+		}
+	};
 	return (
 		<>
 			<div className={cx("wrapper")}>
@@ -50,7 +70,7 @@ function CommentCard({ com, index, likeComment, numberLoaded, numberTotal }) {
 					</div>
 					<div className={cx("body")}>
 						<div className={cx("name")}>{com.User.userName}</div>
-						<div className={cx("content")}>{com.content}</div>
+						<div className={cx("content")}>{handleComTag(com.content)}</div>
 						{numberLikeComment > 0 && (
 							<div className={cx("likeCom")}>
 								<LikeIcon width="12px" height="12px" />

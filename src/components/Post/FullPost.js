@@ -43,7 +43,7 @@ function FullPost({ handleClose, data, noBack = false, setComCount }) {
 	const [likeComment, setLikeComment] = useState([]);
 	const [commentPage, setCommentPage] = useState(1);
 	const [hasMoreCom, setHasMoreCom] = useState(true);
-
+	// const [commentTag,setCommentTag] = useState([]);
 	const handleCloseFullPost = () => {
 		if (typeof handleClose === "function") {
 			// console.log("Here");
@@ -115,6 +115,8 @@ function FullPost({ handleClose, data, noBack = false, setComCount }) {
 
 			if (commentPost && commentPost.reg) {
 				setComment(commentPost.reg);
+				
+
 			}
 
 			const resultCommentLike = await commentService.handleCheckLikedCommentService(idUser);
@@ -125,6 +127,7 @@ function FullPost({ handleClose, data, noBack = false, setComCount }) {
 		}
 
 		fetchData();
+		
 	}, [loadComment]);
 	const fetchDataCommentPage = async () => {
 		// console.log("Here");
@@ -147,6 +150,8 @@ function FullPost({ handleClose, data, noBack = false, setComCount }) {
 			}
 		}, 500);
 	};
+	
+	
 	return (
 		<div className={cx("wrapper")}>
 			<div className={cx("left")}>

@@ -92,6 +92,12 @@ const Mentions = ({
 			}
 		}
 		if (e.keyCode === 50 && e.shiftKey === true) {
+			
+		}
+	};
+	useEffect(() => {
+		ref.current.style.height = "40px";
+		async function fetchData() {
 			const resFriend = await commentService.handleTagFriendCommentService(idUser);
 			if (resFriend && resFriend.reg) {
 				// console.log(resFriend.reg);
@@ -106,11 +112,10 @@ const Mentions = ({
 				});
 				setMentionData(tempArray);
 			}
+		
 		}
-	};
-	useEffect(() => {
-		ref.current.style.height = "40px";
 
+		fetchData();
 		
 	}, []);
 	// console.log(mentionData);
@@ -133,8 +138,10 @@ const Mentions = ({
 					className={cx("recommend")}
 					data={mentionData}
 					renderSuggestion={renderSuggestion}
+					markup={'@t@g@__id__@t@g$*__display__@t@g'}
 				/>
 			</MentionsInput>
+			
 		</>
 	);
 };

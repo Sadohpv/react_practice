@@ -90,9 +90,10 @@ function CompCard({ data, request = false }) {
 		let reNumberReceive = numberReceive - 1;
 		dispatch(handleNumberAddFriendReceiveRedux(reNumberReceive));
 	};
-	const handleCancelRequestAddFriend = async ()=>{
+	// const handleCancelRequestAddFriend = async ()=>{
 
-	}
+	// }
+	// console.log(dataFriend);
 	return (
 		<div className={cx("card")}>
 			<a href={`/${dataFriend.idUser}`} className={cx("user_pic")}>
@@ -141,7 +142,7 @@ function CompCard({ data, request = false }) {
 								<FormattedMessage id="Friend_Page.add_friend" />
 							</div>
 						)} */}
-						<ButtonAddFriend idAked={dataFriend.idUser} isFriend={checkFriend}/>
+						<ButtonAddFriend idAsked={dataFriend.idUser} isFriend={checkFriend}/>
 					</div>
 				)}
 			</div>

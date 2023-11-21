@@ -67,7 +67,7 @@ function AddPostBlock({ setAddBlock, addBlockImg, setAddBlockImg }) {
 		setContentPost(e.target.value);
 	};
 	const handlePosting = async () => {
-		console.log("here");
+		console.log(contentPost);
 		if (contentPost === "") {
 			toast.info(<FormattedMessage id="Post_Comp.empty_content" />, {
 				position: toast.POSITION.TOP_RIGHT,
@@ -83,7 +83,7 @@ function AddPostBlock({ setAddBlock, addBlockImg, setAddBlockImg }) {
 				});
 				closeAddPostBlock();
 			}else{
-				toast.danger(<FormattedMessage id="Post_Comp.add_fail" />, {
+				toast.error(<FormattedMessage id="Post_Comp.add_fail" />, {
 					position: toast.POSITION.TOP_RIGHT,
 				});
 			}

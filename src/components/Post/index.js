@@ -59,14 +59,12 @@ function Post({ data, idUser, dataPagi, index, setIsLoading, firstLoad }) {
 	};
 	const handleCloseFullPhoto = () => {
 		setModal(false);
-		// console.log(window.history);
-		// navigate("/");
-		// console.log(currentURL);
+		
 
 		window.history.pushState(null, null, currentURL);
 	};
 	useEffect(() => {
-		// console.log(index,firstLoad);
+		
 
 		if (index + 1 == firstLoad) {
 			// console.log("Here");
@@ -74,6 +72,52 @@ function Post({ data, idUser, dataPagi, index, setIsLoading, firstLoad }) {
 			setIsLoading(true);
 		}
 	}, []);
+	const handleContentPostShow = (comment) => {
+		const breakLine = comment.split("\n");
+
+		if (breakLine.length > 1) {
+			// console.log(breakLine);
+
+			return (
+				<div className={cx("tag")}>
+					{breakLine.map((line) => {
+						const lineTag = line.split("@t@g");
+						return (
+							<span>
+								{lineTag.map((item, index) => handleNextTag(lineTag, item, index))}
+							<br></br>
+							</span>
+						);
+					})}
+				</div>
+			);
+		} else {
+			const result = comment.split("@t@g");
+			// console.log(result);
+
+			return (
+				<div className={cx("post_content")}>
+					{result.map((item, index) => handleNextTag(result, item, index))}
+				</div>
+			);
+		}
+	};
+	const handleNextTag = (result, item, index) => {
+		// console.log(result[index]);
+
+		if (item.includes("@")) {
+			return (
+				<a className={cx("post_tag_link")} href={`/${item.slice(1)}`}>
+					{result[++index].slice(2)}
+				</a>
+			);
+		}
+		if (item.includes("$*")) {
+			return <></>;
+		} else {
+			return <>{result[index]}</>;
+		}
+	};
 	return (
 		<>
 			<div className={cx("wrapper")}>
@@ -114,7 +158,7 @@ function Post({ data, idUser, dataPagi, index, setIsLoading, firstLoad }) {
 				</div>
 				<div className={cx("post_body")}>
 					<div className={cx("post_body-text")}>
-						<span>{data.content}</span>
+						<span>{handleContentPostShow(data.content)}</span>
 					</div>
 					{data.imgPost && (
 						<div className={cx("post_body-img")} onClick={handleFullPhoto}>

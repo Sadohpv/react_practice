@@ -23,7 +23,7 @@ import { abbreviateNumber } from "js-abbreviation-number";
 const cx = classNames.bind(styles);
 function CommentCard({ com, index, likeComment, numberLoaded, numberTotal }) {
 	const language = useSelector((state) => state.app.language);
-	// console.log(com);
+	console.log(com);
 	const idUser = useSelector((state) => state.user.userId);
 
 	const [liked, setLiked] = useState(likeComment.includes(com.id) ? true : false);
@@ -42,22 +42,48 @@ function CommentCard({ com, index, likeComment, numberLoaded, numberTotal }) {
 	};
 
 	const handleComTag = (comment) => {
-		const result = comment.split("@t@g");
-		// console.log(result);
+		const breakLine = comment.split("\n");
 
-		return (
-			<div className={cx("tag")}>
-				{result.map((item, index) => handleNextTag(result, item, index))}
-			</div>
-		);
+		if (breakLine.length > 1) {
+			// console.log(breakLine);
+
+			return (
+				<div className={cx("tag")}>
+					{breakLine.map((line) => {
+						const lineTag = line.split("@t@g");
+						return (
+							<span>
+								{lineTag.map((item, index) => handleNextTag(lineTag, item, index))}
+							<br></br>
+							</span>
+						);
+					})}
+				</div>
+			);
+		} else {
+			const result = comment.split("@t@g");
+			// console.log(result);
+
+			return (
+				<div className={cx("tag")}>
+					{result.map((item, index) => handleNextTag(result, item, index))}
+				</div>
+			);
+		}
 	};
-	const handleNextTag = (result, item, index,) => {
-		if (item.includes("@")) {
-			return <a className={cx("tag_link")} href={`/${item.slice(1)}`}>{result[++index].slice(2)}</a>;
-		} if(item.includes("$*")) {
-			return <></>
-		}else{
+	const handleNextTag = (result, item, index) => {
+		// console.log(result[index]);
 
+		if (item.includes("@")) {
+			return (
+				<a className={cx("tag_link")} href={`/${item.slice(1)}`}>
+					{result[++index].slice(2)}
+				</a>
+			);
+		}
+		if (item.includes("$*")) {
+			return <></>;
+		} else {
 			return <>{result[index]}</>;
 		}
 	};

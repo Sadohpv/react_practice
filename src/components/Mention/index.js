@@ -40,6 +40,7 @@ const Mentions = ({
 }) => {
 	const [value, setValue] = useState("");
 	const [userComment, setUserComment] = useState("");
+	const [commentLast,setCommentLast] = useState("");
 	const idUser = useSelector((state) => state.user.userId);
 	const [mentionData, setMentionData] = useState([]);
 	const ref = useRef();
@@ -53,23 +54,24 @@ const Mentions = ({
 
 		if (height > 0) {
 			ref.current.style.height = ref.current.scrollHeight + "px";
-			console.log(ref.current.style.height);
+			// console.log(ref.current.style.height);
 		}
 		const content = e.target.value;
 		if (e.shiftKey === true) {
 			console.log("Here");
 		}
 		// const searchValueCurrent = e.target.value;
-		console.log(content);
+		console.log(e);
 		if (!content.startsWith(" ")) {
 			
 			setUserComment(content);
+
 		}
 	};
 	const handleContentKeyDown = async (e) => {
 		if (userComment !== "") {
 			if (e.keyCode === 13 && e.shiftKey === false) {
-				// console.log("OK");
+				console.log("OK");
 				const res = await postService.handlePushCommentPostService(
 					idUser,
 					idPost,
@@ -77,7 +79,7 @@ const Mentions = ({
 				);
 
 				if (res) {
-					// console.log(res);
+					console.log(res);
 					if (res.errCode === 0) {
 						setCommentCount(commentCount + 1);
 						setLoadComment(!loadComment);
@@ -89,12 +91,26 @@ const Mentions = ({
 						}
 					}
 				}
+			}else if (e.keyCode === 13 && e.shiftKey === true) {
+				let breakLine = commentLast.concat('\\b');
+
+				// console.log(breakLine);
+				setCommentLast(breakLine);
+				// setUserComment(breakLine);
+
+			}else{
+				
+				setCommentLast(e.target.value);
+
+			}
+		}else{
+			if (e.keyCode === 13  && e.shiftKey === false){
+				e.preventDefault();
 			}
 		}
-		if (e.keyCode === 50 && e.shiftKey === true) {
-			
-		}
+		
 	};
+	console.log(commentLast);
 	useEffect(() => {
 		ref.current.style.height = "40px";
 		async function fetchData() {

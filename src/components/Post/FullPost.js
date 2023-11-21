@@ -273,7 +273,7 @@ function FullPost({ handleClose, data, noBack = false, setComCount }) {
 						{comment.length > 0 &&
 							comment.map((com, index) => (
 								<CommentCard
-									key={Math.random()}
+									key={Math.random(0,5)}
 									com={com}
 									index={index}
 									likeComment={likeComment}

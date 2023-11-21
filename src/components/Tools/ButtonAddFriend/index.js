@@ -21,6 +21,7 @@ function ButtonAddFriend({ idAsked, isFriend }) {
 			});
 		}
 	};
+	// console.log(idAsked);
 	const handleCancelAddFriend = async () => {
 		const res = await friendService.handleCancelAddFriendService(idUser, idAsked);
 		if (res) {

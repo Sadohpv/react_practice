@@ -224,6 +224,7 @@ function Post({ data, idUser, dataPagi, index, setIsLoading, firstLoad }) {
 							data={data}
 							handleClose={handleCloseFullPhoto}
 							setComCount={setComCount}
+							short={!!data.imgPost}
 						/>
 					</div>
 				</div>

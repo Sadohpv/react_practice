@@ -48,7 +48,7 @@ function FullPostPage() {
 	}, []);
 	// console.log(data)
     // console.log(data);
-	return <div className={cx("wrapper")}>{data && <FullPost data={data} noBack={true}/>}</div>;
+	return <div className={cx("wrapper")}>{data && <FullPost data={data} noBack={true} short={!!data.imgPost}/>}</div>;
 }
 
 export default FullPostPage;

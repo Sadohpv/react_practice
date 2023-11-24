@@ -23,7 +23,7 @@ import { abbreviateNumber } from "js-abbreviation-number";
 const cx = classNames.bind(styles);
 function CommentCard({ com, index, likeComment, numberLoaded, numberTotal }) {
 	const language = useSelector((state) => state.app.language);
-	console.log(com);
+	// console.log(com);
 	const idUser = useSelector((state) => state.user.userId);
 
 	const [liked, setLiked] = useState(likeComment.includes(com.id) ? true : false);

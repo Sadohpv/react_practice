@@ -110,7 +110,7 @@ const Mentions = ({
 		}
 		
 	};
-	console.log(commentLast);
+	// console.log(commentLast);
 	useEffect(() => {
 		ref.current.style.height = "40px";
 		async function fetchData() {

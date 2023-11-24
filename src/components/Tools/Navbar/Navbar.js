@@ -21,7 +21,7 @@ const cx = classNames.bind(styles);
 function NavbarCustom() {
 	const classes = cx("nav_item", cx("item"));
 
-	const numberReceive =  useSelector((state) => state.user.numberReceive);
+	const numberReceive = useSelector((state) => state.user.numberReceive);
 	const idUser = useSelector((state) => state.user.userId);
 
 	const dispatch = useDispatch();
@@ -39,7 +39,7 @@ function NavbarCustom() {
 			// console.log(res);
 			if (res) {
 				// console.log("here");
-				dispatch(handleNumberAddFriendReceiveRedux(res.reg ));
+				dispatch(handleNumberAddFriendReceiveRedux(res.reg));
 			}
 		}
 		fetch();
@@ -77,7 +77,12 @@ function NavbarCustom() {
 							className={(nav) => cx("menu_item", { active: nav.isActive })}
 						>
 							<ListUserIcon />
-							{numberReceive > 0 && <span className={cx("number_request")}> {numberReceive < 10 ? numberReceive : "5+"} </span>}
+							{numberReceive > 0 && (
+								<span className={cx("number_request")}>
+									{" "}
+									<span>{numberReceive < 10 ? numberReceive : "5+"} </span>
+								</span>
+							)}
 						</NavLink>
 					</div>
 				</TippyCustom>

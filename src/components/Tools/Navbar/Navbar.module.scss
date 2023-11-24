@@ -32,7 +32,10 @@
 	position: relative;
 	&:hover {
 		background-color: rgba(228, 228, 228, 0.297);
+		.number_request{
+			background-color: rgb(252, 68, 68);
 
+		}		
 	}
 	a {
 		width: 100%;
@@ -44,11 +47,11 @@
 	}
 	.number_request{
 		position:absolute;
-		background-color: rgb(252, 68, 68);
-		min-width: 20px;
-		height: 20px;
+		background-color: #fc0000;
+		min-width: 18px;
+		height: 18px;
 		border-radius: 50%;
-		top: 0;
+		top: 2px;
 		right: 12px;
 		font-size: 14px;
 		font-weight: 700;
@@ -74,11 +77,19 @@
 	// 	top: 38px;
 	// 	background-color: #68ccc4 ;
 	// }
-	.number_request{
-		color: white;
-	}
+	
 }
-
+.number_request{
+	width: 18px;
+	height: 18px;
+	font-size: 10px !important;
+	font-weight: 500;
+	color: white !important;
+	line-height: 18px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 .dark{
 	.navbar{
 

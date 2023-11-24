@@ -26,9 +26,9 @@ import Mentions from "../Mention";
 import { Mention, MentionsInput } from "react-mentions";
 
 const cx = classNames.bind(styles);
-function FullPost({ handleClose, data, noBack = false, setComCount }) {
+function FullPost({ handleClose, data, noBack = false, setComCount, short }) {
 	const idUser = useSelector((state) => state.user.userId);
-	// console.log(data);
+	// console.log(short);
 	// const [liked, setLiked] = useState(data.userLiked);
 	const [liked, setLiked] = useState(true);
 	const language = useSelector((state) => state.app.language);
@@ -115,19 +115,15 @@ function FullPost({ handleClose, data, noBack = false, setComCount }) {
 
 			if (commentPost && commentPost.reg) {
 				setComment(commentPost.reg);
-				
-
 			}
 
 			const resultCommentLike = await commentService.handleCheckLikedCommentService(idUser);
 			if (resultCommentLike && resultCommentLike.EC === 0) {
 				setLikeComment(resultCommentLike.reg);
 			}
-		
 		}
 
 		fetchData();
-		
 	}, [loadComment]);
 	const fetchDataCommentPage = async () => {
 		// console.log("Here");
@@ -150,22 +146,23 @@ function FullPost({ handleClose, data, noBack = false, setComCount }) {
 			}
 		}, 500);
 	};
-	
-	
-	return (
-		<div className={cx("wrapper")}>
-			<div className={cx("left")}>
-				{noBack === false && (
-					<div className={cx("cancel_button")} onClick={handleCloseFullPost}>
-						<CancelIcon width="20px" height="20px" />
-					</div>
-				)}
 
-				<div className={cx("img_post")}>
-					<img src={data.imgPost} alt="full_post" />
+	return (
+		<div className={cx("wrapper", !short && "short_container")}>
+			{short == true && (
+				<div className={cx("left")}>
+					{noBack === false && (
+						<div className={cx("cancel_button")} onClick={handleCloseFullPost}>
+							<CancelIcon width="20px" height="20px" />
+						</div>
+					)}
+
+					<div className={cx("img_post")}>
+						<img src={data.imgPost} alt="full_post" />
+					</div>
 				</div>
-			</div>
-			<div className={cx("right")}>
+			)}
+			<div className={cx("right", !short && "short")}>
 				<div className={cx("post_head")}>
 					<div className={cx("post_header")}>
 						<div className={cx("header_avt")}>
@@ -194,9 +191,19 @@ function FullPost({ handleClose, data, noBack = false, setComCount }) {
 						<div className={cx("header_action")}>
 							<div className={cx("action_control")}>
 								<div className={cx("action_icon")}>
-									<ThreeDotsIcon />
+									<ThreeDotsIcon width="22px" height="22px"/>
 								</div>
+								{!short && (
+								
+									<div className={cx("action_icon")} 
+									 onClick={handleCloseFullPost}
+									>
+										<CancelIcon width="18px" height="18px"/>
+									</div>
+							
+							)}
 							</div>
+							
 						</div>
 					</div>
 					<div className={cx("post_body")}>
@@ -273,7 +280,7 @@ function FullPost({ handleClose, data, noBack = false, setComCount }) {
 						{comment.length > 0 &&
 							comment.map((com, index) => (
 								<CommentCard
-									key={Math.random(0,5)}
+									key={Math.random(0, 5)}
 									com={com}
 									index={index}
 									likeComment={likeComment}
@@ -302,7 +309,6 @@ function FullPost({ handleClose, data, noBack = false, setComCount }) {
 								setComCount={setComCount}
 								commentCount={commentCount}
 								setCommentCount={setCommentCount}
-								
 							/>
 						</div>
 					</div>

@@ -15,20 +15,20 @@ import { toast } from "react-toastify";
 import { handleNumberAddFriendReceiveRedux } from "../../../redux/actions/userAction";
 const cx = classNames.bind(styles);
 
-function CompCard({ data, request = false }) {
+function CompCard({ data, request = false, recommend = false }) {
 	const userId = useSelector((state) => state.user.userId);
 	const [dataFriend, setDataFriend] = useState(
-		request === false ? data.friendAsking : data.friendAsked
+		request === false && recommend === false ? data.friendAsking : ( recommend === false ? data.friendAsked : data)
 	);
 	const [res, setRes] = useState({});
 	const [friend, setFriend] = useState({});
 	const [numFriend, setNumFriend] = useState(0);
 	const [result, setResult] = useState(0);
 	const numberReceive = useSelector((state) => state.user.numberReceive);
-		const [toggle,setToggle] = useState(false);
+	const [toggle, setToggle] = useState(false);
 	// const idFriend = useParams();
 	const dispatch = useDispatch();
-	const [checkFriend,setCheckFriend] = useState(false);
+	const [checkFriend, setCheckFriend] = useState(false);
 	useEffect(() => {
 		async function fetchData() {
 			const resFriend = await friendService.handleGetMutualFriendService(
@@ -57,9 +57,8 @@ function CompCard({ data, request = false }) {
 					setCheckFriend(null);
 				}
 				// console.log(isFriend.reg);
-			}else{
+			} else {
 				setCheckFriend(null);
-
 			}
 		}
 		fetchData();
@@ -76,7 +75,6 @@ function CompCard({ data, request = false }) {
 		}
 		let reNumberReceive = numberReceive - 1;
 		dispatch(handleNumberAddFriendReceiveRedux(reNumberReceive));
-
 	};
 	const handleAcceptDenyFriend = async () => {
 		if (result === 0) {
@@ -116,8 +114,8 @@ function CompCard({ data, request = false }) {
 				<div className={cx("number")}>
 					{numFriend} <FormattedMessage id="Friend_Page.mutual_friend" />
 				</div>
-				
-				{request === false && (
+
+				{request === false && recommend===false && (
 					<div className={cx("action", result !== 0 && "disable")}>
 						{result !== 1 && (
 							<div className={cx("button", "active")} onClick={handleAcceptAddFriend}>
@@ -131,7 +129,7 @@ function CompCard({ data, request = false }) {
 						)}
 					</div>
 				)}
-				{request === true && (
+				{request === true  && (
 					<div className={cx("action", "request")}>
 						{/* {toggle === false ? (
 							<div className={cx("button")} onClick={handleCancelRequestAddFriend}>
@@ -142,7 +140,21 @@ function CompCard({ data, request = false }) {
 								<FormattedMessage id="Friend_Page.add_friend" />
 							</div>
 						)} */}
-						<ButtonAddFriend idAsked={dataFriend.idUser} isFriend={checkFriend}/>
+						<ButtonAddFriend idAsked={dataFriend.idUser} isFriend={checkFriend} />
+					</div>
+				)}
+				{recommend === true  && (
+					<div className={cx("action", "request")}>
+						{/* {toggle === false ? (
+							<div className={cx("button")} onClick={handleCancelRequestAddFriend}>
+								<FormattedMessage id="Friend_Page.cancel_add_friend" />
+							</div>
+						) : (
+							<div className={cx("button")}>
+								<FormattedMessage id="Friend_Page.add_friend" />
+							</div>
+						)} */}
+						<ButtonAddFriend idAsked={dataFriend.idUser} isFriend={checkFriend} />
 					</div>
 				)}
 			</div>

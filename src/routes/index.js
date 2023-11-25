@@ -28,6 +28,7 @@ import FullPostPage from '../pages/FullPostPage';
 import FriendListLayout from '../components/Layout/FriendListLayout';
 import FriendResponsePage from '../pages/FriendList/Response';
 import FriendRequestPage from '../pages/FriendList/Request';
+import FriendRecommendPage from '../pages/FriendList/Recommend';
 //Public Route
 const publicRoutes = [
     
@@ -110,6 +111,11 @@ const privateRoutes = [
     {
         path: config.routes.friendRequest,
         component : FriendRequestPage,
+        layout : FriendListLayout
+    },
+    {
+        path: config.routes.friendRecommend,
+        component : FriendRecommendPage,
         layout : FriendListLayout
     }
 

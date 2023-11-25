@@ -7,6 +7,8 @@ const routesConfig = {
     fullPost : '/post/:idPost',
     friendList: '/friend',
     friendRequest: '/friend/request',
+    friendRecommend: '/friend/recommend',
+
     user: '/:idUser',
     edit: '/:idUser/detail',
     friend : '/:idUser/friend',

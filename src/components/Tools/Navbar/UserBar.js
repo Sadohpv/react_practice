@@ -1,21 +1,23 @@
 import styles from "./UserBar.module.scss";
 import classNames from "classnames/bind";
-import { BellNotifyFullIcon, BellNotifyIcon, HomeIcon, SettingIcon } from "../../../asset/icons";
-import { NavLink, useNavigate } from "react-router-dom";
+import { BellNotifyFullIcon, BellNotifyIcon } from "../../../asset/icons";
+import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 // import { toast } from "react-toastify";
 // import ToastifyUser from "../../pages/ListUser/toastUser";
-import TippyCustom from "../../Tippy/index";
+// import TippyCustom from "../../Tippy/index";
 import { useDispatch, useSelector } from "react-redux";
-import { FormattedMessage } from "react-intl";
+// import { FormattedMessage } from "react-intl";
 
 import { THEMES } from "../../../utils/constant";
 import ButtonRoundIcon from "../ButtonRoundIcon/ButtonRoundIcon";
 import { LogoutIcon } from "../../../asset/icons";
 import NotifyBox from "../NotifyBox";
-import { notifyService } from "../../../services";
-import { handleNumberNotifyRedux } from "../../../redux/actions/notifyAction";
+// import { notifyService } from "../../../services";
+// import { handleNumberNotifyRedux } from "../../../redux/actions/notifyAction";
 import ButtonNotify from "../ButtonNotify/ButtonNotify";
+import { handleLogoutRedux } from "../../../redux/actions/userAction";
+import { userService } from "../../../services";
 // import { handleLogoutRedux, handleRefresh } from "../../redux/actions/userAction";
 const cx = classNames.bind(styles);
 function UserBar() {
@@ -28,11 +30,16 @@ function UserBar() {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
-	const handleLogout = () => {
-		// dispatch(handleLogoutRedux());
+	const handleLogout = async () => {
+		const res = await userService.handleLogoutService();
+		console.log(res);
+		if (res && res.EC === 0) {
+			dispatch(handleLogoutRedux());
+			navigate("/login");
+		}
 		// toast.success("Logout Success");
-		// navigate("/");
-		alert("Logout");
+		// alert("Logout");
+		// console.log(document.cookie);
 	};
 	const handleOpenNoTiFy = () => {
 		setTimeout(() => {

@@ -7,9 +7,9 @@ const USER_DATA = "USER_DATA";
 // const FETCH_USER_ERROR = "FETCH_USER_ERROR";
 // const FETCH_USER_SUCCESS = "FETCH_USER_SUCCESS";
 // const USER_REFRESH = "USER_REFRESH";
-// const USER_LOGOUT = "USER_LOGOUT";
+const USER_LOGOUT = "USER_LOGOUT";
 const NUMBER_ADD_FRIEND_RECEIVE = "NUMBER_ADD_FRIEND_RECEIVE";
-export { USER_LOGIN, USER_REFESH,NUMBER_ADD_FRIEND_RECEIVE };
+export { USER_LOGIN, USER_REFESH,NUMBER_ADD_FRIEND_RECEIVE,USER_LOGOUT };
 
 export const handleLoginRedux = (userData,token) => {
 
@@ -60,4 +60,14 @@ export const handleRefresh = ()=>{
 			type: USER_REFESH,
 		})
 	};
-}
+};
+export const handleLogoutRedux = ()=>{
+
+	return async (dispatch, getState) => {
+		// console.log(token);
+		dispatch({
+			type: USER_LOGOUT,
+			
+		});
+	};
+};

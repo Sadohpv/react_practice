@@ -4,7 +4,9 @@ import axios from "../services/customAxios";
 function handleLoginService(userEmail, userPassword) {
 	return axios.post("/api/login", { email: userEmail, password: userPassword });
 }
-
+function handleLogoutService() {
+	return axios.get("/api/logout");
+}
 function handleGetDataUserService(idUser) {
 	return axios.get(`/api/${idUser}`);
 }
@@ -61,5 +63,6 @@ export default {
 	handleEditUserService,
 	handleSearchService,
 	handleGetAccounService,
-	handleGetAllFriendService
+	handleGetAllFriendService,
+	handleLogoutService
 };

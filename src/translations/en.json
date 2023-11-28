@@ -77,7 +77,10 @@
         "add_success" : "Posting success !",
         "add_fail" : "Posting fail !",
         "private" : "Private",
-        "public" : "Public"
+        "public" : "Public",
+        "action_save": "Save post",
+        "action_copy_link": "Copy link post"
+
     },
     "Status_Comp":{
         "image" : "Image",

@@ -76,7 +76,9 @@
         "add_success" : "Đăng bài thành công !",
         "add_fail" : "Đăng bài thất bại !",
         "private" : "Riêng tư",
-        "public" : "Công khai"
+        "public" : "Công khai",
+        "action_save": "Lưu bài viết",
+        "action_copy_link": "Sao chép liên kết"
         
 
     },

@@ -22,6 +22,8 @@ import { useSelector } from "react-redux";
 import { abbreviateNumber } from "js-abbreviation-number";
 import FullPost from "./FullPost.js";
 import { useNavigate } from "react-router";
+import ActionPost from "./ActionPost";
+import TippyCustom from "../Tippy";
 const cx = classNames.bind(styles);
 
 function Post({ data, idUser, dataPagi, index, setIsLoading, firstLoad }) {
@@ -37,6 +39,7 @@ function Post({ data, idUser, dataPagi, index, setIsLoading, firstLoad }) {
 	// const [icon,setIcon] = useState({});
 	const [likeCount, setLikeCount] = useState(data.likeCount);
 	const [currentURL, setCurrentURL] = useState(window.location.pathname);
+	const [actionPost, setActionPost] = useState(false);
 	const handleToggleLike = async () => {
 		if (liked === true) {
 			const res = await postService.handleLikedPostService(false, data.idPost, idUser);
@@ -59,13 +62,10 @@ function Post({ data, idUser, dataPagi, index, setIsLoading, firstLoad }) {
 	};
 	const handleCloseFullPhoto = () => {
 		setModal(false);
-		
 
 		window.history.pushState(null, null, currentURL);
 	};
 	useEffect(() => {
-		
-
 		if (index + 1 == firstLoad) {
 			// console.log("Here");
 
@@ -85,7 +85,7 @@ function Post({ data, idUser, dataPagi, index, setIsLoading, firstLoad }) {
 						return (
 							<span>
 								{lineTag.map((item, index) => handleNextTag(lineTag, item, index))}
-							<br></br>
+								<br></br>
 							</span>
 						);
 					})}
@@ -118,6 +118,7 @@ function Post({ data, idUser, dataPagi, index, setIsLoading, firstLoad }) {
 			return <>{result[index]}</>;
 		}
 	};
+
 	return (
 		<>
 			<div className={cx("wrapper")}>
@@ -145,9 +146,20 @@ function Post({ data, idUser, dataPagi, index, setIsLoading, firstLoad }) {
 					</div>
 					<div className={cx("header_action")}>
 						<div className={cx("action_control")}>
-							<div className={cx("action_icon")}>
-								<ThreeDotsIcon width={"24px"} height="24px" />
-							</div>
+							<TippyCustom content={<ActionPost />}
+							offSet={[0, 10]}
+							haveClick
+							place={'bottom-end'}
+							customTheme = "action_post"
+							
+							>
+								<div
+									className={cx("action_icon")}
+									
+								>
+									<ThreeDotsIcon width={"24px"} height="24px" />
+								</div>
+							</TippyCustom>
 						</div>
 						<div className={cx("action_delete-post")}>
 							<div className={cx("action_icon")}>

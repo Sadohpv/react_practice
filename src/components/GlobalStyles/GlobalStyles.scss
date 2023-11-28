@@ -94,8 +94,11 @@ a[href] {
 	display: none;
 }
 
-.tippy-box {
+.tippy-content {
 	// background-color: white;
+	border-radius: 12px;
+	overflow: hidden;
+
 }
 
 // .tippy-box[data-theme~='customTheme'] {
@@ -108,9 +111,12 @@ a[href] {
 	background-color: #535353 !important;
 	color: rgb(255, 255, 255);
 	box-shadow: 0.5px 0.5px 1.5px black;
-	// border-radius: 12px;
+	border-radius: 12px;
   }
-
+  .tippy-box[data-theme~='action_post'] {
+	
+	border-radius: 12px !important;
+  }
   .tippy-box[data-theme~='white'] {
 	background-color: rgb(255, 255, 255) !important;
 	box-shadow: 0.5px 0.5px 1.5px black;

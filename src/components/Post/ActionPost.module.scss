@@ -6,8 +6,8 @@
 	position: relative;
 	padding: 8px 0px;
 	gap: 4px;
-    // z-index: 9999;
-    // background-color: white;
+	// z-index: 9999;
+	// background-color: white;
 	.action_box {
 		width: 100%;
 		height: 40px;
@@ -16,15 +16,24 @@
 			background-color: var(--background-light-hover);
 		}
 		display: flex;
-		.title{
+		cursor: pointer;
+
+		.title {
 			width: 100%;
 			display: flex;
 			padding: 0 8px;
-			span{
+			span {
 				line-height: 40px;
 				user-select: none;
 			}
 		}
 	}
-	
+	.disable {
+		user-select: none;
+		cursor: default;
+		color: var(--background-light-hover);
+		&:hover {
+			background-color: transparent !important;
+		}
+	}
 }

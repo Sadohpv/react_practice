@@ -14,7 +14,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { userService } from "./services";
 import React from "react";
-import AtomicSpinner from "atomic-spinner";
+// import AtomicSpinner from "atomic-spinner";
+import { Flip } from 'react-toastify';
 function App() {
 	const dispatch = useDispatch();
 	const currentTheme = useSelector((state) => state.app.theme);
@@ -107,7 +108,7 @@ function App() {
 			</Routes>
 
 			{cloudShow === CLOUD_RAIN.ON && <CloudRain />}
-			<ToastContainer />
+			<ToastContainer  transition={Flip} hideProgressBar limit={3} pauseOnFocusLoss={false} pauseOnHover={false}/>
 		</div>
 	);
 }

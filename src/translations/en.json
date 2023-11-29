@@ -79,8 +79,8 @@
         "private" : "Private",
         "public" : "Public",
         "action_save": "Save post",
-        "action_copy_link": "Copy link post"
-
+        "action_copy_link": "Copy link post",
+        "action_copy_success" : "Copy link success"
     },
     "Status_Comp":{
         "image" : "Image",

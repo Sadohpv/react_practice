@@ -146,7 +146,7 @@ function Post({ data, idUser, dataPagi, index, setIsLoading, firstLoad }) {
 					</div>
 					<div className={cx("header_action")}>
 						<div className={cx("action_control")}>
-							<TippyCustom content={<ActionPost />}
+							<TippyCustom content={<ActionPost id={data.idPost}/>}
 							offSet={[0, 10]}
 							haveClick
 							place={'bottom-end'}

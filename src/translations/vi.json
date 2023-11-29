@@ -78,7 +78,8 @@
         "private" : "Riêng tư",
         "public" : "Công khai",
         "action_save": "Lưu bài viết",
-        "action_copy_link": "Sao chép liên kết"
+        "action_copy_link": "Sao chép liên kết",
+        "action_copy_success" : "Sao chép đường dẫn"
         
 
     },

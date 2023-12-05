@@ -51,7 +51,8 @@
         "from": "Đến từ ",
         "edit-details": "Chi tiết",
         "add-hobbies": "Sở thích",
-        "add-featured": "Nổi bật"
+        "add-featured": "Nổi bật",
+        "saved" : "Đã lưu"
     },
     "Navbar":{
         "home": "Trang chủ",
@@ -79,7 +80,10 @@
         "public" : "Công khai",
         "action_save": "Lưu bài viết",
         "action_copy_link": "Sao chép liên kết",
-        "action_copy_success" : "Sao chép đường dẫn"
+        "action_copy_success" : "Sao chép đường dẫn",
+        "action_save_post_success" : "Lưu bài viết !",
+        "action_save_post_fail" : "Lỗi ! Thử lại sau",
+        "action_save_post_has_been" : "Bài viết đã được lưu trước đó !"
         
 
     },

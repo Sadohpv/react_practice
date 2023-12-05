@@ -13,7 +13,7 @@ import styles from "./Post.module.scss";
 import classNames from "classnames/bind";
 import { FormattedMessage } from "react-intl";
 import Avartar from "../Avatar/Avatar";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { postService } from "../../services";
 // import moment from "moment";
 import Moment from "react-moment";
@@ -120,7 +120,7 @@ function Post({ data, idUser, dataPagi, index, setIsLoading, firstLoad }) {
 	};
 
 	return (
-		<>
+		<Fragment key={index}>
 			<div className={cx("wrapper")}>
 				<div className={cx("post_header")}>
 					<div className={cx("header_avt")}>
@@ -241,7 +241,7 @@ function Post({ data, idUser, dataPagi, index, setIsLoading, firstLoad }) {
 					</div>
 				</div>
 			)}
-		</>
+		</Fragment>
 	);
 }
 

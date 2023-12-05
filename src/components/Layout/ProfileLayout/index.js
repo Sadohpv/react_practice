@@ -245,6 +245,16 @@ function ProfileLayout({ children }) {
 									>
 										<FormattedMessage id="Profile_Page.photos" />
 									</NavLink>
+									<NavLink
+										to={`/${idFriend.idUser}/saved`}
+										className={(nav) =>
+											cx("bar_item", { "bar_item-active": nav.isActive })
+										}
+										// exact
+										end
+									>
+										<FormattedMessage id="Profile_Page.saved" />
+									</NavLink>
 								</div>
 							</div>
 						</div>

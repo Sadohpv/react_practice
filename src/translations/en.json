@@ -52,7 +52,8 @@
         "from": "From ",
         "edit-details": "Edit details",
         "add-hobbies": "Add hobbies",
-        "add-featured": "Add featured"
+        "add-featured": "Add featured",
+        "saved" : "Saved"
     },
     "Navbar":{
         "home": "Home",
@@ -80,7 +81,10 @@
         "public" : "Public",
         "action_save": "Save post",
         "action_copy_link": "Copy link post",
-        "action_copy_success" : "Copy link success"
+        "action_copy_success" : "Copy link success",
+        "action_save_post_success" : "Save post !",
+        "action_save_post_fail" : "Something wrong ! Try later",
+        "action_save_post_has_been" : "This post has been save ! Try another"
     },
     "Status_Comp":{
         "image" : "Image",

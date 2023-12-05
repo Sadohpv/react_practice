@@ -50,6 +50,15 @@ const handlePushCommentPostService = async (idWhoComment, idPostComment, content
 
 	return resContent;
 };
+const handleSavePostService = async (idUser, idPostSave) => {
+	const resContent = await axios.post(`/post/savePost`, {
+		idUser: idUser,
+		idPostSave: idPostSave,
+	
+	});
+
+	return resContent;
+};
 export default {
 	handleGetPostService,
 	handleAddPostService,
@@ -59,4 +68,5 @@ export default {
 	handleGetOnePostService,
 	handleGetCommentPost,
 	handlePushCommentPostService,
+	handleSavePostService
 };

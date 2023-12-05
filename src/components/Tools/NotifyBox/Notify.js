@@ -12,6 +12,7 @@ import {
 	handleReadNotifyRedux,
 	handleNumberNotifyRedux,
 } from "../../../redux/actions/notifyAction";
+import { useNavigate } from "react-router";
 
 const cx = classNames.bind(styles);
 function NotifyCard({ item, index, length }) {
@@ -19,7 +20,7 @@ function NotifyCard({ item, index, length }) {
 	const language = useSelector((state) => state.app.language);
 	const [noRead, setNoRead] = useState(item.status);
 	const numberNotify = useSelector((state) => state.notify.numberNotify);
-
+	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const handleReadNotify = async () => {
 		// console.log(numberNotify);
@@ -34,10 +35,19 @@ function NotifyCard({ item, index, length }) {
 			dispatch(handleNumberNotifyRedux(numberNotify - 1));
 		}
 	};
+	const handleClickNotify=()=>{
+		if(item.content===1){
+			navigate(`/post/${item.linked}`);
+		}
+		if(item.content===3){
+			navigate(`/friend`);
+		}
+	}
 	return (
 		<div
 			className={cx("notify", noRead === 0 && "noRead", index + 1 === length && "last")}
 			onMouseOver={handleReadNotify}
+			onClick={handleClickNotify}
 		>
 			<div className={cx("avt")}>
 				<Avartar width={"56px"} height={"56px"} src={item.notifyFrom.avatar} />

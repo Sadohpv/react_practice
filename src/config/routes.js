@@ -13,6 +13,8 @@ const routesConfig = {
     edit: '/:idUser/detail',
     friend : '/:idUser/friend',
     post : '/:idUser/post',
+    saved : '/:idUser/saved',
+
     photo : '/:idUser/photo',
     configure : '/:idUser/configure',
     security : '/:idUser/security',

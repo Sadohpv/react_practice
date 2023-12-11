@@ -31,6 +31,11 @@ const handleGetOwnerPost = async (userPage, owner) => {
 
 	return resContent;
 };
+const handleGetOwnerPhoto = async (userPage, owner) => {
+	const resContent = await axios.post(`/post/ownerPhoto`, { userPage: userPage, owner: owner });
+
+	return resContent;
+};
 const handleGetOnePostService = async (idPost, idUser) => {
 	// console.log("Here");
 	const resContent = await axios.post(`/post/onePost`, { idPost: idPost, owner: idUser });
@@ -59,6 +64,11 @@ const handleSavePostService = async (idUser, idPostSave) => {
 
 	return resContent;
 };
+const handleGetSavedPost = async (idUser)=>{
+	const resContent = await axios.get(`/post/savedPost/${idUser}`)
+
+	return resContent;
+};
 export default {
 	handleGetPostService,
 	handleAddPostService,
@@ -68,5 +78,7 @@ export default {
 	handleGetOnePostService,
 	handleGetCommentPost,
 	handlePushCommentPostService,
-	handleSavePostService
+	handleSavePostService,
+	handleGetSavedPost,
+	handleGetOwnerPhoto
 };

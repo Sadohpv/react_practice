@@ -85,7 +85,6 @@ function ProfileLayout({ children }) {
 			// setButtonAddFriend(false);
 			setIsFriend(2);
 		}
-
 	};
 	const handleCancelAddFriend = async () => {
 		const res = await friendService.handleCancelAddFriendService(idUser, idFriend.idUser);
@@ -181,7 +180,10 @@ function ProfileLayout({ children }) {
 											</div>
 										)}
 										{idUser !== +idFriend.idUser && isFriend === 2 && (
-											<div className={cx("action")} onClick={handleCancelAddFriend} >
+											<div
+												className={cx("action")}
+												onClick={handleCancelAddFriend}
+											>
 												<div className={cx("action_icon")}>
 													<CancelIcon />
 												</div>
@@ -191,7 +193,10 @@ function ProfileLayout({ children }) {
 											</div>
 										)}
 										{idUser !== +idFriend.idUser && isFriend === null && (
-											<div className={cx("action","add")} onClick={handleAddFriend}>
+											<div
+												className={cx("action", "add")}
+												onClick={handleAddFriend}
+											>
 												<div className={cx("action_icon")}>
 													<PlusIcon />
 												</div>
@@ -245,16 +250,18 @@ function ProfileLayout({ children }) {
 									>
 										<FormattedMessage id="Profile_Page.photos" />
 									</NavLink>
-									<NavLink
-										to={`/${idFriend.idUser}/saved`}
-										className={(nav) =>
-											cx("bar_item", { "bar_item-active": nav.isActive })
-										}
-										// exact
-										end
-									>
-										<FormattedMessage id="Profile_Page.saved" />
-									</NavLink>
+									{idUser == +idFriend.idUser && (
+										<NavLink
+											to={`/${idFriend.idUser}/saved`}
+											className={(nav) =>
+												cx("bar_item", { "bar_item-active": nav.isActive })
+											}
+											// exact
+											end
+										>
+											<FormattedMessage id="Profile_Page.saved" />
+										</NavLink>
+									)}
 								</div>
 							</div>
 						</div>

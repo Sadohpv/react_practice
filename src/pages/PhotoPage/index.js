@@ -22,7 +22,7 @@ function PhotoPage() {
 	const [post, setPost] = useState([]);
 		useEffect(() => {
 			async function fetchData() {
-				const post = await postService.handleGetOwnerPost(idFriend.idUser, idUser);
+				const post = await postService.handleGetOwnerPhoto(idFriend.idUser, idUser);
 				// console.log(post);
 				if (post && post.reg) {
 					setPost(post.reg);

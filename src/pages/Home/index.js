@@ -36,6 +36,8 @@ function Home() {
 	const [postLike, setPostLike] = useState([]);
 	const [addBlock, setAddBlock] = useState(false);
 	const [addBlockImg, setAddBlockImg] = useState(false);
+	const [addBlockVideo, setAddBlockVideo] = useState(false);
+
 	const [postPage, setPostPage] = useState(1);
 	const [hasMorePost, setHasMorePost] = useState(true);
 	const [isLoading, setIsLoading] = useState(false);
@@ -151,6 +153,8 @@ function Home() {
 					setAddBlock={setAddBlock}
 					addBlockImg={addBlockImg}
 					setAddBlockImg={setAddBlockImg}
+					addBlockVideo={addBlockVideo}
+					setAddBlockVideo={setAddBlockVideo}
 				/>
 			)}
 		</>

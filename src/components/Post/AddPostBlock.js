@@ -16,22 +16,38 @@ import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 const cx = classNames.bind(styles);
 
-function AddPostBlock({ setAddBlock, addBlockImg, setAddBlockImg }) {
+function AddPostBlock({
+	setAddBlock,
+	addBlockImg,
+	setAddBlockImg,
+	setAddBlockVideo,
+	addBlockVideo,
+}) {
 	const [contentPost, setContentPost] = useState("");
 	const [image, setImage] = useState("");
+	const [video, setVideo] = useState("");
 	const [preview, setPreview] = useState("");
-	const userId = useSelector((state)=>state.user.userId);
+	const [inputVa,setInputVa] = useState("");
+	const userId = useSelector((state) => state.user.userId);
 	const closeAddPostBlock = () => {
 		setAddBlockImg(false);
 		setAddBlock(false);
 	};
 	const clearInputImg = () => {
 		setImage("");
-		setAddBlockImg(false);
+		// setAddBlockImg(false);
+		setInputVa("")
+		setVideo("");
 		setPreview("");
 	};
 	const openInputImg = () => {
+		setAddBlockVideo(false);
 		setAddBlockImg(!addBlockImg);
+	};
+	const openInputVideo = () => {
+		setAddBlockImg(false);
+
+		setAddBlockVideo(!addBlockVideo);
 	};
 	// const textAreaAdjust = (e) => {
 	// 	e.target.style.height = "40px";
@@ -42,7 +58,7 @@ function AddPostBlock({ setAddBlock, addBlockImg, setAddBlockImg }) {
 	// };
 
 	const handleInputImg = (event) => {
-		// console.log(event);
+		setInputVa(event.target.name);
 		if (event.target.files && event.target.files[0]) {
 			const reader = new FileReader();
 			reader.readAsDataURL(event.target.files[0]);
@@ -74,15 +90,15 @@ function AddPostBlock({ setAddBlock, addBlockImg, setAddBlockImg }) {
 			});
 		} else {
 			// console.log(image);
-			
+
 			const res = await postService.handleAddPostService(userId, contentPost, image);
 			// const
-			if(res && res.errCode === 0){
+			if (res && res.errCode === 0) {
 				toast.success(<FormattedMessage id="Post_Comp.add_success" />, {
 					position: toast.POSITION.TOP_RIGHT,
 				});
 				closeAddPostBlock();
-			}else{
+			} else {
 				toast.error(<FormattedMessage id="Post_Comp.add_fail" />, {
 					position: toast.POSITION.TOP_RIGHT,
 				});
@@ -126,9 +142,11 @@ function AddPostBlock({ setAddBlock, addBlockImg, setAddBlockImg }) {
 								/>
 							</div>
 
-							{addBlockImg && (
+							{addBlockImg | addBlockVideo ? (
 								<div className={cx("body")}>
-									<div className={cx("block_img")}>
+									<div
+										className={cx("block_img", addBlockVideo && "block_video")}
+									>
 										<div className={cx("background_input")}>
 											<div className={cx("layer_1")}>
 												<CloudIcon width="90px" height="90px" />
@@ -141,21 +159,40 @@ function AddPostBlock({ setAddBlock, addBlockImg, setAddBlockImg }) {
 												/>
 											</div>
 										</div>
-										<div className={cx("preview_img")}>
-											<img id={cx("preview")} src={preview} />
-										</div>
+
 										<input
-											accept="image/*"
+											value={inputVa}
+											accept="image/*,video/*"
 											type="file"
 											title=" "
 											onChange={(e) => handleInputImg(e)}
 											// onError={(e) => handleErrorImg()}
 										/>
+										{preview != "" && (
+											<div className={cx("preview_img")}>
+												{addBlockImg && (
+													<img id={cx("preview")} src={preview} />
+												)}
+												{addBlockVideo && (
+													<video
+														id={cx("preview")}
+														// className={cx("video")}
+														// autoPlay
+														controls
+														disablePictureInPicture={true}
+													>
+														<source src={preview} />
+													</video>
+												)}
+											</div>
+										)}
 										<div className={cx("close_img")} onClick={clearInputImg}>
 											<CancelIcon width="22px" height="22px" />
 										</div>
 									</div>
 								</div>
+							) : (
+								<></>
 							)}
 						</div>
 					</div>
@@ -171,11 +208,15 @@ function AddPostBlock({ setAddBlock, addBlockImg, setAddBlockImg }) {
 									<ImageIcon
 										width="22px"
 										height="22px"
-										fill={addBlockImg ? "#73dfd6" : "#65676b"}
+										fill={addBlockImg ? "#45bd63" : "#65676b"}
 									/>
 								</div>
-								<div className={cx("action_btn")}>
-									<VideoIcon width="22px" height="22px" />
+								<div className={cx("action_btn")} onClick={openInputVideo}>
+									<VideoIcon
+										width="22px"
+										height="22px"
+										fill={addBlockVideo ? "#e42645" : "#65676b"}
+									/>
 								</div>
 								<div className={cx("action_btn")}>
 									<StickerIcon width="22px" height="22px" />

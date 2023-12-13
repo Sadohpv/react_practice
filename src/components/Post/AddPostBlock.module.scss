@@ -9,6 +9,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	padding-top: 40px;
 	.block {
 		width: 600px;
 		max-height: 600px;
@@ -75,7 +76,7 @@
 			height: 380px;
 			display: flex;
 			flex-direction: column;
-
+			
 			.block_img {
 				height: 300px;
 				width: 100%;
@@ -84,7 +85,8 @@
 				position: relative;
 				padding: 12px;
 				display: flex;
-				border: 1px solid rgba(0, 0, 0, 0.414);
+				border: 1px solid #45bd63;
+				box-shadow: 0px 0px 5px 0px #45bd635e;
 				.background_input {
 					--margin-inside: 14px;
 
@@ -130,6 +132,9 @@
 					img{
 						width: 100%;
 					}
+					video{
+						width: 100%;
+					}
 				}
 				input {
 					width: 100%;
@@ -160,6 +165,11 @@
 						}
 					}
 				}
+			}
+			.block_video{
+				border: 1px solid #e42645 ;
+				box-shadow: 0px 0px 5px 0px #e426455e ;
+
 			}
 		}
 	}

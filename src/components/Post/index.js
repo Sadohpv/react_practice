@@ -27,7 +27,7 @@ import TippyCustom from "../Tippy";
 const cx = classNames.bind(styles);
 
 function Post({ data, idUser, dataPagi, index, setIsLoading, firstLoad }) {
-	// console.log(data);
+	console.log(data);
 	const navigate = useNavigate();
 	const [modal, setModal] = useState(false);
 
@@ -146,17 +146,14 @@ function Post({ data, idUser, dataPagi, index, setIsLoading, firstLoad }) {
 					</div>
 					<div className={cx("header_action")}>
 						<div className={cx("action_control")}>
-							<TippyCustom content={<ActionPost id={data.idPost}/>}
-							offSet={[0, 10]}
-							haveClick
-							place={'bottom-end'}
-							customTheme = "action_post"
-							
+							<TippyCustom
+								content={<ActionPost id={data.idPost} />}
+								offSet={[0, 10]}
+								haveClick
+								place={"bottom-end"}
+								customTheme="action_post"
 							>
-								<div
-									className={cx("action_icon")}
-									
-								>
+								<div className={cx("action_icon")}>
 									<ThreeDotsIcon width={"24px"} height="24px" />
 								</div>
 							</TippyCustom>
@@ -172,9 +169,23 @@ function Post({ data, idUser, dataPagi, index, setIsLoading, firstLoad }) {
 					<div className={cx("post_body-text")}>
 						<span>{handleContentPostShow(data.content)}</span>
 					</div>
-					{data.imgPost && (
+
+					{data.imgPost && data.videoPost == 0 && (
 						<div className={cx("post_body-img")} onClick={handleFullPhoto}>
 							<img src={data.imgPost} />
+						</div>
+					)}
+					{data.imgPost && data.videoPost == 1 && (
+						<div className={cx("post_body-img")} onClick={handleFullPhoto}>
+							<video
+								id={cx("preview")}
+								// className={cx("video")}
+								// autoPlay
+								controls
+								disablePictureInPicture={true}
+							>
+								<source src={data.imgPost} />
+							</video>
 						</div>
 					)}
 				</div>

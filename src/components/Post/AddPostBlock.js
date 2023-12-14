@@ -83,7 +83,7 @@ function AddPostBlock({
 		setContentPost(e.target.value);
 	};
 	const handlePosting = async () => {
-		console.log(contentPost);
+		// console.log(contentPost);
 		if (contentPost === "") {
 			toast.info(<FormattedMessage id="Post_Comp.empty_content" />, {
 				position: toast.POSITION.TOP_RIGHT,
@@ -91,7 +91,7 @@ function AddPostBlock({
 		} else {
 			// console.log(image);
 
-			const res = await postService.handleAddPostService(userId, contentPost, image);
+			const res = await postService.handleAddPostService(userId, contentPost, image,addBlockVideo);
 			// const
 			if (res && res.errCode === 0) {
 				toast.success(<FormattedMessage id="Post_Comp.add_success" />, {

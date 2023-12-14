@@ -3,11 +3,13 @@ import axios from "../services/customAxios";
 function handleGetPostService(idUser,page) {
 	return axios.get(`/post/getPost/${idUser}/${page}`, {});
 }
-const handleAddPostService = async (userId, content, image) => {
+const handleAddPostService = async (userId, content, image,video) => {
+	// console.log(video)
 	const resContent = await axios.post("/post/addPost", {
 		content: content,
 		userId: userId,
 		image,
+		video
 	});
 
 	return resContent;

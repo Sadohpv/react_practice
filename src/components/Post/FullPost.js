@@ -151,15 +151,28 @@ function FullPost({ handleClose, data, noBack = false, setComCount, short }) {
 		<div className={cx("wrapper", !short && "short_container")}>
 			{short == true && (
 				<div className={cx("left")}>
+					<div className={cx("img_post")}>
+						{data.imgPost && data.videoPost == 0 && (
+							<img src={data.imgPost} alt="full_post" />
+						)}
+
+						{data.imgPost && data.videoPost == 1 && (
+							<video
+								id={cx("preview")}
+								// className={cx("video")}
+								// autoPlay
+								controls
+								disablePictureInPicture={true}
+							>
+								<source src={data.imgPost} />
+							</video>
+						)}
+					</div>
 					{noBack === false && (
 						<div className={cx("cancel_button")} onClick={handleCloseFullPost}>
 							<CancelIcon width="20px" height="20px" />
 						</div>
 					)}
-
-					<div className={cx("img_post")}>
-						<img src={data.imgPost} alt="full_post" />
-					</div>
 				</div>
 			)}
 			<div className={cx("right", !short && "short")}>
@@ -191,19 +204,17 @@ function FullPost({ handleClose, data, noBack = false, setComCount, short }) {
 						<div className={cx("header_action")}>
 							<div className={cx("action_control")}>
 								<div className={cx("action_icon")}>
-									<ThreeDotsIcon width="22px" height="22px"/>
+									<ThreeDotsIcon width="22px" height="22px" />
 								</div>
 								{!short && (
-								
-									<div className={cx("action_icon")} 
-									 onClick={handleCloseFullPost}
+									<div
+										className={cx("action_icon")}
+										onClick={handleCloseFullPost}
 									>
-										<CancelIcon width="18px" height="18px"/>
+										<CancelIcon width="18px" height="18px" />
 									</div>
-							
-							)}
+								)}
 							</div>
-							
 						</div>
 					</div>
 					<div className={cx("post_body")}>

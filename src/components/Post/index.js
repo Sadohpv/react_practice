@@ -27,7 +27,7 @@ import TippyCustom from "../Tippy";
 const cx = classNames.bind(styles);
 
 function Post({ data, idUser, dataPagi, index, setIsLoading, firstLoad }) {
-	console.log(data);
+	// console.log(data);
 	const navigate = useNavigate();
 	const [modal, setModal] = useState(false);
 

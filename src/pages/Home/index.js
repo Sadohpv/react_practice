@@ -64,9 +64,9 @@ function Home() {
 		// 	console.log(position);
 		// });
 	}, []);
-	const handleOnClick = () => {
-		setAddBlockImg(true);
-		setAddBlock(true);
+	const handleOnClick = (code) => {
+		// setAddBlockImg(true);
+		setAddBlock(code);
 	};
 	const fetchDataHomePage = async () => {
 		// console.log("Here");
@@ -102,12 +102,14 @@ function Home() {
 						<ButtonStatus
 							icon={<ImageIcon width="20px" height="20px" fill="#45bd62" />}
 							text={<FormattedMessage id="Status_Comp.image" />}
-							funClick={handleOnClick}
+							funClick={()=>handleOnClick(1)}
 						/>
 
 						<ButtonStatus
 							icon={<VideoIcon width="20px" height="20px" fill="#e42645" />}
 							text={<FormattedMessage id="Status_Comp.video" />}
+							funClick={()=>handleOnClick(2)}
+
 						/>
 
 						<ButtonStatus
@@ -148,13 +150,22 @@ function Home() {
 					</InfiniteScroll>
 				</div>
 			</div>
-			{addBlock && (
+			{addBlock==1&& (
 				<AddPostBlock
 					setAddBlock={setAddBlock}
-					addBlockImg={addBlockImg}
-					setAddBlockImg={setAddBlockImg}
-					addBlockVideo={addBlockVideo}
-					setAddBlockVideo={setAddBlockVideo}
+					BlockImg={true}
+					// setAddBlockImg={setAddBlockImg}
+					// addBlockVideo={addBlockVideo}
+					// setAddBlockVideo={setAddBlockVideo}
+				/>
+			)}
+			{addBlock==2&& (
+				<AddPostBlock
+					setAddBlock={setAddBlock}
+					BlockVideo={true}
+					// setAddBlockImg={setAddBlockImg}
+					// addBlockVideo={addBlockVideo}
+					// setAddBlockVideo={setAddBlockVideo}
 				/>
 			)}
 		</>

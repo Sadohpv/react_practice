@@ -18,19 +18,24 @@ const cx = classNames.bind(styles);
 
 function AddPostBlock({
 	setAddBlock,
-	addBlockImg,
-	setAddBlockImg,
-	setAddBlockVideo,
-	addBlockVideo,
+	BlockImg=false,
+	
+	BlockVideo=false,
+	
 }) {
 	const [contentPost, setContentPost] = useState("");
+	const [blockImage,setBlockImage] = useState(BlockImg);
+	const [blockVideo,setBlockVideo] = useState(BlockVideo);
+
 	const [image, setImage] = useState("");
 	const [video, setVideo] = useState("");
 	const [preview, setPreview] = useState("");
 	const [inputVa,setInputVa] = useState("");
 	const userId = useSelector((state) => state.user.userId);
 	const closeAddPostBlock = () => {
-		setAddBlockImg(false);
+		setBlockImage(false);
+		setBlockVideo(false);
+
 		setAddBlock(false);
 	};
 	const clearInputImg = () => {
@@ -41,13 +46,13 @@ function AddPostBlock({
 		setPreview("");
 	};
 	const openInputImg = () => {
-		setAddBlockVideo(false);
-		setAddBlockImg(!addBlockImg);
+		setBlockVideo(false);
+		setBlockImage(!blockImage);
 	};
 	const openInputVideo = () => {
-		setAddBlockImg(false);
+		setBlockImage(false);
 
-		setAddBlockVideo(!addBlockVideo);
+		setBlockVideo(!blockVideo);
 	};
 	// const textAreaAdjust = (e) => {
 	// 	e.target.style.height = "40px";
@@ -91,7 +96,7 @@ function AddPostBlock({
 		} else {
 			// console.log(image);
 
-			const res = await postService.handleAddPostService(userId, contentPost, image,addBlockVideo);
+			const res = await postService.handleAddPostService(userId, contentPost, image,blockVideo);
 			// const
 			if (res && res.errCode === 0) {
 				toast.success(<FormattedMessage id="Post_Comp.add_success" />, {
@@ -142,10 +147,10 @@ function AddPostBlock({
 								/>
 							</div>
 
-							{addBlockImg | addBlockVideo ? (
+							{blockImage | blockVideo ? (
 								<div className={cx("body")}>
 									<div
-										className={cx("block_img", addBlockVideo && "block_video")}
+										className={cx("block_img", blockVideo && "block_video")}
 									>
 										<div className={cx("background_input")}>
 											<div className={cx("layer_1")}>
@@ -170,10 +175,10 @@ function AddPostBlock({
 										/>
 										{preview != "" && (
 											<div className={cx("preview_img")}>
-												{addBlockImg && (
+												{blockImage && (
 													<img id={cx("preview")} src={preview} />
 												)}
-												{addBlockVideo && (
+												{blockVideo && (
 													<video
 														id={cx("preview")}
 														// className={cx("video")}
@@ -208,14 +213,14 @@ function AddPostBlock({
 									<ImageIcon
 										width="22px"
 										height="22px"
-										fill={addBlockImg ? "#45bd63" : "#65676b"}
+										fill={blockImage ? "#45bd63" : "#65676b"}
 									/>
 								</div>
 								<div className={cx("action_btn")} onClick={openInputVideo}>
 									<VideoIcon
 										width="22px"
 										height="22px"
-										fill={addBlockVideo ? "#e42645" : "#65676b"}
+										fill={blockVideo ? "#e42645" : "#65676b"}
 									/>
 								</div>
 								<div className={cx("action_btn")}>

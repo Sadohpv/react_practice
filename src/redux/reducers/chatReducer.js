@@ -1,4 +1,4 @@
-import { OPEN_CHAT, CLOSE_CHAT, WAIT_CHAT } from "../actions/chatAction";
+import { OPEN_CHAT, CLOSE_CHAT, WAIT_CHAT,CLOSE_WAIT_CHAT } from "../actions/chatAction";
 // import { userService } from "../../services";
 const INITIAL_STATE = {
 	chatList: [],
@@ -13,11 +13,20 @@ const chatReducer = (state = INITIAL_STATE, action) => {
 			let newList = [];
 			if (state.chatList.includes(action.data.chatID) == false) {
 				newList = [...state.chatList, action.data.chatID];
-
-				return {
-					...state,
-					chatList: newList,
-				};
+				if (state.waitChatList.includes(action.data.chatID)) {
+					return {
+						...state,
+						chatList: newList,
+						waitChatList: state.waitChatList.filter(
+							(item) => item !== action.data.chatID
+						),
+					};
+				} else {
+					return {
+						...state,
+						chatList: newList,
+					};
+				}
 			} else {
 				return {
 					...state,
@@ -28,7 +37,7 @@ const chatReducer = (state = INITIAL_STATE, action) => {
 				return {
 					...state,
 					chatList: state.chatList.filter((item) => item !== action.data.chatID),
-					waitChatList: state.waitChatList.filter((item) => item !== action.data.chatID),
+					// waitChatList: state.waitChatList.filter((item) => item !== action.data.chatID),
 				};
 			} else {
 				return {
@@ -45,6 +54,18 @@ const chatReducer = (state = INITIAL_STATE, action) => {
 					chatList: state.chatList.filter((item) => item !== action.data.chatID),
 
 					waitChatList: waitList,
+				};
+			} else {
+				return {
+					...state,
+				};
+			}
+		case CLOSE_WAIT_CHAT:
+			if (state.waitChatList.includes(action.data.chatID) == true) {
+				return {
+					...state,
+					
+					waitChatList: state.waitChatList.filter((item) => item !== action.data.chatID),
 				};
 			} else {
 				return {

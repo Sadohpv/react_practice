@@ -2,7 +2,7 @@ import styles from "./AddPostBlock.module.scss";
 import classNames from "classnames/bind";
 import { FormattedMessage } from "react-intl";
 import ButtonRoundIcon from "../Tools/ButtonRoundIcon/ButtonRoundIcon";
-import { postService } from "../../services";
+import { postService, userService } from "../../services";
 import { toast } from "react-toastify";
 import {
 	CancelIcon,
@@ -18,19 +18,18 @@ const cx = classNames.bind(styles);
 
 function AddPostBlock({
 	setAddBlock,
-	BlockImg=false,
-	
-	BlockVideo=false,
-	
+	BlockImg = false,
+
+	BlockVideo = false,
 }) {
 	const [contentPost, setContentPost] = useState("");
-	const [blockImage,setBlockImage] = useState(BlockImg);
-	const [blockVideo,setBlockVideo] = useState(BlockVideo);
-
+	const [blockImage, setBlockImage] = useState(BlockImg);
+	const [blockVideo, setBlockVideo] = useState(BlockVideo);
+	const [dataUser, setDataUser] = useState({});
 	const [image, setImage] = useState("");
 	const [video, setVideo] = useState("");
 	const [preview, setPreview] = useState("");
-	const [inputVa,setInputVa] = useState("");
+	const [inputVa, setInputVa] = useState("");
 	const userId = useSelector((state) => state.user.userId);
 	const closeAddPostBlock = () => {
 		setBlockImage(false);
@@ -41,7 +40,7 @@ function AddPostBlock({
 	const clearInputImg = () => {
 		setImage("");
 		// setAddBlockImg(false);
-		setInputVa("")
+		setInputVa("");
 		setVideo("");
 		setPreview("");
 	};
@@ -96,7 +95,12 @@ function AddPostBlock({
 		} else {
 			// console.log(image);
 
-			const res = await postService.handleAddPostService(userId, contentPost, image,blockVideo);
+			const res = await postService.handleAddPostService(
+				userId,
+				contentPost,
+				image,
+				blockVideo
+			);
 			// const
 			if (res && res.errCode === 0) {
 				toast.success(<FormattedMessage id="Post_Comp.add_success" />, {
@@ -110,6 +114,17 @@ function AddPostBlock({
 			}
 		}
 	};
+
+	useEffect(() => {
+		async function fetchData() {
+			const res = await userService.handleGetDataUserService(userId);
+			console.log(res);
+			if (res && res.errCode == 0 && res.reg) {
+				setDataUser(res.reg);
+			}
+		}
+		fetchData();
+	}, []);
 	return (
 		<>
 			<div className={cx("wrapper")} onClick={closeAddPostBlock}>
@@ -125,10 +140,12 @@ function AddPostBlock({
 						/>
 					</div>
 					<div className={cx("header")}>
-						<div className={cx("header_avt")}></div>
+						<div className={cx("header_avt")}>
+							{dataUser && <img src={dataUser.avatar} alt="user_add_post_pic" />}
+						</div>
 						<div className={cx("header_name")}>
 							<div className={cx("name_user-post")}>
-								<span>Kusakari</span>
+								{dataUser && <span>{dataUser.userName}</span>}
 							</div>
 							<div className={cx("time")}>
 								<span>Just something special</span>
@@ -149,9 +166,7 @@ function AddPostBlock({
 
 							{blockImage | blockVideo ? (
 								<div className={cx("body")}>
-									<div
-										className={cx("block_img", blockVideo && "block_video")}
-									>
+									<div className={cx("block_img", blockVideo && "block_video")}>
 										<div className={cx("background_input")}>
 											<div className={cx("layer_1")}>
 												<CloudIcon width="90px" height="90px" />

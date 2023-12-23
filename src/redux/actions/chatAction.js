@@ -3,7 +3,8 @@
 const OPEN_CHAT = "OPEN_CHAT";
 const CLOSE_CHAT = "CLOSE_CHAT";
 const WAIT_CHAT ="WAIT_CHAT";
-export { OPEN_CHAT,CLOSE_CHAT,WAIT_CHAT}
+const CLOSE_WAIT_CHAT = "CLOSE_WAIT_CHAT";
+export { OPEN_CHAT,CLOSE_CHAT,WAIT_CHAT,CLOSE_WAIT_CHAT}
 
 export const handleOpenChatRedux = (data) => {
 
@@ -40,6 +41,20 @@ export const handleWaitChatRedux = (data) => {
 		// console.log(token);
 		dispatch({
 			type: WAIT_CHAT,
+			data: {
+				chatID : data,
+				
+			},
+		});
+
+	};
+};
+
+export const handleCloseWaitChatRedux =(data)=>{
+	return async (dispatch, getState) => {
+		// console.log(token);
+		dispatch({
+			type: CLOSE_WAIT_CHAT,
 			data: {
 				chatID : data,
 				

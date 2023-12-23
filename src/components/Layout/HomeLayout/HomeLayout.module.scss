@@ -144,4 +144,43 @@
 
 
 	}
+.chat_wrapper{
+	right: 90px !important;
+
+}
+}
+
+.chat_wrapper{
+	// background-color:red;
+
+	// width: 700px;
+	// user-select: none;
+	// overflow: hidden;
+	// max-width: 700px;
+	position: fixed;
+	height: 450px;
+	right: 300px;
+	bottom: 0;
+	display: flex;
+	justify-content: space-between;
+	// flex-direction: row-reverse;
+	:nth-child(1){
+		margin-left: 0 !important;
+	}
+	&.wait{
+	right: 40px !important;
+
+	}
+}
+.wait_chat_wrapper{
+	position: fixed;
+	display: flex;
+	bottom: 50px;
+	// background-color: red;
+	width: 50px;
+	// height: 100px;
+	right: 15px;
+	flex-direction: column;
+	gap: 15px;
+
 }
